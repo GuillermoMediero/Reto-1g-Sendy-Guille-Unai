@@ -4,11 +4,11 @@ DECLARE
 BEGIN
   qryCtx := DBMS_XMLGEN.newContext(
               'SELECT *
-              FROM JORNADA
-              WHERE NUM_JORNADA = (SELECT MAX(NUM_JORNADA)
-                                        FROM JORNADA)');
+                FROM JORNADA 
+                WHERE NUM_JORNADA=(SELECT MAX(NUM_JORNADA)
+                                        FROM JORNADA');
 			  
-  -- aplicar el nombre del documento root. El nombre por defecto es ROWSET			  
+   -- aplicar el nombre del documento root. El nombre por defecto es ROWSET     		  
   DBMS_XMLGEN.setRowSetTag(qryCtx, 'jornadas');
   
   -- Aplicar la cabecera con el nombre jornada

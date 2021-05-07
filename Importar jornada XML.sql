@@ -1,3 +1,5 @@
+--CREATE TABLE temp_clob_tab(Return CLOB);
+
 DECLARE
   qryCtx DBMS_XMLGEN.ctxHandle;
   result CLOB;
@@ -19,3 +21,4 @@ BEGIN
   --cerrar context
   DBMS_XMLGEN.closeContext(qryCtx);
 END;
+
