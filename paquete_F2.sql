@@ -89,7 +89,7 @@ PROCEDURE  cantidad_victorias AS
         BEGIN
              FOR v_cursor IN C
            LOOP
-           v_victoria:=ver_victoriaL(v_cursor.ID_EQUIPO)
+           v_victoria:=ver_victoriaL(v_cursor.ID_EQUIPO);
              DBMS_OUTPUT.PUT_LINE
                ('LA ID DEL EQUIPO ES : '||v_cursor.ID_EQUIPO ||
                ' HAN GANADO : ' || v_victoria||' PARTIDOS');
