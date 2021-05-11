@@ -1,3 +1,4 @@
+-------------------Eliminacion de tablas y sus constraints----------------------
 DROP TABLE JUGADOR CASCADE CONSTRAINTS;
 DROP TABLE ENTRENADOR CASCADE CONSTRAINTS;
 DROP TABLE ASISTENTE CASCADE CONSTRAINTS;
@@ -9,7 +10,7 @@ DROP TABLE ADMINISTRADOR CASCADE CONSTRAINTS;
 DROP TABLE USUARIO CASCADE CONSTRAINTS;
 
 
--------------------Creacion de las tablas....................................................
+-------------------Creacion de las tablas---------------------------------------
 CREATE TABLE ADMINISTRADOR (
 	COD_ADMIN NUMBER(4) GENERATED AS IDENTITY(
 									START WITH 1
@@ -137,7 +138,7 @@ CREATE TABLE PARTIDO (
 									MAXVALUE 1000
 									NOCYCLE
 		),
-	HORA DATE,
+	HORA TIMESTAMP,
 	RESULTADOL VARCHAR2(24),
 	RESULTADOV VARCHAR2(24),
 	NUM_JORNADA NUMBER(4),
@@ -152,6 +153,8 @@ CREATE TABLE PARTIDO (
 				REFERENCES EQUIPO(ID_EQUIPO) ON DELETE CASCADE
 );
 
+
+----Trigger en la cual evitamos que un equipo pueda tener mas de 6 jugadores----
 CREATE OR REPLACE TRIGGER NUM_MAX_JUGADORES
 BEFORE INSERT OR UPDATE ON JUGADOR
 FOR EACH ROW
@@ -172,6 +175,7 @@ BEGIN
     CLOSE P_CURSOR;
 END;
 
+----Trigger en la cual evitamos que el sueldo de un jugador sea menor al SMI----
 CREATE OR REPLACE TRIGGER sueldoJugador
 BEFORE INSERT OR UPDATE OF sueldo ON jugador
 FOR EACH ROW
@@ -187,54 +191,100 @@ THEN raise_application_error
     ' no se puede ser menor que '|| v_sinterp));
 END IF;
 END;
-
+/*
 CREATE OR REPLACE TRIGGER MAX_SAL_ANUAL
-BEFORE INSERT ON JUGADOR
+AFTER INSERT ON JUGADOR
 FOR EACH ROW
 DECLARE
     V_MAX_SUELDO_ANUAL_JUG NUMBER(1);
-    CURSOR MAX_SUELDO_ANUAL IS
+    CURSOR MAX_SUELDO_ANUAL_JUG IS
     SELECT SUM(SUELDO)*14 AS "SUELDO ANUAL"
     FROM JUGADOR
     GROUP BY ID_EQUIPO
-    HAVING ID_EQUIPO = :NEW.ID_EQUIPO;
-    
-    V_MAX_SUELDO_ANUAL_ENT NUMBER(1);
-    CURSOR MAX_SUELDO_ANUAL IS
-    SELECT SUM(SUELDO)*14 AS "SUELDO ANUAL"
-    FROM ENTRENADOR
-    GROUP BY ID_EQUIPO
-    HAVING ID_EQUIPO = :NEW.ID_EQUIPO;
-    
-    V_MAX_SUELDO_ANUAL_ASI NUMBER(1);
-    CURSOR MAX_SUELDO_ANUAL IS
-    SELECT SUM(SUELDO)*14 AS "SUELDO ANUAL"
-    FROM ASISTENTE
-    GROUP BY ID_EQUIPO
-    HAVING ID_EQUIPO = :NEW.ID_EQUIPO;
+    HAVING ID_EQUIPO = :new.ID_EQUIPO;
 BEGIN 
     OPEN MAX_SUELDO_ANUAL_JUG;
-    FETCH MAX_SUELDO_ANUAL_JUG INTO V_MAX_SUELDO_ANUAL;
+    FETCH MAX_SUELDO_ANUAL_JUG INTO V_MAX_SUELDO_ANUAL_JUG;
      IF(V_MAX_SUELDO_ANUAL_JUG >= 200000)THEN
         RAISE_APPLICATION_ERROR('-20001','No se puede superar el maximo salario anual');
     END IF;
     CLOSE max_sueldo_anual_JUG;
-    
-    OPEN MAX_SUELDO_ANUAL_ASI;
-    FETCH MAX_SUELDO_ANUAL_ASI INTO V_MAX_SUELDO_ANUAL;
-     IF(V_MAX_SUELDO_ANUAL_ASI >= 200000)THEN
-        RAISE_APPLICATION_ERROR('-20001','No se puede superar el maximo salario anual');
-    END IF;
-    CLOSE max_sueldo_anual_ASI;
-    
-    OPEN MAX_SUELDO_ANUAL_ENT;
-    FETCH MAX_SUELDO_ANUAL_ENT INTO V_MAX_SUELDO_ANUAL;
-     IF(V_MAX_SUELDO_ANUAL_ENT >= 200000)THEN
-        RAISE_APPLICATION_ERROR('-20001','No se puede superar el maximo salario anual');
-    END IF;
-    CLOSE max_sueldo_anual_ENT;
 END;
 
+*/
+
+----Trigger en la cual evita crear un calendario cuando algun equipo tenga menos de 2 jugadores----
+CREATE OR REPLACE TRIGGER CREAR_CALENDARIO
+BEFORE INSERT OR UPDATE ON PARTIDO
+FOR EACH ROW
+DECLARE
+    V_CANT_JUGADOR NUMBER(1);
+    cursor P_CURSOR is
+    SELECT COUNT(*)
+    from JUGADOR
+    group by id_equipo;
+    
+BEGIN
+    OPEN P_CURSOR;
+    FETCH P_CURSOR INTO V_CANT_JUGADOR;
+    WHILE P_CURSOR%FOUND LOOP
+    IF(V_CANT_JUGADOR <2)THEN
+        RAISE_APPLICATION_ERROR('-20000','Tiene que haber 2 jugadores en cada equipo');
+    END IF;
+    FETCH P_CURSOR INTO V_CANT_JUGADOR;
+    END LOOP;
+    CLOSE P_CURSOR;
+END;
+
+----Trigger en la cual evitamos añadir o modificar jugadores una vez creado el calendario----
+CREATE OR REPLACE TRIGGER restringir_equipo
+   BEFORE INSERT OR UPDATE OR DELETE
+   ON EQUIPO
+   FOR EACH ROW
+DECLARE
+   calendario_iniciado   EXCEPTION;
+   PRAGMA EXCEPTION_INIT (calendario_iniciado , -20001);
+   n_cant      NUMBER (1);
+BEGIN
+   SELECT COUNT (*)
+     INTO n_cant
+     FROM partido;
+
+   IF n_cant > 0 
+   THEN
+      RAISE calendario_iniciado;
+   END IF;
+EXCEPTION
+   WHEN calendario_iniciado
+   THEN
+      raise_application_error (-20001, 'el calendario ya ha sido iniciado');
+END;
+
+----Trigger en la cual evitamos añadir o modificar equipos una vez creado el calendario----
+CREATE OR REPLACE TRIGGER restringir_jugador
+   BEFORE INSERT OR UPDATE OR DELETE
+   ON Jugador
+   FOR EACH ROW
+DECLARE
+   calendario_iniciado   EXCEPTION;
+   PRAGMA EXCEPTION_INIT (calendario_iniciado , -20001);
+   n_cant      NUMBER (1);
+BEGIN
+   SELECT COUNT (*)
+     INTO n_cant
+     FROM partido;
+
+   IF n_cant > 0
+   THEN
+      RAISE calendario_iniciado;
+   END IF;
+EXCEPTION
+   WHEN calendario_iniciado
+   THEN
+      raise_application_error (-20001, 'el calendario ya ha sido iniciado');
+END;
+
+----------------------Insercion de datos en las tablas--------------------------
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('PSG','http://imagenescudopsg.es');
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('REAL MADRID','http://imagenescudorealmadrid.es');
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('REAL MADRID','http://imagenescudorealmadrid.es');
@@ -265,10 +315,14 @@ INSERT INTO ENTRENADOR(NOMBRE,SUELDO,TELEFONO,NACIONALIDAD,ID_EQUIPO) VALUES ('G
 INSERT INTO ENTRENADOR(NOMBRE,SUELDO,TELEFONO,NACIONALIDAD,ID_EQUIPO) VALUES ('GUILLE',1200,'689456982','FRANCESA',3);
 INSERT INTO ENTRENADOR(NOMBRE,SUELDO,TELEFONO,NACIONALIDAD,ID_EQUIPO) VALUES ('GUILLE',1200,'689456982','FRANCESA',3);
 
-INSERT INTO ENTRENADOR(NOMBRE,TELEFONO,NACIONALIDAD,SUELDO) VALUES ('RAUL','689456982','FRANCESA',1000);
-INSERT INTO ENTRENADOR(NOMBRE,TELEFONO,NACIONALIDAD,SUELDO) VALUES ('RAUL','689456982','FRANCESA',1000);
+INSERT INTO ASISTENTE(NOMBRE,TELEFONO,NACIONALIDAD,SUELDO) VALUES ('RAUL','689456982','FRANCESA',1000);
+INSERT INTO ASISTENTE(NOMBRE,TELEFONO,NACIONALIDAD,SUELDO) VALUES ('RAUL','689456982','FRANCESA',1000);
 
+INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES('29/06/21 18:50:00','2','3',2,2,3);
 
 SELECT * FROM JUGADOR;
 SELECT * FROM jornada;
+SELECT * FROM EQUIPO;
+Select * from Partido;
+
 

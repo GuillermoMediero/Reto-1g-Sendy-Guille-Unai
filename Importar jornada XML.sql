@@ -6,7 +6,9 @@ DECLARE
 BEGIN
   qryCtx := DBMS_XMLGEN.newContext(
               'SELECT *
-              FROM JORNADA');
+              FROM JORNADA j, partido p
+              where j.num_jornada=p.id_partido
+              ');
 			  
    -- aplicar el nombre del documento root. El nombre por defecto es ROWSET     		  
   DBMS_XMLGEN.setRowSetTag(qryCtx, 'jornadas');
