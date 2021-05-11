@@ -1,0 +1,17 @@
+<?xml version='1.0'  encoding='Cp1252' ?>
+<RESULTS>
+	<ROW>
+		<COLUMN NAME="RETURN"><![CDATA[<?xml version="1.0"?>
+<jornadas>
+ <jornada>
+  <NUM_JORNADA>4</NUM_JORNADA>
+  <HORA>02/06/21 12:40:00,000000</HORA>
+  <RESULTADOL>2</RESULTADOL>
+  <RESULTADOV>3</RESULTADOV>
+  <ID_EQUIPOL>6</ID_EQUIPOL>
+  <ID_EQUIPOV>5</ID_EQUIPOV>
+ </jornada>
+</jornadas>
+]]></COLUMN>
+	</ROW>
+</RESULTS>
