@@ -2,7 +2,8 @@ SET SERVEROUTPUT ON;
 CREATE OR REPLACE PACKAGE pk_consultasEquipoJugador AS
     PROCEDURE  informaciones_equipo;
     PROCEDURE  informaciones_jugador;
-    PROCEDURE ver_victoria (p_id_equipo number);
+    function ver_victoriaL (p_id_equipo number)return number;
+    PROCEDURE  cantidad_victorias;
 END pk_consultasEquipoJugador;
 
 
@@ -54,7 +55,7 @@ CREATE OR REPLACE PACKAGE BODY pk_consultasEquipoJugador AS
            END LOOP;
         END;
    END;  
-   PROCEDURE ver_victoria (p_id_equipo number)
+   function ver_victoriaL (p_id_equipo number) Return number
 as
 
 BEGIN
@@ -65,17 +66,36 @@ BEGIN
     begin
         select count(*) into Puntos_local 
         from partido
-        group by id_equipol
-        having id_equipol = p_id_equipo
+        wHERE id_equipol = p_id_equipo
         AND ResultadoL = '3';
         select count(*) into Puntos_visitante 
         from partido
         where ID_EQUIPOV = p_id_equipo
         AND ResultadoV ='3';
         Victoria_total:=Puntos_local+Puntos_visitante;
-        DBMS_OUTPUT.PUT_LINE('victorias del equipo '||p_id_equipo ||'='|| victoria_total);
+        return Victoria_total;
     end;
 END ver_victoria;
+
+PROCEDURE  cantidad_victorias AS        
+    BEGIN
+        DECLARE
+             CURSOR C
+             IS SELECT id_equipo
+             FROM  equipo;
+             
+            v_cursor C%ROWTYPE;
+            v_victoria number;
+        BEGIN
+             FOR v_cursor IN C
+           LOOP
+           v_victoria:=ver_victoriaL(v_cursor.ID_EQUIPO)
+             DBMS_OUTPUT.PUT_LINE
+               ('LA ID DEL EQUIPO ES : '||v_cursor.ID_EQUIPO ||
+               ' HAN GANADO : ' || v_victoria||' PARTIDOS');
+           END LOOP;
+        END;
+     END;
 END pk_consultasEquipoJugador;
 
 select * from JUGADOR;
