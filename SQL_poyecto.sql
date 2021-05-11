@@ -236,6 +236,7 @@ BEGIN
     CLOSE P_CURSOR;
 END;
 
+----Trigger en la cual evitamos añadir o modificar jugadores una vez creado el calendario----
 CREATE OR REPLACE TRIGGER restringir_equipo
    BEFORE INSERT OR UPDATE OR DELETE
    ON EQUIPO
@@ -259,6 +260,7 @@ EXCEPTION
       raise_application_error (-20001, 'el calendario ya ha sido iniciado');
 END;
 
+----Trigger en la cual evitamos añadir o modificar equipos una vez creado el calendario----
 CREATE OR REPLACE TRIGGER restringir_jugador
    BEFORE INSERT OR UPDATE OR DELETE
    ON Jugador
@@ -282,7 +284,7 @@ EXCEPTION
       raise_application_error (-20001, 'el calendario ya ha sido iniciado');
 END;
 
-
+----------------------Insercion de datos en las tablas--------------------------
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('PSG','http://imagenescudopsg.es');
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('REAL MADRID','http://imagenescudorealmadrid.es');
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('REAL MADRID','http://imagenescudorealmadrid.es');
