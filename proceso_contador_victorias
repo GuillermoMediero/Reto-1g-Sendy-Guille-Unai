@@ -1,0 +1,29 @@
+set serveroutput on;
+CREATE OR REPLACE PACKAGE GEST_VICTORIAS AS
+PROCEDURE ver_victoria (p_id_equipo number);
+END GEST_VICTORIAS;
+CREATE OR REPLACE PACKAGE BODY GEST_VICTORIAS AS
+procedure ver_victoria (p_id_equipo number)
+as
+
+BEGIN
+     declare 
+        Puntos_local number;
+        Puntos_visitante number;
+        Victoria_total number;
+    begin
+        select count(*) into Puntos_local 
+        from partido
+        group by id_equipol
+        having id_equipol = p_id_equipo
+        AND ResultadoL = '3';
+        select count(*) into Puntos_visitante 
+        from partido
+        where ID_EQUIPOV = p_id_equipo
+        AND ResultadoV ='3';
+        Victoria_total:=Puntos_local+Puntos_visitante;
+        DBMS_OUTPUT.PUT_LINE('victorias : '|| victoria_total);
+    end;
+END ver_victoria;
+END GEST_VICTORIAS;
+execute  ver_victoria(3); 
