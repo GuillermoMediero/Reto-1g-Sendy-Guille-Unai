@@ -5,16 +5,17 @@ DECLARE
   result CLOB;
 BEGIN
   qryCtx := DBMS_XMLGEN.newContext(
-              'SELECT *
-              FROM JORNADA j, partido p
-              where j.num_jornada=p.id_partido
+              'SELECT distinct j.num_jornada, p.hora, p.resultadol, p.resultadov, p.id_equipol, p.id_equipov 
+              FROM jornada j,partido p 
+              where p.num_jornada=j.num_jornada
+              order by j.num_jornada,p.hora
               ');
 			  
    -- aplicar el nombre del documento root. El nombre por defecto es ROWSET     		  
   DBMS_XMLGEN.setRowSetTag(qryCtx, 'jornadas');
   
   -- Aplicar la cabecera con el nombre jornada
-  DBMS_XMLGEN.setRowTag(qryCtx, 'jornada');
+  DBMS_XMLGEN.setRowTag(qryCtx, 'partido');
   
   -- Obtener los resultados
   result := DBMS_XMLGEN.getXML(qryCtx);

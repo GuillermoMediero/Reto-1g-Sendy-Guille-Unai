@@ -5,9 +5,7 @@ DECLARE
   result CLOB;
 BEGIN
   qryCtx := DBMS_XMLGEN.newContext(
-              'SELECT *
-              FROM CLASIFICAION
-              ORDER BY PUNTUACION DESC');
+              '');
 			  
   -- aplicar el nombre del documento root. El nombre por defecto es ROWSET      		  
   DBMS_XMLGEN.setRowSetTag(qryCtx, 'clasificatoria');
