@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<!DOCTYPE jornadas SYSTEM "ultima_jornada.dtd">
+<jornadas xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="ultima_jornada.xsd">
+ <partido>
+  <NUM_JORNADA>4</NUM_JORNADA>
+  <HORA>02/06/21 12:40:00,000000</HORA>
+  <RESULTADOL>2</RESULTADOL>
+  <RESULTADOV>3</RESULTADOV>
+  <ID_EQUIPOL>6</ID_EQUIPOL>
+  <ID_EQUIPOV>5</ID_EQUIPOV>
+ </partido>
+</jornadas>
