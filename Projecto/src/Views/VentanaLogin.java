@@ -81,23 +81,25 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         lMinimizar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lMinimizar.setForeground(new java.awt.Color(255, 255, 255));
+        lMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lMinimizar.setText("_");
         lMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lMinimizarMouseClicked(evt);
             }
         });
-        jPanel2.add(lMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
+        jPanel2.add(lMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, -10, 20, 30));
 
         lCerrar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        lCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lCerrar.setText("X");
         lCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lCerrarMouseClicked(evt);
             }
         });
-        jPanel2.add(lCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        jPanel2.add(lCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 30, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 70));
 
