@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 public class VentanaLogin extends javax.swing.JFrame {
     int xx;
     int xy;
+    boolean a = true;
     /**
      * Creates new form VentanaLogin
      */
@@ -22,6 +23,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
+        lUsuOContErr.setVisible(false);
     }
 
     /**
@@ -47,6 +49,8 @@ public class VentanaLogin extends javax.swing.JFrame {
         pfContraseña = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lUsuOContErr = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -73,7 +77,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Inicio de Sesion");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         lMinimizar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lMinimizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,7 +87,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 lMinimizarMouseClicked(evt);
             }
         });
-        jPanel2.add(lMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+        jPanel2.add(lMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         lCerrar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lCerrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,9 +97,9 @@ public class VentanaLogin extends javax.swing.JFrame {
                 lCerrarMouseClicked(evt);
             }
         });
-        jPanel2.add(lCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        jPanel2.add(lCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 70));
 
         jPanel3.setBackground(new java.awt.Color(205, 205, 205));
 
@@ -103,14 +107,14 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 20, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 430, 20));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 440, 20));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -179,7 +183,20 @@ public class VentanaLogin extends javax.swing.JFrame {
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 120, 30));
 
-        jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 420));
+        lUsuOContErr.setBackground(new java.awt.Color(255, 255, 255));
+        lUsuOContErr.setForeground(new java.awt.Color(255, 51, 51));
+        lUsuOContErr.setText("Usuario o contraseña errona");
+        jPanel1.add(lUsuOContErr, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 170, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1001008.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, 30));
+
+        jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,6 +254,17 @@ public class VentanaLogin extends javax.swing.JFrame {
         this.setLocation(x-xx, y-xy);
     }//GEN-LAST:event_jPanel2MouseDragged
 
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        if (a) {
+            pfContraseña.setEchoChar((char)0);
+            a = false;
+        }
+        else {
+            pfContraseña.setEchoChar('•');
+            a = true;
+        }
+    }//GEN-LAST:event_jLabel4MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +305,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -285,6 +314,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lCerrar;
     private javax.swing.JLabel lMinimizar;
+    private javax.swing.JLabel lUsuOContErr;
     private javax.swing.JPasswordField pfContraseña;
     private javax.swing.JTextField tfCorreo;
     // End of variables declaration//GEN-END:variables
