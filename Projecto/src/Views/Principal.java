@@ -38,7 +38,7 @@ public class Principal extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("USUARIO");
         getContentPane().add(jButton2);
-        jButton2.setBounds(660, 260, 170, 29);
+        jButton2.setBounds(660, 260, 170, 32);
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("ADMINISTRADOR");
@@ -48,11 +48,11 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(660, 150, 190, 29);
+        jButton3.setBounds(660, 150, 190, 32);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1130, 540);
+        jLabel1.setBounds(-20, -10, 1130, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

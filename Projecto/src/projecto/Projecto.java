@@ -17,6 +17,7 @@ public class Projecto {
     private static BaseDatos bd;
     
     
+    private static VentanaLogin vl;
     private static Principal p;
     /**
      * @param args the command line arguments
@@ -28,8 +29,8 @@ public class Projecto {
             
             /*tp = new TablaPersonas(bd.getCon());*/
             
-            p = new Principal();
-            p.setVisible(true);
+            vl = new VentanaLogin();
+            vl.setVisible(true);
         }
         catch(Exception e){
             bd.desconectar();
