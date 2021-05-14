@@ -25,7 +25,6 @@ public class VentanaLogin extends javax.swing.JFrame {
     public VentanaLogin() {
         initComponents();
          this.setLocationRelativeTo(null);
-         this.rbUsuario.setSelected(true);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         lUsuOContErr.setVisible(false);
     }
@@ -55,9 +54,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         bLogin = new javax.swing.JButton();
         lUsuOContErr = new javax.swing.JLabel();
-        vercontrasena = new javax.swing.JLabel();
-        rbUsuario = new javax.swing.JRadioButton();
-        rbAdministrador = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -129,7 +125,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/23982d31ee932c26a021b175c47bb157.png"))); // NOI18N
         jLabel3.setOpaque(true);
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 50, 60));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 40, 60));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -154,9 +150,9 @@ public class VentanaLogin extends javax.swing.JFrame {
                 tfCorreoActionPerformed(evt);
             }
         });
-        jPanel8.add(tfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        jPanel8.add(tfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 40));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 270, 40));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 260, 40));
 
         tfClave.setBackground(new java.awt.Color(204, 204, 204));
         tfClave.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -176,13 +172,13 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         tfClave.add(pfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
 
-        jPanel1.add(tfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 270, 40));
+        jPanel1.add(tfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 260, 40));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/png-clipart-lock-computer-icons-padlock-technic-security.png"))); // NOI18N
         jLabel2.setOpaque(true);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 40, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 30, 40));
 
         bLogin.setBackground(new java.awt.Color(0, 0, 0));
         bLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,48 +189,12 @@ public class VentanaLogin extends javax.swing.JFrame {
                 bLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(bLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 120, 30));
+        jPanel1.add(bLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 120, 30));
 
         lUsuOContErr.setBackground(new java.awt.Color(255, 255, 255));
         lUsuOContErr.setForeground(new java.awt.Color(255, 51, 51));
         lUsuOContErr.setText("Usuario o contraseña errona");
-        jPanel1.add(lUsuOContErr, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 170, -1));
-
-        vercontrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1001008.png"))); // NOI18N
-        vercontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                vercontrasenaMousePressed(evt);
-            }
-        });
-<<<<<<< Updated upstream
-        jPanel1.add(vercontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, 30));
-=======
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, 30));
->>>>>>> Stashed changes
-
-        rbUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rbUsuario);
-        rbUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        rbUsuario.setText("USUARIO");
-        rbUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbUsuarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(rbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
-
-        rbAdministrador.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rbAdministrador);
-        rbAdministrador.setForeground(new java.awt.Color(0, 0, 0));
-        rbAdministrador.setSelected(true);
-        rbAdministrador.setText("ADMINISTRADOR");
-        rbAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        rbAdministrador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAdministradorActionPerformed(evt);
-            }
-        });
-        jPanel1.add(rbAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        jPanel1.add(lUsuOContErr, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 170, -1));
 
         jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 420));
 
@@ -294,35 +254,11 @@ public class VentanaLogin extends javax.swing.JFrame {
         this.setLocation(x-xx, y-xy);
     }//GEN-LAST:event_jPanel2MouseDragged
 
-    private void vercontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vercontrasenaMousePressed
-        if (a) {
-            pfClave.setEchoChar((char)0);
-            a = false;
-        }
-        else {
-            pfClave.setEchoChar('•');
-            a = true;
-        }
-    }//GEN-LAST:event_vercontrasenaMousePressed
-
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-      /*if(this.rbUsuario.isSelected()){
-          rol="usuario" ;
-      }else{
-          rol="administrador";
-      }
-      Controlador.inicioSesion(rol,this.tfCorreo.getText(),this.tfClave.getToolTipText());
-        */
-      Controlador.abrirVentana();
+      Controlador.inicioSesion(this.tfCorreo.getText(),this.tfClave.getToolTipText());
+
+     
     }//GEN-LAST:event_bLoginActionPerformed
-
-    private void rbAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAdministradorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbAdministradorActionPerformed
-
-    private void rbUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbUsuarioActionPerformed
-        
-    }//GEN-LAST:event_rbUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,10 +310,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lUsuOContErr;
     private javax.swing.JPasswordField pfClave;
-    private javax.swing.JRadioButton rbAdministrador;
-    private javax.swing.JRadioButton rbUsuario;
     private javax.swing.JPanel tfClave;
     private javax.swing.JTextField tfCorreo;
-    private javax.swing.JLabel vercontrasena;
     // End of variables declaration//GEN-END:variables
 }

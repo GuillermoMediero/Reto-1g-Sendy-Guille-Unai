@@ -41,18 +41,18 @@ public class Controlador {
         }
     }
     
-    public static void inicioSesion(String rol,String correo,String clave){
+    public static void inicioSesion(String correo,String clave){
       
-        if(rol.equalsIgnoreCase("administrador")){
+ 
           
           // Llamar el metodo de la tabla adm para comprobar el adm 
           //tAdm.comprobarAdm(correo, clave); 
           Vprincipal vp= new Vprincipal();
           vp.setVisible(true);
-      }else{
+
           
           
-      }
+      
       
     }
 
