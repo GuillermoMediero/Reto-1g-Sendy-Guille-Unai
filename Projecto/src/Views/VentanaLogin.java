@@ -27,6 +27,8 @@ public class VentanaLogin extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         lUsuOContErr.setVisible(false);
+        tfCorreo.setText("Correo");
+        pfClave.setText("Contraseña");
     }
 
     /**
@@ -133,7 +135,6 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         tfCorreo.setBackground(new java.awt.Color(204, 204, 204));
         tfCorreo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tfCorreo.setText("Correo");
         tfCorreo.setToolTipText("");
         tfCorreo.setBorder(null);
         tfCorreo.addFocusListener(new java.awt.event.FocusAdapter() {

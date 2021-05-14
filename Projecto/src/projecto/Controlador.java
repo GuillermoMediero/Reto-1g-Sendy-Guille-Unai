@@ -27,10 +27,10 @@ public class Controlador {
      */
     public static void main(String[] args) {
           try{
-            bd = new BaseDatos();
+            /*bd = new BaseDatos();
             bd.conectar();
             
-            u = new TUsuario(bd.getCon());
+            u = new TUsuario(bd.getCon());*/
             
             vl = new VentanaLogin();
             vl.setVisible(true);
@@ -47,7 +47,8 @@ public class Controlador {
           
           // Llamar el metodo de la tabla adm para comprobar el adm 
           //tAdm.comprobarAdm(correo, clave); 
-          Vprincipal vp= new Vprincipal();
+          vl.dispose();
+          vp= new Vprincipal();
           vp.setVisible(true);
 
           
@@ -56,9 +57,10 @@ public class Controlador {
       
     }
 
-    public static void abrirVentana() {
-       vp = new Vprincipal();
-       vp.setVisible(true);
-    }
+    public static void cerrarSesion() {
+           vp.dispose();
+           vl = new VentanaLogin();
+           vl.setVisible(true);
+    }   
     
 }
