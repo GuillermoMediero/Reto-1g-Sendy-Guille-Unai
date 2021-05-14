@@ -55,7 +55,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         bLogin = new javax.swing.JButton();
         lUsuOContErr = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        vercontrasena = new javax.swing.JLabel();
         rbUsuario = new javax.swing.JRadioButton();
         rbAdministrador = new javax.swing.JRadioButton();
 
@@ -200,13 +200,13 @@ public class VentanaLogin extends javax.swing.JFrame {
         lUsuOContErr.setText("Usuario o contraseña errona");
         jPanel1.add(lUsuOContErr, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 170, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1001008.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        vercontrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1001008.png"))); // NOI18N
+        vercontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel4MousePressed(evt);
+                vercontrasenaMousePressed(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, 30));
+        jPanel1.add(vercontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, 30));
 
         buttonGroup1.add(rbUsuario);
         rbUsuario.setText("USUARIO");
@@ -286,7 +286,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         this.setLocation(x-xx, y-xy);
     }//GEN-LAST:event_jPanel2MouseDragged
 
-    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+    private void vercontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vercontrasenaMousePressed
         if (a) {
             pfClave.setEchoChar((char)0);
             a = false;
@@ -295,7 +295,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             pfClave.setEchoChar('•');
             a = true;
         }
-    }//GEN-LAST:event_jLabel4MousePressed
+    }//GEN-LAST:event_vercontrasenaMousePressed
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
        
@@ -356,7 +356,6 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -370,5 +369,6 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbUsuario;
     private javax.swing.JPanel tfClave;
     private javax.swing.JTextField tfCorreo;
+    private javax.swing.JLabel vercontrasena;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,6 @@ package Modelo_BBDD;
  *
  * @author ketro
  */
-public class Jugador {
+public class TEquipo {
     
 }

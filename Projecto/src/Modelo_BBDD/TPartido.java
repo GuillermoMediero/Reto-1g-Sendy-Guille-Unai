@@ -9,6 +9,6 @@ package Modelo_BBDD;
  *
  * @author ketro
  */
-public class Dueno {
+public class TPartido {
     
 }

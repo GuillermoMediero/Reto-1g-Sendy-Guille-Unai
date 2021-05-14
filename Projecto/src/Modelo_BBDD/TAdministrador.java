@@ -9,10 +9,10 @@ package Modelo_BBDD;
  *
  * @author ketro
  */
-public class Administrador {
+public class TAdministrador {
     private String nombre;
 
-    public Administrador(String nombre) {
+    public TAdministrador(String nombre) {
         this.nombre = nombre;
     }
 
