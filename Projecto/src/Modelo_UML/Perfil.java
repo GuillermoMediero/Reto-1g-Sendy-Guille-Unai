@@ -9,36 +9,27 @@ package Modelo_UML;
  *
  * @author ketro
  */
-public class Perfil {
-    private int id_perfil  ;
-    private String coreo  ;
+public abstract class Perfil {
+   
+    private String correo  ;
     private String clave  ;
 
     public Perfil() {
     }
 
-    public Perfil(int id_perfil, String coreo, String clave) {
-        this.id_perfil = id_perfil;
-        this.coreo = coreo;
+    public Perfil(String correo, String clave) {
+        this.correo = correo;
         this.clave = clave;
     }
 
-    public int getId_perfil() {
-        return id_perfil;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setId_perfil(int id_perfil) {
-        this.id_perfil = id_perfil;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-
-    public String getCoreo() {
-        return coreo;
-    }
-
-    public void setCoreo(String coreo) {
-        this.coreo = coreo;
-    }
-
+    
     public String getClave() {
         return clave;
     }
@@ -46,7 +37,4 @@ public class Perfil {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
-    
-    
 }
