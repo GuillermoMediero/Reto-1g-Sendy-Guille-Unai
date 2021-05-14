@@ -17,7 +17,7 @@ public class Controlador {
     private static BaseDatos bd;
     private static Vprincipal vp;
     
-    private static Usuario u;
+    private static TUsuario u;
     
     private static VentanaLogin vl;
 
@@ -30,7 +30,7 @@ public class Controlador {
             bd = new BaseDatos();
             bd.conectar();
             
-            u = new Usuario(bd.getCon());
+            u = new TUsuario(bd.getCon());
             
             vl = new VentanaLogin();
             vl.setVisible(true);

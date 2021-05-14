@@ -11,16 +11,12 @@ import java.sql.Connection;
  *
  * @author ketro
  */
-<<<<<<< Updated upstream:Projecto/src/Modelo_BBDD/TUsuario.java
+
 public class TUsuario {
-=======
-public class Usuario {
     Connection con;
 
-    public Usuario(Connection con) {
+    public TUsuario(Connection con) {
         this.con = con;
     }
-    
->>>>>>> Stashed changes:Projecto/src/Modelo_BBDD/Usuario.java
-    
+   
 }

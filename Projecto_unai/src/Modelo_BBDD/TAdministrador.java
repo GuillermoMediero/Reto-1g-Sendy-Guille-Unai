@@ -28,7 +28,7 @@ private static PreparedStatement sentenciaPre;
          
         BaseDatos.conectar();
             
-        plantilla = "select * from ADMINISTRADOR where CORREO = ? AND CONTRASENA= ?";
+        plantilla = "select * from ADMINISTRADOR where CORREO = ? AND CONTRASEÑA= ?;";
         sentenciaPre =BaseDatos.getCon().prepareStatement(plantilla);
         sentenciaPre.setString(1,correo);
         sentenciaPre.setString(2,contrasena);
