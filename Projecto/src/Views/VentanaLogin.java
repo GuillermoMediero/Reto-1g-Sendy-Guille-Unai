@@ -206,9 +206,15 @@ public class VentanaLogin extends javax.swing.JFrame {
                 vercontrasenaMousePressed(evt);
             }
         });
+<<<<<<< Updated upstream
         jPanel1.add(vercontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, 30));
+=======
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, 30));
+>>>>>>> Stashed changes
 
+        rbUsuario.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rbUsuario);
+        rbUsuario.setForeground(new java.awt.Color(0, 0, 0));
         rbUsuario.setText("USUARIO");
         rbUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,7 +223,9 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(rbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
+        rbAdministrador.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rbAdministrador);
+        rbAdministrador.setForeground(new java.awt.Color(0, 0, 0));
         rbAdministrador.setSelected(true);
         rbAdministrador.setText("ADMINISTRADOR");
         rbAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -298,13 +306,14 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_vercontrasenaMousePressed
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-       
-      if(this.rbUsuario.isSelected()){
+      /*if(this.rbUsuario.isSelected()){
           rol="usuario" ;
       }else{
           rol="administrador";
       }
       Controlador.inicioSesion(rol,this.tfCorreo.getText(),this.tfClave.getToolTipText());
+        */
+      Controlador.abrirVentana();
     }//GEN-LAST:event_bLoginActionPerformed
 
     private void rbAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAdministradorActionPerformed

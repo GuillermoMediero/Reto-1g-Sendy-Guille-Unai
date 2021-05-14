@@ -17,17 +17,20 @@ public class Controlador {
     private static BaseDatos bd;
     private static Vprincipal vp;
     
+    private static Usuario u;
+    
     private static VentanaLogin vl;
+
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
           try{
-            /*bd = new BaseDatos();
-            bd.conectar();*/
+            bd = new BaseDatos();
+            bd.conectar();
             
-            /*tp = new TablaPersonas(bd.getCon());*/
+            u = new Usuario(bd.getCon());
             
             vl = new VentanaLogin();
             vl.setVisible(true);
@@ -51,6 +54,11 @@ public class Controlador {
           
       }
       
+    }
+
+    public static void abrirVentana() {
+       vp = new Vprincipal();
+       vp.setVisible(true);
     }
     
 }
