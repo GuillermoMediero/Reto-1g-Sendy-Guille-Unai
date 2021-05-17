@@ -60,10 +60,9 @@ public class Controlador {
      */
     public static void iniciarSesion(String correo,String clave) throws SQLException {
       
+        TAdministrador ta = new TAdministrador();
         if(TAdministrador.Conectaradmin(correo,clave)){
           
-          // Llamar el metodo de la tabla adm para comprobar el adm 
-          //tAdm.comprobarAdm(correo, clave); 
           Vprincipal vp= new Vprincipal("Administrador");
           vp.setVisible(true);
          

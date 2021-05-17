@@ -25,10 +25,13 @@ private static PreparedStatement sentenciaPre;
     private static Administrador a;
     
     public static Boolean Conectaradmin(String correo,String contrasena) throws SQLException {
-         
         BaseDatos.conectar();
+<<<<<<< Updated upstream
             
         plantilla = "select * from ADMINISTRADOR where CORREO = ? AND CONTRASEÑA= ?;";
+=======
+        plantilla = "select * from ADMINISTRADOR where CORREO = ? AND CONTRASENA = ?;";
+>>>>>>> Stashed changes
         sentenciaPre =BaseDatos.getCon().prepareStatement(plantilla);
         sentenciaPre.setString(1,correo);
         sentenciaPre.setString(2,contrasena);
