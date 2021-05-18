@@ -25,7 +25,7 @@ create or replace  PROCEDURE  crearcalendario AS
            WHERE p.NUM_JORNADA=v_jornada.NUM_JORNADA 
            AND ID_EQUIPOL  in (v_cursor.eq_local , v_cursor.eq_visitante)
            OR ID_EQUIPOV  in (v_cursor.eq_local , v_cursor.eq_visitante);
-           IF no_data_found then
+           IF NOTFOUND then
            INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES('12/06/21 18:50:00',null,null,v_jornada.NUM_JORNADA,v_cursor.eq_local,v_cursor.eq_visitante);
            end IF;
            END LOOP;

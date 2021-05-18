@@ -102,6 +102,32 @@ select * from JUGADOR;
 select * from pARTIDO;
 select * from equipo;
 
+
+create or replace PROCEDURE  crearclasificacion AS       
+    BEGIN
+        	v_nombre equipo.nombre_equipo%TYPE;
+            v_victoria number;
+        BEGIN
+             FOR v_cursor IN C
+           LOOP
+           v_victoria:=ver_victoriaL(v_cursor.ID_EQUIPO);
+             DBMS_OUTPUT.PUT_LINE
+               ('LA ID DEL EQUIPO ES : '||v_cursor.ID_EQUIPO ||
+               ' HAN GANADO : ' || v_victoria||' PARTIDOS');
+           END LOOP;
+           create or replace view clasificacion AS
+           	SELECT e.nombre_equipo, (
+           		SELECT count(*) 
+           		FROM PARTIDO 
+           		wHERE id_equipol = p.id_equipol
+           		OR ID_EQUIPOV = p.id_equipoV
+        AND ResultadoL = '3'
+        OR ResultadoV ='3';)AS victorias INTO v_nombre, v_victoria
+           	from equipo e, PARTIDO p
+           	WHERE e.id_equipo=p.id_equipol
+           	OR e.id_equipo=p.id_equipoV;
+        END;
+
 create or replace PROCEDURE  crearjornadas AS 
 v_count number(2):=0;
 v_bucle number(2):=1;
@@ -109,7 +135,7 @@ v_bucle number(2):=1;
        SELECT count(*) into v_count FROM  equipo;
        INSERT INTO JORNADA(FECHA) VALUES(sysdate+7); 
        while v_bucle <> v_count LOOP
-        SELECT FECHA INTO v_fecha from JORNADA WHERE NUM_JORNADA=(select MAX(NUM_JORNADA)from jornada) ;
+        SELECT FECHA INTO v_fecha from JORNADA WHERE NUM_JORNADA=(select MAX(NUM_JORNADA)from jornada ) ;
         INSERT INTO JORNADA(FECHA) VALUES(v_fecha+7); 
         v_bucle:=v_bucle+1;
         END LOOP;  
@@ -117,33 +143,37 @@ v_bucle number(2):=1;
 
 
 
- create or replace  PROCEDURE  crearcalendario AS        
+create or replace  PROCEDURE  crearcalendario AS        
     BEGIN
         DECLARE
              CURSOR C
              IS 
-             SELECT e1.ID_EQUIPO AS"eq_local",e2.ID_EQUIPO AS"eq_visitante" FROM equipo e1, equipo e2 WHERE e1.ID_EQUIPO <> e2.ID_EQUIPO;
-             CURSOR D IS
-             SELECT * FROM JORNADA ;
+             SELECT e1.ID_EQUIPO AS eq_local, e2.ID_EQUIPO AS eq_visitante
+             FROM equipo e1, equipo e2 
+             WHERE e1.ID_EQUIPO <> e2.ID_EQUIPO;
+             v_cursor C%ROWTYPE;
+             
+             CURSOR D 
+             IS
+             SELECT NUM_JORNADA 
+             FROM JORNADA ;
              v_jornada D%ROWTYPE;
-            v_cursor C%ROWTYPE;
-
+             v_partido partido.ID_PARTIDO%TYPE;
         v_cant number;
         BEGIN
-        SELECT count(*)into v_cant FROM jornada;
-        if (v_cant="0")then
-        execute crearjornadas();
         FOR v_jornada IN D
            LOOP
              FOR v_cursor IN C
            LOOP
-           select * from partidos WHERE NUM_JORNADA=v_jornada.NUM_JORNADA AND 
-           ID_EQUIPOL=v_cursor.eq_local or ID_EQUIPOL=v_cursor.eq_visitante OR
-           ID_EQUIPOV=v_cursor.eq_local or ID_EQUIPOV=v_cursor.eq_visitante;
-           if no_data_found then
+           select ID_PARTIDO into v_partido
+           from partido p, jornada j 
+           WHERE p.NUM_JORNADA=v_jornada.NUM_JORNADA 
+           AND ID_EQUIPOL  in (v_cursor.eq_local , v_cursor.eq_visitante)
+           OR ID_EQUIPOV  in (v_cursor.eq_local , v_cursor.eq_visitante);
+           IF SQL%NOTFOUND then
            INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES('12/06/21 18:50:00',null,null,v_jornada.NUM_JORNADA,v_cursor.eq_local,v_cursor.eq_visitante);
-           end if;
+           end IF;
            END LOOP;
           END LOOP; 
-        END;
+       END;
      END;
