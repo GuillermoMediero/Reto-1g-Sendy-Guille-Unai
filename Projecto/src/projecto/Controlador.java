@@ -9,6 +9,7 @@ import Modelo_BBDD.*;
 import Modelo_UML.Administrador;
 import Modelo_UML.Usuario;
 import Views.*;
+//import Views.Vprincipal.Tipo;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,7 @@ public class Controlador {
     // Variables de las UML
     private static Administrador adm;
     private static Usuario usu;
+   
     // Variables de las Ventanas
     private static VentanaLogin vl;
     private static Vprincipal vp;
@@ -86,7 +88,37 @@ public class Controlador {
         vl = new VentanaLogin();
         vl.setVisible(true);
     }
-
+    //public static void usuConsultaUltimoPartido(){
+        
+    //}
+    
+    //public static void consultaClasificaciones(){}
+    
+   /* public static void alterarDatos(Tipo tipoCampo){
+        switch(tipoCampo){
+            case EQUIPOS:
+                 insertarEquipos();
+                 modificarEquipos();
+                 borrarEquipos();
+                 consultarEquipos();
+                break;
+            case INTEGRANTES:
+                insertarIntegrantes();
+                modificarIIntegrantes();
+                borrarIntegrantes();
+                consultarIntegrantes();
+                break;
+            default:
+                insertarPerfilUsuario();
+                modificarPerfilUsuario();
+                borrarPerfilUsuario();
+                consultarPerfilUsuario();
+                break;
+                
+        }
+    }
+*/
+    
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }
