@@ -9,6 +9,7 @@ import Modelo_BBDD.*;
 import Modelo_UML.Administrador;
 import Modelo_UML.Usuario;
 import Views.*;
+import Views.equipos.VInsertarEquipo;
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
 /**
@@ -29,6 +30,7 @@ public class Controlador {
     // Variables de las Ventanas
     private static VentanaLogin vl;
     private static Vprincipal vp;
+    private static VInsertarEquipo vie;
 
     public static void main(String[] args) {
         try {
@@ -118,12 +120,12 @@ public class Controlador {
 */  
 
     public static void abrirInsertarEquipo() {
-        ie = new InsertarEquipo();
-        ie.setVisible(true);
+        vie = new VInsertarEquipo();
+        vie.setVisible(true);
     }
 
     public static void cancelarInsertarEquipo() {
-        ie.dispose();
+        vie.dispose();
     }
     public enum Rol {
         USUARIO, ADMINISTRADOR

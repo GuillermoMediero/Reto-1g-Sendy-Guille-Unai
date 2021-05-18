@@ -22,6 +22,7 @@ import projecto.Controlador.Rol;
  *
  * @author ketro
  */
+
 public class Vprincipal extends javax.swing.JFrame {
     Border borde_defecto = BorderFactory.createMatteBorder(1,1, 1, 1, new Color(51,51,51));
     Border borde_amarillo = BorderFactory.createMatteBorder(1,1, 1, 1, Color.YELLOW);
@@ -33,6 +34,7 @@ public class Vprincipal extends javax.swing.JFrame {
     /**
      * Creates new form Vprincipal
      */
+    public Vprincipal() {}
     public Vprincipal(Rol rol) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -772,6 +774,18 @@ public class Vprincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Vprincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
