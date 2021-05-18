@@ -15,8 +15,6 @@ import java.sql.DriverManager;
 public class BaseDatos {
      private Connection con;
 
-    public BaseDatos() {
-    }
     
    public Connection conectar(){
        try{
@@ -38,6 +36,11 @@ public class BaseDatos {
        return con;
    }
    
+    public Connection getCon()
+   {
+       return con;
+   }
+    
    public void desconectar(){
        try
        {
@@ -49,8 +52,5 @@ public class BaseDatos {
        }
    }
    
-   public Connection getCon()
-   {
-       return con;
-   }
+  
 }

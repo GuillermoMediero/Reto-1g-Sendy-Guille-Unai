@@ -64,17 +64,14 @@
                   <Component id="lPerfiles" alignment="0" max="32767" attributes="0"/>
                   <Component id="lClasificaciones" alignment="0" max="32767" attributes="0"/>
                   <Component id="lJornadas" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="lEquipos" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="lEquipos" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lIntegrantes" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="lIntegrantes" alignment="0" pref="178" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -122,7 +119,7 @@
                           <Component id="jLabel4" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="16" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -627,19 +624,22 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel74">
+                <Component class="javax.swing.JLabel" name="lInsertarEquipo">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/1486564407-plus-green_81521.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lInsertarEquipoMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel75">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="  "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel76">
+                <Component class="javax.swing.JLabel" name="lBorrarEquipo">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
@@ -651,7 +651,7 @@
                     <Property name="text" type="java.lang.String" value="  "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel78">
+                <Component class="javax.swing.JLabel" name="lModificarEquipo">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/edit-icon-2375785_640.png"/>
@@ -663,7 +663,7 @@
                     <Property name="text" type="java.lang.String" value="  "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel80">
+                <Component class="javax.swing.JLabel" name="lConsultarEquipo">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/consultas.png"/>
@@ -1142,19 +1142,22 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel81">
+                <Component class="javax.swing.JLabel" name="lInsertarUsuario">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/1486564407-plus-green_81521.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lInsertarUsuarioMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel82">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="  "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel83">
+                <Component class="javax.swing.JLabel" name="lBorrarUsuario">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
@@ -1166,7 +1169,7 @@
                     <Property name="text" type="java.lang.String" value="  "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel85">
+                <Component class="javax.swing.JLabel" name="lModificarUsuario">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/edit-icon-2375785_640.png"/>
@@ -1178,7 +1181,7 @@
                     <Property name="text" type="java.lang.String" value="  "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel87">
+                <Component class="javax.swing.JLabel" name="lConsultarUsuario">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/consultas.png"/>

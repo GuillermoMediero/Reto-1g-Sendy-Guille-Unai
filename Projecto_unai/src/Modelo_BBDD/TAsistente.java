@@ -6,6 +6,7 @@
 package Modelo_BBDD;
 
 import Modelo_UML.Asistente;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ public class TAsistente {
     private static String plantilla;
     private static ResultSet resultado;
     private static Asistente a;
+    private Connection con;
     
     public static void insertarasistente(Asistente as) throws SQLException {
         BaseDatos.conectar();

@@ -109,13 +109,13 @@ public class Vprincipal extends javax.swing.JFrame {
         pEquipos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jToolBar10 = new javax.swing.JToolBar();
-        jLabel74 = new javax.swing.JLabel();
+        lInsertarEquipo = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
-        jLabel76 = new javax.swing.JLabel();
+        lBorrarEquipo = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
-        jLabel78 = new javax.swing.JLabel();
+        lModificarEquipo = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
-        jLabel80 = new javax.swing.JLabel();
+        lConsultarEquipo = new javax.swing.JLabel();
         pJugadores = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jToolBar4 = new javax.swing.JToolBar();
@@ -159,13 +159,13 @@ public class Vprincipal extends javax.swing.JFrame {
         pPerfiles = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jToolBar11 = new javax.swing.JToolBar();
-        jLabel81 = new javax.swing.JLabel();
+        lInsertarUsuario = new javax.swing.JLabel();
         jLabel82 = new javax.swing.JLabel();
-        jLabel83 = new javax.swing.JLabel();
+        lBorrarUsuario = new javax.swing.JLabel();
         jLabel84 = new javax.swing.JLabel();
-        jLabel85 = new javax.swing.JLabel();
+        lModificarUsuario = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
-        jLabel87 = new javax.swing.JLabel();
+        lConsultarUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -216,7 +216,7 @@ public class Vprincipal extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,14 +265,12 @@ public class Vprincipal extends javax.swing.JFrame {
             .addComponent(lClasificaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lJornadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pMenuLayout.createSequentialGroup()
-                .addComponent(lEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(119, 119, 119))
-            .addGroup(pMenuLayout.createSequentialGroup()
-                .addGroup(pMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pMenuLayout.createSequentialGroup()
+                .addGroup(pMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lEquipos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pMenuLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel10))
-                    .addComponent(lIntegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lIntegrantes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pMenuLayout.setVerticalGroup(
@@ -481,26 +479,31 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jToolBar10.setRollover(true);
 
-        jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
-        jToolBar10.add(jLabel74);
+        lInsertarEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        lInsertarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lInsertarEquipoMouseClicked(evt);
+            }
+        });
+        jToolBar10.add(lInsertarEquipo);
 
         jLabel75.setText("  ");
         jToolBar10.add(jLabel75);
 
-        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
-        jToolBar10.add(jLabel76);
+        lBorrarEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar10.add(lBorrarEquipo);
 
         jLabel77.setText("  ");
         jToolBar10.add(jLabel77);
 
-        jLabel78.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
-        jToolBar10.add(jLabel78);
+        lModificarEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar10.add(lModificarEquipo);
 
         jLabel79.setText("  ");
         jToolBar10.add(jLabel79);
 
-        jLabel80.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
-        jToolBar10.add(jLabel80);
+        lConsultarEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar10.add(lConsultarEquipo);
 
         pEquipos.add(jToolBar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
 
@@ -740,26 +743,31 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jToolBar11.setRollover(true);
 
-        jLabel81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
-        jToolBar11.add(jLabel81);
+        lInsertarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        lInsertarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lInsertarUsuarioMouseClicked(evt);
+            }
+        });
+        jToolBar11.add(lInsertarUsuario);
 
         jLabel82.setText("  ");
         jToolBar11.add(jLabel82);
 
-        jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
-        jToolBar11.add(jLabel83);
+        lBorrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar11.add(lBorrarUsuario);
 
         jLabel84.setText("  ");
         jToolBar11.add(jLabel84);
 
-        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
-        jToolBar11.add(jLabel85);
+        lModificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar11.add(lModificarUsuario);
 
         jLabel86.setText("  ");
         jToolBar11.add(jLabel86);
 
-        jLabel87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
-        jToolBar11.add(jLabel87);
+        lConsultarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar11.add(lConsultarUsuario);
 
         pPerfiles.add(jToolBar11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
 
@@ -830,6 +838,14 @@ public class Vprincipal extends javax.swing.JFrame {
     private void lInsertarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarDueñoMouseClicked
         Controlador.abrirInsertarDueño();
     }//GEN-LAST:event_lInsertarDueñoMouseClicked
+
+    private void lInsertarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarEquipoMouseClicked
+        Controlador.abrirInsertarEquipo();
+    }//GEN-LAST:event_lInsertarEquipoMouseClicked
+
+    private void lInsertarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarUsuarioMouseClicked
+        Controlador.abrirInsertarUsuario();
+    }//GEN-LAST:event_lInsertarUsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1015,7 +1031,7 @@ public class Vprincipal extends javax.swing.JFrame {
                                    mostrarPanelesEquipos();
                                    break;         
                             case "Integrantes":
-                                   mostrarPanelesPerfiles();
+                                   mostrarPanelesIntegrantes();
                                    break;      
                             case "Perfiles":
                                    mostrarPanelesPerfiles();
@@ -1119,21 +1135,13 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel80;
-    private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
-    private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1148,20 +1156,26 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lBorrarAsistente;
     private javax.swing.JLabel lBorrarDueño;
     private javax.swing.JLabel lBorrarEntrenador;
+    private javax.swing.JLabel lBorrarEquipo;
     private javax.swing.JLabel lBorrarJugador;
+    private javax.swing.JLabel lBorrarUsuario;
     private javax.swing.JLabel lCerrar;
     private javax.swing.JLabel lClasificaciones;
     private javax.swing.JLabel lConsultarAsistente;
     private javax.swing.JLabel lConsultarDueño;
     private javax.swing.JLabel lConsultarEntrenador;
+    private javax.swing.JLabel lConsultarEquipo;
     private javax.swing.JLabel lConsultarJugador;
+    private javax.swing.JLabel lConsultarUsuario;
     private javax.swing.JLabel lDueño;
     private javax.swing.JLabel lEntrenadores;
     private javax.swing.JLabel lEquipos;
     private javax.swing.JLabel lInsertarAsistentes;
     private javax.swing.JLabel lInsertarDueño;
     private javax.swing.JLabel lInsertarEntrenadores;
+    private javax.swing.JLabel lInsertarEquipo;
     private javax.swing.JLabel lInsertarJugador;
+    private javax.swing.JLabel lInsertarUsuario;
     private javax.swing.JLabel lIntegrantes;
     private javax.swing.JLabel lIntegrantes2;
     private javax.swing.JLabel lJornadas;
@@ -1170,7 +1184,9 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lModificarAsistente;
     private javax.swing.JLabel lModificarDueño;
     private javax.swing.JLabel lModificarEntrenador;
+    private javax.swing.JLabel lModificarEquipo;
     private javax.swing.JLabel lModificarJugador;
+    private javax.swing.JLabel lModificarUsuario;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JLabel lPerfiles;
     private javax.swing.JPanel pAsistentes;

@@ -5,10 +5,16 @@
  */
 package Modelo_BBDD;
 
+import java.sql.Connection;
+
 /**
  *
  * @author ketro
  */
 public class TJornada {
+
+    public TJornada(Connection con) {
+        
+    }
     
 }
