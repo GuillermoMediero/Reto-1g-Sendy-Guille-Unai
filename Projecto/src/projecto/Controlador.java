@@ -7,6 +7,7 @@ package projecto;
 import static javax.swing.JOptionPane.*;
 import Modelo_BBDD.*;
 import Modelo_UML.Administrador;
+import Modelo_UML.Asistente;
 import Modelo_UML.Usuario;
 import Views.*;
 import Views.equipos.VInsertarEquipo;
@@ -22,15 +23,26 @@ public class Controlador {
     private static TUsuario tusu;
     private static TAdministrador tadm;
     private static Connection con;
+    private static TAsistente tasis;
+    private static TDueno tdue;
+    private static TEntrenador tent;
+    private static TEquipo tequi;
+    private static TJornada tjorn;
+    private static TJugador tjuga;
+     private static TPartido tpart;
+    
 
     // Variables de las UML
     private static Administrador adm;
     private static Usuario usu;
+
+    
    
     // Variables de las Ventanas
     private static VentanaLogin vl;
     private static Vprincipal vp;
     private static VInsertarEquipo vie;
+    
 
     public static void main(String[] args) {
         try {
@@ -39,6 +51,14 @@ public class Controlador {
             
             tadm = new TAdministrador(con);
             tusu = new TUsuario(con);
+            tasis = new TAsistente(con);
+            tdue = new TDueno(con);
+            tent = new TEntrenador(con);
+            tequi = new TEquipo(con);
+            tjorn = new TJornada(con);
+            tjuga = new TJugador(con);
+            tpart = new TPartido(con);
+            
             
             
             //u = new TUsuario(bd.getCon());
