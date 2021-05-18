@@ -5,23 +5,43 @@
  */
 package Modelo_BBDD;
 
+import Modelo_UML.Administrador;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author ketro
  */
 public class TAdministrador {
-    private String nombre;
+    private Connection con;
 
-    public TAdministrador(String nombre) {
-        this.nombre = nombre;
+    public TAdministrador( Connection con) {
+        
+        this.con = con;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+      
+    
+    
+    public Administrador consultarAdm(String correo,String contrasena) throws Exception {
+        String sentencia = "SELECT NOMBRE, CORREO, CONTRASENA FROM ADMINISTRADOR WHERE CORREO=? and CONTRASENA=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, correo);
+        ps.setString(2, contrasena);
+        
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+            
+            Administrador  adm = new Administrador ();
+            adm.setNombre(resultado.getString("nombre"));
+            adm.setCorreo(resultado.getString("correo"));
+            adm.setClave(resultado.getString("contrasena"));
+            
+            return adm;
+        }
+        return null;
     }
     
 }

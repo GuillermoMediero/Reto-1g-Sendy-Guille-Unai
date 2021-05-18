@@ -18,7 +18,7 @@ public class BaseDatos {
     public BaseDatos() {
     }
     
-   public void conectar(){
+   public Connection conectar(){
        try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
             String url = "jdbc:oracle:thin:@SrvOracle:1521:ORCL";
@@ -33,7 +33,9 @@ public class BaseDatos {
        catch(Exception e)
        {
            System.out.println(e.getMessage());
+           return null;
        }
+       return con;
    }
    
    public void desconectar(){
