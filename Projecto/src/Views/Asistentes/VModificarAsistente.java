@@ -5,8 +5,10 @@
  */
 package Views.Asistentes;
 
+import Modelo_UML.Asistente;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import static javax.swing.JOptionPane.*;
 import projecto.Controlador;
 
 /**
@@ -16,6 +18,7 @@ import projecto.Controlador;
 public class VModificarAsistente extends javax.swing.JFrame {
     int xx;
     int xy; 
+    private Asistente asistente;
     /**
      * Creates new form VInsertarAsistente
      */
@@ -23,8 +26,13 @@ public class VModificarAsistente extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
+        
     }
-
+   
+    public void validarDatosAsistente(String nombre) {
+        if(nombre.isEmpty())
+            showMessageDialog(null, "Campo obligatorio");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,15 +192,12 @@ public class VModificarAsistente extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Insertar Asistente");
+        jLabel1.setText("Modificar Asistente");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Sueldo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
 
@@ -200,7 +205,6 @@ public class VModificarAsistente extends javax.swing.JFrame {
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfSueldo.setBackground(new java.awt.Color(204, 204, 204));
-        tfSueldo.setForeground(new java.awt.Color(0, 0, 0));
         tfSueldo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel8.add(tfSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
@@ -210,7 +214,6 @@ public class VModificarAsistente extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        tfNombre.setForeground(new java.awt.Color(0, 0, 0));
         tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +246,6 @@ public class VModificarAsistente extends javax.swing.JFrame {
         });
         jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 120, 30));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
@@ -251,13 +253,11 @@ public class VModificarAsistente extends javax.swing.JFrame {
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
-        tfTelefono.setForeground(new java.awt.Color(0, 0, 0));
         tfTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel11.add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 260, 40));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nacionalidad");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
 
@@ -265,7 +265,6 @@ public class VModificarAsistente extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNacionalidad.setBackground(new java.awt.Color(204, 204, 204));
-        tfNacionalidad.setForeground(new java.awt.Color(0, 0, 0));
         tfNacionalidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel12.add(tfNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
@@ -322,7 +321,23 @@ public class VModificarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+        try{
+            // Valida los datos de los asistentes
+            validarDatosAsistente(this.tfNombre.getText());
+            
+            // Busqueda del asistente
+            asistente = Controlador.buscarAsistente(this.tfNombre.getText());
+            
+            // Si lo que me han devolto es de null insertamos el asistente
+            if(asistente!=null){
+                Controlador.modificarAsistente(this.tfSueldo.getText(),
+                this.tfTelefono.getText(),this.tfNacionalidad.getText());
+                showMessageDialog(null,"Asistente " + asistente.getNombre()+" Modificado");
+            }else
+                showMessageDialog(null,"No se ha podido modificar");
+        }catch(Exception gnr){
+            showMessageDialog(null, gnr.getClass()+ "\n"+ gnr.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -392,4 +407,6 @@ public class VModificarAsistente extends javax.swing.JFrame {
     private javax.swing.JTextField tfSueldo;
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
+
+   
 }

@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Views.Asistentes;
 
+import Modelo_UML.Asistente;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import projecto.Controlador;
+import static javax.swing.JOptionPane.*;
 
 /**
  *
@@ -16,6 +14,7 @@ import projecto.Controlador;
 public class VInsertarAsistente extends javax.swing.JFrame {
     int xx;
     int xy; 
+    Asistente asistente;
     /**
      * Creates new form VInsertarAsistente
      */
@@ -24,7 +23,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
     }
-
+    public void validarDatosAsistente(String n,String s,String t,String na){}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -322,7 +321,23 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+        try{
+            // Validar los datos de los asistentes
+            validarDatosAsistente(this.tfNombre.getText(),this.tfSueldo.getText(),
+                    this.tfTelefono.getText(),this.tfNacionalidad.getText());
+            
+            // Buscar el asistente
+            asistente = Controlador.buscarAsistente(this.tfNombre.getText());
+            
+            // Si lo que me han devolto es null insertamos el asistente
+            if(asistente==null){
+                Controlador.insertarAsistente();
+                showMessageDialog(null,"Asistente " + asistente.getNombre()+" Insertado");
+            }else
+                showMessageDialog(null,"Ya existe un asistente con ese Nombre");
+        }catch(Exception gnr){
+            showMessageDialog(null, gnr.getClass()+ "\n"+ gnr.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
