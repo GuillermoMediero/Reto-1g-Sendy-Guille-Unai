@@ -114,3 +114,28 @@ v_bucle number(2):=1;
         v_bucle:=v_bucle+1;
         END LOOP;  
      END; 
+
+     
+  PROCEDURE  crearcalendario AS        
+    BEGIN
+        DECLARE
+             CURSOR C
+             IS 
+             SELECT e1.ID_EQUIPO AS"eq_local",e2.ID_EQUIPO AS"eq_visitante" FROM equipo e1, equipo e2 WHERE e1.ID_EQUIPO <> e2.ID_EQUIPO;
+             CURSOR D IS
+             SELECT * FROM JORNADA ;
+             v_jornada D%ROWTYPE
+            v_cursor C%ROWTYPE;
+
+        BEGIN
+        if ((SELECT count(*) FROM jornadas)=0)then
+        execute crearjornadas();
+        FOR v_jornada IN D
+           LOOP
+             FOR v_cursor IN C
+           LOOP
+           
+           END LOOP;
+          END LOOP; 
+        END;
+     END;
