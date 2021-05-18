@@ -11,8 +11,6 @@ import Modelo_UML.Usuario;
 import Views.*;
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author ketro
@@ -117,8 +115,16 @@ public class Controlador {
                 
         }
     }
-*/
-    
+*/  
+
+    public static void abrirInsertarEquipo() {
+        ie = new InsertarEquipo();
+        ie.setVisible(true);
+    }
+
+    public static void cancelarInsertarEquipo() {
+        ie.dispose();
+    }
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }
