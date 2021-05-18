@@ -24,7 +24,7 @@ import projecto.Controlador.Rol;
  */
 public class Vprincipal extends javax.swing.JFrame {
     Border borde_defecto = BorderFactory.createMatteBorder(1,0, 1, 0, new Color(51,51,51));
-    Border borde_amarillo = BorderFactory.createMatteBorder(1,0, 1, 0, Color.YELLOW);
+    Border borde_gris = BorderFactory.createMatteBorder(1,0, 1, 0, Color.GRAY);
     JLabel[] menuLabel = new JLabel[5];
     JPanel[] paneles = new JPanel[6];
     
@@ -533,7 +533,7 @@ public class Vprincipal extends javax.swing.JFrame {
                     }
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        label.setBorder(borde_amarillo);
+                        label.setBorder(borde_gris);
                     }
                     @Override
                     public void mouseExited(MouseEvent e) {
