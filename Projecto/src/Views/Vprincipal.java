@@ -55,7 +55,7 @@ public class Vprincipal extends javax.swing.JFrame {
     private void tipoVista(Rol rol){
         switch (rol){
             case USUARIO:
-                this.lJornadas.setVisible(false);
+                this.lEquipos.setVisible(false);
                 this.lIntegrantes.setVisible(false);
                 this.lPerfiles.setVisible(false);
                 break;
@@ -167,14 +167,29 @@ public class Vprincipal extends javax.swing.JFrame {
         lClasificaciones.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lClasificaciones.setForeground(new java.awt.Color(255, 255, 255));
         lClasificaciones.setText("  Clasificaciones");
+        lClasificaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lClasificacionesMouseClicked(evt);
+            }
+        });
 
         lEquipos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lEquipos.setForeground(new java.awt.Color(255, 255, 255));
         lEquipos.setText("  Equipos");
+        lEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lEquiposMouseClicked(evt);
+            }
+        });
 
         lJornadas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lJornadas.setForeground(new java.awt.Color(255, 255, 255));
         lJornadas.setText("  Jornadas");
+        lJornadas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lJornadasMouseClicked(evt);
+            }
+        });
 
         lIntegrantes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lIntegrantes.setForeground(new java.awt.Color(255, 255, 255));
@@ -471,6 +486,20 @@ public class Vprincipal extends javax.swing.JFrame {
         Controlador.cerrarSesion();
     }//GEN-LAST:event_bCerrarSesionActionPerformed
 
+    private void lJornadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lJornadasMouseClicked
+       // Controlador.usuConsultaUltimoPartido();
+    }//GEN-LAST:event_lJornadasMouseClicked
+
+    private void lClasificacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lClasificacionesMouseClicked
+       // Controlador.consultaClasificaciones();
+    }//GEN-LAST:event_lClasificacionesMouseClicked
+
+    private void lEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lEquiposMouseClicked
+      // Controlador.alterarDatos(Tipo.EQUIPOS);
+    }//GEN-LAST:event_lEquiposMouseClicked
+    //public enum Tipo{
+      //  EQUIPOS, INTEGRANTES, PEFIL
+   // }
     /**
      * @param args the command line arguments
      */
