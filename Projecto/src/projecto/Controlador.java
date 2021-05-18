@@ -10,12 +10,12 @@ import Modelo_UML.Administrador;
 import Modelo_UML.Asistente;
 import Modelo_UML.Usuario;
 import Views.*;
-import Views.Asistentes.VInsertarAsistente;
-import Views.Dueño.VInsertarDueño;
-import Views.Entrenadores.VInsertarEntrenadores;
-import Views.Jugadores.VInsertarJugadores;
-import Views.Perfiles.VInsertarUsuario;
-import Views.equipos.VInsertarEquipo;
+import Views.Asistentes.*;
+import Views.Dueño.*;
+import Views.Entrenadores.*;
+import Views.Jugadores.*;
+import Views.Perfiles.*;
+import Views.equipos.*;
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
 /**
@@ -52,11 +52,17 @@ public class Controlador {
 
     private static VInsertarJugadores vij;
     private static VInsertarEntrenadores vien;
-    private static VInsertarDueño vid;
+    private static VInsertarDueno vid;
     private static VInsertarAsistente via;
     private static VInsertarUsuario viu;
 
-
+    private static VModificarAsistente vma;
+    private static VModificarJugadores vmj;
+    private static VModificarEntrenadores vmen;
+    private static VModificarDueno vmd;
+    private static VModificarUsuario vmu;
+    private static VModificarEquipo vme;
+    
     public static void main(String[] args) {
         try {
             bd = new BaseDatos();
@@ -177,7 +183,7 @@ public class Controlador {
     }
 
     public static void abrirInsertarDueño() {
-        vid = new VInsertarDueño();
+        vid = new VInsertarDueno();
         vid.setVisible(true);
     }
 
@@ -185,6 +191,61 @@ public class Controlador {
         viu = new VInsertarUsuario();
         viu.setVisible(true);
     }
+
+    public static void cancelarModificarAsistente() {
+        vma.dispose();
+    }
+
+    public static void abrirModificarAsistente() {
+        vma = new VModificarAsistente();
+        vma.setVisible(true);
+    }
+
+    public static void cancelarModificarDueño() {
+        vmd.dispose();
+    }
+
+    public static void cancelarModificarEntrenador() {
+        vmen.dispose();
+    }
+
+    public static void cancelarModificarJugador() {
+        vmj.dispose();
+    }
+
+    public static void cancelarModificarUsuarios() {
+       vmu.dispose();
+    }
+
+    public static void cancelarModificarEquipo() {
+       vme.dispose();
+    }
+
+    public static void abrirModificarDueño() {
+        vmd = new VModificarDueno();
+        vmd.setVisible(true);
+    }
+
+    public static void abrirModificarUsuario() {
+        vmu = new VModificarUsuario();
+        vmu.setVisible(true);
+    }
+
+    public static void abrirModificarEntrenador() {
+        vmen = new VModificarEntrenadores();
+        vmd.setVisible(true);
+    }
+
+    public static void abrirModificarJugador() {
+        vmj = new VModificarJugadores();
+        vmj.setVisible(true);
+    }
+
+    public static void abrirModificarEquipos() {
+        vme = new VModificarEquipo();
+        vme.setVisible(true);
+    }
+    
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }

@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import projecto.Controlador;
@@ -497,6 +498,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar10.add(jLabel77);
 
         lModificarEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        lModificarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lModificarEquipoMouseClicked(evt);
+            }
+        });
         jToolBar10.add(lModificarEquipo);
 
         jLabel79.setText("  ");
@@ -536,6 +542,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar4.add(jLabel35);
 
         lModificarJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        lModificarJugador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lModificarJugadorMouseClicked(evt);
+            }
+        });
         jToolBar4.add(lModificarJugador);
 
         jLabel37.setText("  ");
@@ -587,6 +598,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar5.add(jLabel42);
 
         lModificarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        lModificarEntrenador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lModificarEntrenadorMouseClicked(evt);
+            }
+        });
         jToolBar5.add(lModificarEntrenador);
 
         jLabel44.setText("  ");
@@ -643,6 +659,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar6.add(jLabel49);
 
         lModificarAsistente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        lModificarAsistente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lModificarAsistenteMouseClicked(evt);
+            }
+        });
         jToolBar6.add(lModificarAsistente);
 
         jLabel51.setText("  ");
@@ -699,6 +720,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar7.add(jLabel56);
 
         lModificarDueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        lModificarDueño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lModificarDueñoMouseClicked(evt);
+            }
+        });
         jToolBar7.add(lModificarDueño);
 
         jLabel58.setText("  ");
@@ -761,6 +787,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar11.add(jLabel84);
 
         lModificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        lModificarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lModificarUsuarioMouseClicked(evt);
+            }
+        });
         jToolBar11.add(lModificarUsuario);
 
         jLabel86.setText("  ");
@@ -846,6 +877,36 @@ public class Vprincipal extends javax.swing.JFrame {
     private void lInsertarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarUsuarioMouseClicked
         Controlador.abrirInsertarUsuario();
     }//GEN-LAST:event_lInsertarUsuarioMouseClicked
+
+    private void lModificarAsistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarAsistenteMouseClicked
+        Controlador.abrirModificarAsistente();
+    }//GEN-LAST:event_lModificarAsistenteMouseClicked
+
+    private void lModificarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarDueñoMouseClicked
+        Controlador.abrirModificarDueño();
+    }//GEN-LAST:event_lModificarDueñoMouseClicked
+
+    private void lModificarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarUsuarioMouseClicked
+        Controlador.abrirModificarUsuario();
+    }//GEN-LAST:event_lModificarUsuarioMouseClicked
+
+    private void lModificarEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarEntrenadorMouseClicked
+        Controlador.abrirModificarEntrenador();
+    }//GEN-LAST:event_lModificarEntrenadorMouseClicked
+
+    private void lModificarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarJugadorMouseClicked
+        Controlador.abrirModificarJugador();
+    }//GEN-LAST:event_lModificarJugadorMouseClicked
+
+    private void lModificarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarEquipoMouseClicked
+       try{
+            
+           Controlador.abrirModificarEquipos();
+       }
+       catch(Exception e){
+           JOptionPane.showMessageDialog(this, e.getMessage());
+       }
+    }//GEN-LAST:event_lModificarEquipoMouseClicked
 
     /**
      * @param args the command line arguments
