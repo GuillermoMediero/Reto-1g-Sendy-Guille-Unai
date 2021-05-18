@@ -70,6 +70,7 @@ public class VInsertarJugadores extends javax.swing.JFrame {
         tfIdEquipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -308,8 +309,8 @@ public class VInsertarJugadores extends javax.swing.JFrame {
         jPanel1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 260, 40));
 
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Id Equipo");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, -1, -1));
+        jLabel10.setText("Nombre Equipo");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(204, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

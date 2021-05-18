@@ -5,6 +5,7 @@
  */
 package Views.Perfiles;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import projecto.Controlador;
 
@@ -20,6 +21,8 @@ public class VInsertarUsuario extends javax.swing.JFrame {
      */
     public VInsertarUsuario() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -55,6 +58,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
         tfContraseña = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -178,7 +182,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Insertar Asistente");
+        jLabel1.setText("Insertar Usuario");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));

@@ -180,6 +180,11 @@ public class Controlador {
         vid = new VInsertarDueño();
         vid.setVisible(true);
     }
+
+    public static void abrirInsertarUsuario() {
+        viu = new VInsertarUsuario();
+        viu.setVisible(true);
+    }
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }

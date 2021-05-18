@@ -64,6 +64,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         tfIdEquipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
