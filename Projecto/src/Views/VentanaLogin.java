@@ -265,9 +265,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-      Controlador.inicioSesion(this.tfCorreo.getText(),String.valueOf(this.pfClave.getPassword()));
-
-     
+     Controlador.inicioSesion(this.tfCorreo.getText(),String.valueOf(this.pfClave.getPassword()));
     }//GEN-LAST:event_bLoginActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed

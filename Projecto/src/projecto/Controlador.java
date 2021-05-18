@@ -9,6 +9,11 @@ import Modelo_BBDD.*;
 import Modelo_UML.Administrador;
 import Modelo_UML.Usuario;
 import Views.*;
+import Views.Asistentes.VInsertarAsistente;
+import Views.Dueño.VInsertarDueño;
+import Views.Entrenadores.VInsertarEntrenadores;
+import Views.Jugadores.VInsertarJugadores;
+import Views.Perfiles.VInsertarUsuario;
 import Views.equipos.VInsertarEquipo;
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
@@ -31,6 +36,11 @@ public class Controlador {
     private static VentanaLogin vl;
     private static Vprincipal vp;
     private static VInsertarEquipo vie;
+    private static VInsertarJugadores vij;
+    private static VInsertarEntrenadores vien;
+    private static VInsertarDueño vid;
+    private static VInsertarAsistente via;
+    private static VInsertarUsuario viu;
 
     public static void main(String[] args) {
         try {
@@ -127,7 +137,47 @@ public class Controlador {
     public static void cancelarInsertarEquipo() {
         vie.dispose();
     }
+
+    public static void abrirInsertarJugador() {
+        vij = new VInsertarJugadores();
+        vij.setVisible(true);
+    }
+
+    public static void abrirInsertarEntrenador() {
+        vien = new VInsertarEntrenadores();
+        vien.setVisible(true);
+    }
+
+    public static void abrirInsertarAsistente() {
+        via = new VInsertarAsistente();
+        via.setVisible(true);
+    }
+
+    public static void abrirInsertarDueño() {
+        vid = new VInsertarDueño();
+        vid.setVisible(true);
+    }
     public enum Rol {
         USUARIO, ADMINISTRADOR
+    }
+
+    public static void cancelarInsertarJugador() {
+        vij.dispose();
+    }
+
+    public static void cancelarInsertarEntrenador() {
+        vien.dispose();
+    }
+
+    public static void cancelarInsertarDueño() {
+        vid.dispose();
+    }
+
+    public static void cancelarInsertarAsistente() {
+        via.dispose();
+    }
+
+    public static void cancelarInsertarUsuarios() {
+       viu.dispose();
     }
 }
