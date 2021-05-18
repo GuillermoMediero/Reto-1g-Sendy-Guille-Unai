@@ -101,3 +101,41 @@ END pk_consultasEquipoJugador;
 select * from JUGADOR;
 select * from pARTIDO;
 select * from equipo;
+
+create or replace PROCEDURE  crearjornadas AS 
+v_count number(2):=0;
+v_bucle number(2):=1;
+    BEGIN 
+       SELECT count(*) into v_count FROM  equipo;
+       INSERT INTO JORNADA(FECHA) VALUES(sysdate+7); 
+       while v_bucle <> v_count LOOP
+        SELECT FECHA INTO v_fecha from JORNADA WHERE NUM_JORNADA=(select MAX(NUM_JORNADA)from jornada) ;
+        INSERT INTO JORNADA(FECHA) VALUES(v_fecha+7); 
+        v_bucle:=v_bucle+1;
+        END LOOP;  
+     END; 
+
+     
+  PROCEDURE  crearcalendario AS        
+    BEGIN
+        DECLARE
+             CURSOR C
+             IS 
+             SELECT e1.ID_EQUIPO AS"eq_local",e2.ID_EQUIPO AS"eq_visitante" FROM equipo e1, equipo e2 WHERE e1.ID_EQUIPO <> e2.ID_EQUIPO;
+             CURSOR D IS
+             SELECT * FROM JORNADA ;
+             v_jornada D%ROWTYPE
+            v_cursor C%ROWTYPE;
+
+        BEGIN
+        if ((SELECT count(*) FROM jornadas)=0)then
+        execute crearjornadas();
+        FOR v_jornada IN D
+           LOOP
+             FOR v_cursor IN C
+           LOOP
+           
+           END LOOP;
+          END LOOP; 
+        END;
+     END;
