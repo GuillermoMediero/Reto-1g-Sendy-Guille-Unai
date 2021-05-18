@@ -47,15 +47,15 @@ public class Controlador {
     private static VentanaLogin vl;
     private static Vprincipal vp;
     private static VInsertarEquipo vie;
-<<<<<<< HEAD
+
     
-=======
+
     private static VInsertarJugadores vij;
     private static VInsertarEntrenadores vien;
     private static VInsertarDueño vid;
     private static VInsertarAsistente via;
     private static VInsertarUsuario viu;
->>>>>>> main
+
 
     public static void main(String[] args) {
         try {
