@@ -9,10 +9,9 @@ import Modelo_BBDD.*;
 import Modelo_UML.Administrador;
 import Modelo_UML.Usuario;
 import Views.*;
+import Views.equipos.VInsertarEquipo;
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author ketro
@@ -31,6 +30,7 @@ public class Controlador {
     // Variables de las Ventanas
     private static VentanaLogin vl;
     private static Vprincipal vp;
+    private static VInsertarEquipo vie;
 
     public static void main(String[] args) {
         try {
@@ -117,8 +117,16 @@ public class Controlador {
                 
         }
     }
-*/
-    
+*/  
+
+    public static void abrirInsertarEquipo() {
+        vie = new VInsertarEquipo();
+        vie.setVisible(true);
+    }
+
+    public static void cancelarInsertarEquipo() {
+        vie.dispose();
+    }
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }
