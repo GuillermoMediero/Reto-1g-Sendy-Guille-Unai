@@ -40,6 +40,7 @@ public class Vprincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         tipoVista(rol);
         addActionToMenuTables();
+        añadirAccionAlMenuIntegrantes();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         menuLabel[0] = lJornadas;
         menuLabel[1] = lClasificaciones;
@@ -107,55 +108,64 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         pEquipos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        pPerfiles = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jToolBar3 = new javax.swing.JToolBar();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        jToolBar10 = new javax.swing.JToolBar();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
         pJugadores = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jToolBar4 = new javax.swing.JToolBar();
-        jLabel32 = new javax.swing.JLabel();
+        lInsertarJugador = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
+        lBorrarJugador = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
+        lModificarJugador = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
+        lConsultarJugador = new javax.swing.JLabel();
         pEntrenadores = new javax.swing.JPanel();
         jToolBar5 = new javax.swing.JToolBar();
-        jLabel39 = new javax.swing.JLabel();
+        lInsertarEntrenadores = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
+        lBorrarEntrenador = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
+        lModificarEntrenador = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
+        lConsultarEntrenador = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        pAsistentes = new javax.swing.JPanel();
         jToolBar6 = new javax.swing.JToolBar();
-        jLabel46 = new javax.swing.JLabel();
+        lInsertarAsistentes = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
+        lBorrarAsistente = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
+        lModificarAsistente = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
+        lConsultarAsistente = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        pDueño = new javax.swing.JPanel();
+        jToolBar7 = new javax.swing.JToolBar();
+        lInsertarDueño = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        lBorrarDueño = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        lModificarDueño = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        lConsultarDueño = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        pPerfiles = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jToolBar11 = new javax.swing.JToolBar();
+        jLabel81 = new javax.swing.JLabel();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -377,6 +387,7 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bienvenido !");
 
         lIntegrantes2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -411,6 +422,7 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Jornadas");
 
         javax.swing.GroupLayout pJornadasLayout = new javax.swing.GroupLayout(pJornadas);
@@ -436,6 +448,7 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Clasificaciones");
 
         javax.swing.GroupLayout pClasificacionesLayout = new javax.swing.GroupLayout(pClasificaciones);
@@ -462,104 +475,71 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Equipos");
         pEquipos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 87, -1, -1));
 
-        jToolBar1.setRollover(true);
+        jToolBar10.setRollover(true);
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
-        jToolBar1.add(jLabel14);
+        jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        jToolBar10.add(jLabel74);
 
-        jLabel9.setText("  ");
-        jToolBar1.add(jLabel9);
+        jLabel75.setText("  ");
+        jToolBar10.add(jLabel75);
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
-        jToolBar1.add(jLabel15);
+        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar10.add(jLabel76);
 
-        jLabel11.setText("  ");
-        jToolBar1.add(jLabel11);
+        jLabel77.setText("  ");
+        jToolBar10.add(jLabel77);
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
-        jToolBar1.add(jLabel16);
+        jLabel78.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar10.add(jLabel78);
 
-        jLabel12.setText("  ");
-        jToolBar1.add(jLabel12);
+        jLabel79.setText("  ");
+        jToolBar10.add(jLabel79);
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
-        jToolBar1.add(jLabel17);
+        jLabel80.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar10.add(jLabel80);
 
-        pEquipos.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 25));
+        pEquipos.add(jToolBar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
 
         jPanel1.add(pEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
-
-        pPerfiles.setBackground(new java.awt.Color(255, 255, 255));
-        pPerfiles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel8.setText("Perfiles");
-        pPerfiles.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 87, -1, -1));
-
-        jToolBar3.setRollover(true);
-
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
-        jToolBar3.add(jLabel25);
-
-        jLabel26.setText("  ");
-        jToolBar3.add(jLabel26);
-
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
-        jToolBar3.add(jLabel27);
-
-        jLabel28.setText("  ");
-        jToolBar3.add(jLabel28);
-
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
-        jToolBar3.add(jLabel29);
-
-        jLabel30.setText("  ");
-        jToolBar3.add(jLabel30);
-
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
-        jToolBar3.add(jLabel31);
-
-        pPerfiles.add(jToolBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 25));
-
-        jPanel1.add(pPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
 
         pJugadores.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Jugadores");
 
         jToolBar4.setRollover(true);
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
-        jToolBar4.add(jLabel32);
+        lInsertarJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        lInsertarJugador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lInsertarJugadorMouseClicked(evt);
+            }
+        });
+        jToolBar4.add(lInsertarJugador);
 
         jLabel33.setText("  ");
         jToolBar4.add(jLabel33);
 
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
-        jToolBar4.add(jLabel34);
+        lBorrarJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar4.add(lBorrarJugador);
 
         jLabel35.setText("  ");
         jToolBar4.add(jLabel35);
 
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
-        jToolBar4.add(jLabel36);
+        lModificarJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar4.add(lModificarJugador);
 
         jLabel37.setText("  ");
         jToolBar4.add(jLabel37);
 
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
-        jToolBar4.add(jLabel38);
+        lConsultarJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar4.add(lConsultarJugador);
 
         javax.swing.GroupLayout pJugadoresLayout = new javax.swing.GroupLayout(pJugadores);
         pJugadores.setLayout(pJugadoresLayout);
@@ -586,29 +566,35 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jToolBar5.setRollover(true);
 
-        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
-        jToolBar5.add(jLabel39);
+        lInsertarEntrenadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        lInsertarEntrenadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lInsertarEntrenadoresMouseClicked(evt);
+            }
+        });
+        jToolBar5.add(lInsertarEntrenadores);
 
         jLabel40.setText("  ");
         jToolBar5.add(jLabel40);
 
-        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
-        jToolBar5.add(jLabel41);
+        lBorrarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar5.add(lBorrarEntrenador);
 
         jLabel42.setText("  ");
         jToolBar5.add(jLabel42);
 
-        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
-        jToolBar5.add(jLabel43);
+        lModificarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar5.add(lModificarEntrenador);
 
         jLabel44.setText("  ");
         jToolBar5.add(jLabel44);
 
-        jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
-        jToolBar5.add(jLabel45);
+        lConsultarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar5.add(lConsultarEntrenador);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Entrenadores");
 
         javax.swing.GroupLayout pEntrenadoresLayout = new javax.swing.GroupLayout(pEntrenadores);
@@ -632,68 +618,152 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jPanel1.add(pEntrenadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        pAsistentes.setBackground(new java.awt.Color(255, 255, 255));
 
         jToolBar6.setRollover(true);
 
-        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
-        jToolBar6.add(jLabel46);
+        lInsertarAsistentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        lInsertarAsistentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lInsertarAsistentesMouseClicked(evt);
+            }
+        });
+        jToolBar6.add(lInsertarAsistentes);
 
         jLabel47.setText("  ");
         jToolBar6.add(jLabel47);
 
-        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
-        jToolBar6.add(jLabel48);
+        lBorrarAsistente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar6.add(lBorrarAsistente);
 
         jLabel49.setText("  ");
         jToolBar6.add(jLabel49);
 
-        jLabel50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
-        jToolBar6.add(jLabel50);
+        lModificarAsistente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar6.add(lModificarAsistente);
 
         jLabel51.setText("  ");
         jToolBar6.add(jLabel51);
 
-        jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
-        jToolBar6.add(jLabel52);
+        lConsultarAsistente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar6.add(lConsultarAsistente);
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Asistentes");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(281, 281, 281)
+        javax.swing.GroupLayout pAsistentesLayout = new javax.swing.GroupLayout(pAsistentes);
+        pAsistentes.setLayout(pAsistentesLayout);
+        pAsistentesLayout.setHorizontalGroup(
+            pAsistentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar6, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAsistentesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel18)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addGap(243, 243, 243))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        pAsistentesLayout.setVerticalGroup(
+            pAsistentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAsistentesLayout.createSequentialGroup()
                 .addComponent(jToolBar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147)
+                .addGap(99, 99, 99)
                 .addComponent(jLabel18)
-                .addGap(0, 287, Short.MAX_VALUE))
+                .addGap(0, 335, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
+        jPanel1.add(pAsistentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+        pDueño.setBackground(new java.awt.Color(255, 255, 255));
+
+        jToolBar7.setRollover(true);
+
+        lInsertarDueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        lInsertarDueño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lInsertarDueñoMouseClicked(evt);
+            }
+        });
+        jToolBar7.add(lInsertarDueño);
+
+        jLabel54.setText("  ");
+        jToolBar7.add(jLabel54);
+
+        lBorrarDueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar7.add(lBorrarDueño);
+
+        jLabel56.setText("  ");
+        jToolBar7.add(jLabel56);
+
+        lModificarDueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar7.add(lModificarDueño);
+
+        jLabel58.setText("  ");
+        jToolBar7.add(jLabel58);
+
+        lConsultarDueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar7.add(lConsultarDueño);
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Dueño");
+
+        javax.swing.GroupLayout pDueñoLayout = new javax.swing.GroupLayout(pDueño);
+        pDueño.setLayout(pDueñoLayout);
+        pDueñoLayout.setHorizontalGroup(
+            pDueñoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar7, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addGroup(pDueñoLayout.createSequentialGroup()
+                .addGap(261, 261, 261)
+                .addComponent(jLabel19)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+        pDueñoLayout.setVerticalGroup(
+            pDueñoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pDueñoLayout.createSequentialGroup()
+                .addComponent(jToolBar7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel19)
+                .addGap(0, 357, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
+        jPanel1.add(pDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
+
+        pPerfiles.setBackground(new java.awt.Color(255, 255, 255));
+        pPerfiles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Perfiles");
+        pPerfiles.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 87, -1, -1));
+
+        jToolBar11.setRollover(true);
+
+        jLabel81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1486564407-plus-green_81521.png"))); // NOI18N
+        jToolBar11.add(jLabel81);
+
+        jLabel82.setText("  ");
+        jToolBar11.add(jLabel82);
+
+        jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        jToolBar11.add(jLabel83);
+
+        jLabel84.setText("  ");
+        jToolBar11.add(jLabel84);
+
+        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-icon-2375785_640.png"))); // NOI18N
+        jToolBar11.add(jLabel85);
+
+        jLabel86.setText("  ");
+        jToolBar11.add(jLabel86);
+
+        jLabel87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        jToolBar11.add(jLabel87);
+
+        pPerfiles.add(jToolBar11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
+
+        jPanel1.add(pPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -745,9 +815,21 @@ public class Vprincipal extends javax.swing.JFrame {
        Controlador.cerrarSesion();
     }//GEN-LAST:event_jLabel10MouseClicked
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        Controlador.abrirInsertarEquipo();
-    }//GEN-LAST:event_jLabel14MouseClicked
+    private void lInsertarAsistentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarAsistentesMouseClicked
+        Controlador.abrirInsertarAsistente();
+    }//GEN-LAST:event_lInsertarAsistentesMouseClicked
+
+    private void lInsertarEntrenadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarEntrenadoresMouseClicked
+        Controlador.abrirInsertarEntrenador();
+    }//GEN-LAST:event_lInsertarEntrenadoresMouseClicked
+
+    private void lInsertarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarJugadorMouseClicked
+        Controlador.abrirInsertarJugador();
+    }//GEN-LAST:event_lInsertarJugadorMouseClicked
+
+    private void lInsertarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarDueñoMouseClicked
+        Controlador.abrirInsertarDueño();
+    }//GEN-LAST:event_lInsertarDueñoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -806,6 +888,10 @@ public class Vprincipal extends javax.swing.JFrame {
           pPerfiles.setVisible(false);
           pJornadas.setVisible(true);
           pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(false);
+          pEntrenadores.setVisible(false);
+          pAsistentes.setVisible(false);
+          pDueño.setVisible(false);
     
     }
     
@@ -816,6 +902,10 @@ public class Vprincipal extends javax.swing.JFrame {
           pPerfiles.setVisible(false);
           pJornadas.setVisible(false);
           pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(false);
+          pEntrenadores.setVisible(false);
+          pAsistentes.setVisible(false);
+          pDueño.setVisible(false);
     }
      
     public void mostrarPanelesEquipos() {
@@ -825,6 +915,10 @@ public class Vprincipal extends javax.swing.JFrame {
           pPerfiles.setVisible(false);
           pJornadas.setVisible(false);
           pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(false);
+          pEntrenadores.setVisible(false);
+          pAsistentes.setVisible(false);
+          pDueño.setVisible(false);
     }
 
     public void mostrarPanelesIntegrantes() {
@@ -838,8 +932,59 @@ public class Vprincipal extends javax.swing.JFrame {
           pPerfiles.setVisible(true);
           pJornadas.setVisible(false);
           pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(false);
+          pEntrenadores.setVisible(false);
+          pAsistentes.setVisible(false);
+          pDueño.setVisible(false);
     }
     
+    public void mostrarPanelesIntegrantesJugadores() {
+          pPrincipal.setVisible(false);
+          pClasificaciones.setVisible(false);
+          pEquipos.setVisible(false);
+          pJornadas.setVisible(false);
+          pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(true);
+          pEntrenadores.setVisible(false);
+          pAsistentes.setVisible(false);
+          pDueño.setVisible(false);
+    }
+    
+     public void mostrarPanelesIntegrantesEntrenadores() {
+          pPrincipal.setVisible(false);
+          pClasificaciones.setVisible(false);
+          pEquipos.setVisible(false);
+          pJornadas.setVisible(false);
+          pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(false);
+          pEntrenadores.setVisible(true);
+          pAsistentes.setVisible(false);
+          pDueño.setVisible(false);
+    }
+     
+      public void mostrarPanelesIntegrantesAsistentes() {
+          pPrincipal.setVisible(false);
+          pClasificaciones.setVisible(false);
+          pEquipos.setVisible(false);
+          pJornadas.setVisible(false);
+          pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(false);
+          pEntrenadores.setVisible(false);
+          pAsistentes.setVisible(true);
+          pDueño.setVisible(false);
+    }
+      
+     public void mostrarPanelesIntegrantesDueño() {
+          pPrincipal.setVisible(false);
+          pClasificaciones.setVisible(false);
+          pEquipos.setVisible(false);
+          pJornadas.setVisible(false);
+          pDesplegableIntegrantes.setVisible(false);
+          pJugadores.setVisible(false);
+          pEntrenadores.setVisible(false);
+          pAsistentes.setVisible(false);
+          pDueño.setVisible(true);
+     }
     public void setFondoLabel(JLabel label){
         for (JLabel menuLabels : menuLabel )   {
             menuLabels.setForeground(Color.white);
@@ -870,7 +1015,7 @@ public class Vprincipal extends javax.swing.JFrame {
                                    mostrarPanelesEquipos();
                                    break;         
                             case "Integrantes":
-                                   mostrarPanelesIntegrantes();
+                                   mostrarPanelesPerfiles();
                                    break;      
                             case "Perfiles":
                                    mostrarPanelesPerfiles();
@@ -898,79 +1043,140 @@ public class Vprincipal extends javax.swing.JFrame {
         }
     }
     
+     public void añadirAccionAlMenuIntegrantes(){
+        Component [] components = pDesplegableIntegrantes.getComponents();
+        for(Component component : components){
+            if(component instanceof JLabel){
+                JLabel label = (JLabel) component;
+                
+                label.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+         
+                         switch (label.getText().trim()){
+                            case "Jugadores":
+                                   mostrarPanelesIntegrantesJugadores();
+                                   break;
+                            case "Entrenadores":
+                                   mostrarPanelesIntegrantesEntrenadores();
+                                   break;
+                            case "Asistentes":
+                                   mostrarPanelesIntegrantesAsistentes();
+                                   break;         
+                            case "Dueño":
+                                   mostrarPanelesIntegrantesDueño();
+                                   break;            
+                        }
+
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                       label.setBorder(borde_amarillo);
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        label.setBorder(borde_defecto);
+                    }
+                }
+                );
+            }
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar3;
+    private javax.swing.JToolBar jToolBar10;
+    private javax.swing.JToolBar jToolBar11;
     private javax.swing.JToolBar jToolBar4;
     private javax.swing.JToolBar jToolBar5;
     private javax.swing.JToolBar jToolBar6;
+    private javax.swing.JToolBar jToolBar7;
     private javax.swing.JLabel lAsistenes;
+    private javax.swing.JLabel lBorrarAsistente;
+    private javax.swing.JLabel lBorrarDueño;
+    private javax.swing.JLabel lBorrarEntrenador;
+    private javax.swing.JLabel lBorrarJugador;
     private javax.swing.JLabel lCerrar;
     private javax.swing.JLabel lClasificaciones;
+    private javax.swing.JLabel lConsultarAsistente;
+    private javax.swing.JLabel lConsultarDueño;
+    private javax.swing.JLabel lConsultarEntrenador;
+    private javax.swing.JLabel lConsultarJugador;
     private javax.swing.JLabel lDueño;
     private javax.swing.JLabel lEntrenadores;
     private javax.swing.JLabel lEquipos;
+    private javax.swing.JLabel lInsertarAsistentes;
+    private javax.swing.JLabel lInsertarDueño;
+    private javax.swing.JLabel lInsertarEntrenadores;
+    private javax.swing.JLabel lInsertarJugador;
     private javax.swing.JLabel lIntegrantes;
     private javax.swing.JLabel lIntegrantes2;
     private javax.swing.JLabel lJornadas;
     private javax.swing.JLabel lJugadores;
     private javax.swing.JLabel lMinimizar;
+    private javax.swing.JLabel lModificarAsistente;
+    private javax.swing.JLabel lModificarDueño;
+    private javax.swing.JLabel lModificarEntrenador;
+    private javax.swing.JLabel lModificarJugador;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JLabel lPerfiles;
+    private javax.swing.JPanel pAsistentes;
     private javax.swing.JPanel pClasificaciones;
     private javax.swing.JPanel pDesplegableIntegrantes;
+    private javax.swing.JPanel pDueño;
     private javax.swing.JPanel pEntrenadores;
     private javax.swing.JPanel pEquipos;
     private javax.swing.JPanel pJornadas;
