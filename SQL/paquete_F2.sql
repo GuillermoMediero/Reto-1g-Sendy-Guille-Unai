@@ -102,6 +102,32 @@ select * from JUGADOR;
 select * from pARTIDO;
 select * from equipo;
 
+
+create or replace PROCEDURE  crearclasificacion AS       
+    BEGIN
+        	v_nombre equipo.nombre_equipo%TYPE;
+            v_victoria number;
+        BEGIN
+             FOR v_cursor IN C
+           LOOP
+           v_victoria:=ver_victoriaL(v_cursor.ID_EQUIPO);
+             DBMS_OUTPUT.PUT_LINE
+               ('LA ID DEL EQUIPO ES : '||v_cursor.ID_EQUIPO ||
+               ' HAN GANADO : ' || v_victoria||' PARTIDOS');
+           END LOOP;
+           create or replace view clasificacion AS
+           	SELECT e.nombre_equipo, (
+           		SELECT count(*) 
+           		FROM PARTIDO 
+           		wHERE id_equipol = p.id_equipol
+           		OR ID_EQUIPOV = p.id_equipoV
+        AND ResultadoL = '3'
+        OR ResultadoV ='3';)AS victorias INTO v_nombre, v_victoria
+           	from equipo e, PARTIDO p
+           	WHERE e.id_equipo=p.id_equipol
+           	OR e.id_equipo=p.id_equipoV;
+        END;
+
 create or replace PROCEDURE  crearjornadas AS 
 v_count number(2):=0;
 v_bucle number(2):=1;
@@ -109,7 +135,7 @@ v_bucle number(2):=1;
        SELECT count(*) into v_count FROM  equipo;
        INSERT INTO JORNADA(FECHA) VALUES(sysdate+7); 
        while v_bucle <> v_count LOOP
-        SELECT FECHA INTO v_fecha from JORNADA WHERE NUM_JORNADA=(select MAX(NUM_JORNADA)from jornada) ;
+        SELECT FECHA INTO v_fecha from JORNADA WHERE NUM_JORNADA=(select MAX(NUM_JORNADA)from jornada ) ;
         INSERT INTO JORNADA(FECHA) VALUES(v_fecha+7); 
         v_bucle:=v_bucle+1;
         END LOOP;  
