@@ -30,7 +30,6 @@ import Views.equipos.VInsertarEquipo;
 
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
-import java.time.LocalDate;
 
 /**
  *
