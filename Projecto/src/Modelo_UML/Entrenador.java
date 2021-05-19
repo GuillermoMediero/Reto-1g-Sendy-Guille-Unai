@@ -11,17 +11,21 @@ package Modelo_UML;
  */
 public class Entrenador extends Integrante{
     private String sueldo;
-    
+    private Equipo equi;
+
+    public Entrenador(String sueldo, Equipo equi) {
+        this.sueldo = sueldo;
+        this.equi = equi;
+    }
+
     public Entrenador() {
     }
-
-    public Entrenador(int id, String nombre, String telefono, String nacionalidad) {
-        super(id, nombre, telefono, nacionalidad);
-    }
-
     
-    public Entrenador(String sueldo) {
+    
+    public Entrenador(String sueldo, Equipo equi, int id, String nombre, String telefono, String nacionalidad) {
+        super(id, nombre, telefono, nacionalidad);
         this.sueldo = sueldo;
+        this.equi = equi;
     }
 
     public String getSueldo() {
@@ -31,6 +35,15 @@ public class Entrenador extends Integrante{
     public void setSueldo(String sueldo) {
         this.sueldo = sueldo;
     }
-    
-    
+
+    public Equipo getEqui() {
+        return equi;
+    }
+
+    public void setEqui(Equipo equi) {
+        this.equi = equi;
+    }
+
+  
+
 }

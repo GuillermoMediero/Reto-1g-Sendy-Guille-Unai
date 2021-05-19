@@ -43,7 +43,7 @@ private Connection con;
 
     public void insertarEntrenador(Entrenador ent) throws Exception {
 
-        String sentencia = "INSERT INTO ENTRENADOR(NOMBRE,SUELDO, TELEFONO, NACIONALIDAD) VALUES (?,?,?)";
+        String sentencia = "INSERT INTO ENTRENADOR(NOMBRE,SUELDO, TELEFONO, NACIONALIDAD) VALUES (?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, ent.getNombre());
         ps.setString(2,String.valueOf(ent.getSueldo()));
@@ -75,12 +75,12 @@ private Connection con;
 
     }
 
-    public void borrarEntrenador(String nombre) throws Exception {
+    public void borrarEntrenador(int id_entrenador) throws Exception {
 
         {
-            String sentencia = "DELETE FROM ENTRENADOR WHERE NOMBRE =?";
+            String sentencia = "DELETE FROM ENTRENADOR WHERE ID_ENTRENADOR=?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, nombre);
+            ps.setString(1, String.valueOf(id_entrenador));
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {

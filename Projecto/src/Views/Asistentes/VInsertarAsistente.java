@@ -48,17 +48,17 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        tfSueldo = new javax.swing.JTextField();
+        tfSueldoAsis = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        tfNombre = new javax.swing.JTextField();
-        bAceptar = new javax.swing.JButton();
-        bCancelar = new javax.swing.JButton();
+        tfNombreAsis = new javax.swing.JTextField();
+        bAceptarAsis = new javax.swing.JButton();
+        bCancelarAsis = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        tfTelefono = new javax.swing.JTextField();
+        tfTelefonoAsis = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        tfNacionalidad = new javax.swing.JTextField();
+        tfNacionalidadAsis = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -184,90 +184,81 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Insertar Asistente");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Sueldo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfSueldo.setBackground(new java.awt.Color(204, 204, 204));
-        tfSueldo.setForeground(new java.awt.Color(0, 0, 0));
-        tfSueldo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel8.add(tfSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfSueldoAsis.setBackground(new java.awt.Color(204, 204, 204));
+        tfSueldoAsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel8.add(tfSueldoAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 260, 40));
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        tfNombre.setForeground(new java.awt.Color(0, 0, 0));
-        tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        tfNombre.addActionListener(new java.awt.event.ActionListener() {
+        tfNombreAsis.setBackground(new java.awt.Color(204, 204, 204));
+        tfNombreAsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfNombreAsis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNombreActionPerformed(evt);
+                tfNombreAsisActionPerformed(evt);
             }
         });
-        jPanel9.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        jPanel9.add(tfNombreAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 260, 40));
 
-        bAceptar.setBackground(new java.awt.Color(0, 0, 0));
-        bAceptar.setForeground(new java.awt.Color(255, 255, 255));
-        bAceptar.setText("Aceptar");
-        bAceptar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+        bAceptarAsis.setBackground(new java.awt.Color(0, 0, 0));
+        bAceptarAsis.setForeground(new java.awt.Color(255, 255, 255));
+        bAceptarAsis.setText("Aceptar");
+        bAceptarAsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bAceptarAsis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAceptarActionPerformed(evt);
+                bAceptarAsisActionPerformed(evt);
             }
         });
-        jPanel1.add(bAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 120, 30));
+        jPanel1.add(bAceptarAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 120, 30));
 
-        bCancelar.setBackground(new java.awt.Color(0, 0, 0));
-        bCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        bCancelar.setText("Cancelar");
-        bCancelar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+        bCancelarAsis.setBackground(new java.awt.Color(0, 0, 0));
+        bCancelarAsis.setForeground(new java.awt.Color(255, 255, 255));
+        bCancelarAsis.setText("Cancelar");
+        bCancelarAsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bCancelarAsis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCancelarActionPerformed(evt);
+                bCancelarAsisActionPerformed(evt);
             }
         });
-        jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 120, 30));
+        jPanel1.add(bCancelarAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 120, 30));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
-        tfTelefono.setForeground(new java.awt.Color(0, 0, 0));
-        tfTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel11.add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfTelefonoAsis.setBackground(new java.awt.Color(204, 204, 204));
+        tfTelefonoAsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel11.add(tfTelefonoAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 260, 40));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nacionalidad");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
 
         jPanel12.setBackground(new java.awt.Color(204, 204, 204));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfNacionalidad.setBackground(new java.awt.Color(204, 204, 204));
-        tfNacionalidad.setForeground(new java.awt.Color(0, 0, 0));
-        tfNacionalidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel12.add(tfNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfNacionalidadAsis.setBackground(new java.awt.Color(204, 204, 204));
+        tfNacionalidadAsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel12.add(tfNacionalidadAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 260, 40));
 
@@ -317,17 +308,20 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         xy=evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
-    private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
+    private void tfNombreAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreAsisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfNombreActionPerformed
+    }//GEN-LAST:event_tfNombreAsisActionPerformed
 
-    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+    private void bAceptarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarAsisActionPerformed
        try{
+           //ese if siempre dará una exception.
             if(datosCorrectos()){
-                asistente = Controlador.buscarAsistente(this.tfNombre.getText());
+                asistente = Controlador.buscarAsistente(this.tfNombreAsis.getText());
                 if(asistente==null){
-                    Controlador.insertarAsistente(tfNombre.getText(),tfSueldo.getText(),tfTelefono.getText(),tfNacionalidad.getText());
-                    showMessageDialog(null,"Asistente " + tfNombre.getText() +" Insertado");
+                    Controlador.insertarAsistente(tfNombreAsis.getText(),tfSueldoAsis.getText(),
+                            tfTelefonoAsis.getText(),tfNacionalidadAsis.getText());
+                    showMessageDialog(null,"Asistente " + tfNombreAsis.getText() +" Insertado");
+                   // Desnecesario
                     Controlador.cancelarInsertarEquipo();
                    }
                 else{
@@ -338,11 +332,11 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_bAceptarActionPerformed
+    }//GEN-LAST:event_bAceptarAsisActionPerformed
 
-    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+    private void bCancelarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarAsisActionPerformed
         Controlador.cancelarInsertarAsistente();
-    }//GEN-LAST:event_bCancelarActionPerformed
+    }//GEN-LAST:event_bCancelarAsisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,8 +374,8 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bAceptar;
-    private javax.swing.JButton bCancelar;
+    private javax.swing.JButton bAceptarAsis;
+    private javax.swing.JButton bCancelarAsis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -401,10 +395,10 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
-    private javax.swing.JTextField tfNacionalidad;
-    private javax.swing.JTextField tfNombre;
-    private javax.swing.JTextField tfSueldo;
-    private javax.swing.JTextField tfTelefono;
+    private javax.swing.JTextField tfNacionalidadAsis;
+    private javax.swing.JTextField tfNombreAsis;
+    private javax.swing.JTextField tfSueldoAsis;
+    private javax.swing.JTextField tfTelefonoAsis;
     // End of variables declaration//GEN-END:variables
 
     private boolean datosCorrectos() {

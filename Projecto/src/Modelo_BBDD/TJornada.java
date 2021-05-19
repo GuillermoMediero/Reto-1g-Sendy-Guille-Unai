@@ -8,9 +8,9 @@ package Modelo_BBDD;
 
 import Modelo_UML.Jornada;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 
 /**
  *
@@ -23,19 +23,18 @@ public class TJornada {
 
     }
 
-    public Jornada buscarJornada(LocalDate fecha) throws Exception {
+    public Jornada buscarJornada(int id_jornada) throws Exception {
         String sentencia = "SELECT FECHA FROM JORNADA"
                 + " WHERE FECHA=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, fecha.toString());
+        ps.setString(1, String.valueOf(id_jornada));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
             Jornada jor;
             jor = new Jornada();
-            jor.setFecha(resultado.getString(FECHA));
-      
-     
+            jor.setFecha(resultado.getDate("FECHA").toLocalDate());
+           
             return jor;
         } else {
             return null;
@@ -47,7 +46,7 @@ public class TJornada {
         String sentencia = "INSERT INTO JORNADA(FECHA)"
                 + "VALUES (?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
-       ps.setString(1, String.valueOf(jor.getFecha()));
+       ps.setString(1, jor.getFecha().toString());
    
 
         int resultado = ps.executeUpdate();
@@ -57,13 +56,13 @@ public class TJornada {
         }
 
     }
-    //no sé que poner
+    // Hay que comprobar
     public void modificarJornada(Jornada jor) throws Exception {
         // No podemos modificar el nombre del equipo
         String sentencia = "UPDATE JORNADA SET FECHA=?"
-                + "WHERE NOMBRE = ?";
+                + "WHERE ID_JORNADA = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(jor.getFecha()));
+        ps.setString(1, String.valueOf(Date.valueOf("FECHA")));
        
        
         int n = ps.executeUpdate();
@@ -74,12 +73,12 @@ public class TJornada {
 
     }
 
-    public void borrarJornada(String nombre) throws Exception {
+    public void borrarJornada(int id_jornada) throws Exception {
 
         {
             String sentencia = "DELETE FROM JORNADA WHERE NOMBRE =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, nombre);
+            ps.setString(1, String.valueOf(id_jornada));
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {

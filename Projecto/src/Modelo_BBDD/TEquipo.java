@@ -6,7 +6,6 @@
 package Modelo_BBDD;
 
 import Modelo_UML.Equipo;
-import Modelo_UML.Jugador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,10 +22,11 @@ public class TEquipo {
         this.con = con;
     }
 
-    public Equipo buscarEquipo(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO WHERE NOMBRE=?";
+     public Equipo buscarEquipoPK(int id_equipo) throws Exception {
+        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO"
+                + " WHERE ID_EQUIPO=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, nombre);
+        ps.setString(1, String.valueOf(id_equipo));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {

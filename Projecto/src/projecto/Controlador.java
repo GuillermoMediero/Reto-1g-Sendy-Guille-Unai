@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projecto;
 
-import static javax.swing.JOptionPane.*;
+
 import Modelo_BBDD.*;
 import Modelo_UML.Administrador;
 import Modelo_UML.Asistente;
@@ -14,6 +10,7 @@ import Modelo_UML.Entrenador;
 import Modelo_UML.Equipo;
 import Modelo_UML.Jornada;
 import Modelo_UML.Jugador;
+import Modelo_UML.Partido;
 import Modelo_UML.Usuario;
 import Views.*;
 
@@ -63,6 +60,7 @@ public class Controlador {
     private static Equipo equi;
     private static Jornada jor;
     private static Jugador juga;
+    private static Partido part;
 
     // Variables de las Ventanas
     private static VentanaLogin vl;
@@ -94,7 +92,8 @@ public class Controlador {
             bd = new BaseDatos();
             con = bd.conectar();
 
-            tadm = new TAdministrador(bd.getCon());
+
+            /*tadm = new TAdministrador(bd.getCon());
             tusu = new TUsuario(bd.getCon());
             tasis = new TAsistente(bd.getCon());
             tdue = new TDueno(bd.getCon());
@@ -102,7 +101,18 @@ public class Controlador {
             tequi = new TEquipo(bd.getCon());
             tjorn = new TJornada(bd.getCon());
             tjuga = new TJugador(bd.getCon());
-            tpart = new TPartido(bd.getCon());
+            tpart = new TPartido(bd.getCon());*/
+
+            tadm = new TAdministrador(con);
+            tusu = new TUsuario(con);
+            tasis = new TAsistente(con); 
+            tent = new TEntrenador(con);
+            tequi = new TEquipo(con);
+            tdue = new TDueno(con,tequi);
+            tjorn = new TJornada(con);
+            tjuga = new TJugador(con);
+            tpart = new TPartido(con, tequi,tjorn);
+
 
             //u = new TUsuario(bd.getCon());
             vl = new VentanaLogin();
@@ -200,7 +210,8 @@ public class Controlador {
         return ent;
     }
 
-    public static void insertarEntrenador(String nombre, int sueldo, String telefono, String nacionalidad, int equipo) throws Exception {
+    public static void insertarEntrenador(String nombre, int sueldo, 
+            String telefono, String nacionalidad, int equipo) throws Exception {
         ent = new Entrenador(nombre,sueldo,telefono,nacionalidad,equipo);
         tent.insertarEntrenador(ent);
     }
@@ -272,6 +283,7 @@ public class Controlador {
         tjuga.borrarJugador(nombre);
     }
     
+
     public static Usuario buscarUsuario(String nombre) {
         usu = tusu.consultarUsu(nombre);
         return usu;
@@ -281,12 +293,33 @@ public class Controlador {
        /* usu = new Usuario(nombre,correo,contrasena);
         usu.insertarUsuario();*/
     }
+
+    // Partido 
+     public static Partido buscarPartido(int id_partido) throws Exception {
+        part = tpart.buscarPartido(id_partido);
+        return part;
+    }
+
+    public static void insertarPartido() throws Exception {
+        tpart.insertarPartido(part);
+    }
+
+    public static void modificarPartido() throws Exception {
+        tpart.modificarPartido(part);
+
+    }
+    
+    public static void borrarPartido(int id_partido) throws Exception {
+        tpart.borrarPartido(id_partido);
+    }
+    
+
     //Abrir y Cerrar Ventanas
     public static void abrirInsertarEquipo() {
         vie = new VInsertarEquipo();
         vie.setVisible(true);
     }
-
+    // Eso no es necesario aquí si puede meter en la vista el codigo "vie.dispose();"
     public static void cancelarInsertarEquipo() {
         vie.dispose();
     }
@@ -443,7 +476,7 @@ public class Controlador {
         veu.setVisible(true);
     }   
 
-    
+    // llaman demasiadas veces el mismo metodo
     public static void cancelarInsertarJugador() {
         vij.dispose();
     }

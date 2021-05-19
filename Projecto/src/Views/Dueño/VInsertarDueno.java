@@ -188,11 +188,9 @@ public class VInsertarDueno extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Insertar Dueño");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
@@ -200,7 +198,6 @@ public class VInsertarDueno extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        tfNombre.setForeground(new java.awt.Color(0, 0, 0));
         tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +230,6 @@ public class VInsertarDueno extends javax.swing.JFrame {
         });
         jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 120, 30));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
@@ -241,13 +237,11 @@ public class VInsertarDueno extends javax.swing.JFrame {
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
-        tfTelefono.setForeground(new java.awt.Color(0, 0, 0));
         tfTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel11.add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 260, 40));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nacionalidad");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
@@ -255,13 +249,11 @@ public class VInsertarDueno extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNacionalidad.setBackground(new java.awt.Color(204, 204, 204));
-        tfNacionalidad.setForeground(new java.awt.Color(0, 0, 0));
         tfNacionalidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel12.add(tfNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 260, 40));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nombre Equipo");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, -1, -1));
 
@@ -269,8 +261,12 @@ public class VInsertarDueno extends javax.swing.JFrame {
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbEquipos.setBackground(new java.awt.Color(204, 204, 204));
-        cbEquipos.setForeground(new java.awt.Color(0, 0, 0));
         cbEquipos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cbEquipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEquiposActionPerformed(evt);
+            }
+        });
         jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 260, 40));
@@ -347,6 +343,10 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Controlador.cancelarInsertarDueño();
     }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void cbEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEquiposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEquiposActionPerformed
 
     /**
      * @param args the command line arguments

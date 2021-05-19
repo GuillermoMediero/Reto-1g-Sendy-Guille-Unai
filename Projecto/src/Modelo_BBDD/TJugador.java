@@ -5,7 +5,7 @@
  */
 package Modelo_BBDD;
 
-import Modelo_UML.Dueno;
+
 import Modelo_UML.Jugador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,16 +18,19 @@ import java.sql.ResultSet;
 public class TJugador {
 
     private Connection con;
+    private TEquipo tequi;
 
-    public TJugador(Connection con) {
-
+    public TJugador(Connection con, TEquipo tequi) {
+        this.con = con;
+        this.tequi = tequi;
     }
 
-    public Jugador buscarJugador(String nombre) throws Exception {
+      
+    public Jugador buscarJugador(int id_jugador) throws Exception {
         String sentencia = "SELECT NOMBRE, SUELDO, NICKNAME, TELEFONO, NACIONALIDAD,ROL, ID_EQUIPO FROM JUGADOR"
-                + " WHERE NOMBRE=?";
+                + " WHERE id_jugador=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, nombre);
+        ps.setString(1, String.valueOf(id_jugador));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
@@ -39,8 +42,7 @@ public class TJugador {
             juga.setTelefono(resultado.getString("TELEFONO"));
             juga.setNacionalidad(resultado.getString("NACIONALIDAD"));
             juga.setRol(resultado.getString("ROL"));
-            // Como por un atributo tipo objeto?
-            juga.setId_equipo(String.valueOf(resultado.getString(ID_EQUIPO)));
+            juga.setEquipo(tequi.buscarEquipoPK(Integer.parseInt("ID_EQUIPO")));
             return juga;
         } else {
             return null;
@@ -58,7 +60,8 @@ public class TJugador {
         ps.setString(4, juga.getTelefono());
         ps.setString(5, juga.getNacionalidad());
         ps.setString(6, juga.getRol());
-        ps.setString(7, String.valueOf(juga.getId_equipo()));
+        // Si coge el nombre o el id_equipo?
+        ps.setString(7, juga.getEquipo().getNombre());
 
         int resultado = ps.executeUpdate();
         ps.close();
@@ -70,7 +73,7 @@ public class TJugador {
 
     public void modificarJugador(Jugador juga) throws Exception {
         // No podemos modificar el nombre del asistente
-        String sentencia = "UPDATE JUGADOR SET SUELDO=?, NICKNAME=?,TELEFONO=?, NACIONALIDAD=? ,ROL=?, ID_EQUIPO=?"
+        String sentencia = "UPDATE JUGADOR SET SUELDO=?, NICKNAME=?,TELEFONO=?, NACIONALIDAD=? ,ROL=?"
                 + "WHERE NOMBRE = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, juga.getSueldo());
@@ -78,7 +81,6 @@ public class TJugador {
         ps.setString(3, juga.getTelefono());
         ps.setString(4, juga.getNacionalidad());
         ps.setString(5, juga.getRol());
-        ps.setString(6, String.valueOf(juga.getId_equipo()));
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {

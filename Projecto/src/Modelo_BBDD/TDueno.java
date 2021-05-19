@@ -5,8 +5,8 @@
  */
 package Modelo_BBDD;
 
-import Modelo_UML.Asistente;
 import Modelo_UML.Dueno;
+import Modelo_UML.Equipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,13 +17,21 @@ import java.sql.ResultSet;
  */
 public class TDueno {
 private Connection con;
-    public TDueno(Connection con) {
-        
+private TEquipo tequi;
+
+    public TDueno(Connection con, TEquipo tequi) {
+        this.con = con;
+        this.tequi = tequi;
     }
-    public Dueno buscarDueno(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE NOMBRE=?";
+
+   
+    
+    
+
+    public Dueno buscarDueno(int id_dueno) throws Exception {
+        String sentencia = "SELECT NOMBRE,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE ID_DUENO=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, nombre);
+        ps.setString(1, String.valueOf(id_dueno));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
@@ -33,7 +41,7 @@ private Connection con;
             due.setTelefono(resultado.getString("TELEFONO"));
             due.setNacionalidad(resultado.getString("NACIONALIDAD"));
             // Como por un atributo tipo objeto?
-            due.setId_equipo(String.valueOf(resultado.getString(ID_EQUIPO)));
+            due.setId_equipo(tequi.buscarEquipoPK(Integer.getInteger("ID_EQUIPO")));
             return due;
         } else {
             return null;
@@ -73,12 +81,12 @@ private Connection con;
 
     }
 
-    public void borrarDueno(String nombre) throws Exception {
+    public void borrarDueno(int id_dueno) throws Exception {
 
         {
-            String sentencia = "DELETE FROM DUENO WHERE NOMBRE =?";
+            String sentencia = "DELETE FROM DUENO WHERE ID_DUENO =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, nombre);
+            ps.setString(1, String.valueOf(id_dueno));
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {

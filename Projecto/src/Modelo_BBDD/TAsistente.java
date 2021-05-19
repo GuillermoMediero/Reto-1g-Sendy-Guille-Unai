@@ -17,10 +17,10 @@ public class TAsistente {
     public TAsistente(Connection con) {
     }
     // Buscar porque no me funciona la busqueda *nullpointerException
-    public Asistente buscarAsistente(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE NOMBRE=?";
+    public Asistente buscarAsistente(int id_asistente) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE id_asistente=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, nombre);
+        ps.setString(1, String.valueOf(id_asistente));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
@@ -70,12 +70,12 @@ public class TAsistente {
 
     }
 
-    public void borrarasistente(Asistente asis) throws Exception {
+    public void borrarasistente(int id_asistente) throws Exception {
 
         {
             String sentencia = "DELETE FROM ASISTENTE WHERE NOMBRE =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, asis.getNombre());
+            ps.setString(1, String.valueOf(id_asistente));
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {
