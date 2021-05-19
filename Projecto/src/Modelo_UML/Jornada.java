@@ -12,23 +12,14 @@ import java.time.LocalDate;
  * @author ketro
  */
 public class Jornada {
-    private int id_jornada ;
     private LocalDate fecha ;
 
     public Jornada() {
     }
 
-    public Jornada(int id_jornada, LocalDate fecha) {
-        this.id_jornada = id_jornada;
+    public Jornada(LocalDate fecha) {
+   
         this.fecha = fecha;
-    }
-
-    public int getId_jornada() {
-        return id_jornada;
-    }
-
-    public void setId_jornada(int id_jornada) {
-        this.id_jornada = id_jornada;
     }
 
     public LocalDate getFecha() {

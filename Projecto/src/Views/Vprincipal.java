@@ -867,7 +867,7 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lInsertarJugadorMouseClicked
 
     private void lInsertarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarDueñoMouseClicked
-        Controlador.abrirInsertarDueño();
+        Controlador.abrirInsertarDueno();
     }//GEN-LAST:event_lInsertarDueñoMouseClicked
 
     private void lInsertarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarEquipoMouseClicked

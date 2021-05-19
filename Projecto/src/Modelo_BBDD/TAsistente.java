@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo_BBDD;
 
 import Modelo_UML.Asistente;
@@ -20,14 +16,15 @@ public class TAsistente {
 
     public TAsistente(Connection con) {
     }
-
-    public Asistente buscarAsistente(Asistente asis) throws Exception {
-        String plantilla = "SELECT * FROM ASISTENTE WHERE nombre =?";
-        PreparedStatement ps = con.prepareStatement(plantilla);
-        ps.setString(1, asis.getNombre());
+    // Buscar porque no me funciona la busqueda *nullpointerException
+    public Asistente buscarAsistente(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE NOMBRE=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, nombre);
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
+            Asistente asis;
             asis = new Asistente();
             asis.setNombre(resultado.getString("NOMBRE"));
             asis.setSueldo(resultado.getString("SUELDO"));
@@ -54,11 +51,11 @@ public class TAsistente {
         if (resultado != 1) {
             throw new Exception("El numero de filas insertadas no es uno");
         }
-        //restornar asistente por si quiero ensenar un mensaje "xxxxx insertado"
+        //retornar asistente por si quiero ensenar un mensaje "xxxxx insertado"
     }
 
     public void modificarAsistente(Asistente asis) throws Exception {
-
+        // No podemos modificar el nombre del asistente
         String sentencia = "UPDATE ASISTENTE SET SUELDO=?, TELEFONO=?, NACIONALIDAD=? "
                 + "WHERE NOMBRE = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);

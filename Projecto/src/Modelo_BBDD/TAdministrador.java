@@ -21,9 +21,6 @@ public class TAdministrador {
         
         this.con = con;
     }
-
-      
-    
     
     public Administrador consultarAdm(String correo,String contrasena) throws Exception {
         String sentencia = "SELECT NOMBRE, CORREO, CONTRASENA FROM ADMINISTRADOR WHERE CORREO=? and CONTRASENA=?";
