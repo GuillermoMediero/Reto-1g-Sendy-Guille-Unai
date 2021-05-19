@@ -68,7 +68,7 @@ public class VModificarJugadores extends javax.swing.JFrame {
         tfRol = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        tfIdEquipo = new javax.swing.JTextField();
+        cbEquipos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -316,10 +316,10 @@ public class VModificarJugadores extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(204, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfIdEquipo.setBackground(new java.awt.Color(204, 204, 204));
-        tfIdEquipo.setForeground(new java.awt.Color(0, 0, 0));
-        tfIdEquipo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel14.add(tfIdEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        cbEquipos.setBackground(new java.awt.Color(204, 204, 204));
+        cbEquipos.setForeground(new java.awt.Color(0, 0, 0));
+        cbEquipos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 260, 40));
 
@@ -422,6 +422,7 @@ public class VModificarJugadores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
+    private javax.swing.JComboBox<String> cbEquipos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -447,7 +448,6 @@ public class VModificarJugadores extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
-    private javax.swing.JTextField tfIdEquipo;
     private javax.swing.JTextField tfNacionalidad;
     private javax.swing.JTextField tfNickname;
     private javax.swing.JTextField tfNombre;

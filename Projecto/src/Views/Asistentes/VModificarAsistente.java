@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Views.Asistentes;
 
 import Modelo_UML.Asistente;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import static javax.swing.JOptionPane.*;
 import projecto.Controlador;
+import static javax.swing.JOptionPane.*;
 
 /**
  *
@@ -18,7 +14,7 @@ import projecto.Controlador;
 public class VModificarAsistente extends javax.swing.JFrame {
     int xx;
     int xy; 
-    private Asistente asistente;
+    Asistente asistente;
     /**
      * Creates new form VInsertarAsistente
      */
@@ -26,17 +22,9 @@ public class VModificarAsistente extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-<<<<<<< HEAD
         tfNombre.setEditable(false);
-=======
-        
     }
-   
-    public void validarDatosAsistente(String nombre) {
-        if(nombre.isEmpty())
-            showMessageDialog(null, "Campo obligatorio");
->>>>>>> main
-    }
+    public void validarDatosAsistente(String n,String s,String t,String na){}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -196,14 +184,8 @@ public class VModificarAsistente extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-<<<<<<< HEAD
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Modificar Asistente");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
-=======
-        jLabel1.setText("Modificar Asistente");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
->>>>>>> main
 
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
@@ -331,23 +313,23 @@ public class VModificarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        try{
-            // Valida los datos de los asistentes
-            validarDatosAsistente(this.tfNombre.getText());
+        /*try{
+            // Validar los datos de los asistentes
+            validarDatosAsistente(this.tfNombre.getText(),this.tfSueldo.getText(),
+                    this.tfTelefono.getText(),this.tfNacionalidad.getText());
             
-            // Busqueda del asistente
+            // Buscar el asistente
             asistente = Controlador.buscarAsistente(this.tfNombre.getText());
             
-            // Si lo que me han devolto es de null insertamos el asistente
-            if(asistente!=null){
-                Controlador.modificarAsistente(this.tfSueldo.getText(),
-                this.tfTelefono.getText(),this.tfNacionalidad.getText());
-                showMessageDialog(null,"Asistente " + asistente.getNombre()+" Modificado");
+            // Si lo que me han devolto es null insertamos el asistente
+            if(asistente==null){
+                Controlador.insertarAsistente();
+                showMessageDialog(null,"Asistente " + asistente.getNombre()+" Insertado");
             }else
-                showMessageDialog(null,"No se ha podido modificar");
+                showMessageDialog(null,"Ya existe un asistente con ese Nombre");
         }catch(Exception gnr){
             showMessageDialog(null, gnr.getClass()+ "\n"+ gnr.getMessage());
-        }
+        }*/
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -417,6 +399,4 @@ public class VModificarAsistente extends javax.swing.JFrame {
     private javax.swing.JTextField tfSueldo;
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
-
-   
 }

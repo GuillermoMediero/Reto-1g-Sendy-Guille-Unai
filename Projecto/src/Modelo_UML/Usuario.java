@@ -10,8 +10,10 @@ package Modelo_UML;
  * @author ketro
  */
 public class Usuario extends Perfil{
-
+    
     public Usuario() {
     }
+    
+    
     
 }

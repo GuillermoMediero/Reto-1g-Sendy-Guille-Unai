@@ -4,6 +4,7 @@ package Views.Asistentes;
 import Modelo_UML.Asistente;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import projecto.Controlador;
 import static javax.swing.JOptionPane.*;
 
@@ -321,22 +322,21 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        try{
-            // Validar los datos de los asistentes
-            validarDatosAsistente(this.tfNombre.getText(),this.tfSueldo.getText(),
-                    this.tfTelefono.getText(),this.tfNacionalidad.getText());
-            
-            // Buscar el asistente
-            asistente = Controlador.buscarAsistente(this.tfNombre.getText());
-            
-            // Si lo que me han devolto es null insertamos el asistente
-            if(asistente==null){
-                Controlador.insertarAsistente();
-                showMessageDialog(null,"Asistente " + asistente.getNombre()+" Insertado");
-            }else
-                showMessageDialog(null,"Ya existe un asistente con ese Nombre");
-        }catch(Exception gnr){
-            showMessageDialog(null, gnr.getClass()+ "\n"+ gnr.getMessage());
+       try{
+            if(datosCorrectos()){
+                asistente = Controlador.buscarAsistente(this.tfNombre.getText());
+                if(asistente==null){
+                    Controlador.insertarAsistente(tfNombre.getText(),tfSueldo.getText(),tfTelefono.getText(),tfNacionalidad.getText());
+                    showMessageDialog(null,"Asistente " + tfNombre.getText() +" Insertado");
+                    Controlador.cancelarInsertarEquipo();
+                   }
+                else{
+                    showMessageDialog(null,"Ya existe un Asistente con ese Nombre");
+            }
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -406,4 +406,8 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private javax.swing.JTextField tfSueldo;
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
+
+    private boolean datosCorrectos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

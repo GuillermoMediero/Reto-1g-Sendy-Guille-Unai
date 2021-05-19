@@ -5,8 +5,11 @@
  */
 package Views.Perfiles;
 
+import Modelo_UML.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
 
 /**
@@ -16,6 +19,7 @@ import projecto.Controlador;
 public class VInsertarUsuario extends javax.swing.JFrame {
     int xx;
     int xy;
+    Usuario usu;
     /**
      * Creates new form VInsertarUsuario
      */
@@ -55,7 +59,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
         bCancelar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        tfContraseña = new javax.swing.JTextField();
+        pfContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -247,10 +251,10 @@ public class VInsertarUsuario extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfContraseña.setBackground(new java.awt.Color(204, 204, 204));
-        tfContraseña.setForeground(new java.awt.Color(0, 0, 0));
-        tfContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel11.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        pfContrasena.setBackground(new java.awt.Color(205, 205, 205));
+        pfContrasena.setForeground(new java.awt.Color(0, 0, 0));
+        pfContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel11.add(pfContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 260, 40));
 
@@ -305,7 +309,22 @@ public class VInsertarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+        try{
+            if(datosCorrectos()){
+                usu = Controlador.buscarUsuario(this.tfNombre.getText());
+                if(usu==null){
+                    Controlador.insertarUsuario(tfNombre.getText(),tfCorreo.getText(),String.valueOf(this.pfContrasena.getPassword()));
+                    showMessageDialog(null,"Usuario" + tfNombre.getText() +" Insertado");
+                    Controlador.cancelarInsertarEquipo();
+                   }
+                else{
+                    showMessageDialog(null,"Ya existe un Usuario con ese Nombre");
+            }
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -367,8 +386,12 @@ public class VInsertarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
-    private javax.swing.JTextField tfContraseña;
+    private javax.swing.JPasswordField pfContrasena;
     private javax.swing.JTextField tfCorreo;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
+
+    private boolean datosCorrectos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

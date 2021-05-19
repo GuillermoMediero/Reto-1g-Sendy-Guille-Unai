@@ -386,7 +386,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bienvenido !");
 
         lIntegrantes2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -421,7 +420,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Jornadas");
 
         javax.swing.GroupLayout pJornadasLayout = new javax.swing.GroupLayout(pJornadas);
@@ -447,7 +445,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Clasificaciones");
 
         javax.swing.GroupLayout pClasificacionesLayout = new javax.swing.GroupLayout(pClasificaciones);
@@ -474,7 +471,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Equipos");
         pEquipos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 87, -1, -1));
 
@@ -492,6 +488,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar10.add(jLabel75);
 
         lBorrarEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        lBorrarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lBorrarEquipoMouseClicked(evt);
+            }
+        });
         jToolBar10.add(lBorrarEquipo);
 
         jLabel77.setText("  ");
@@ -519,7 +520,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Jugadores");
 
         jToolBar4.setRollover(true);
@@ -536,6 +536,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar4.add(jLabel33);
 
         lBorrarJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        lBorrarJugador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lBorrarJugadorMouseClicked(evt);
+            }
+        });
         jToolBar4.add(lBorrarJugador);
 
         jLabel35.setText("  ");
@@ -592,6 +597,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar5.add(jLabel40);
 
         lBorrarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        lBorrarEntrenador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lBorrarEntrenadorMouseClicked(evt);
+            }
+        });
         jToolBar5.add(lBorrarEntrenador);
 
         jLabel42.setText("  ");
@@ -613,7 +623,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Entrenadores");
 
         javax.swing.GroupLayout pEntrenadoresLayout = new javax.swing.GroupLayout(pEntrenadores);
@@ -653,6 +662,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar6.add(jLabel47);
 
         lBorrarAsistente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        lBorrarAsistente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lBorrarAsistenteMouseClicked(evt);
+            }
+        });
         jToolBar6.add(lBorrarAsistente);
 
         jLabel49.setText("  ");
@@ -674,7 +688,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Asistentes");
 
         javax.swing.GroupLayout pAsistentesLayout = new javax.swing.GroupLayout(pAsistentes);
@@ -714,6 +727,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar7.add(jLabel54);
 
         lBorrarDueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        lBorrarDueño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lBorrarDueñoMouseClicked(evt);
+            }
+        });
         jToolBar7.add(lBorrarDueño);
 
         jLabel56.setText("  ");
@@ -734,7 +752,6 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar7.add(lConsultarDueño);
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Dueño");
 
         javax.swing.GroupLayout pDueñoLayout = new javax.swing.GroupLayout(pDueño);
@@ -763,7 +780,6 @@ public class Vprincipal extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Perfiles");
         pPerfiles.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 87, -1, -1));
 
@@ -781,6 +797,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar11.add(jLabel82);
 
         lBorrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar-plugins-wordpress.png"))); // NOI18N
+        lBorrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lBorrarUsuarioMouseClicked(evt);
+            }
+        });
         jToolBar11.add(lBorrarUsuario);
 
         jLabel84.setText("  ");
@@ -907,6 +928,66 @@ public class Vprincipal extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, e.getMessage());
        }
     }//GEN-LAST:event_lModificarEquipoMouseClicked
+
+    private void lBorrarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEquipoMouseClicked
+        try{
+            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
+            Controlador.abrirEliminarEquipo(nombre);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_lBorrarEquipoMouseClicked
+
+    private void lBorrarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarJugadorMouseClicked
+        try{
+            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
+            Controlador.abrirEliminarJugador(nombre);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_lBorrarJugadorMouseClicked
+
+    private void lBorrarEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEntrenadorMouseClicked
+        try{
+            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
+            Controlador.abrirEliminarEntrenador(nombre);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_lBorrarEntrenadorMouseClicked
+
+    private void lBorrarAsistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarAsistenteMouseClicked
+       try{
+            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
+            Controlador.abrirEliminarAsistente(nombre);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_lBorrarAsistenteMouseClicked
+
+    private void lBorrarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarDueñoMouseClicked
+        try{
+            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
+            Controlador.abrirEliminarDueno(nombre);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_lBorrarDueñoMouseClicked
+
+    private void lBorrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarUsuarioMouseClicked
+        try{
+            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
+            Controlador.abrirEliminarUsuario(nombre);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_lBorrarUsuarioMouseClicked
 
     /**
      * @param args the command line arguments

@@ -16,22 +16,21 @@ import Modelo_UML.Jornada;
 import Modelo_UML.Jugador;
 import Modelo_UML.Usuario;
 import Views.*;
-<<<<<<< HEAD
+
 import Views.Asistentes.*;
 import Views.Dueño.*;
 import Views.Entrenadores.*;
 import Views.Jugadores.*;
 import Views.Perfiles.*;
 import Views.equipos.*;
-=======
+
 import Views.Asistentes.VInsertarAsistente;
 import Views.Asistentes.VModificarAsistente;
-import Views.Dueno.VInsertarDueno;
 import Views.Entrenadores.VInsertarEntrenadores;
 import Views.Jugadores.VInsertarJugadores;
 import Views.Perfiles.VInsertarUsuario;
 import Views.equipos.VInsertarEquipo;
->>>>>>> main
+
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -77,30 +76,33 @@ public class Controlador {
     private static VModificarAsistente vma;
     private static VInsertarUsuario viu;
 
-<<<<<<< HEAD
-    private static VModificarAsistente vma;
     private static VModificarJugadores vmj;
     private static VModificarEntrenadores vmen;
     private static VModificarDueno vmd;
     private static VModificarUsuario vmu;
     private static VModificarEquipo vme;
     
-=======
->>>>>>> main
+    private static VEliminarJugadores vej;
+    private static VEliminarEntrenadores veen;
+    private static VEliminarDueno ved;
+    private static VEliminarUsuario veu;
+    private static VEliminarEquipo vee;
+    private static VEliminarAsistente vea;
+
     public static void main(String[] args) {
         try {
             bd = new BaseDatos();
             con = bd.conectar();
 
-            tadm = new TAdministrador(con);
-            tusu = new TUsuario(con);
-            tasis = new TAsistente(con);
-            tdue = new TDueno(con);
-            tent = new TEntrenador(con);
-            tequi = new TEquipo(con);
-            tjorn = new TJornada(con);
-            tjuga = new TJugador(con);
-            tpart = new TPartido(con);
+            tadm = new TAdministrador(bd.getCon());
+            tusu = new TUsuario(bd.getCon());
+            tasis = new TAsistente(bd.getCon());
+            tdue = new TDueno(bd.getCon());
+            tent = new TEntrenador(bd.getCon());
+            tequi = new TEquipo(bd.getCon());
+            tjorn = new TJornada(bd.getCon());
+            tjuga = new TJugador(bd.getCon());
+            tpart = new TPartido(bd.getCon());
 
             //u = new TUsuario(bd.getCon());
             vl = new VentanaLogin();
@@ -160,10 +162,11 @@ public class Controlador {
         return asis;
     }
 
-    public static void insertarAsistente() throws Exception {
+ 
+    public static void insertarAsistente(String nombre, String sueldo, String telefono, String nacionalidad) throws Exception {
+        asis = new Asistente(nombre,sueldo,telefono,nacionalidad);
         tasis.insertarAsistente(asis);
     }
-
     public static void modificarAsistente(String s, String t, String nac) throws Exception {
         tasis.modificarAsistente(asis);
 
@@ -197,9 +200,11 @@ public class Controlador {
         return ent;
     }
 
-    public static void insertarEntrenador() throws Exception {
+    public static void insertarEntrenador(String nombre, int sueldo, String telefono, String nacionalidad, int equipo) throws Exception {
+        ent = new Entrenador(nombre,sueldo,telefono,nacionalidad,equipo);
         tent.insertarEntrenador(ent);
     }
+   
 
     public static void borrarEntrenador(String nombre) throws Exception {
         tent.borrarEntrenador(nombre);
@@ -215,7 +220,8 @@ public class Controlador {
         return equi;
     }
 
-    public static void insertarEquipo() throws Exception {
+    public static void insertarEquipo(String nombre, String escudo) throws Exception {
+        equi = new Equipo(nombre,escudo);
         tequi.insertarEquipo(equi);
     }
 
@@ -252,8 +258,8 @@ public class Controlador {
         juga = tjuga.buscarJugador(nombre);
         return juga;
     }
-
-    public static void insertarJugador() throws Exception {
+    
+    public static void insertarJugador(String nombre, int sueldo, String nickname, String telefono, String nacionalidad, String rol, int equipo) throws Exception {
         tjuga.insertarJugador(juga);
     }
 
@@ -266,7 +272,15 @@ public class Controlador {
         tjuga.borrarJugador(nombre);
     }
     
-    
+    public static Usuario buscarUsuario(String nombre) {
+        usu = tusu.consultarUsu(nombre);
+        return usu;
+    }
+
+    public static void insertarUsuario(String nombre, String correo, String contrasena) {
+       /* usu = new Usuario(nombre,correo,contrasena);
+        usu.insertarUsuario();*/
+    }
     //Abrir y Cerrar Ventanas
     public static void abrirInsertarEquipo() {
         vie = new VInsertarEquipo();
@@ -292,11 +306,9 @@ public class Controlador {
         via.setVisible(true);
     }
 
-<<<<<<< HEAD
-    public static void abrirInsertarDueño() {
-=======
+
     public static void abrirInsertarDueno() {
->>>>>>> main
+
         vid = new VInsertarDueno();
         vid.setVisible(true);
     }
@@ -306,7 +318,7 @@ public class Controlador {
         viu.setVisible(true);
     }
 
-<<<<<<< HEAD
+
     public static void cancelarModificarAsistente() {
         vma.dispose();
     }
@@ -360,13 +372,78 @@ public class Controlador {
         vme = new VModificarEquipo();
         vme.setVisible(true);
     }
-    
-=======
->>>>>>> main
-    public enum Rol {
-        USUARIO, ADMINISTRADOR
+
+    public static String getNombreEquipos(int x) {
+       
     }
 
+    public static void cancelarBorrarEquipo() {
+        vee.dispose();
+    }
+
+    public static void cancelarBorrarUsuarios() {
+        veu.dispose();
+    }
+
+    public static void cancelarBorrarJugador() {
+        vej.dispose();
+    }
+
+    public static void cancelarBorrarEntrenador() {
+        veen.dispose();
+    }
+
+    public static void cancelarBorrarAsistente() {
+        vea.dispose();
+    }
+
+    public static void cancelarBorrarDueño() {
+       ved.dispose();
+    }
+
+    public static void abrirEliminarEquipo(String nombre) {
+        
+        
+        vee = new VEliminarEquipo();
+        vee.setVisible(true);
+    }
+
+    public static void abrirEliminarJugador(String nombre) {
+
+        
+        vej = new VEliminarJugadores();
+        vej.setVisible(true);
+    }
+
+    public static void abrirEliminarEntrenador(String nombre) {
+       
+        
+        veen = new VEliminarEntrenadores();
+        veen.setVisible(true);
+    }
+
+    public static void abrirEliminarAsistente(String nombre) {
+       
+        
+        vea = new VEliminarAsistente();
+        vea.setVisible(true);
+    }
+
+    public static void abrirEliminarDueno(String nombre) {
+        
+        
+        ved = new VEliminarDueno();
+        ved.setVisible(true);
+    }
+
+    public static void abrirEliminarUsuario(String nombre) {
+        
+        
+        veu = new VEliminarUsuario();
+        veu.setVisible(true);
+    }   
+
+    
     public static void cancelarInsertarJugador() {
         vij.dispose();
     }
@@ -386,4 +463,11 @@ public class Controlador {
     public static void cancelarInsertarUsuarios() {
         viu.dispose();
     }
+
+   
+    public enum Rol {
+        USUARIO, ADMINISTRADOR
+    }
+
+    
 }

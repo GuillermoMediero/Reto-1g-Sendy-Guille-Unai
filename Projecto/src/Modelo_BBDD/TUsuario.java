@@ -48,5 +48,9 @@ public class TUsuario {
         }
         return null;
     }
+
+    public Usuario consultarUsu(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }

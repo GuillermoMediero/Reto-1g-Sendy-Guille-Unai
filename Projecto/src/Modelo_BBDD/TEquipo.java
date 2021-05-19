@@ -20,12 +20,11 @@ public class TEquipo {
      private Connection con;
 
     public TEquipo(Connection con) {
-
+        this.con = con;
     }
 
     public Equipo buscarEquipo(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO"
-                + " WHERE NOMBRE=?";
+        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, nombre);
 
@@ -44,8 +43,7 @@ public class TEquipo {
 
     public void insertarEquipo(Equipo equi) throws Exception {
 
-        String sentencia = "INSERT INTO EQUIPO(NOMBRE,ESCUDO)"
-                + "VALUES (?,?)";
+        String sentencia = "INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES (?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, equi.getNombre());
         ps.setString(2, equi.getEscudo());
@@ -61,8 +59,7 @@ public class TEquipo {
 
     public void modificarEquipo(Equipo equi) throws Exception {
         // No podemos modificar el nombre del equipo
-        String sentencia = "UPDATE EQUIPO SET SUELDO=?,ESCUDO=?"
-                + "WHERE NOMBRE = ?";
+        String sentencia = "UPDATE EQUIPO SET SUELDO=?,ESCUDO=? WHERE NOMBRE = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, equi.getNombre());
         ps.setString(2, equi.getEscudo());

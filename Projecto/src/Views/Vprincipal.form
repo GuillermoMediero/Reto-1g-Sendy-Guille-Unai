@@ -633,6 +633,9 @@
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lBorrarEquipoMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel77">
                   <Properties>
@@ -739,6 +742,9 @@
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lBorrarJugadorMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">
                   <Properties>
@@ -834,6 +840,9 @@
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lBorrarEntrenadorMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel42">
                   <Properties>
@@ -940,6 +949,9 @@
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lBorrarAsistenteMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel49">
                   <Properties>
@@ -1046,6 +1058,9 @@
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lBorrarDue&#xf1;oMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel56">
                   <Properties>
@@ -1151,6 +1166,9 @@
                       <Image iconType="3" name="/imagenes/borrar-plugins-wordpress.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lBorrarUsuarioMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel84">
                   <Properties>

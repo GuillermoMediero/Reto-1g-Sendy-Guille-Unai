@@ -5,8 +5,11 @@
  */
 package Views.Entrenadores;
 
+import Modelo_UML.Entrenador;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
 
 /**
@@ -16,6 +19,7 @@ import projecto.Controlador;
 public class VInsertarEntrenadores extends javax.swing.JFrame {
     int xx;
     int xy; 
+    Entrenador entre;
     /**
      * Creates new form InsertalEntrenadores
      */
@@ -61,7 +65,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         tfNacionalidad = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        tfIdEquipo = new javax.swing.JTextField();
+        cbEquipos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -275,16 +279,16 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 260, 40));
 
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Id Equipo");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, -1, -1));
+        jLabel10.setText("Nombre Equipo");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(204, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfIdEquipo.setBackground(new java.awt.Color(204, 204, 204));
-        tfIdEquipo.setForeground(new java.awt.Color(0, 0, 0));
-        tfIdEquipo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel14.add(tfIdEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        cbEquipos.setBackground(new java.awt.Color(204, 204, 204));
+        cbEquipos.setForeground(new java.awt.Color(0, 0, 0));
+        cbEquipos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 260, 40));
 
@@ -339,7 +343,22 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+    try{
+            if(datosCorrectos()){
+                entre = Controlador.buscarEntrenador(this.tfNombre.getText());
+                if(entre==null){
+                    Controlador.insertarEntrenador(tfNombre.getText(),Integer.parseInt(tfSueldo.getText()),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
+                    showMessageDialog(null,"Entrenador " + tfNombre.getText() +" Insertado");
+                    Controlador.cancelarInsertarEquipo();
+                   }
+                else{
+                    showMessageDialog(null,"Ya existe un Asistente con ese Nombre");
+            }
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -387,6 +406,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
+    private javax.swing.JComboBox<String> cbEquipos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -408,10 +428,13 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
-    private javax.swing.JTextField tfIdEquipo;
     private javax.swing.JTextField tfNacionalidad;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfSueldo;
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
+
+    private boolean datosCorrectos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
