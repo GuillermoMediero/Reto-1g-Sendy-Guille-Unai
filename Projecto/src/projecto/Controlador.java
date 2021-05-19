@@ -110,7 +110,7 @@ public class Controlador {
             tequi = new TEquipo(con);
             tdue = new TDueno(con,tequi);
             tjorn = new TJornada(con);
-            tjuga = new TJugador(con);
+            tjuga = new TJugador(con, tequi);
             tpart = new TPartido(con, tequi,tjorn);
 
 
@@ -167,8 +167,8 @@ public class Controlador {
     //public static void consultaClasificaciones(){}
     
 // Asistente
-    public static Asistente buscarAsistente(String nombre) throws Exception {
-        asis = tasis.buscarAsistente(nombre);
+    public static Asistente buscarAsistente(int id_asistente) throws Exception {
+        asis = tasis.buscarAsistente(id_asistente);
         return asis;
     }
 
@@ -182,13 +182,13 @@ public class Controlador {
 
     }
 
-    public static void borrarAsistente() throws Exception {
-        tasis.borrarasistente(asis);
+    public static void borrarAsistente(int id_asistente) throws Exception {
+        tasis.borrarasistente(id_asistente);
     }
 
     // Dueño
-    public static Dueno buscarDueno(String nombre) throws Exception {
-        due = tdue.buscarDueno(nombre);
+    public static Dueno buscarDueno(int id_dueno) throws Exception {
+        due = tdue.buscarDueno(id_dueno);
         return due;
     }
 
@@ -196,8 +196,8 @@ public class Controlador {
         tdue.insertarDueno(due);
     }
 
-    public static void borrarDueno(String nombre) throws Exception {
-        tdue.borrarDueno(nombre);
+    public static void borrarDueno(int id_dueno) throws Exception {
+        tdue.borrarDueno(id_dueno);
     }
 
     public static void modificarDueno() throws Exception {
@@ -212,13 +212,13 @@ public class Controlador {
 
     public static void insertarEntrenador(String nombre, int sueldo, 
             String telefono, String nacionalidad, int equipo) throws Exception {
-        ent = new Entrenador(nombre,sueldo,telefono,nacionalidad,equipo);
+        ent = new Entrenador();
         tent.insertarEntrenador(ent);
     }
    
 
-    public static void borrarEntrenador(String nombre) throws Exception {
-        tent.borrarEntrenador(nombre);
+    public static void borrarEntrenador(int id_entrenador) throws Exception {
+        tent.borrarEntrenador(id_entrenador);
     }
 
     public static void modificarEntrenador() throws Exception {
@@ -226,8 +226,8 @@ public class Controlador {
     }
 
     // Equipo
-    public static Equipo buscarEquipo(String nombre) throws Exception {
-        equi = tequi.buscarEquipo(nombre);
+    public static Equipo buscarEquipo(int id_equipo) throws Exception {
+        equi = tequi.buscarEquipoPK(id_equipo);
         return equi;
     }
 
@@ -241,13 +241,13 @@ public class Controlador {
 
     }
 
-    public static void borrarEquipo(String nombre) throws Exception {
-        tequi.borrarEquipo(nombre);
+    public static void borrarEquipo(int id_equipo) throws Exception {
+        tequi.borrarEquipo(id_equipo);
     }
 
     //Jornada
-    public static Jornada buscarJornada(LocalDate fecha) throws Exception {
-        jor = tjorn.buscarJornada(fecha);
+    public static Jornada buscarJornada(int id_jornada) throws Exception {
+        jor = tjorn.buscarJornada(id_jornada);
         return jor;
     }
 
@@ -260,17 +260,19 @@ public class Controlador {
 
     }
 
-    public static void borrarJornada(String nombre) throws Exception {
-        tjorn.borrarJornada(nombre);
+    public static void borrarJornada(int id_jornada) throws Exception {
+        tjorn.borrarJornada(id_jornada);
     }
 
     // Jugador
-    public static Jugador buscarJugador(String nombre) throws Exception {
-        juga = tjuga.buscarJugador(nombre);
+    public static Jugador buscarJugador(int id_jugador) throws Exception {
+        juga = tjuga.buscarJugador(id_jugador);
         return juga;
     }
     
-    public static void insertarJugador(String nombre, int sueldo, String nickname, String telefono, String nacionalidad, String rol, int equipo) throws Exception {
+    public static void insertarJugador(String nombre, int sueldo, 
+            String nickname, String telefono, String nacionalidad, 
+            String rol, int equipo) throws Exception {
         tjuga.insertarJugador(juga);
     }
 
@@ -406,9 +408,10 @@ public class Controlador {
         vme.setVisible(true);
     }
 
-    public static String getNombreEquipos(int x) {
+    /*public static String getNombreEquipos(int x) {
+        
        
-    }
+    }*/
 
     public static void cancelarBorrarEquipo() {
         vee.dispose();
@@ -434,14 +437,14 @@ public class Controlador {
        ved.dispose();
     }
 
-    public static void abrirEliminarEquipo(String nombre) {
+    /*public static void abrirEliminarEquipo(String nombre) {
         
         
         vee = new VEliminarEquipo();
         vee.setVisible(true);
-    }
+    }*/
 
-    public static void abrirEliminarJugador(String nombre) {
+    /*public static void abrirEliminarJugador(String nombre) {
 
         
         vej = new VEliminarJugadores();
@@ -474,7 +477,7 @@ public class Controlador {
         
         veu = new VEliminarUsuario();
         veu.setVisible(true);
-    }   
+    } */  
 
     // llaman demasiadas veces el mismo metodo
     public static void cancelarInsertarJugador() {

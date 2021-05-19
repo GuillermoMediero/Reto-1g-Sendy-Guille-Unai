@@ -72,12 +72,12 @@ public class TEquipo {
 
     }
 
-    public void borrarEquipo(String nombre) throws Exception {
+    public void borrarEquipo(int id_equipo) throws Exception {
 
         {
-            String sentencia = "DELETE FROM EQUIPO WHERE NOMBRE =?";
+            String sentencia = "DELETE FROM EQUIPO WHERE ID_EQUIPO =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, nombre);
+            ps.setString(1, String.valueOf(id_equipo));
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {
