@@ -5,25 +5,32 @@
  */
 package Views.equipos;
 
+import Modelo_UML.Equipo;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
+import validaciones.validaciones;
 
 /**
  *
  * @author 1GDAW12
  */
-public class VInsertarEquipo extends javax.swing.JFrame {
+public class VEliminarEquipo extends javax.swing.JFrame {
     int xx;
     int xy;
+    Equipo equi;
     /**
      * Creates new form InstertarEquipo
      */
-    public VInsertarEquipo() {
+    public VEliminarEquipo() {
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
+        tfNombre.setEditable(false);
+        tfEscudo.setEditable(false);
     }
 
     /**
@@ -49,9 +56,9 @@ public class VInsertarEquipo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        tfEscudo = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
         bAceptar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
 
@@ -190,18 +197,18 @@ public class VInsertarEquipo extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfEscudo.setBackground(new java.awt.Color(204, 204, 204));
+        tfEscudo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel8.add(tfEscudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 260, 40));
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel9.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfNombre.setBackground(new java.awt.Color(204, 204, 204));
+        tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel9.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 260, 40));
 
@@ -246,7 +253,7 @@ public class VInsertarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void lCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lCerrarMouseClicked
-        Controlador.cancelarInsertarEquipo();
+        Controlador.cancelarBorrarEquipo();
     }//GEN-LAST:event_lCerrarMouseClicked
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
@@ -274,12 +281,26 @@ public class VInsertarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
-
+        try{
+            if(datosCorrectos()){
+                equi= Controlador.buscarEquipo(this.tfNombre.getText());
+                if(equi==null){
+                    Controlador.insertarEquipo(tfNombre.getText(),tfEscudo.getText());
+                    showMessageDialog(null,"Equipo " + tfNombre.getText() +" Insertado");
+                    Controlador.cancelarInsertarEquipo();
+                   }
+                else{
+                    showMessageDialog(null,"Ya existe un equipo con ese Nombre");
+            }
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        Controlador.cancelarInsertarEquipo();
+        Controlador.cancelarBorrarEquipo();
     }//GEN-LAST:event_bCancelarActionPerformed
 
     /**
@@ -299,14 +320,18 @@ public class VInsertarEquipo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEliminarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEliminarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEliminarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEliminarEquipo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -315,7 +340,7 @@ public class VInsertarEquipo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VInsertarEquipo().setVisible(true);
+                new VEliminarEquipo().setVisible(true);
             }
         });
     }
@@ -334,11 +359,15 @@ public class VInsertarEquipo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lCerrar;
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
+    private javax.swing.JTextField tfEscudo;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
+
+    private boolean datosCorrectos() {
+        return false;
+    }
 }
