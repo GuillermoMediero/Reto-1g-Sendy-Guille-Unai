@@ -5,7 +5,7 @@
  */
 package Modelo_BBDD;
 
-import Modelo_UML.Dueno;
+
 import Modelo_UML.Entrenador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

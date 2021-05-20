@@ -291,7 +291,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void lCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lCerrarMouseClicked
-        Controlador.cancelarInsertarDueño();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_lCerrarMouseClicked
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
@@ -331,7 +331,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
                     //buscar  por id_equipo al dueno
                     Controlador.insertarAsistente(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
                     showMessageDialog(null,"Dueño " + tfNombre.getText() +" Insertado");
-                    Controlador.cancelarInsertarEquipo();
+                    Controlador.cerrarVentana(this);
                     
                    }
                 else{
@@ -345,7 +345,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        Controlador.cancelarInsertarDueño();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void cbEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEquiposActionPerformed

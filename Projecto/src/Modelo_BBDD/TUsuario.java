@@ -43,14 +43,12 @@ public class TUsuario {
             Usuario  usu = new Usuario();
             usu.setCorreo(resultado.getString("correo"));
             usu.setClave(resultado.getString("contrasena"));
-            
+            usu.setNombre(resultado.getString("nombre"));
             return usu;
         }
         return null;
     }
 
-    public Usuario consultarUsu(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
    
 }

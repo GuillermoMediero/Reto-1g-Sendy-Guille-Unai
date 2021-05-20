@@ -30,6 +30,7 @@ import Views.equipos.VInsertarEquipo;
 
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
+import javax.swing.JFrame;
 
 /**
  *
@@ -37,6 +38,8 @@ import java.sql.Connection;
  */
 public class Controlador {
 
+    
+    private static String nombre;
     // Variables de las Tablas de la base de datos
     private static BaseDatos bd;
     private static TUsuario tusu;
@@ -85,6 +88,13 @@ public class Controlador {
     private static VEliminarUsuario veu;
     private static VEliminarEquipo vee;
     private static VEliminarAsistente vea;
+    
+    private static VConsultarJugadores vcj;
+    private static VConsultarEntrenador vcen;
+    private static VConsultarDueno vcd;
+    private static VConsultarUsuario vcu;
+    private static VConsultarEquipo vce;
+    private static VConsultarAsistente vca;
 
     public static void main(String[] args) {
         try {
@@ -92,22 +102,22 @@ public class Controlador {
             con = bd.conectar();
 
 
-            /*tadm = new TAdministrador(bd.getCon());
-            tusu = new TUsuario(bd.getCon());
+            //tadm = new TAdministrador(bd.getCon());
+            //tusu = new TUsuario(bd.getCon());
             tasis = new TAsistente(bd.getCon());
-            tdue = new TDueno(bd.getCon());
+            //tdue = new TDueno(bd.getCon());
             tent = new TEntrenador(bd.getCon());
-            tequi = new TEquipo(bd.getCon());
-            tjorn = new TJornada(bd.getCon());
-            tjuga = new TJugador(bd.getCon());
-            tpart = new TPartido(bd.getCon());*/
+            //tequi = new TEquipo(bd.getCon());
+            //tjorn = new TJornada(bd.getCon());
+            //tjuga = new TJugador(bd.getCon());
+            //tpart = new TPartido(bd.getCon());
 
             tadm = new TAdministrador(con);
             tusu = new TUsuario(con);
             //meter entrenador en la tabla asistente
-            tasis = new TAsistente(con,tent); 
+           // tasis = new TAsistente(con,tent); 
             //meter entrenador en la tabla entrenador
-            tent = new TEntrenador(con,tequi);
+            // tent = new TEntrenador(con,tequi);
             tequi = new TEquipo(con);
             tdue = new TDueno(con,tequi);
             tjorn = new TJornada(con);
@@ -131,29 +141,33 @@ public class Controlador {
 
             // Llamar el metodo de la tabla adm para comprobar el adm    
             adm = tadm.consultarAdm(correo, clave);
+           
 
-            if (adm == null) {
+            if (adm == null ) {
 
                 // Si no hay adm con ese correo y clave comprobamos si hay usuario   
                 usu = tusu.consultarUsu(correo, clave);
+                
 
                 if (usu == null) {
                     // Si usuario no existe, error.
                     throw new Exception("Error, El usuario no existe");
                 } else {
-                    llamarPrincipal(Rol.USUARIO);
+                    nombre = usu.getNombre();
+                    llamarPrincipal(Rol.USUARIO,nombre);
                 }
             } else {
-                llamarPrincipal(Rol.ADMINISTRADOR);
+                nombre = adm.getNombre();
+                llamarPrincipal(Rol.ADMINISTRADOR,nombre);
             }
         } catch (Exception gnr) {
             System.out.println(gnr.getClass() + gnr.getMessage() + " Error al iniciar la sesion");
         }
     }
 
-    public static void llamarPrincipal(Rol rol) {
+    public static void llamarPrincipal(Rol rol, String nombre) {
         vl.dispose();
-        vp = new Vprincipal(rol);
+        vp = new Vprincipal(rol,nombre);
         vp.setVisible(true);
     }
 
@@ -293,8 +307,7 @@ public class Controlador {
     }
 
     public static void insertarUsuario(String nombre, String correo, String contrasena) {
-       /* usu = new Usuario(nombre,correo,contrasena);
-        usu.insertarUsuario();*/
+     // tusu.
     }
 
     // Partido 
@@ -317,16 +330,13 @@ public class Controlador {
     }
     
 
-    //Abrir y Cerrar Ventanas
+    //Abrir Ventanas
+    
     public static void abrirInsertarEquipo() {
         vie = new VInsertarEquipo();
         vie.setVisible(true);
     }
-    // Eso no es necesario aquí si puede meter en la vista el codigo "vie.dispose();"
-    public static void cancelarInsertarEquipo() {
-        vie.dispose();
-    }
-
+    
     public static void abrirInsertarJugador() {
         vij = new VInsertarJugadores();
         vij.setVisible(true);
@@ -355,33 +365,9 @@ public class Controlador {
     }
 
 
-    public static void cancelarModificarAsistente() {
-        vma.dispose();
-    }
-
     public static void abrirModificarAsistente() {
         vma = new VModificarAsistente();
         vma.setVisible(true);
-    }
-
-    public static void cancelarModificarDueño() {
-        vmd.dispose();
-    }
-
-    public static void cancelarModificarEntrenador() {
-        vmen.dispose();
-    }
-
-    public static void cancelarModificarJugador() {
-        vmj.dispose();
-    }
-
-    public static void cancelarModificarUsuarios() {
-       vmu.dispose();
-    }
-
-    public static void cancelarModificarEquipo() {
-       vme.dispose();
     }
 
     public static void abrirModificarDueño() {
@@ -410,42 +396,17 @@ public class Controlador {
     }
 
     /*public static String getNombreEquipos(int x) {
-        
-       
+              
     }*/
 
-    public static void cancelarBorrarEquipo() {
-        vee.dispose();
-    }
-
-    public static void cancelarBorrarUsuarios() {
-        veu.dispose();
-    }
-
-    public static void cancelarBorrarJugador() {
-        vej.dispose();
-    }
-
-    public static void cancelarBorrarEntrenador() {
-        veen.dispose();
-    }
-
-    public static void cancelarBorrarAsistente() {
-        vea.dispose();
-    }
-
-    public static void cancelarBorrarDueño() {
-       ved.dispose();
-    }
-
-    /*public static void abrirEliminarEquipo(String nombre) {
+   public static void abrirEliminarEquipo(String nombre) {
         
         
         vee = new VEliminarEquipo();
         vee.setVisible(true);
-    }*/
+   
 
-    /*public static void abrirEliminarJugador(String nombre) {
+    public static void abrirEliminarJugador(String nombre) {
 
         
         vej = new VEliminarJugadores();
@@ -478,30 +439,42 @@ public class Controlador {
         
         veu = new VEliminarUsuario();
         veu.setVisible(true);
-    } */  
-
-    // llaman demasiadas veces el mismo metodo
-    public static void cancelarInsertarJugador() {
-        vij.dispose();
+    }  
+    
+    public static void abrirConsultarUsuario() {
+        vcu = new VConsultarUsuario();
+        vcu.setVisible(true);
     }
 
-    public static void cancelarInsertarEntrenador() {
-        vien.dispose();
+    public static void abrirConsultarDueno() {
+        vcd = new VConsultarDueno();
+        vcd.setVisible(true);
     }
 
-    public static void cancelarInsertarDueño() {
-        vid.dispose();
+    public static void abrirConsultarAsistente() {
+        vca = new VConsultarAsistente();
+        vca.setVisible(true);
     }
 
-    public static void cancelarInsertarAsistente() {
-        via.dispose();
+    public static void abrirConsultarEntrenador() {
+        vcen = new VConsultarEntrenador();
+        vcen.setVisible(true);
     }
 
-    public static void cancelarInsertarUsuarios() {
-        viu.dispose();
+    public static void abrirConsultarJugadores() {
+        vcj = new VConsultarJugadores();
+        vcj.setVisible(true);
     }
 
-   
+    public static void abrirConsultarEquipo() {
+        vce = new VConsultarEquipo();
+        vce.setVisible(true);
+    }
+        
+    public static void cerrarVentana(JFrame aThis) {
+        aThis.dispose();
+    }
+    
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }

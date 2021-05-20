@@ -311,7 +311,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void lCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lCerrarMouseClicked
-        Controlador.cancelarInsertarEntrenador();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_lCerrarMouseClicked
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
@@ -349,7 +349,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
                 if(entre==null){
                     Controlador.insertarEntrenador(tfNombre.getText(),Integer.parseInt(tfSueldo.getText()),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
                     showMessageDialog(null,"Entrenador " + tfNombre.getText() +" Insertado");
-                    Controlador.cancelarInsertarEquipo();
+                    Controlador.cerrarVentana(this);
                    }
                 else{
                     showMessageDialog(null,"Ya existe un Asistente con ese Nombre");
@@ -362,7 +362,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        Controlador.cancelarInsertarEntrenador();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     /**

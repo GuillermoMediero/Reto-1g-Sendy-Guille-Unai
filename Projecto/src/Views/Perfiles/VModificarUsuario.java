@@ -274,7 +274,7 @@ public class VModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void lCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lCerrarMouseClicked
-        Controlador.cancelarModificarUsuarios();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_lCerrarMouseClicked
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
@@ -310,7 +310,7 @@ public class VModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        Controlador.cancelarModificarUsuarios();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     /**

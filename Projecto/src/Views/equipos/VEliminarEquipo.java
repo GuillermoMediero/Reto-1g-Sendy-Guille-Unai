@@ -253,7 +253,7 @@ public class VEliminarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void lCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lCerrarMouseClicked
-        Controlador.cancelarBorrarEquipo();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_lCerrarMouseClicked
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
@@ -287,7 +287,7 @@ public class VEliminarEquipo extends javax.swing.JFrame {
                 if(equi==null){
                     Controlador.insertarEquipo(tfNombre.getText(),tfEscudo.getText());
                     showMessageDialog(null,"Equipo " + tfNombre.getText() +" Insertado");
-                    Controlador.cancelarInsertarEquipo();
+                    Controlador.cerrarVentana(this);
                    }
                 else{
                     showMessageDialog(null,"Ya existe un equipo con ese Nombre");
@@ -300,7 +300,7 @@ public class VEliminarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        Controlador.cancelarBorrarEquipo();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     /**
