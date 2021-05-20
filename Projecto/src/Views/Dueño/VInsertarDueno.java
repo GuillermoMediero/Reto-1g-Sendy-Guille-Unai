@@ -27,6 +27,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
+        //falta llenar a la combobox con la equipo
     }
 
     /**
@@ -324,11 +325,14 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
             if(datosCorrectos()){
-                dueno = Controlador.buscarDueno(this.tfNombre.getText());
+                validarDatosDueno();
+                dueno = Controlador.buscarDueno(Integer.parseInt(this.tfNombre.getText()));
                 if(dueno==null){
+                    //buscar  por id_equipo al dueno
                     Controlador.insertarAsistente(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
                     showMessageDialog(null,"Dueño " + tfNombre.getText() +" Insertado");
                     Controlador.cancelarInsertarEquipo();
+                    
                    }
                 else{
                     showMessageDialog(null,"Ya existe un Dueño con ese Nombre");

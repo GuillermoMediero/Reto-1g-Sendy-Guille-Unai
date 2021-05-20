@@ -317,6 +317,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
            //ese if siempre dará una exception.
             if(datosCorrectos()){
                 asistente = Controlador.buscarAsistente(Integer.parseInt(this.tfNombreAsis.getText()));
+          
                 if(asistente==null){
                     Controlador.insertarAsistente(tfNombreAsis.getText(),tfSueldoAsis.getText(),
                             tfTelefonoAsis.getText(),tfNacionalidadAsis.getText());

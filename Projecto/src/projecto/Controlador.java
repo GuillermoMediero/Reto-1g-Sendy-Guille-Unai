@@ -104,8 +104,10 @@ public class Controlador {
 
             tadm = new TAdministrador(con);
             tusu = new TUsuario(con);
-            tasis = new TAsistente(con); 
-            tent = new TEntrenador(con);
+            //meter entrenador en la tabla asistente
+            tasis = new TAsistente(con,tent); 
+            //meter entrenador en la tabla entrenador
+            tent = new TEntrenador(con,tequi);
             tequi = new TEquipo(con);
             tdue = new TDueno(con,tequi);
             tjorn = new TJornada(con);
@@ -160,8 +162,8 @@ public class Controlador {
         vl = new VentanaLogin();
         vl.setVisible(true);
     }
-    //public static void usuConsultaUltimoPartido(){
-
+    //public static void usuConsultaUltimoJornada(){
+//busqueda en la   base de datos, de manera ordenada por la jornada mas reciente
     //}
     //public static void consultaClasificaciones(){}
     
