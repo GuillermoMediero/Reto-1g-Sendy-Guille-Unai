@@ -204,9 +204,9 @@ create or replace  PROCEDURE  crearcalendario AS
            OR ID_EQUIPOV= v_cursor.eq_visitante);
            select max(p.id_partido) into v_partidov
            from partido p, jornada j 
-           WHERE p.NUM_JORNADA=v_jornada
-           AND (ID_EQUIPOL =v_cursor.eq_local 
-           OR ID_EQUIPOV  =v_cursor.eq_local );
+           WHERE (ID_EQUIPOL v_cursor.eq_local, AND
+           AND ID_EQUIPOV  =v_cursor.eq_visitante ) OR (ID_EQUIPOL= v_cursor.eq_visitante
+           AND ID_EQUIPOV= v_cursor.eq_local);
            IF (v_partidoL is null and v_partidoV is null)  then
            INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES(v_cant,'','',v_jornada,v_cursor.eq_local,v_cursor.eq_visitante);
            end IF;
