@@ -36,9 +36,10 @@ public class Vprincipal extends javax.swing.JFrame {
      * Creates new form Vprincipal
      */
     public Vprincipal() {}
-    public Vprincipal(Rol rol) {
+    public Vprincipal(Rol rol, String nombre) {
         initComponents();
         this.setLocationRelativeTo(null);
+        lNombreUsuario.setText(nombre);
         tipoVista(rol);
         addActionToMenuTables();
         añadirAccionAlMenuIntegrantes();
@@ -332,8 +333,8 @@ public class Vprincipal extends javax.swing.JFrame {
         });
         jPanel4.add(lCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, -1, -1));
 
+        lNombreUsuario.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        lNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(lNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 310, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 620, 30));
@@ -510,6 +511,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar10.add(jLabel79);
 
         lConsultarEquipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        lConsultarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lConsultarEquipoMouseClicked(evt);
+            }
+        });
         jToolBar10.add(lConsultarEquipo);
 
         pEquipos.add(jToolBar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
@@ -558,6 +564,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar4.add(jLabel37);
 
         lConsultarJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        lConsultarJugador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lConsultarJugadorMouseClicked(evt);
+            }
+        });
         jToolBar4.add(lConsultarJugador);
 
         javax.swing.GroupLayout pJugadoresLayout = new javax.swing.GroupLayout(pJugadores);
@@ -619,6 +630,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar5.add(jLabel44);
 
         lConsultarEntrenador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        lConsultarEntrenador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lConsultarEntrenadorMouseClicked(evt);
+            }
+        });
         jToolBar5.add(lConsultarEntrenador);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -684,6 +700,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar6.add(jLabel51);
 
         lConsultarAsistente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        lConsultarAsistente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lConsultarAsistenteMouseClicked(evt);
+            }
+        });
         jToolBar6.add(lConsultarAsistente);
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
@@ -749,6 +770,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar7.add(jLabel58);
 
         lConsultarDueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        lConsultarDueño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lConsultarDueñoMouseClicked(evt);
+            }
+        });
         jToolBar7.add(lConsultarDueño);
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -819,6 +845,11 @@ public class Vprincipal extends javax.swing.JFrame {
         jToolBar11.add(jLabel86);
 
         lConsultarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consultas.png"))); // NOI18N
+        lConsultarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lConsultarUsuarioMouseClicked(evt);
+            }
+        });
         jToolBar11.add(lConsultarUsuario);
 
         pPerfiles.add(jToolBar11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
@@ -989,6 +1020,30 @@ public class Vprincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_lBorrarUsuarioMouseClicked
+
+    private void lConsultarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarEquipoMouseClicked
+        Controlador.abrirConsultarEquipo();
+    }//GEN-LAST:event_lConsultarEquipoMouseClicked
+
+    private void lConsultarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarJugadorMouseClicked
+        Controlador.abrirConsultarJugadores();
+    }//GEN-LAST:event_lConsultarJugadorMouseClicked
+
+    private void lConsultarEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarEntrenadorMouseClicked
+        Controlador.abrirConsultarEntrenador();
+    }//GEN-LAST:event_lConsultarEntrenadorMouseClicked
+
+    private void lConsultarAsistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarAsistenteMouseClicked
+        Controlador.abrirConsultarAsistente();
+    }//GEN-LAST:event_lConsultarAsistenteMouseClicked
+
+    private void lConsultarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarDueñoMouseClicked
+        Controlador.abrirConsultarDueno();
+    }//GEN-LAST:event_lConsultarDueñoMouseClicked
+
+    private void lConsultarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarUsuarioMouseClicked
+        Controlador.abrirConsultarUsuario();
+    }//GEN-LAST:event_lConsultarUsuarioMouseClicked
 
     /**
      * @param args the command line arguments

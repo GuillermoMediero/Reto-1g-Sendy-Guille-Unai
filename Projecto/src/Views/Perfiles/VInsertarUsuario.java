@@ -277,7 +277,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void lCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lCerrarMouseClicked
-        Controlador.cancelarInsertarUsuarios();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_lCerrarMouseClicked
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
@@ -315,7 +315,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
                 if(usu==null){
                     Controlador.insertarUsuario(tfNombre.getText(),tfCorreo.getText(),String.valueOf(this.pfContrasena.getPassword()));
                     showMessageDialog(null,"Usuario" + tfNombre.getText() +" Insertado");
-                    Controlador.cancelarInsertarEquipo();
+                    Controlador.cerrarVentana(this);
                    }
                 else{
                     showMessageDialog(null,"Ya existe un Usuario con ese Nombre");
@@ -328,7 +328,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
-        Controlador.cancelarInsertarUsuarios();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
     /**

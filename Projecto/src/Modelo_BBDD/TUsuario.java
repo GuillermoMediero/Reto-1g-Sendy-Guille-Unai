@@ -43,7 +43,7 @@ public class TUsuario {
             Usuario  usu = new Usuario();
             usu.setCorreo(resultado.getString("correo"));
             usu.setClave(resultado.getString("contrasena"));
-            
+            usu.setNombre(resultado.getString("nombre"));
             return usu;
         }
         return null;

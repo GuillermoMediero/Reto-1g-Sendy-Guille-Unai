@@ -301,7 +301,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void lCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lCerrarMouseClicked
-        Controlador.cancelarInsertarAsistente();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_lCerrarMouseClicked
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
@@ -343,7 +343,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
                             tfTelefonoAsis.getText(),tfNacionalidadAsis.getText());
                     showMessageDialog(null,"Asistente " + tfNombreAsis.getText() +" Insertado");
                    // Desnecesario
-                    Controlador.cancelarInsertarEquipo();
+                    Controlador.cerrarVentana(this);
                    }
                 else{
                     showMessageDialog(null,"Ya existe un Asistente con ese Nombre");
@@ -356,7 +356,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarAsisActionPerformed
 
     private void bCancelarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarAsisActionPerformed
-        Controlador.cancelarInsertarAsistente();
+        Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarAsisActionPerformed
 
     private void tfIdAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdAsisActionPerformed
