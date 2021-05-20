@@ -106,6 +106,8 @@ select * from equipo;
 create or replace PROCEDURE  crearclasificacion AS     
           v_nombre equipo.nombre_equipo%TYPE;
             v_victoria number;
+            v_derrota number;
+            v_puntos number;
         BEGIN
              CREATE OR REPLACE view clasificacion AS
 SELECT DISTINCT e.nombre,(
@@ -117,11 +119,22 @@ SELECT DISTINCT e.nombre,(
               SELECT count(*) 
               FROM PARTIDO 
               WHERE (id_equipol = e.id_equipo AND ResultadoL = '3')
-              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV ='3'))AS victorias INTO v_nombre, v_victoria
+              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV ='3'))AS victorias ,
+        (
+              SELECT count(*) 
+              FROM PARTIDO 
+              WHERE (id_equipol = e.id_equipo AND ResultadoL != '3')
+              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV !='3'))AS DERROTAS,
+        (
+             ( SELECT SUM(ResultadoL) 
+              FROM PARTIDO 
+              WHERE id_equipol = e.id_equipo )+( SELECT SUM(ResultadoV) 
+              FROM PARTIDO 
+              WHERE ID_EQUIPOV = e.id_equipo ))AS PUNTOS INTO v_nombre, v_victoria, v_derrota,v_puntos
             from equipo e, PARTIDO p
             WHERE e.id_equipo=p.id_equipol
             OR e.id_equipo=p.id_equipoV
-            ORDER BY PARTIDOS_JUGADOS DESC, victorias DESC, e.nombre DESC;
+            ORDER BY PARTIDOS_JUGADOS DESC, victorias DESC,PUNTOS DESC, e.nombre DESC,;
         END;
 
 create or replace PROCEDURE  crearjornadas AS 
