@@ -377,7 +377,7 @@ public class VInsertarJugadores extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
              try{
             if(datosCorrectos()){
-                jug = Controlador.buscarJugador(this.tfNombre.getText());
+                jug = Controlador.buscarJugador(tfNombre..getText());
                 if(jug==null){
                     Controlador.insertarJugador(tfNombre.getText(),Integer.parseInt(tfSueldo.getText()),tfNickname.getText(),tfTelefono.getText(),tfNacionalidad.getText(),tfRol.getText(),cbEquipos.getSelectedIndex());
                     showMessageDialog(null,"Jugador " + tfNombre.getText() +" Insertado");

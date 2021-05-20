@@ -59,6 +59,9 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         tfNacionalidadAsis = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        tfIdAsis = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -225,7 +228,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
                 bAceptarAsisActionPerformed(evt);
             }
         });
-        jPanel1.add(bAceptarAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 120, 30));
+        jPanel1.add(bAceptarAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 120, 30));
 
         bCancelarAsis.setBackground(new java.awt.Color(0, 0, 0));
         bCancelarAsis.setForeground(new java.awt.Color(255, 255, 255));
@@ -236,7 +239,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
                 bCancelarAsisActionPerformed(evt);
             }
         });
-        jPanel1.add(bCancelarAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 120, 30));
+        jPanel1.add(bCancelarAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 120, 30));
 
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
@@ -261,6 +264,23 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         jPanel12.add(tfNacionalidadAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 260, 40));
+
+        jLabel6.setText("ID asistente");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
+
+        jPanel10.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tfIdAsis.setBackground(new java.awt.Color(204, 204, 204));
+        tfIdAsis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfIdAsis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdAsisActionPerformed(evt);
+            }
+        });
+        jPanel10.add(tfIdAsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+
+        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 260, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,6 +337,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
            //ese if siempre dará una exception.
             if(datosCorrectos()){
                 asistente = Controlador.buscarAsistente(Integer.parseInt(this.tfNombreAsis.getText()));
+          
                 if(asistente==null){
                     Controlador.insertarAsistente(tfNombreAsis.getText(),tfSueldoAsis.getText(),
                             tfTelefonoAsis.getText(),tfNacionalidadAsis.getText());
@@ -337,6 +358,10 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private void bCancelarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarAsisActionPerformed
         Controlador.cancelarInsertarAsistente();
     }//GEN-LAST:event_bCancelarAsisActionPerformed
+
+    private void tfIdAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdAsisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdAsisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,9 +406,11 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel3;
@@ -395,6 +422,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
+    private javax.swing.JTextField tfIdAsis;
     private javax.swing.JTextField tfNacionalidadAsis;
     private javax.swing.JTextField tfNombreAsis;
     private javax.swing.JTextField tfSueldoAsis;
