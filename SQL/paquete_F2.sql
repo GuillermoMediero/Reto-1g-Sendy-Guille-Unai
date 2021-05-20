@@ -106,9 +106,11 @@ select * from equipo;
 create or replace PROCEDURE  crearclasificacion AS     
           v_nombre equipo.nombre_equipo%TYPE;
             v_victoria number;
+            v_derrota number;
+            v_puntos number;
         BEGIN
              CREATE OR REPLACE view clasificacion AS
-SELECT DISTINCT e.nombre,(
+  SELECT DISTINCT e.nombre,(
               SELECT count(*) 
               FROM PARTIDO 
               wHERE id_equipol = e.id_equipo
@@ -117,11 +119,27 @@ SELECT DISTINCT e.nombre,(
               SELECT count(*) 
               FROM PARTIDO 
               WHERE (id_equipol = e.id_equipo AND ResultadoL = '3')
-              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV ='3'))AS victorias INTO v_nombre, v_victoria
+              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV ='3'))AS victorias ,
+        (
+              SELECT count(*) 
+              FROM PARTIDO 
+              WHERE (id_equipol = e.id_equipo AND ResultadoL <> '3')
+              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV <>'3'))AS DERROTAS,
+        (
+             100*((
+              SELECT count(*) 
+              FROM PARTIDO 
+              WHERE (id_equipol = e.id_equipo AND ResultadoL = '3')
+              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV ='3'))/(
+              SELECT count(*) 
+              FROM PARTIDO 
+              wHERE id_equipol = e.id_equipo
+              OR ID_EQUIPOV = e.id_equipo
+        )))AS PUNTOS 
             from equipo e, PARTIDO p
             WHERE e.id_equipo=p.id_equipol
             OR e.id_equipo=p.id_equipoV
-            ORDER BY PARTIDOS_JUGADOS DESC, victorias DESC, e.nombre DESC;
+            ORDER BY PUNTOS DESC, e.nombre DESC;
         END;
 
 create or replace PROCEDURE  crearjornadas AS 
@@ -137,7 +155,21 @@ v_bucle number(2):=1;
         END LOOP;  
      END; 
 
-
+create or replace function hora (p_jornada number) Return date
+as
+        dia_partido date;
+        cant_partidos number;
+        hora_partido date;
+    begin
+        select fecha into dia_partido 
+        from  jornada 
+        WHERE  NUM_JORNADA=p_jornada;
+        select count(*) into cant_partidos 
+        from partido
+        where NUM_JORNADA=p_jornada;
+        hora_partido:=dia_partido+ (cant_partidos+12)/24;
+        return hora_partido;
+END hora;
 
 create or replace  PROCEDURE  crearcalendario AS        
     BEGIN
@@ -149,27 +181,29 @@ create or replace  PROCEDURE  crearcalendario AS
              WHERE e1.ID_EQUIPO <> e2.ID_EQUIPO;
              v_cursor C%ROWTYPE;
              
-             CURSOR D 
-             IS
-             SELECT NUM_JORNADA 
-             FROM JORNADA ;
-             v_jornada D%ROWTYPE;
+             v_max_jornada JORNADA.NUM_JORNADA%TYPE;
+             v_jornada JORNADA.NUM_JORNADA%TYPE;
              v_partido partido.ID_PARTIDO%TYPE;
-        v_cant number;
+        v_cant date;
         BEGIN
-        FOR v_jornada IN D
-           LOOP
+         SELECT max(NUM_JORNADA ) into v_max_jornada
+             FROM JORNADA ;
              FOR v_cursor IN C
            LOOP
-           select ID_PARTIDO into v_partido
+           v_jornada:=1;
+           while  v_jornada<v_max_jornada
+           LOOP
+           v_cant:=hora(v_jornada );
+           select max(ID_PARTIDO) into v_partido
            from partido p, jornada j 
-           WHERE p.NUM_JORNADA=v_jornada.NUM_JORNADA 
+           WHERE p.NUM_JORNADA=v_jornada
            AND ID_EQUIPOL  in (v_cursor.eq_local , v_cursor.eq_visitante)
            OR ID_EQUIPOV  in (v_cursor.eq_local , v_cursor.eq_visitante);
            IF SQL%NOTFOUND then
-           INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES('12/06/21 18:50:00',null,null,v_jornada.NUM_JORNADA,v_cursor.eq_local,v_cursor.eq_visitante);
+           INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES(v_cant,'','',v_jornada,v_cursor.eq_local,v_cursor.eq_visitante);
            end IF;
+           v_jornada:=v_jornada+1;
            END LOOP;
-          END LOOP; 
+           END LOOP;
        END;
      END;
