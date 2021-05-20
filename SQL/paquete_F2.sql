@@ -144,7 +144,8 @@ create or replace PROCEDURE  crearclasificacion AS
 
 create or replace PROCEDURE  crearjornadas AS 
 v_count number(2):=0;
-v_bucle number(2):=1;
+v_bucle number(2):=2;
+v_fecha date;
     BEGIN 
        SELECT count(*) into v_count FROM  equipo;
        INSERT INTO JORNADA(FECHA) VALUES(sysdate+28); 
@@ -183,23 +184,30 @@ create or replace  PROCEDURE  crearcalendario AS
              
              v_max_jornada JORNADA.NUM_JORNADA%TYPE;
              v_jornada JORNADA.NUM_JORNADA%TYPE;
-             v_partido partido.ID_PARTIDO%TYPE;
+             v_partidoL partido.ID_PARTIDO%TYPE;
+             v_partidoV partido.ID_PARTIDO%TYPE;
         v_cant date;
         BEGIN
-         SELECT max(NUM_JORNADA ) into v_max_jornada
+        SELECT max(NUM_JORNADA )into v_max_jornada
              FROM JORNADA ;
-             FOR v_cursor IN C
+           FOR v_cursor IN C
            LOOP
-           v_jornada:=1;
+            SELECT min(NUM_JORNADA ) into v_jornada
+             FROM JORNADA ;
            while  v_jornada<v_max_jornada
            LOOP
-           v_cant:=hora(v_jornada );
-           select max(ID_PARTIDO) into v_partido
+           v_cant:=hora(v_jornada);
+           select max(p.id_partido) into v_partidol
            from partido p, jornada j 
            WHERE p.NUM_JORNADA=v_jornada
-           AND ID_EQUIPOL  in (v_cursor.eq_local , v_cursor.eq_visitante)
-           OR ID_EQUIPOV  in (v_cursor.eq_local , v_cursor.eq_visitante);
-           IF SQL%NOTFOUND then
+           AND (ID_EQUIPOL= v_cursor.eq_visitante
+           OR ID_EQUIPOV= v_cursor.eq_visitante);
+           select max(p.id_partido) into v_partidov
+           from partido p, jornada j 
+           WHERE p.NUM_JORNADA=v_jornada
+           AND (ID_EQUIPOL =v_cursor.eq_local 
+           OR ID_EQUIPOV  =v_cursor.eq_local );
+           IF (v_partidoL is null and v_partidoV is null)  then
            INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES(v_cant,'','',v_jornada,v_cursor.eq_local,v_cursor.eq_visitante);
            end IF;
            v_jornada:=v_jornada+1;
