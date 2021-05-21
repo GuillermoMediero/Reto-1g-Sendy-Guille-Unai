@@ -10,12 +10,15 @@ import Modelo_UML.Equipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
  * @author ketro
  */
 public class TDueno {
+private ResultSet resultado; 
 private Connection con;
 private TEquipo tequi;
 
@@ -33,7 +36,7 @@ private TEquipo tequi;
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(id_dueno));
 
-        ResultSet resultado = ps.executeQuery();
+        resultado = ps.executeQuery();
         if (resultado.next()) {
            Dueno due;
             due = new Dueno();
@@ -94,5 +97,5 @@ private TEquipo tequi;
             }
         }
     }
-    
+ 
 }
