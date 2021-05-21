@@ -41,7 +41,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
         this.cbEquipos.setSelectedItem(aListaEquipo);
         
     }
-    public void validarDatos(String nombre,String Telefono, String Nacionalidad, int Equipos) throws DatoNoValido{
+    public void validarDatos(String nombre,String Telefono, String Nacionalidad) throws DatoNoValido{
         validaciones.validarnombre(nombre);
     }
     /**
@@ -338,7 +338,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-           validarDatos(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
+           validarDatos(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText());
                 dueno = Controlador.buscarDueno(tfNombre.getText());
                 if(dueno==null){
                     //buscar  por id_equipo al dueno
