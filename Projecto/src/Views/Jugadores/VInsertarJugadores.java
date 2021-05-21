@@ -27,7 +27,6 @@ public class VInsertarJugadores extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        llenarCombobBox();
        
     }
 
@@ -474,12 +473,6 @@ public class VInsertarJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private void llenarCombobBox() {
-       int numero = 6;
-       for(int x = 0; x < 6; x++)
-            cbEquipos.insertItemAt(Controlador.getNombreEquipos(x),x);
-       
-    }
 
     private boolean datosCorrectos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

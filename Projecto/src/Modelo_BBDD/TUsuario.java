@@ -49,6 +49,22 @@ public class TUsuario {
         return null;
     }
 
+     public Usuario buscarUsu(String nombre) throws Exception {
+        String sentencia = "SELECT * FROM usuario where nombre=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, nombre);
     
+        
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+
+            Usuario  usu = new Usuario();
+            usu.setCorreo(resultado.getString("correo"));
+            usu.setClave(resultado.getString("contrasena"));
+            usu.setNombre(resultado.getString("nombre"));
+            return usu;
+        }
+        return null;
+    }
    
 }

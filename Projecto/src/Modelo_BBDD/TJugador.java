@@ -25,12 +25,34 @@ public class TJugador {
         this.tequi = tequi;
     }
 
-      
-    public Jugador buscarJugador(int id_jugador) throws Exception {
+     public Jugador buscarJugadorPK(int id_jugador) throws Exception {
         String sentencia = "SELECT NOMBRE, SUELDO, NICKNAME, TELEFONO, NACIONALIDAD,ROL, ID_EQUIPO FROM JUGADOR"
                 + " WHERE id_jugador=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(id_jugador));
+
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+            Jugador juga;
+            juga = new Jugador();
+            juga.setNombre(resultado.getString("NOMBRE"));
+            juga.setSueldo(resultado.getString("SUELDO"));
+            juga.setNickname(resultado.getString("NICKNAME"));
+            juga.setTelefono(resultado.getString("TELEFONO"));
+            juga.setNacionalidad(resultado.getString("NACIONALIDAD"));
+            juga.setRol(resultado.getString("ROL"));
+            juga.setEquipo(tequi.buscarEquipoPK(Integer.parseInt("ID_EQUIPO")));
+            return juga;
+        } else {
+            return null;
+        }
+    }
+      
+    public Jugador buscarJugador(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, NICKNAME, TELEFONO, NACIONALIDAD,ROL, ID_EQUIPO FROM JUGADOR"
+                + " WHERE id_jugador=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, String.valueOf(nombre));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {

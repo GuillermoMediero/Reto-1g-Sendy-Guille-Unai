@@ -341,7 +341,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
             
             validarDatosAsistente(this.tfNombreAsis.getText(), this.tfSueldoAsis.getText(),
                     this.tfTelefonoAsis.getText(), this.tfNacionalidadAsis.getText());
-            asistente = Controlador.buscarAsistente(Integer.parseInt(this.tfNombreAsis.getText()));
+            asistente = Controlador.buscarAsistente(this.tfNombreAsis.getText());
 
             if (asistente == null) {
                 Controlador.insertarAsistente(tfNombreAsis.getText(), tfSueldoAsis.getText(),

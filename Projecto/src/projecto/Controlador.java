@@ -244,8 +244,8 @@ public class Controlador {
     }
 
     // Equipo
-    public static Equipo buscarEquipo(int id_equipo) throws Exception {
-        equi = tequi.buscarEquipoPK(id_equipo);
+    public static Equipo buscarEquipo(String equipo) throws Exception {
+        equi = tequi.buscarEquipo(equipo);
         return equi;
     }
 
@@ -283,8 +283,8 @@ public class Controlador {
     }
 
     // Jugador
-    public static Jugador buscarJugador(int id_jugador) throws Exception {
-        juga = tjuga.buscarJugador(id_jugador);
+    public static Jugador buscarJugador(String nombre) throws Exception {
+        juga = tjuga.buscarJugador(nombre);
         return juga;
     }
 
@@ -304,7 +304,7 @@ public class Controlador {
     }
 
     public static Usuario buscarUsuario(String nombre) {
-        usu = tusu.consultarUsu(nombre);
+        usu = tusu.buscarUsu(nombre);
         return usu;
     }
 

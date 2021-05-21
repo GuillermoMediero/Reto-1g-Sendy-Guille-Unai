@@ -98,6 +98,27 @@ public class validaciones {
      
     }
     
+        public static void validarnacionalidad(String nacionalidad) throws DatoNoValido {
+      // Comprobar si no esta vacio el dato recibido
+        if (nacionalidad.isEmpty())
+           throw new DatoNoValido("Es obligatorio indicar la nacionalidad");
+       
+      // Expresión regular solo letras y 1 como mínimo
+      Pattern p = Pattern.compile("^[a-zA-Z ]{1,}$");
+      Matcher m = p.matcher(nacionalidad);
+      if (!m.matches())
+          throw new DatoNoValido("El nombre debe estar formado solo por letras");
+    }
     
-    
+      public static void validartelefono(String telefono) throws DatoNoValido {
+      // Comprobar si no esta vacio el dato recibido
+        if (telefono.isEmpty())
+           throw new DatoNoValido("Es obligatorio indicar el nombre");
+       
+      // Expresión regular solo numerico y 1 como mínimo con posibilidad de un coma con obligacion de dos deccimales
+      Pattern p = Pattern.compile("^[0-9 ]{9}?$");
+      Matcher m = p.matcher(telefono);
+      if (!m.matches())
+          throw new DatoNoValido("El telefono debe ser numerico");
+    }
 }
