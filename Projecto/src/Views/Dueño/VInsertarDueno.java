@@ -9,6 +9,7 @@ import Excepciones.DatoNoValido;
 import Modelo_BBDD.TDueno;
 import Modelo_BBDD.TEquipo;
 import Modelo_UML.Dueno;
+import Modelo_UML.Equipo;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -26,15 +27,18 @@ public class VInsertarDueno extends javax.swing.JFrame {
     int xx;
     int xy; 
     Dueno dueno;
+    ArrayList<Equipo> aListaEquipo;
     /**
      * Creates new form InsertarDueño
      */
-    public VInsertarDueno()  {
+    public VInsertarDueno() throws Exception  {
         initComponents();
+        aListaEquipo = Controlador.llenarComboBox();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
+        
         //falta llenar a la combobox con la equipo
-        ArrayList<String> lista = new ArrayList<String>();
+        this.cbEquipos.setSelectedItem(aListaEquipo);
         
     }
     public void validarDatos(String nombre,String Telefono, String Nacionalidad, int Equipos) throws DatoNoValido{
