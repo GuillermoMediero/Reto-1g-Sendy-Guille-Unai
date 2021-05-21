@@ -244,8 +244,13 @@ public class Controlador {
     }
 
     // Equipo
+<<<<<<< HEAD
     public static Equipo buscarEquipo(String equipo) throws Exception {
         equi = tequi.buscarEquipo(equipo);
+=======
+    public static Equipo buscarEquipo(String nombre) throws Exception {
+        equi = tequi.buscarEquipo(nombre);
+>>>>>>> main
         return equi;
     }
 
@@ -303,16 +308,28 @@ public class Controlador {
         tjuga.borrarJugador(nombre);
     }
 
+<<<<<<< HEAD
     public static Usuario buscarUsuario(String nombre) {
         usu = tusu.buscarUsu(nombre);
+=======
+    // Usuario
+    public static Usuario buscarUsuario(String correo,String contrasena) throws Exception {
+        usu = tusu.consultarUsu(correo,contrasena);
+>>>>>>> main
         return usu;
     }
 
-    public static void insertarUsuario(String nombre, String correo, String contrasena) {
-        // tusu.
+    public static void insertarUsuario(String nombre, String correo, String contrasena) throws Exception {
+        tusu.insertarUsuario(usu);
+    }
+    public static void modificarUsuario() throws Exception{
+     tusu.modificarUsuario(usu);
+    }
+    public static void borrarUsuario(int id_usuario) throws Exception{
+     tusu.borrarUsuario(id_usuario);
     }
 
-    // Partido 
+// Partido 
     public static Partido buscarPartido(int id_partido) throws Exception {
         part = tpart.buscarPartido(id_partido);
         return part;
@@ -352,11 +369,15 @@ public class Controlador {
         via.setVisible(true);
     }
 
+<<<<<<< HEAD
     public static void abrirInsertarDueno() throws Exception {
+=======
+   /* public static void abrirInsertarDueno() {
+>>>>>>> main
 
         vid = new VInsertarDueno();
         vid.setVisible(true);
-    }
+    }*/
 
     public static void abrirInsertarUsuario() {
         viu = new VInsertarUsuario();
@@ -396,14 +417,16 @@ public class Controlador {
     /*public static String getNombreEquipos(int x) {
               
     }*/
+<<<<<<< HEAD
     public static void abrirEliminarEquipo(String nombre) throws Exception {
         equi = buscarEquipo(nombre);
         vee = new VEliminarEquipo(equi.getNombre(),equi.getEscudo());
+=======
+    public static void abrirEliminarEquipo(String nombre) {
+        vee = new VEliminarEquipo();
+>>>>>>> main
         vee.setVisible(true);
-   
-
-    
-
+    }
     public static void abrirEliminarJugador(String nombre) {
         
         vej = new VEliminarJugadores();
