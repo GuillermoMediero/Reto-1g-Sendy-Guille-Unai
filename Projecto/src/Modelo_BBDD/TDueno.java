@@ -58,7 +58,7 @@ private TEquipo tequi;
             due.setTelefono(resultado.getString("TELEFONO"));
             due.setNacionalidad(resultado.getString("NACIONALIDAD"));
             // Como por un atributo tipo objeto?
-            due.setId_equipo(tequi.buscarEquipoPK(Integer.getInteger("ID_EQUIPO")));
+            due.setId_equipo(tequi.buscarEquipo((String.valueOf("ID_EQUIPO"))));
             return due;
         } else {
             return null;

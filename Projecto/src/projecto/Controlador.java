@@ -211,8 +211,8 @@ public class Controlador {
         return due;
     }
 
-    public static void insertarDueno(String nombre, String telefono, String nacionalidad, int equipos) throws Exception {
-        due = new Dueno(nombre, telefono, nacionalidad, equipos);
+    public static void insertarDueno(String nombre, String telefono, String nacionalidad, int equipo) throws Exception {
+        due = new Dueno(nombre, telefono, nacionalidad, equipo);
         tdue.insertarDueno(due);
     }
 

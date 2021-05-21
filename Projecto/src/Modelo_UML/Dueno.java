@@ -15,10 +15,20 @@ public class Dueno extends Integrante{
     public Dueno() {
     }
 
+    public Dueno(Equipo id_equipo) {
+        this.id_equipo = id_equipo;
+    }
+
     public Dueno(Equipo id_equipo, int id, String nombre, String telefono, String nacionalidad) {
         super(id, nombre, telefono, nacionalidad);
         this.id_equipo = id_equipo;
     }
+
+    public Dueno(String nombre, String telefono, String nacionalidad, String equipo) {
+       
+    }
+
+    
 
     public Equipo getId_equipo() {
         return id_equipo;
