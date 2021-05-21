@@ -204,9 +204,10 @@ public class Controlador {
         due = tdue.buscarDueno(id_dueno);
         return due;
     }
-
-    public static void insertarDueno() throws Exception {
-        tdue.insertarDueno(due);
+    
+     public static void insertarDueno(String text, String text0, String text1, int selectedIndex) throws Exception {
+         due = new Dueno();
+         tdue.insertarDueno(due);
     }
 
     public static void borrarDueno(int id_dueno) throws Exception {
@@ -223,8 +224,7 @@ public class Controlador {
         return ent;
     }
 
-    public static void insertarEntrenador(String nombre, int sueldo, 
-            String telefono, String nacionalidad, int equipo) throws Exception {
+    public static void insertarEntrenador(String nombre, int sueldo,String telefono, String nacionalidad, int equipo) throws Exception {
         ent = new Entrenador();
         tent.insertarEntrenador(ent);
     }
@@ -472,6 +472,8 @@ public class Controlador {
     public static void cerrarVentana(JFrame aThis) {
         aThis.dispose();
     }
+
+   
     
     public enum Rol {
         USUARIO, ADMINISTRADOR

@@ -5,7 +5,9 @@
  */
 package Views.Dueño;
 
+import Modelo_BBDD.TDueno;
 import Modelo_UML.Dueno;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -28,6 +30,8 @@ public class VInsertarDueno extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
         //falta llenar a la combobox con la equipo
+        ArrayList<String> lista = new ArrayList<String>();
+        llenarComboBox();
     }
 
     /**
@@ -268,7 +272,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
                 cbEquiposActionPerformed(evt);
             }
         });
-        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 250, 60));
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 260, 40));
 
@@ -325,11 +329,10 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
             if(datosCorrectos()){
-                validarDatosDueno();
                 dueno = Controlador.buscarDueno(Integer.parseInt(this.tfNombre.getText()));
                 if(dueno==null){
                     //buscar  por id_equipo al dueno
-                    Controlador.insertarAsistente(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
+                    Controlador.insertarDueno(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
                     showMessageDialog(null,"Dueño " + tfNombre.getText() +" Insertado");
                     Controlador.cerrarVentana(this);
                     
