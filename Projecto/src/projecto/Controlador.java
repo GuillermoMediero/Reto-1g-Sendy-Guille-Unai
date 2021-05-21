@@ -38,9 +38,7 @@ import javax.swing.JFrame;
  */
 public class Controlador {
 
-    
-    private static String nombre;
-    // Variables de las Tablas de la base de datos
+  // Variables de las Tablas de la base de datos
     private static BaseDatos bd;
     private static TUsuario tusu;
     private static TAdministrador tadm;
@@ -64,53 +62,53 @@ public class Controlador {
     private static Jugador juga;
     private static Partido part;
 
-    // Variables de las Ventanas
+    // Creación de las Variables de las Ventanas
     private static VentanaLogin vl;
     private static Vprincipal vp;
+    
+    // Ventanas Equipo
     private static VInsertarEquipo vie;
-
-    private static VInsertarJugadores vij;
-    private static VInsertarEntrenadores vien;
-    private static VInsertarDueno vid;
-    private static VInsertarAsistente via;
-    private static VModificarAsistente vma;
-    private static VInsertarUsuario viu;
-
-    private static VModificarJugadores vmj;
-    private static VModificarEntrenadores vmen;
-    private static VModificarDueno vmd;
-    private static VModificarUsuario vmu;
     private static VModificarEquipo vme;
-    
-    private static VEliminarJugadores vej;
-    private static VEliminarEntrenadores veen;
-    private static VEliminarDueno ved;
-    private static VEliminarUsuario veu;
     private static VEliminarEquipo vee;
-    private static VEliminarAsistente vea;
-    
-    private static VConsultarJugadores vcj;
-    private static VConsultarEntrenador vcen;
-    private static VConsultarDueno vcd;
-    private static VConsultarUsuario vcu;
     private static VConsultarEquipo vce;
+    
+    // Ventanas Jugadores
+    private static VInsertarJugadores vij;
+    private static VModificarJugadores vmj;
+    private static VEliminarJugadores vej;
+    private static VConsultarJugadores vcj;
+    
+    // Ventanas Entrenadore
+    private static VInsertarEntrenadores vien;
+    private static VModificarEntrenadores vmen;
+    private static VEliminarEntrenadores veen;
+    private static VConsultarEntrenador vcen;
+    
+    // Ventanas Dueno
+    private static VInsertarDueno vid;
+    private static VModificarDueno vmd;
+    private static VEliminarDueno ved;
+    private static VConsultarDueno vcd;
+    
+    // Ventanas Asistente
+    private static VInsertarAsistente via;    
+    private static VModificarAsistente vma;
+    private static VEliminarAsistente vea;
     private static VConsultarAsistente vca;
+    
+    // Ventanas Usuarios
+    private static VInsertarUsuario viu;
+    private static VModificarUsuario vmu;
+    private static VEliminarUsuario veu;
+    private static VConsultarUsuario vcu;
+   
+    // Otras Variables 
+    private static String nombre;
 
     public static void main(String[] args) {
         try {
             bd = new BaseDatos();
             con = bd.conectar();
-
-
-            //tadm = new TAdministrador(bd.getCon());
-            //tusu = new TUsuario(bd.getCon());
-            tasis = new TAsistente(bd.getCon());
-            //tdue = new TDueno(bd.getCon());
-            tent = new TEntrenador(bd.getCon());
-            //tequi = new TEquipo(bd.getCon());
-            //tjorn = new TJornada(bd.getCon());
-            //tjuga = new TJugador(bd.getCon());
-            //tpart = new TPartido(bd.getCon());
 
             tadm = new TAdministrador(con);
             tusu = new TUsuario(con);
