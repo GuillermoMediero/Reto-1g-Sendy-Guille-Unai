@@ -22,7 +22,26 @@ public class TAsistente {
     
    
     // Buscar porque no me funciona la busqueda *nullpointerException
-    public Asistente buscarAsistente(int id_asistente) throws Exception {
+    public Asistente buscarAsistente(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE NOMBRE=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, String.valueOf(nombre));
+
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+            Asistente asis;
+            asis = new Asistente();
+            asis.setNombre(resultado.getString("NOMBRE"));
+            asis.setSueldo(resultado.getString("SUELDO"));
+            asis.setTelefono(resultado.getString("TELEFONO"));
+            asis.setNacionalidad(resultado.getString("NACIONALIDAD"));
+
+            return asis;
+        } else {
+            return null;
+        }
+    }
+     public Asistente buscarAsistentePK(int id_asistente) throws Exception {
         String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE id_asistente=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(id_asistente));
@@ -56,7 +75,7 @@ public class TAsistente {
         if (resultado != 1) {
             throw new Exception("El numero de filas insertadas no es uno");
         }
-        //retornar asistente por si quiero ensenar un mensaje "xxxxx insertado"
+        // Puede retornar asistente por si quiero ensenar un mensaje "xxxxx insertado"
     }
 
     public void modificarAsistente(Asistente asis) throws Exception {

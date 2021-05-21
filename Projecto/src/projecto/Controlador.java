@@ -178,8 +178,8 @@ public class Controlador {
     //public static void consultaClasificaciones(){}
     
 // Asistente
-    public static Asistente buscarAsistente(int id_asistente) throws Exception {
-        asis = tasis.buscarAsistente(id_asistente);
+    public static Asistente buscarAsistente(String nombre) throws Exception {
+        asis = tasis.buscarAsistente(nombre);
         return asis;
     }
 

@@ -1,4 +1,3 @@
-
 package Views.Asistentes;
 
 import Modelo_UML.Asistente;
@@ -13,9 +12,11 @@ import static javax.swing.JOptionPane.*;
  * @author 1GDAW12
  */
 public class VInsertarAsistente extends javax.swing.JFrame {
+
     int xx;
-    int xy; 
+    int xy;
     Asistente asistente;
+
     /**
      * Creates new form VInsertarAsistente
      */
@@ -24,10 +25,10 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
     }
-    
-    public void validarDatosAsistente(String n,String s,String t,String na){}
-    
-    
+
+    public void validarDatosAsistente(String n, String s, String t, String na) {
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -311,24 +312,24 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel4MouseDragged
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreAsisActionPerformed
@@ -336,25 +337,23 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreAsisActionPerformed
 
     private void bAceptarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarAsisActionPerformed
-       try{
-           //ese if siempre dará una exception.
-                validarDatosAsistente(this.tfNombreAsis.getText(),this.tfSueldoAsis.getText(),
-                        this.tfTelefonoAsis.getText(),this.tfNacionalidadAsis.getText());
-                asistente = Controlador.buscarAsistente(Integer.parseInt(this.tfNombreAsis.getText()));
-          
-                if(asistente==null){
-                    Controlador.insertarAsistente(tfNombreAsis.getText(),tfSueldoAsis.getText(),
-                            tfTelefonoAsis.getText(),tfNacionalidadAsis.getText());
-                    showMessageDialog(null,"Asistente " + tfNombreAsis.getText() +" Insertado");
-                   // Cerrar ventanas
-                    Controlador.cerrarVentana(this);
-                   }
-                else{
-                    showMessageDialog(null,"Ya existe un Asistente con ese Nombre");
+        try {
+            
+            validarDatosAsistente(this.tfNombreAsis.getText(), this.tfSueldoAsis.getText(),
+                    this.tfTelefonoAsis.getText(), this.tfNacionalidadAsis.getText());
+            asistente = Controlador.buscarAsistente(Integer.parseInt(this.tfNombreAsis.getText()));
+
+            if (asistente == null) {
+                Controlador.insertarAsistente(tfNombreAsis.getText(), tfSueldoAsis.getText(),
+                        tfTelefonoAsis.getText(), tfNacionalidadAsis.getText());
+                showMessageDialog(null, "Asistente " + tfNombreAsis.getText() + " Insertado");
+                // Cerrar ventanas
+                Controlador.cerrarVentana(this);
+            } else {
+                showMessageDialog(null, "Ya existe un Asistente con ese Nombre");
             }
-       
-        }
-        catch(Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_bAceptarAsisActionPerformed
@@ -433,5 +432,4 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefonoAsis;
     // End of variables declaration//GEN-END:variables
 
-   
 }
