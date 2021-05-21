@@ -13,14 +13,19 @@ import java.sql.ResultSet;
 public class TAsistente {
 
     private Connection con;
+    private TEntrenador tent;
 
-    public TAsistente(Connection con) {
+    public TAsistente(Connection con, TEntrenador tent) {
+        this.con = con;
+        this.tent = tent;
     }
+    
+   
     // Buscar porque no me funciona la busqueda *nullpointerException
-    public Asistente buscarAsistente(int id_asistente) throws Exception {
-        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE id_asistente=?";
+    public Asistente buscarAsistente(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(id_asistente));
+        ps.setString(1, String.valueOf(nombre));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
@@ -34,6 +39,18 @@ public class TAsistente {
             return asis;
         } else {
             return null;
+        }
+    }
+     public int buscarAsistentePK(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE nombre=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, String.valueOf(nombre));
+
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+            return resultado.getInt("id_asistente");
+        } else {
+            return 0;
         }
     }
 
@@ -51,7 +68,7 @@ public class TAsistente {
         if (resultado != 1) {
             throw new Exception("El numero de filas insertadas no es uno");
         }
-        //retornar asistente por si quiero ensenar un mensaje "xxxxx insertado"
+        // Puede retornar asistente por si quiero ensenar un mensaje "xxxxx insertado"
     }
 
     public void modificarAsistente(Asistente asis) throws Exception {

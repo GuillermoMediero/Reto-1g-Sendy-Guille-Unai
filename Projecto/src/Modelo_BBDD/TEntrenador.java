@@ -17,9 +17,14 @@ import java.sql.ResultSet;
  */
 public class TEntrenador {
 private Connection con;
-    public TEntrenador(Connection con) {
-     
+private TEquipo tequi;
+
+    public TEntrenador(Connection con, TEquipo tequi) {
+        this.con = con;
+        this.tequi = tequi;
     }
+
+
     
       public Entrenador buscarEntrenador(String nombre) throws Exception {
         String sentencia = "SELECT NOMBRE,SUELDO,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE NOMBRE=?";
