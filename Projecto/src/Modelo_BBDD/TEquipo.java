@@ -24,12 +24,11 @@ public class TEquipo {
     public TEquipo(Connection con) {
         this.con = con;
     }
-
-     public Equipo buscarEquipoPK(int id_equipo) throws Exception {
+    public Equipo buscarEquipo(String nombre) throws Exception {
         String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO"
-                + " WHERE ID_EQUIPO=?";
+                + " WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(id_equipo));
+        ps.setString(1, String.valueOf(nombre));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
@@ -41,6 +40,21 @@ public class TEquipo {
             return equi;
         } else {
             return null;
+        }
+    }
+    
+     public int buscarEquipoPK(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO"
+                + " WHERE NOMBRE=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, String.valueOf(nombre));
+
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+     
+            return resultado.getInt("id_equipo");
+        } else {
+            return 0;
         }
     }
 

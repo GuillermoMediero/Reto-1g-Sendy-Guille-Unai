@@ -107,6 +107,7 @@ public class Controlador {
    
     // Otras Variables 
     private static String nombre;
+    private static ArrayList aListaEquipo;
 
     public static void main(String[] args) {
         try {
@@ -174,6 +175,12 @@ public class Controlador {
         vp.dispose();
         vl = new VentanaLogin();
         vl.setVisible(true);
+    }
+    public static ArrayList llenarComboBox(){
+        aListaEquipo = new ArrayList();
+        tequi.
+        for()
+    
     }
     //public static void usuConsultaUltimoJornada(){
 //busqueda en la   base de datos, de manera ordenada por la jornada mas reciente
