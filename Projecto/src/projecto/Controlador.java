@@ -303,16 +303,23 @@ public class Controlador {
         tjuga.borrarJugador(nombre);
     }
 
-    public static Usuario buscarUsuario(String nombre) {
-        usu = tusu.consultarUsu(nombre);
+    // Usuario
+    public static Usuario buscarUsuario(String correo,String contrasena) throws Exception {
+        usu = tusu.consultarUsu(correo,contrasena);
         return usu;
     }
 
-    public static void insertarUsuario(String nombre, String correo, String contrasena) {
-        // tusu.
+    public static void insertarUsuario(String nombre, String correo, String contrasena) throws Exception {
+        tusu.insertarUsuario(usu);
+    }
+    public static void modificarUsuario() throws Exception{
+     tusu.modificarUsuario(usu);
+    }
+    public static void borrarUsuario(int id_usuario) throws Exception{
+     tusu.borrarUsuario(id_usuario);
     }
 
-    // Partido 
+// Partido 
     public static Partido buscarPartido(int id_partido) throws Exception {
         part = tpart.buscarPartido(id_partido);
         return part;
