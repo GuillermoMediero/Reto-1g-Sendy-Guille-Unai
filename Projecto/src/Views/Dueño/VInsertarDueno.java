@@ -5,6 +5,7 @@
  */
 package Views.Dueño;
 
+import Excepciones.DatoNoValido;
 import Modelo_BBDD.TDueno;
 import Modelo_BBDD.TEquipo;
 import Modelo_UML.Dueno;
@@ -15,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
+import validaciones.validaciones;
 
 /**
  *
@@ -35,7 +37,9 @@ public class VInsertarDueno extends javax.swing.JFrame {
         ArrayList<String> lista = new ArrayList<String>();
         
     }
-
+    public void validarDatos(String nombre,String Telefono, String Nacionalidad, int Equipos) throws DatoNoValido{
+        validaciones.validarnombre(nombre);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,7 +74,6 @@ public class VInsertarDueno extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         cbEquipos = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -279,9 +282,6 @@ public class VInsertarDueno extends javax.swing.JFrame {
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 260, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, -1, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -334,8 +334,8 @@ public class VInsertarDueno extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-            if(datosCorrectos()){
-                dueno = Controlador.buscarDueno(Integer.parseInt(this.tfNombre.getText()));
+           validarDatos(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
+                dueno = Controlador.buscarDueno(tfNombre.getText());
                 if(dueno==null){
                     //buscar  por id_equipo al dueno
                     Controlador.insertarDueno(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
@@ -347,7 +347,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
                     showMessageDialog(null,"Ya existe un Dueño con ese Nombre");
             }
         }
-        }
+        
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -403,7 +403,6 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
     private javax.swing.JComboBox<String> cbEquipos;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -428,7 +427,5 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

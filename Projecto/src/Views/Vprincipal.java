@@ -106,6 +106,8 @@ public class Vprincipal extends javax.swing.JFrame {
         lIntegrantes2 = new javax.swing.JLabel();
         pJornadas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         pClasificaciones = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -425,21 +427,32 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setText("Jornadas");
 
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
         javax.swing.GroupLayout pJornadasLayout = new javax.swing.GroupLayout(pJornadas);
         pJornadas.setLayout(pJornadasLayout);
         pJornadasLayout.setHorizontalGroup(
             pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pJornadasLayout.createSequentialGroup()
-                .addGap(252, 252, 252)
-                .addComponent(jLabel2)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pJornadasLayout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jLabel2))
+                    .addGroup(pJornadasLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         pJornadasLayout.setVerticalGroup(
             pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pJornadasLayout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jLabel2)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jPanel1.add(pJornadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
@@ -1358,7 +1371,9 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JToolBar jToolBar10;
     private javax.swing.JToolBar jToolBar11;
     private javax.swing.JToolBar jToolBar4;
