@@ -13,9 +13,14 @@ import java.sql.ResultSet;
 public class TAsistente {
 
     private Connection con;
+    private TEntrenador tent;
 
-    public TAsistente(Connection con) {
+    public TAsistente(Connection con, TEntrenador tent) {
+        this.con = con;
+        this.tent = tent;
     }
+    
+   
     // Buscar porque no me funciona la busqueda *nullpointerException
     public Asistente buscarAsistente(int id_asistente) throws Exception {
         String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE id_asistente=?";

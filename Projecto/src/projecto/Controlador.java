@@ -114,10 +114,8 @@ public class Controlador {
 
             tadm = new TAdministrador(con);
             tusu = new TUsuario(con);
-            //meter entrenador en la tabla asistente
-           // tasis = new TAsistente(con,tent); 
-            //meter entrenador en la tabla entrenador
-            // tent = new TEntrenador(con,tequi);
+            tasis = new TAsistente(con,tent); 
+            tent = new TEntrenador(con,tequi);
             tequi = new TEquipo(con);
             tdue = new TDueno(con,tequi);
             tjorn = new TJornada(con);
