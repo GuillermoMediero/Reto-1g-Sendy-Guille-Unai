@@ -359,11 +359,11 @@ public class Controlador {
         via.setVisible(true);
     }
 
-    public static void abrirInsertarDueno() {
+   /* public static void abrirInsertarDueno() {
 
         vid = new VInsertarDueno();
         vid.setVisible(true);
-    }
+    }*/
 
     public static void abrirInsertarUsuario() {
         viu = new VInsertarUsuario();
@@ -404,13 +404,9 @@ public class Controlador {
               
     }*/
     public static void abrirEliminarEquipo(String nombre) {
-
         vee = new VEliminarEquipo();
         vee.setVisible(true);
-   
-
-    
-
+    }
     public static void abrirEliminarJugador(String nombre) {
 
         vej = new VEliminarJugadores();
