@@ -307,8 +307,7 @@ public class Controlador {
     }
 
     public static void insertarUsuario(String nombre, String correo, String contrasena) {
-       /* usu = new Usuario(nombre,correo,contrasena);
-        usu.insertarUsuario();*/
+     // tusu.
     }
 
     // Partido 
@@ -331,36 +330,13 @@ public class Controlador {
     }
     
 
-    //Abrir y Cerrar Ventanas
-      public static void cancelarInsertarJugador() {
-        vij.dispose();
-    }
-
-    public static void cancelarInsertarEntrenador() {
-        vien.dispose();
-    }
-
-    public static void cancelarInsertarDueño() {
-        vid.dispose();
-    }
-
-    public static void cancelarInsertarAsistente() {
-        via.dispose();
-    }
-
-    public static void cancelarInsertarUsuarios() {
-        viu.dispose();
-    }
+    //Abrir Ventanas
     
     public static void abrirInsertarEquipo() {
         vie = new VInsertarEquipo();
         vie.setVisible(true);
     }
-    // Eso no es necesario aquí si puede meter en la vista el codigo "vie.dispose();"
-    public static void cancelarInsertarEquipo() {
-        vie.dispose();
-    }
-
+    
     public static void abrirInsertarJugador() {
         vij = new VInsertarJugadores();
         vij.setVisible(true);
@@ -389,33 +365,9 @@ public class Controlador {
     }
 
 
-    public static void cancelarModificarAsistente() {
-        vma.dispose();
-    }
-
     public static void abrirModificarAsistente() {
         vma = new VModificarAsistente();
         vma.setVisible(true);
-    }
-
-    public static void cancelarModificarDueño() {
-        vmd.dispose();
-    }
-
-    public static void cancelarModificarEntrenador() {
-        vmen.dispose();
-    }
-
-    public static void cancelarModificarJugador() {
-        vmj.dispose();
-    }
-
-    public static void cancelarModificarUsuarios() {
-       vmu.dispose();
-    }
-
-    public static void cancelarModificarEquipo() {
-       vme.dispose();
     }
 
     public static void abrirModificarDueño() {
@@ -444,42 +396,17 @@ public class Controlador {
     }
 
     /*public static String getNombreEquipos(int x) {
-        
-       
+              
     }*/
 
-    public static void cancelarBorrarEquipo() {
-        vee.dispose();
-    }
-
-    public static void cancelarBorrarUsuarios() {
-        veu.dispose();
-    }
-
-    public static void cancelarBorrarJugador() {
-        vej.dispose();
-    }
-
-    public static void cancelarBorrarEntrenador() {
-        veen.dispose();
-    }
-
-    public static void cancelarBorrarAsistente() {
-        vea.dispose();
-    }
-
-    public static void cancelarBorrarDueño() {
-       ved.dispose();
-    }
-
-    /*public static void abrirEliminarEquipo(String nombre) {
+   public static void abrirEliminarEquipo(String nombre) {
         
         
         vee = new VEliminarEquipo();
         vee.setVisible(true);
-    }*/
+   
 
-    /*public static void abrirEliminarJugador(String nombre) {
+    public static void abrirEliminarJugador(String nombre) {
 
         
         vej = new VEliminarJugadores();
@@ -512,10 +439,7 @@ public class Controlador {
         
         veu = new VEliminarUsuario();
         veu.setVisible(true);
-    } */  
-
-    // llaman demasiadas veces el mismo metodo
-  
+    }  
     
     public static void abrirConsultarUsuario() {
         vcu = new VConsultarUsuario();
@@ -547,30 +471,6 @@ public class Controlador {
         vce.setVisible(true);
     }
         
-    public static void cancelarConsultaAsistente() {
-        vca.dispose();
-    }
-
-    public static void cancelarConsultaDueno() {
-        vcd.dispose();
-    }
-
-    public static void cancelarConsultaEntrenador() {
-        vcen.dispose();
-    }
-
-    public static void cancelarConsultaJugador() {
-        vcj.dispose();
-    }
-
-    public static void cancelarConsultaUsuarios() {
-       vcu.dispose();
-    }
-
-    public static void cancelarConsultaEquipos() {
-        vce.dispose();
-    }
-
     public static void cerrarVentana(JFrame aThis) {
         aThis.dispose();
     }

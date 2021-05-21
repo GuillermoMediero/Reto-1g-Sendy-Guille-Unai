@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/1GDAW12/Desktop/141GA/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_UML/Usuario.java</file>
             <file>file:/C:/Users/1GDAW12/Desktop/141GA/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Entrenadores/VModificarEntrenadores.java</file>
             <file>file:/C:/Users/1GDAW12/Desktop/141GA/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Perfiles/VEliminarUsuario.java</file>
@@ -39,6 +40,17 @@
             <file>file:/C:/Users/1GDAW12/Desktop/141GA/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Perfiles/VInsertarUsuario.java</file>
             <file>file:/C:/Users/1GDAW12/Desktop/141GA/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Dueño/VInsertarDueno.java</file>
             <file>file:/C:/Users/1GDAW12/Desktop/141GA/Reto-1g-Sendy-Guille-Unai/Projecto/src/projecto/Controlador.java</file>
+=======
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/TAdministrador.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/projecto/Controlador.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Asistentes/VModificarAsistente.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/VentanaLogin.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/TAsistente.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/TEntrenador.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/TUsuario.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/TDueno.java</file>
+            <file>file:/C:/Users/1GDAW10/Desktop/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/BaseDatos.java</file>
+>>>>>>> main
         </group>
     </open-files>
 </project-private>
