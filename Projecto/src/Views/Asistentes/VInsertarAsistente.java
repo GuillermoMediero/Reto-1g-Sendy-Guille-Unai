@@ -24,7 +24,10 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
     }
+    
     public void validarDatosAsistente(String n,String s,String t,String na){}
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -335,20 +338,21 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private void bAceptarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarAsisActionPerformed
        try{
            //ese if siempre dará una exception.
-            if(datosCorrectos()){
+                validarDatosAsistente(this.tfNombreAsis.getText(),this.tfSueldoAsis.getText(),
+                        this.tfTelefonoAsis.getText(),this.tfNacionalidadAsis.getText());
                 asistente = Controlador.buscarAsistente(Integer.parseInt(this.tfNombreAsis.getText()));
           
                 if(asistente==null){
                     Controlador.insertarAsistente(tfNombreAsis.getText(),tfSueldoAsis.getText(),
                             tfTelefonoAsis.getText(),tfNacionalidadAsis.getText());
                     showMessageDialog(null,"Asistente " + tfNombreAsis.getText() +" Insertado");
-                   // Desnecesario
+                   // Cerrar ventanas
                     Controlador.cerrarVentana(this);
                    }
                 else{
                     showMessageDialog(null,"Ya existe un Asistente con ese Nombre");
             }
-        }
+       
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -429,7 +433,5 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefonoAsis;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
