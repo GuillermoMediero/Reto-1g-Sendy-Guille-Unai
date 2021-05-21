@@ -19,8 +19,9 @@ import java.util.ArrayList;
  */
 public class TEquipo {
     private Statement s;
-     private Connection con;
-
+    private Connection con;
+    ArrayList<Equipo> aListEquipo;
+    
     public TEquipo(Connection con) {
         this.con = con;
     }
@@ -100,6 +101,26 @@ public class TEquipo {
                 throw new Exception("Error a la hora de eliminar el Equipo");
             }
         }
+    }
+    
+    public  ArrayList<Equipo> cogerEquipos() throws Exception{
+        aListEquipo= new ArrayList();
+        String sentencia = "SELECT NOMBRE FROM EQUIPO";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+ 
+        ResultSet resultado = ps.executeQuery();
+        
+        while (resultado.next()) {
+            Equipo equi;
+            equi = new Equipo();
+            equi.setNombre(resultado.getString("NOMBRE"));
+     
+           aListEquipo.add(equi);
+        } 
+        if ( aListEquipo.isEmpty())
+           throw new Exception("no se ha encontrado ningun equipo");
+        return aListEquipo;   
+        
     }
     
 }

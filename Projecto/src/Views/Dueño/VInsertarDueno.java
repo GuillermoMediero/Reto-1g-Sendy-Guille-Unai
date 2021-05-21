@@ -36,12 +36,16 @@ public class VInsertarDueno extends javax.swing.JFrame {
     public VInsertarDueno() throws Exception  {
         initComponents();
         aListaEquipo = Controlador.llenarComboBox();
+        llenado();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        
-        //falta llenar a la combobox con la equipo
-        this.cbEquipos.setSelectedItem(aListaEquipo);
-        
+               
+    }
+    
+       public void llenado() {
+        for (int i=0; i<aListaEquipo.size(); i++){
+        cbEquipos.insertItemAt(aListaEquipo.get(i).getNombre(), i);
+        }
     }
     public void validarDatos(String nombre,String Telefono, String Nacionalidad) throws DatoNoValido{
         validaciones.validarnombre(nombre);
@@ -365,7 +369,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void cbEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEquiposActionPerformed
-        // TODO add your handling code here:
+        // Hacer metodo para coger el nombre y cambiar por id
     }//GEN-LAST:event_cbEquiposActionPerformed
 
     /**

@@ -172,11 +172,10 @@ public class Controlador {
         vl.setVisible(true);
     }
 
-    public static ArrayList llenarComboBox() throws Exception {
+    public static ArrayList <Equipo> llenarComboBox() throws Exception {
         aListaEquipo = new ArrayList();
-        for (Equipo e : aListaEquipo) {
-            aListaEquipo.add(e);
-        }
+        aListaEquipo = tequi.cogerEquipos();
+        
         return aListaEquipo;
         
     }
@@ -244,13 +243,14 @@ public class Controlador {
     }
 
     // Equipo
-<<<<<<< HEAD
-    public static Equipo buscarEquipo(String equipo) throws Exception {
+
+    public static Equipo buscarEquipoFK(String equipo) throws Exception {
         equi = tequi.buscarEquipo(equipo);
-=======
+        return equi;
+        
+    }
     public static Equipo buscarEquipo(String nombre) throws Exception {
         equi = tequi.buscarEquipo(nombre);
->>>>>>> main
         return equi;
     }
 
@@ -308,14 +308,16 @@ public class Controlador {
         tjuga.borrarJugador(nombre);
     }
 
-<<<<<<< HEAD
-    public static Usuario buscarUsuario(String nombre) {
-        usu = tusu.buscarUsu(nombre);
-=======
+
+    public static Usuario buscarUsuario(String nombre) throws Exception {
+        usu = tusu.buscarUsuario(nombre);
+        return usu;
+    }
+    
     // Usuario
     public static Usuario buscarUsuario(String correo,String contrasena) throws Exception {
         usu = tusu.consultarUsu(correo,contrasena);
->>>>>>> main
+
         return usu;
     }
 
@@ -369,16 +371,14 @@ public class Controlador {
         via.setVisible(true);
     }
 
-<<<<<<< HEAD
+   /* public static void abrirInsertarDueno() throws Exception {
+*/
     public static void abrirInsertarDueno() throws Exception {
-=======
-   /* public static void abrirInsertarDueno() {
->>>>>>> main
+
 
         vid = new VInsertarDueno();
         vid.setVisible(true);
-    }*/
-
+     }
     public static void abrirInsertarUsuario() {
         viu = new VInsertarUsuario();
         viu.setVisible(true);
@@ -417,16 +417,14 @@ public class Controlador {
     /*public static String getNombreEquipos(int x) {
               
     }*/
-<<<<<<< HEAD
+
     public static void abrirEliminarEquipo(String nombre) throws Exception {
         equi = buscarEquipo(nombre);
         vee = new VEliminarEquipo(equi.getNombre(),equi.getEscudo());
-=======
-    public static void abrirEliminarEquipo(String nombre) {
-        vee = new VEliminarEquipo();
->>>>>>> main
         vee.setVisible(true);
     }
+ 
+    
     public static void abrirEliminarJugador(String nombre) {
         
         vej = new VEliminarJugadores();

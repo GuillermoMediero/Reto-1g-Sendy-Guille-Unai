@@ -5,6 +5,7 @@
  */
 package Modelo_BBDD;
 
+import Modelo_UML.Administrador;
 import Modelo_UML.Equipo;
 import Modelo_UML.Usuario;
 import java.sql.Connection;
@@ -50,18 +51,29 @@ public class TUsuario {
         }
         return null;
     }
-     public int buscarUsuarioPK(String nombre) throws Exception {
+     public Usuario buscarUsuario(String nombre) throws Exception {
         String sentencia = "SELECT NOMBRE,ESCUDO FROM USUARIO"
                 + " WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(nombre));
-
-<<<<<<< HEAD
-     public Usuario buscarUsu(String nombre) throws Exception {
+        
+        ResultSet resultado = ps.executeQuery();
+         if (resultado.next()) {
+            
+            Usuario  usu = new Usuario ();
+            usu.setNombre(resultado.getString("nombre"));
+            usu.setCorreo(resultado.getString("correo"));
+            usu.setClave(resultado.getString("contrasena"));
+            
+            return usu;
+        }
+        return null;
+     }
+     public int buscarUsuarioPK (String nombre) throws Exception {
         String sentencia = "SELECT * FROM usuario where nombre=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, nombre);
-=======
+
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
      
@@ -117,19 +129,6 @@ public class TUsuario {
             }
         }
     }
->>>>>>> main
-    
-        
-        ResultSet resultado = ps.executeQuery();
-        if (resultado.next()) {
 
-            Usuario  usu = new Usuario();
-            usu.setCorreo(resultado.getString("correo"));
-            usu.setClave(resultado.getString("contrasena"));
-            usu.setNombre(resultado.getString("nombre"));
-            return usu;
-        }
-        return null;
-    }
-   
+     
 }

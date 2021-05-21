@@ -58,7 +58,7 @@ private TEquipo tequi;
             due.setTelefono(resultado.getString("TELEFONO"));
             due.setNacionalidad(resultado.getString("NACIONALIDAD"));
             // Como por un atributo tipo objeto?
-            due.setId_equipo(tequi.buscarEquipo((String.valueOf("ID_EQUIPO"))));
+            due.setNombreEqui(tequi.buscarEquipo((("NOMBRE"))));
             return due;
         } else {
             return null;
@@ -72,7 +72,7 @@ private TEquipo tequi;
         ps.setString(1, due.getNombre());
         ps.setString(2, due.getTelefono());
         ps.setString(3, due.getNacionalidad());
-        ps.setString(4, String.valueOf(due.getId_equipo()));
+        ps.setString(4, String.valueOf(due.getNombreEqui()));
         
 
         int resultado = ps.executeUpdate();
@@ -90,7 +90,7 @@ private TEquipo tequi;
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, due.getTelefono());
         ps.setString(2, due.getNacionalidad());
-        ps.setString(3, String.valueOf(due.getId_equipo()));
+        ps.setString(3, String.valueOf(due.getNombreEqui()));
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {

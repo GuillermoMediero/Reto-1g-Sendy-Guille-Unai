@@ -21,6 +21,7 @@ public class VModificarDueno extends javax.swing.JFrame {
      */
     public VModificarDueno() {
         initComponents();
+        
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
         tfNombre.setEditable(false);

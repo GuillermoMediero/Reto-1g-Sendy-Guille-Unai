@@ -10,7 +10,6 @@ package Modelo_UML;
  * @author ketro
  */
 public class Integrante {
-    private int id;
     private String nombre;
     private String telefono;
     private String nacionalidad;
@@ -18,20 +17,13 @@ public class Integrante {
     public Integrante() {
     }
 
-    public Integrante(int id, String nombre, String telefono, String nacionalidad) {
-        this.id = id;
+    public Integrante(String nombre, String telefono, String nacionalidad) {
+
         this.nombre = nombre;
         this.telefono = telefono;
         this.nacionalidad = nacionalidad;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
