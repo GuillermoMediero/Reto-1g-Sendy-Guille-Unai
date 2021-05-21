@@ -6,7 +6,9 @@
 package Views.Dueño;
 
 import Modelo_BBDD.TDueno;
+import Modelo_BBDD.TEquipo;
 import Modelo_UML.Dueno;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -25,13 +27,13 @@ public class VInsertarDueno extends javax.swing.JFrame {
     /**
      * Creates new form InsertarDueño
      */
-    public VInsertarDueno() {
+    public VInsertarDueno()  {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
         //falta llenar a la combobox con la equipo
         ArrayList<String> lista = new ArrayList<String>();
-        llenarComboBox();
+        
     }
 
     /**
@@ -68,6 +70,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         cbEquipos = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -276,6 +279,9 @@ public class VInsertarDueno extends javax.swing.JFrame {
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 260, 40));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -397,6 +403,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
     private javax.swing.JComboBox<String> cbEquipos;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

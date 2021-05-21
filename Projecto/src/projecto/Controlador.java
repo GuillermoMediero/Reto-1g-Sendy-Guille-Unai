@@ -30,6 +30,9 @@ import Views.equipos.VInsertarEquipo;
 
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -475,7 +478,7 @@ public class Controlador {
         aThis.dispose();
     }
 
-   
+
     
     public enum Rol {
         USUARIO, ADMINISTRADOR

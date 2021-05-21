@@ -108,6 +108,8 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         pClasificaciones = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         pEquipos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jToolBar10 = new javax.swing.JToolBar();
@@ -448,21 +450,32 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setText("Clasificaciones");
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout pClasificacionesLayout = new javax.swing.GroupLayout(pClasificaciones);
         pClasificaciones.setLayout(pClasificacionesLayout);
         pClasificacionesLayout.setHorizontalGroup(
             pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pClasificacionesLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(jLabel3)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGroup(pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pClasificacionesLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pClasificacionesLayout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jLabel3)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         pClasificacionesLayout.setVerticalGroup(
             pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pClasificacionesLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel3)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         jPanel1.add(pClasificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
@@ -1344,6 +1357,8 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar10;
     private javax.swing.JToolBar jToolBar11;
     private javax.swing.JToolBar jToolBar4;
