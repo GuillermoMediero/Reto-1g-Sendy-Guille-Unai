@@ -41,23 +41,16 @@ public class TAsistente {
             return null;
         }
     }
-     public Asistente buscarAsistentePK(int id_asistente) throws Exception {
-        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE id_asistente=?";
+     public int buscarAsistentePK(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE nombre=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(id_asistente));
+        ps.setString(1, String.valueOf(nombre));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
-            Asistente asis;
-            asis = new Asistente();
-            asis.setNombre(resultado.getString("NOMBRE"));
-            asis.setSueldo(resultado.getString("SUELDO"));
-            asis.setTelefono(resultado.getString("TELEFONO"));
-            asis.setNacionalidad(resultado.getString("NACIONALIDAD"));
-
-            return asis;
+            return resultado.getInt("id_asistente");
         } else {
-            return null;
+            return 0;
         }
     }
 
