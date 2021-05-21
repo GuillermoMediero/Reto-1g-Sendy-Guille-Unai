@@ -103,60 +103,34 @@ select * from pARTIDO;
 select * from equipo;
 
 
-create or replace PROCEDURE  crearclasificacion AS     
-          v_nombre equipo.nombre_equipo%TYPE;
-            v_victoria number;
-            v_derrota number;
-            v_puntos number;
-        BEGIN
-             CREATE OR REPLACE view clasificacion AS
-  SELECT DISTINCT e.nombre,(
-              SELECT count(*) 
-              FROM PARTIDO 
-              wHERE id_equipol = e.id_equipo
-              OR ID_EQUIPOV = e.id_equipo
-        ) AS PARTIDOS_JUGADOS ,(
-              SELECT count(*) 
-              FROM PARTIDO 
-              WHERE (id_equipol = e.id_equipo AND ResultadoL = '3')
-              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV ='3'))AS victorias ,
-        (
-              SELECT count(*) 
-              FROM PARTIDO 
-              WHERE (id_equipol = e.id_equipo AND ResultadoL <> '3')
-              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV <>'3'))AS DERROTAS,
-        (
-             100*((
-              SELECT count(*) 
-              FROM PARTIDO 
-              WHERE (id_equipol = e.id_equipo AND ResultadoL = '3')
-              OR (ID_EQUIPOV = e.id_equipo AND  ResultadoV ='3'))/(
-              SELECT count(*) 
-              FROM PARTIDO 
-              wHERE id_equipol = e.id_equipo
-              OR ID_EQUIPOV = e.id_equipo
-        )))AS PUNTOS 
-            from equipo e, PARTIDO p
-            WHERE e.id_equipo=p.id_equipol
-            OR e.id_equipo=p.id_equipoV
-            ORDER BY PUNTOS DESC, e.nombre DESC;
-        END;
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PACKAGE generar_liga AS
+    PROCEDURE  crearjornadas;
+    PROCEDURE  informaciones_jugador;
+    function hora (p_jornada number) Return date;
+    PROCEDURE  crearcalendario;
+END generar_liga;
 
-create or replace PROCEDURE  crearjornadas AS 
+
+
+CREATE OR REPLACE PACKAGE BODY generar_liga AS
+             
+ PROCEDURE  crearjornadas AS 
 v_count number(2):=0;
-v_bucle number(2):=2;
+v_bucle number(2):=0;
 v_fecha date;
     BEGIN 
-       SELECT count(*) into v_count FROM  equipo;
+    delete from jornada;
+       SELECT count(*)-1 into v_count FROM  equipo;
        INSERT INTO JORNADA(FECHA) VALUES(sysdate+28); 
-       while v_bucle <> v_count LOOP
+       while v_bucle <= 2*v_count LOOP
         SELECT FECHA INTO v_fecha from JORNADA WHERE NUM_JORNADA=(select MAX(NUM_JORNADA)from jornada ) ;
         INSERT INTO JORNADA(FECHA) VALUES(v_fecha+7); 
         v_bucle:=v_bucle+1;
         END LOOP;  
-     END; 
+     END;
 
-create or replace function hora (p_jornada number) Return date
+function hora (p_jornada number) Return date
 as
         dia_partido date;
         cant_partidos number;
@@ -172,7 +146,7 @@ as
         return hora_partido;
 END hora;
 
-create or replace  PROCEDURE  crearcalendario AS        
+PROCEDURE  crearcalendario AS        
     BEGIN
         DECLARE
              CURSOR C
@@ -194,19 +168,18 @@ create or replace  PROCEDURE  crearcalendario AS
            LOOP
             SELECT min(NUM_JORNADA ) into v_jornada
              FROM JORNADA ;
-           while  v_jornada<v_max_jornada
+           while  v_jornada<=v_max_jornada
            LOOP
            v_cant:=hora(v_jornada);
            select max(p.id_partido) into v_partidol
            from partido p, jornada j 
            WHERE p.NUM_JORNADA=v_jornada
-           AND (ID_EQUIPOL= v_cursor.eq_visitante
-           OR ID_EQUIPOV= v_cursor.eq_visitante);
+           AND (ID_EQUIPOL IN (v_cursor.eq_visitante,v_cursor.eq_local)
+           OR ID_EQUIPOV IN(v_cursor.eq_visitante,v_cursor.eq_local));
            select max(p.id_partido) into v_partidov
            from partido p, jornada j 
-           WHERE (ID_EQUIPOL v_cursor.eq_local, AND
-           AND ID_EQUIPOV  =v_cursor.eq_visitante ) OR (ID_EQUIPOL= v_cursor.eq_visitante
-           AND ID_EQUIPOV= v_cursor.eq_local);
+           WHERE (ID_EQUIPOL=v_cursor.eq_local 
+           AND ID_EQUIPOV  =v_cursor.eq_visitante ) ;
            IF (v_partidoL is null and v_partidoV is null)  then
            INSERT INTO PARTIDO(HORA, RESULTADOL,resultadov,num_jornada,id_equipol,id_equipov) VALUES(v_cant,'','',v_jornada,v_cursor.eq_local,v_cursor.eq_visitante);
            end IF;
@@ -214,4 +187,4 @@ create or replace  PROCEDURE  crearcalendario AS
            END LOOP;
            END LOOP;
        END;
-     END;
+     END crearcalendario;
