@@ -244,8 +244,8 @@ public class Controlador {
     }
 
     // Equipo
-    public static Equipo buscarEquipo(int id_equipo) throws Exception {
-        equi = tequi.buscarEquipoPK(id_equipo);
+    public static Equipo buscarEquipo(String nombre) throws Exception {
+        equi = tequi.buscarEquipo(nombre);
         return equi;
     }
 

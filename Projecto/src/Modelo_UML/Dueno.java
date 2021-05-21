@@ -24,7 +24,7 @@ public class Dueno extends Integrante{
         this.id_equipo = id_equipo;
     }
 
-    public Dueno(String nombre, String telefono, String nacionalidad, String equipo) {
+    public Dueno(String nombre, String telefono, String nacionalidad, int equipo) {
        
     }
 
