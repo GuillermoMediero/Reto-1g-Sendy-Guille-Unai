@@ -341,8 +341,9 @@ public class VInsertarDueno extends javax.swing.JFrame {
            validarDatos(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText());
                 dueno = Controlador.buscarDueno(tfNombre.getText());
                 if(dueno==null){
-                    //buscar  por id_equipo al dueno
-                    Controlador.insertarDueno(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
+                    //buscar  por nombre al dueno
+                    Controlador.insertarDueno(tfNombre.getText(),tfTelefono.getText(),
+                            tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
                     showMessageDialog(null,"Dueño " + tfNombre.getText() +" Insertado");
                     Controlador.cerrarVentana(this);
                     
