@@ -25,12 +25,18 @@ public class VEliminarEquipo extends javax.swing.JFrame {
      * Creates new form InstertarEquipo
      */
     public VEliminarEquipo() {
+       
+    }
+
+    public VEliminarEquipo(String nombre, String escudo) {
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
         tfNombre.setEditable(false);
         tfEscudo.setEditable(false);
+        tfNombre.setText(nombre);
+        tfEscudo.setText(escudo);
     }
 
     /**
@@ -185,7 +191,7 @@ public class VEliminarEquipo extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Insertar Equipo");
+        jLabel1.setText("Borrar Equipo");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
 
         jLabel2.setText("Nombre");
@@ -282,17 +288,10 @@ public class VEliminarEquipo extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-            if(datosCorrectos()){
-                equi= Controlador.buscarEquipo(this.tfNombre.getText());
-                if(equi==null){
-                    Controlador.insertarEquipo(tfNombre.getText(),tfEscudo.getText());
-                    showMessageDialog(null,"Equipo " + tfNombre.getText() +" Insertado");
-                    Controlador.cerrarVentana(this);
-                   }
-                else{
-                    showMessageDialog(null,"Ya existe un equipo con ese Nombre");
-            }
-        }
+               Controlador.borrarEquipo(tfNombre.getText(),tfEscudo.getText());
+               showMessageDialog(null,"Equipo " + tfNombre.getText() +" Insertado");
+               Controlador.cerrarVentana(this);
+           
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());

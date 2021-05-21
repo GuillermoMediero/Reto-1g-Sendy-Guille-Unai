@@ -259,8 +259,8 @@ public class Controlador {
 
     }
 
-    public static void borrarEquipo(int id_equipo) throws Exception {
-        tequi.borrarEquipo(id_equipo);
+    public static void borrarEquipo(String nombre) throws Exception {
+        tequi.borrarEquipo(nombre);
     }
 
     //Jornada
@@ -352,7 +352,7 @@ public class Controlador {
         via.setVisible(true);
     }
 
-    public static void abrirInsertarDueno() {
+    public static void abrirInsertarDueno() throws Exception {
 
         vid = new VInsertarDueno();
         vid.setVisible(true);
@@ -396,16 +396,16 @@ public class Controlador {
     /*public static String getNombreEquipos(int x) {
               
     }*/
-    public static void abrirEliminarEquipo(String nombre) {
-
-        vee = new VEliminarEquipo();
+    public static void abrirEliminarEquipo(String nombre) throws Exception {
+        equi = buscarEquipo(nombre);
+        vee = new VEliminarEquipo(equi.getNombre(),equi.getEscudo());
         vee.setVisible(true);
    
 
     
 
     public static void abrirEliminarJugador(String nombre) {
-
+        
         vej = new VEliminarJugadores();
         vej.setVisible(true);
     }

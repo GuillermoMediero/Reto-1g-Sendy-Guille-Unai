@@ -25,8 +25,7 @@ public class TEquipo {
         this.con = con;
     }
     public Equipo buscarEquipo(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO"
-                + " WHERE NOMBRE=?";
+        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(nombre));
 
@@ -89,12 +88,12 @@ public class TEquipo {
 
     }
 
-    public void borrarEquipo(int id_equipo) throws Exception {
+    public void borrarEquipo(String nombre) throws Exception {
 
         {
-            String sentencia = "DELETE FROM EQUIPO WHERE ID_EQUIPO =?";
+            String sentencia = "DELETE FROM EQUIPO WHERE nombre =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(id_equipo));
+            ps.setString(1, String.valueOf(nombre));
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {

@@ -12,6 +12,8 @@ import Modelo_UML.Dueno;
 import Modelo_UML.Equipo;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -399,7 +401,11 @@ public class VInsertarDueno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VInsertarDueno().setVisible(true);
+                try {
+                    new VInsertarDueno().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(VInsertarDueno.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

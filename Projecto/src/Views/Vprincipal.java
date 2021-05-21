@@ -988,9 +988,9 @@ public class Vprincipal extends javax.swing.JFrame {
 
     private void lBorrarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEquipoMouseClicked
         try{
-            int id_equipo = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el id_equipo del equipo que desees eliminar"));
-            //Controlador.abrirEliminarEquipo();
-            Controlador.borrarEquipo(id_equipo);
+            String nombre = JOptionPane.showInputDialog("Introduzca el nombre del equipo que desees eliminar");
+            Controlador.abrirEliminarEquipo(nombre);
+            
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());

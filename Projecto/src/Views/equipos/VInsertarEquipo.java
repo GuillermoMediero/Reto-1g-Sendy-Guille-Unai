@@ -280,8 +280,8 @@ public class VInsertarEquipo extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-            if(datosCorrectos()){
-                equi= Controlador.buscarEquipo(tfNombre.getText());
+               
+            equi= Controlador.buscarEquipo(tfNombre.getText());
                 if(equi==null){
                     Controlador.insertarEquipo(tfNombre.getText(),tfEscudo.getText());
                     showMessageDialog(null,"Equipo " + tfNombre.getText() +" Insertado");
@@ -290,7 +290,6 @@ public class VInsertarEquipo extends javax.swing.JFrame {
                 else{
                     showMessageDialog(null,"Ya existe un equipo con ese Nombre");
             }
-        }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -361,7 +360,5 @@ public class VInsertarEquipo extends javax.swing.JFrame {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        return false;
-    }
+
 }
