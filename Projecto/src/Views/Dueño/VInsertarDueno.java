@@ -5,14 +5,18 @@
  */
 package Views.Dueño;
 
+import Excepciones.DatoNoValido;
 import Modelo_BBDD.TDueno;
+import Modelo_BBDD.TEquipo;
 import Modelo_UML.Dueno;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
+import validaciones.validaciones;
 
 /**
  *
@@ -25,15 +29,17 @@ public class VInsertarDueno extends javax.swing.JFrame {
     /**
      * Creates new form InsertarDueño
      */
-    public VInsertarDueno() {
+    public VInsertarDueno()  {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
         //falta llenar a la combobox con la equipo
         ArrayList<String> lista = new ArrayList<String>();
-        llenarComboBox();
+        
     }
-
+    public void validarDatos(String nombre,String Telefono, String Nacionalidad, int Equipos) throws DatoNoValido{
+        validaciones.validarnombre(nombre);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -328,8 +334,8 @@ public class VInsertarDueno extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-            if(datosCorrectos()){
-                dueno = Controlador.buscarDueno(Integer.parseInt(this.tfNombre.getText()));
+           validarDatos(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
+                dueno = Controlador.buscarDueno(tfNombre.getText());
                 if(dueno==null){
                     //buscar  por id_equipo al dueno
                     Controlador.insertarDueno(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
@@ -341,7 +347,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
                     showMessageDialog(null,"Ya existe un Dueño con ese Nombre");
             }
         }
-        }
+        
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -421,7 +427,5 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

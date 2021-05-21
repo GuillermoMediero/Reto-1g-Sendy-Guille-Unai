@@ -30,6 +30,9 @@ import Views.equipos.VInsertarEquipo;
 
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -198,13 +201,13 @@ public class Controlador {
     }
 
     // Dueño
-    public static Dueno buscarDueno(int id_dueno) throws Exception {
-        due = tdue.buscarDueno(id_dueno);
+    public static Dueno buscarDueno(String nombre) throws Exception {
+        due = tdue.buscarDueno(nombre);
         return due;
     }
     
-     public static void insertarDueno(String text, String text0, String text1, int selectedIndex) throws Exception {
-         due = new Dueno();
+     public static void insertarDueno(String nombre, String telefono, String nacionalidad, int equipos) throws Exception {
+         due = new Dueno(nombre,telefono,nacionalidad,equipos);
          tdue.insertarDueno(due);
     }
 
@@ -471,7 +474,7 @@ public class Controlador {
         aThis.dispose();
     }
 
-   
+
     
     public enum Rol {
         USUARIO, ADMINISTRADOR

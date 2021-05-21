@@ -31,10 +31,24 @@ private TEquipo tequi;
     
     
 
-    public Dueno buscarDueno(int id_dueno) throws Exception {
-        String sentencia = "SELECT NOMBRE,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE ID_DUENO=?";
+    public int buscarDuenoPK(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(id_dueno));
+        ps.setString(1, String.valueOf(nombre));
+
+        resultado = ps.executeQuery();
+        if (resultado.next()) {
+            // Como por un atributo tipo objeto?
+          return resultado.getInt("id_dueno");
+        } else {
+            return 0;
+        }
+    }
+    
+     public Dueno buscarDueno(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE NOMBRE=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, String.valueOf(nombre));
 
         resultado = ps.executeQuery();
         if (resultado.next()) {
@@ -59,6 +73,7 @@ private TEquipo tequi;
         ps.setString(2, due.getTelefono());
         ps.setString(3, due.getNacionalidad());
         ps.setString(4, String.valueOf(due.getId_equipo()));
+        
 
         int resultado = ps.executeUpdate();
         ps.close();

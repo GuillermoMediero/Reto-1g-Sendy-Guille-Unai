@@ -9,13 +9,16 @@ import Modelo_UML.Equipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
  * @author ketro
  */
 public class TEquipo {
-
+    private Statement s;
      private Connection con;
 
     public TEquipo(Connection con) {
