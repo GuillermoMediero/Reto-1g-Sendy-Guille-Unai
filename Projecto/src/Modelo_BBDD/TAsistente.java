@@ -42,7 +42,7 @@ public class TAsistente {
         }
     }
      public int buscarAsistentePK(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE, SUELDO, TELEFONO, NACIONALIDAD FROM ASISTENTE WHERE nombre=?";
+        String sentencia = "SELECT * FROM ASISTENTE WHERE nombre=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(nombre));
 
