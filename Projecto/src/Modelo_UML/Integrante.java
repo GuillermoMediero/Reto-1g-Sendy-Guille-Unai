@@ -23,6 +23,7 @@ public class Integrante {
         this.telefono = telefono;
         this.nacionalidad = nacionalidad;
     }
+    
 
 
     public String getNombre() {

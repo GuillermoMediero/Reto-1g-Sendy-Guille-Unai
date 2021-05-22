@@ -1038,8 +1038,8 @@ public class Vprincipal extends javax.swing.JFrame {
 
     private void lBorrarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarDueñoMouseClicked
         try{
-            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
-            Controlador.abrirEliminarDueno(nombre);
+       
+            Controlador.abrirEliminarDueno();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());

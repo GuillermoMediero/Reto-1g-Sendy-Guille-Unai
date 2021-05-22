@@ -18,7 +18,6 @@ import java.util.ArrayList;
  * @author ketro
  */
 public class TEquipo {
-    private Statement s;
     private Connection con;
     ArrayList<Equipo> aListEquipo;
     
@@ -26,7 +25,7 @@ public class TEquipo {
         this.con = con;
     }
     public Equipo buscarEquipo(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO WHERE NOMBRE=?";
+        String sentencia = "SELECT * FROM EQUIPO WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(nombre));
 
@@ -36,7 +35,7 @@ public class TEquipo {
             equi = new Equipo();
             equi.setNombre(resultado.getString("NOMBRE"));
             equi.setEscudo(resultado.getString("ESCUDO"));
-     
+            equi.setId_equipo(resultado.getInt("ID_EQUIPO"));
             return equi;
         } else {
             return null;
@@ -52,7 +51,7 @@ public class TEquipo {
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
      
-            return resultado.getInt("id_equipo");
+            return resultado.getInt("ID_EQUIPO");
         } else {
             return 0;
         }

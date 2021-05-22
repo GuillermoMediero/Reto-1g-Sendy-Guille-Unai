@@ -5,8 +5,15 @@
  */
 package Views.Dueño;
 
+import Modelo_UML.Dueno;
+import Modelo_UML.Equipo;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.*;
 import projecto.Controlador;
 
 /**
@@ -15,20 +22,32 @@ import projecto.Controlador;
  */
 public class VEliminarDueno extends javax.swing.JFrame {
     int xx;
-    int xy; 
+    int xy;
+    private Dueno dueno;
+     ArrayList<Equipo> aListaEquipo;
+    private String equipo;
+     
     /**
      * Creates new form InsertarDueño
      */
-    public VEliminarDueno() {
-        initComponents();
+    public VEliminarDueno() throws Exception{
+        initComponents(); 
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
-        tfTelefono.setEditable(false);
-        tfNacionalidad.setEditable(false);
-        cbEquipos.setEditable(false);
+        noEditarCampos();
+        
     }
-
+   
+    public void noEditarCampos(){
+        tfTelefonoD.setEditable(false);
+        tfNacionalidadD.setEditable(false);
+        cbEquiposD.setEnabled(false);
+    }
+    public void ensenarDatos(){
+        this.tfTelefonoD.setText(dueno.getTelefono());
+        this.tfNacionalidadD.setText(dueno.getNacionalidad());
+        this.cbEquiposD.setSelectedItem(equipo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,18 +70,18 @@ public class VEliminarDueno extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        tfNombre = new javax.swing.JTextField();
+        tfNombreD = new javax.swing.JTextField();
         bAceptar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        tfTelefono = new javax.swing.JTextField();
+        tfTelefonoD = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        tfNacionalidad = new javax.swing.JTextField();
+        tfNacionalidadD = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        cbEquipos = new javax.swing.JComboBox<>();
+        cbEquiposD = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -188,32 +207,29 @@ public class VEliminarDueno extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Insertar Dueño");
+        jLabel1.setText("Eliminar Dueño");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        tfNombre.setForeground(new java.awt.Color(0, 0, 0));
-        tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        tfNombre.addActionListener(new java.awt.event.ActionListener() {
+        tfNombreD.setBackground(new java.awt.Color(204, 204, 204));
+        tfNombreD.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfNombreD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNombreActionPerformed(evt);
+                tfNombreDActionPerformed(evt);
             }
         });
-        jPanel9.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        jPanel9.add(tfNombreD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 260, 40));
 
         bAceptar.setBackground(new java.awt.Color(0, 0, 0));
         bAceptar.setForeground(new java.awt.Color(255, 255, 255));
-        bAceptar.setText("Aceptar");
+        bAceptar.setText("Eliminar");
         bAceptar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,45 +249,39 @@ public class VEliminarDueno extends javax.swing.JFrame {
         });
         jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 120, 30));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
-        tfTelefono.setForeground(new java.awt.Color(0, 0, 0));
-        tfTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel11.add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfTelefonoD.setBackground(new java.awt.Color(204, 204, 204));
+        tfTelefonoD.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel11.add(tfTelefonoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 260, 40));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nacionalidad");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
         jPanel12.setBackground(new java.awt.Color(204, 204, 204));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfNacionalidad.setBackground(new java.awt.Color(204, 204, 204));
-        tfNacionalidad.setForeground(new java.awt.Color(0, 0, 0));
-        tfNacionalidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel12.add(tfNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfNacionalidadD.setBackground(new java.awt.Color(204, 204, 204));
+        tfNacionalidadD.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel12.add(tfNacionalidadD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 260, 40));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nombre Equipo");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(204, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cbEquipos.setBackground(new java.awt.Color(204, 204, 204));
-        cbEquipos.setForeground(new java.awt.Color(0, 0, 0));
-        cbEquipos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        cbEquiposD.setBackground(new java.awt.Color(204, 204, 204));
+        cbEquiposD.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel14.add(cbEquiposD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 260, 40));
 
@@ -321,12 +331,20 @@ public class VEliminarDueno extends javax.swing.JFrame {
         xy=evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
-    private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfNombreActionPerformed
+    private void tfNombreDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreDActionPerformed
+        try{
+            dueno = Controlador.buscarDueno(this.tfNombreD.getText());
+            equipo=dueno.getId_equipo().getNombre();
+            if(dueno!=null)
+                ensenarDatos();
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
+    }//GEN-LAST:event_tfNombreDActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+             
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -370,7 +388,11 @@ public class VEliminarDueno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VEliminarDueno().setVisible(true);
+                try {
+                    new VEliminarDueno().setVisible(true);
+                } catch (Exception ex) {
+                    System.out.println("Error" + ex.getMessage());
+                }
             }
         });
     }
@@ -378,7 +400,7 @@ public class VEliminarDueno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
-    private javax.swing.JComboBox<String> cbEquipos;
+    private javax.swing.JComboBox<String> cbEquiposD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -398,8 +420,8 @@ public class VEliminarDueno extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
-    private javax.swing.JTextField tfNacionalidad;
-    private javax.swing.JTextField tfNombre;
-    private javax.swing.JTextField tfTelefono;
+    private javax.swing.JTextField tfNacionalidadD;
+    private javax.swing.JTextField tfNombreD;
+    private javax.swing.JTextField tfTelefonoD;
     // End of variables declaration//GEN-END:variables
 }

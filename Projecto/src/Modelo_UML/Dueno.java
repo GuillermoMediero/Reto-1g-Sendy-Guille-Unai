@@ -10,24 +10,29 @@ package Modelo_UML;
  * @author ketro
  */
 public class Dueno extends Integrante{
-    private Equipo nombreEqui;
+    private Equipo equipo;
   
     public Dueno() {
     }
 
-    public Dueno(String nombre, String telefono, String nacionalidad, Equipo nombreEqui) {
+    public Dueno(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+    public Dueno(Equipo equipo, String nombre,  String nacionalidad,String telefono) {
         super(nombre, telefono, nacionalidad);
-        this.nombreEqui = nombreEqui;
+        this.equipo = equipo;
     }
 
-    public Equipo getNombreEqui() {
-        return nombreEqui;
+    public Equipo getId_equipo() {
+        return equipo;
     }
 
-    public void setNombreEqui(Equipo nombreEqui) {
-        this.nombreEqui = nombreEqui;
+    public void setId_equipo(Equipo equipo) {
+        this.equipo = equipo;
     }
 
+   
     
     
 }

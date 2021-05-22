@@ -26,30 +26,37 @@ import validaciones.validaciones;
  * @author 1GDAW12
  */
 public class VInsertarDueno extends javax.swing.JFrame {
+
     int xx;
-    int xy; 
+    int xy;
     Dueno dueno;
     ArrayList<Equipo> aListaEquipo;
+    
+
     /**
      * Creates new form InsertarDueño
      */
-    public VInsertarDueno() throws Exception  {
+    public VInsertarDueno() throws Exception {
         initComponents();
         aListaEquipo = Controlador.llenarComboBox();
         llenado();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-               
+
     }
-    
-       public void llenado() {
-        for (int i=0; i<aListaEquipo.size(); i++){
-        cbEquipos.insertItemAt(aListaEquipo.get(i).getNombre(), i);
+
+    public void llenado() {
+        for (int i = 0; i < aListaEquipo.size(); i++) {
+            cbEquipos.insertItemAt(aListaEquipo.get(i).getNombre(), i);
         }
     }
-    public void validarDatos(String nombre,String Telefono, String Nacionalidad) throws DatoNoValido{
-        validaciones.validarnombre(nombre);
+
+    public void validarDatos(String nombre, String Telefono, String Nacionalidad) throws DatoNoValido {
+        validaciones.validarNombre(nombre);
+        validaciones.validartelefono(Telefono);
+        validaciones.validarnacionalidad(Nacionalidad);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -318,24 +325,24 @@ public class VInsertarDueno extends javax.swing.JFrame {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel4MouseDragged
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
@@ -343,23 +350,21 @@ public class VInsertarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        try{
-           validarDatos(tfNombre.getText(),tfTelefono.getText(),tfNacionalidad.getText());
-                dueno = Controlador.buscarDueno(tfNombre.getText());
-                if(dueno==null){
-                    //buscar  por nombre al dueno
-                    Controlador.insertarDueno(tfNombre.getText(),tfTelefono.getText(),
-                            tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
-                    showMessageDialog(null,"Dueño " + tfNombre.getText() +" Insertado");
-                    Controlador.cerrarVentana(this);
-                    
-                   }
-                else{
-                    showMessageDialog(null,"Ya existe un Dueño con ese Nombre");
+        try {
+            validarDatos(tfNombre.getText(), tfTelefono.getText(), tfNacionalidad.getText());
+            //buscar  por nombre al dueno
+            dueno = Controlador.buscarDueno(tfNombre.getText());
+            Controlador.buscarEquipoPK(String.valueOf(this.cbEquipos.getSelectedItem()));
+            if (dueno == null) {
+                Controlador.insertarDueno(tfNombre.getText(), 
+                        tfNacionalidad.getText(),tfTelefono.getText());
+                showMessageDialog(null, "Dueño " + tfNombre.getText() + " Insertado");
+                Controlador.cerrarVentana(this);
+
+            } else {
+                showMessageDialog(null, "Ya existe un Dueño con ese Nombre");
             }
-        }
-        
-        catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -442,5 +447,4 @@ public class VInsertarDueno extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
 
-   
 }

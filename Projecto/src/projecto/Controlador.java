@@ -106,6 +106,7 @@ public class Controlador {
     // Otras Variables 
     private static String nombre;
     private static ArrayList<Equipo> aListaEquipo;
+    private static Equipo equipoPK;
 
     public static void main(String[] args) {
         try {
@@ -210,8 +211,8 @@ public class Controlador {
         return due;
     }
 
-    public static void insertarDueno(String nombre, String telefono, String nacionalidad, int equipo) throws Exception {
-        due = new Dueno(nombre, telefono, nacionalidad, equipo);
+    public static void insertarDueno(String nombre, String telefono ,String nacionalidad) throws Exception {        
+        due = new Dueno(equipoPK,nombre, telefono, nacionalidad);
         tdue.insertarDueno(due);
     }
 
@@ -244,10 +245,8 @@ public class Controlador {
 
     // Equipo
 
-    public static Equipo buscarEquipoFK(String equipo) throws Exception {
-        equi = tequi.buscarEquipo(equipo);
-        return equi;
-        
+    public static void buscarEquipoPK(String nombre) throws Exception {
+        equipoPK = tequi.buscarEquipo(nombre);      
     }
     public static Equipo buscarEquipo(String nombre) throws Exception {
         equi = tequi.buscarEquipo(nombre);
@@ -443,8 +442,7 @@ public class Controlador {
         vea.setVisible(true);
     }
 
-    public static void abrirEliminarDueno(String nombre) {
-
+    public static void abrirEliminarDueno() throws Exception {
         ved = new VEliminarDueno();
         ved.setVisible(true);
     }

@@ -57,8 +57,7 @@ private TEquipo tequi;
             due.setNombre(resultado.getString("NOMBRE"));
             due.setTelefono(resultado.getString("TELEFONO"));
             due.setNacionalidad(resultado.getString("NACIONALIDAD"));
-            // Como por un atributo tipo objeto?
-            due.setNombreEqui(tequi.buscarEquipo((("NOMBRE"))));
+
             return due;
         } else {
             return null;
@@ -67,12 +66,12 @@ private TEquipo tequi;
 
     public void insertarDueno(Dueno due) throws Exception {
 
-        String sentencia = "INSERT INTO DUENO(NOMBRE, TELEFONO, NACIONALIDAD, ID_EQUIPO)VALUES (?,?,?,?)";
+        String sentencia = "INSERT INTO DUENO(NOMBRE, NACIONALIDAD, TELEFONO, ID_EQUIPO)VALUES (?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, due.getNombre());
-        ps.setString(2, due.getTelefono());
-        ps.setString(3, due.getNacionalidad());
-        ps.setString(4, String.valueOf(due.getNombreEqui()));
+        ps.setString(2, due.getNacionalidad());
+        ps.setString(3, due.getTelefono());
+        ps.setString(4, String.valueOf(due.getId_equipo().getId_equipo()));
         
 
         int resultado = ps.executeUpdate();
@@ -90,7 +89,7 @@ private TEquipo tequi;
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, due.getTelefono());
         ps.setString(2, due.getNacionalidad());
-        ps.setString(3, String.valueOf(due.getNombreEqui()));
+        ps.setString(3, String.valueOf(due.getId_equipo()));
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {

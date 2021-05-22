@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  */
 public class validaciones {
     
-    public static void validarnombre(String nombre) throws DatoNoValido {
+    public static void validarNombre(String nombre) throws DatoNoValido {
       // Comprobar si no esta vacio el dato recibido
         if (nombre.isEmpty())
            throw new DatoNoValido("Es obligatorio indicar el nombre");
@@ -28,7 +28,7 @@ public class validaciones {
           throw new DatoNoValido("El nombre debe estar formado solo por letras");
     } 
     // Comprobar rol
-    public static void validarrol(String rol ) throws DatoNoValido {
+    public static void validarRol(String rol ) throws DatoNoValido {
       // Comprobar si no esta vacio el dato recibido
         if (rol.isEmpty())
            throw new DatoNoValido("Es obligatorio indicar el rol");
