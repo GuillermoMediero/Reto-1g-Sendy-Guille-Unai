@@ -970,7 +970,11 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lModificarAsistenteMouseClicked
 
     private void lModificarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarDueñoMouseClicked
-        Controlador.abrirModificarDueño();
+        try {
+            Controlador.abrirModificarDueño();
+        } catch (Exception ex) {
+            Logger.getLogger(Vprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lModificarDueñoMouseClicked
 
     private void lModificarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarUsuarioMouseClicked
@@ -986,74 +990,48 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lModificarJugadorMouseClicked
 
     private void lModificarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarEquipoMouseClicked
-       try{
+      
             
            Controlador.abrirModificarEquipos();
-       }
-       catch(Exception e){
-           JOptionPane.showMessageDialog(this, e.getMessage());
-       }
+    
     }//GEN-LAST:event_lModificarEquipoMouseClicked
 
     private void lBorrarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEquipoMouseClicked
-        try{
-            String nombre = JOptionPane.showInputDialog("Introduzca el nombre del equipo que desees eliminar");
-            Controlador.abrirEliminarEquipo(nombre);
+
+        try {
+            Controlador.abrirEliminarEquipo();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
             
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+   
     }//GEN-LAST:event_lBorrarEquipoMouseClicked
 
     private void lBorrarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarJugadorMouseClicked
-        try{
-            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
-            Controlador.abrirEliminarJugador(nombre);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+
+            Controlador.abrirEliminarJugador();
+   
     }//GEN-LAST:event_lBorrarJugadorMouseClicked
 
     private void lBorrarEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEntrenadorMouseClicked
-        try{
-            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
-            Controlador.abrirEliminarEntrenador(nombre);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+   
+            Controlador.abrirEliminarEntrenador();
+
     }//GEN-LAST:event_lBorrarEntrenadorMouseClicked
 
     private void lBorrarAsistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarAsistenteMouseClicked
-       try{
-            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
-            Controlador.abrirEliminarAsistente(nombre);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+
+            Controlador.abrirEliminarAsistente();
+
     }//GEN-LAST:event_lBorrarAsistenteMouseClicked
 
     private void lBorrarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarDueñoMouseClicked
-        try{
        
-            Controlador.abrirEliminarDueno();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+            Controlador.abrirEliminarDueno(); 
     }//GEN-LAST:event_lBorrarDueñoMouseClicked
 
     private void lBorrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarUsuarioMouseClicked
-        try{
-            String nombre = JOptionPane.showInputDialog("Introducza el nombre del equipo que desees eliminar");
-            Controlador.abrirEliminarUsuario(nombre);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+            Controlador.abrirEliminarUsuario();
     }//GEN-LAST:event_lBorrarUsuarioMouseClicked
 
     private void lConsultarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarEquipoMouseClicked

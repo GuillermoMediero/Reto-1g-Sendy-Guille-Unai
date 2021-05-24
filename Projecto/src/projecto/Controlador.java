@@ -216,12 +216,13 @@ public class Controlador {
         tdue.insertarDueno(due);
     }
 
-    public static void borrarDueno(int id_dueno) throws Exception {
-        tdue.borrarDueno(id_dueno);
+    public static void borrarDueno(String nombreCompleto) throws Exception {
+        tdue.borrarDueno(nombreCompleto);
     }
 
-    public static void modificarDueno() throws Exception {
-        tdue.modificarDueno(due);
+    public static void modificarDueno(String nom,String tele,String nac,Equipo equi) throws Exception {
+        Dueno duenoNuevo=new Dueno(equi,nom,tele,nac);
+        tdue.modificarDueno(duenoNuevo);
     }
 
     // Entrenador
@@ -246,10 +247,10 @@ public class Controlador {
     // Equipo
 
     public static void buscarEquipoPK(String nombre) throws Exception {
-        equipoPK = tequi.buscarEquipo(nombre);      
+        equipoPK = tequi.buscarEquipoByNombre(nombre);      
     }
     public static Equipo buscarEquipo(String nombre) throws Exception {
-        equi = tequi.buscarEquipo(nombre);
+        equi = tequi.buscarEquipoByNombre(nombre);
         return equi;
     }
 
@@ -388,7 +389,7 @@ public class Controlador {
         vma.setVisible(true);
     }
 
-    public static void abrirModificarDueño() {
+    public static void abrirModificarDueño() throws Exception {
         vmd = new VModificarDueno();
         vmd.setVisible(true);
     }
@@ -417,37 +418,37 @@ public class Controlador {
               
     }*/
 
-    public static void abrirEliminarEquipo(String nombre) throws Exception {
+    public static void abrirEliminarEquipo() throws Exception {
         equi = buscarEquipo(nombre);
         vee = new VEliminarEquipo(equi.getNombre(),equi.getEscudo());
         vee.setVisible(true);
     }
  
     
-    public static void abrirEliminarJugador(String nombre) {
+    public static void abrirEliminarJugador() {
         
         vej = new VEliminarJugadores();
         vej.setVisible(true);
     }
 
-    public static void abrirEliminarEntrenador(String nombre) {
+    public static void abrirEliminarEntrenador() {
 
         veen = new VEliminarEntrenadores();
         veen.setVisible(true);
     }
 
-    public static void abrirEliminarAsistente(String nombre) {
+    public static void abrirEliminarAsistente() {
 
         vea = new VEliminarAsistente();
         vea.setVisible(true);
     }
 
-    public static void abrirEliminarDueno() throws Exception {
+    public static void abrirEliminarDueno() {
         ved = new VEliminarDueno();
         ved.setVisible(true);
     }
 
-    public static void abrirEliminarUsuario(String nombre) {
+    public static void abrirEliminarUsuario() {
 
         veu = new VEliminarUsuario();
         veu.setVisible(true);

@@ -6,11 +6,9 @@
 package Views.Dueño;
 
 import Excepciones.DatoNoValido;
-import Modelo_BBDD.TDueno;
-import Modelo_BBDD.TEquipo;
+
 import Modelo_UML.Dueno;
 import Modelo_UML.Equipo;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

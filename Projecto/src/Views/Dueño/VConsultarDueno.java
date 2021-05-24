@@ -1,13 +1,13 @@
 
 package Views.Dueño;
 
-import Views.Asistentes.*;
-import Modelo_UML.Asistente;
+
+import Modelo_UML.Dueno;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import projecto.Controlador;
 import static javax.swing.JOptionPane.*;
+
 
 /**
  *
@@ -16,7 +16,7 @@ import static javax.swing.JOptionPane.*;
 public class VConsultarDueno extends javax.swing.JFrame {
     int xx;
     int xy; 
-    Asistente asistente;
+    Dueno dueno;
     /**
      * Creates new form VInsertarAsistente
      */
@@ -25,7 +25,14 @@ public class VConsultarDueno extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
     }
-    public void validarDatosAsistente(String n,String s,String t,String na){}
+    public void validarDatosDueno(String n,String s,String t,String na){}
+    public void ensenarDueno(){
+        this.taDueno.setText(" Nombre : "+dueno.getNombre()+ "\n" +
+                " Telefono : "+dueno.getTelefono()+ "\n" +
+                " Nacionalidad : "+dueno.getNacionalidad()+ "\n" +
+                " Equipo : "+dueno.getEquipo().getNombre());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -178,7 +185,7 @@ public class VConsultarDueno extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Consular Dueño");
+        jLabel1.setText("Consultar Dueño");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
 
         bConsultarDue.setBackground(new java.awt.Color(0, 0, 0));
@@ -192,9 +199,7 @@ public class VConsultarDueno extends javax.swing.JFrame {
         });
         jPanel1.add(bConsultarDue, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 110, 20));
 
-        taDueno.setBackground(new java.awt.Color(255, 255, 255));
         taDueno.setColumns(20);
-        taDueno.setForeground(new java.awt.Color(0, 0, 0));
         taDueno.setRows(5);
         jScrollPane1.setViewportView(taDueno);
 
@@ -219,6 +224,11 @@ public class VConsultarDueno extends javax.swing.JFrame {
 
         tfNombreDue.setBackground(new java.awt.Color(204, 204, 204));
         tfNombreDue.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfNombreDue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNombreDueActionPerformed(evt);
+            }
+        });
         jPanel9.add(tfNombreDue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 260, 40));
@@ -238,7 +248,15 @@ public class VConsultarDueno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bConsultarDueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarDueActionPerformed
-        
+     try {
+            dueno = Controlador.buscarDueno(this.tfNombreDue.getText());
+            if(dueno==null){
+                showMessageDialog(null,"Dueno " + dueno +" "+ " no encontrado");
+            }
+            ensenarDueno();
+        } catch (Exception gnr) {
+            System.out.println("Problemas en la busqueda del dueno " + gnr.getMessage());
+        }
     }//GEN-LAST:event_bConsultarDueActionPerformed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
@@ -276,6 +294,10 @@ public class VConsultarDueno extends javax.swing.JFrame {
     private void bCancelarDueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarDueActionPerformed
         Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarDueActionPerformed
+
+    private void tfNombreDueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreDueActionPerformed
+       
+    }//GEN-LAST:event_tfNombreDueActionPerformed
 
     /**
      * @param args the command line arguments

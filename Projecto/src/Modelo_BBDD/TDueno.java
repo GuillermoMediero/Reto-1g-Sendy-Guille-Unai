@@ -6,12 +6,10 @@
 package Modelo_BBDD;
 
 import Modelo_UML.Dueno;
-import Modelo_UML.Equipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -57,7 +55,7 @@ private TEquipo tequi;
             due.setNombre(resultado.getString("NOMBRE"));
             due.setTelefono(resultado.getString("TELEFONO"));
             due.setNacionalidad(resultado.getString("NACIONALIDAD"));
-
+            due.setEquipo(tequi.buscarEquipoById(Integer.parseInt(resultado.getString("ID_EQUIPO"))));
             return due;
         } else {
             return null;
@@ -71,7 +69,7 @@ private TEquipo tequi;
         ps.setString(1, due.getNombre());
         ps.setString(2, due.getNacionalidad());
         ps.setString(3, due.getTelefono());
-        ps.setString(4, String.valueOf(due.getId_equipo().getId_equipo()));
+        ps.setString(4, String.valueOf(due.getEquipo().getId_equipo()));
         
 
         int resultado = ps.executeUpdate();
@@ -83,13 +81,14 @@ private TEquipo tequi;
     }
 
     public void modificarDueno(Dueno due) throws Exception {
-        // No podemos modificar el nombre del asistente
+        // No podemos modificar el nombre del dueño
         String sentencia = "UPDATE DUENO SET TELEFONO=?, NACIONALIDAD=? ,ID_EQUIPO=?"
                 + "WHERE NOMBRE = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, due.getTelefono());
         ps.setString(2, due.getNacionalidad());
-        ps.setString(3, String.valueOf(due.getId_equipo()));
+        ps.setString(3, String.valueOf(due.getEquipo().getId_equipo()));
+        ps.setString(4, due.getNombre());
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {
@@ -98,12 +97,12 @@ private TEquipo tequi;
 
     }
 
-    public void borrarDueno(int id_dueno) throws Exception {
+    public void borrarDueno(String nombreCompleto) throws Exception {
 
         {
-            String sentencia = "DELETE FROM DUENO WHERE ID_DUENO =?";
+            String sentencia = "DELETE FROM DUENO WHERE NOMBRE =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, String.valueOf(id_dueno));
+            ps.setString(1, nombreCompleto);
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {

@@ -41,7 +41,7 @@ public class TJugador {
             juga.setTelefono(resultado.getString("TELEFONO"));
             juga.setNacionalidad(resultado.getString("NACIONALIDAD"));
             juga.setRol(resultado.getString("ROL"));
-            juga.setEquipo(tequi.buscarEquipoPK(Integer.parseInt("ID_EQUIPO")));
+            juga.setEquipo(tequi.buscarEquipoPK(juga.getEquipo().getId_equipo()));
             return juga;
         } else {
             return null;

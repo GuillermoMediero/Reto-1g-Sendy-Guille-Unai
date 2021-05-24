@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_UML/Equipo.java</file>
-            <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Excepciones/DatoNoValido.java</file>
             <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/projecto/Controlador.java</file>
+            <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Dueño/VModificarDueno.java</file>
             <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Dueño/VInsertarDueno.java</file>
-            <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_UML/Integrante.java</file>
             <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/TDueno.java</file>
+            <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Views/Dueño/VEliminarDueno.java</file>
             <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_BBDD/TEquipo.java</file>
             <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/Modelo_UML/Dueno.java</file>
-            <file>file:/C:/Users/ketro/OneDrive/Escritorio/Reto-1g-Sendy-Guille-Unai/Projecto/src/validaciones/validaciones.java</file>
         </group>
     </open-files>
 </project-private>
