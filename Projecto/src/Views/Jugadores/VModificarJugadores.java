@@ -5,8 +5,14 @@
  */
 package Views.Jugadores;
 
+import Modelo_UML.Equipo;
+import Modelo_UML.Jugador;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
 
 /**
@@ -14,16 +20,37 @@ import projecto.Controlador;
  * @author 1GDAW12
  */
 public class VModificarJugadores extends javax.swing.JFrame {
+
     int xx;
-    int xy; 
+    int xy;
+    Jugador jugador;
+    Equipo equipo;
+    Equipo equipoNuevo;
+
+    ArrayList<Equipo> aListaEquipo;
+
     /**
      * Creates new form InsertarJugadores
      */
-    public VModificarJugadores() {
+    public VModificarJugadores() throws Exception {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
+        aListaEquipo = Controlador.llenarComboBox();
+    }
+
+    public void ensenarDatos() {
+        this.tfNombreJ.setText(jugador.getNombreCompleto());
+        this.tfTelefonoJ.setText(jugador.getTelefono());
+        this.tfNacionalidadJ.setText(jugador.getNacionalidad());
+        this.cbEquiposJ.addItem(equipo.getNombre());
+        llenado();
+    }
+
+    public void llenado() {
+        for (int i = 0; i < aListaEquipo.size(); i++) {
+            cbEquiposJ.insertItemAt(aListaEquipo.get(i).getNombre(), i);
+        }
     }
 
     /**
@@ -49,26 +76,26 @@ public class VModificarJugadores extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        tfSueldo = new javax.swing.JTextField();
+        tfSueldoJ = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        tfNombre = new javax.swing.JTextField();
+        tfNombreJ = new javax.swing.JTextField();
         bAceptar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        tfNickname = new javax.swing.JTextField();
+        tfNicknameJ = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        tfTelefono = new javax.swing.JTextField();
+        tfTelefonoJ = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        tfNacionalidad = new javax.swing.JTextField();
+        tfNacionalidadJ = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        tfRol = new javax.swing.JTextField();
+        tfRolJ = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        cbEquipos = new javax.swing.JComboBox<>();
+        cbEquiposJ = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -194,40 +221,35 @@ public class VModificarJugadores extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Modificar Jugadores");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Sueldo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfSueldo.setBackground(new java.awt.Color(204, 204, 204));
-        tfSueldo.setForeground(new java.awt.Color(0, 0, 0));
-        tfSueldo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel8.add(tfSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfSueldoJ.setBackground(new java.awt.Color(204, 204, 204));
+        tfSueldoJ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel8.add(tfSueldoJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 260, 40));
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        tfNombre.setForeground(new java.awt.Color(0, 0, 0));
-        tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        tfNombre.addActionListener(new java.awt.event.ActionListener() {
+        tfNombreJ.setBackground(new java.awt.Color(204, 204, 204));
+        tfNombreJ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfNombreJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNombreActionPerformed(evt);
+                tfNombreJActionPerformed(evt);
             }
         });
-        jPanel9.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        jPanel9.add(tfNombreJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 260, 40));
 
@@ -253,73 +275,63 @@ public class VModificarJugadores extends javax.swing.JFrame {
         });
         jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 120, 30));
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nickname");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
 
         jPanel10.setBackground(new java.awt.Color(204, 204, 204));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfNickname.setBackground(new java.awt.Color(204, 204, 204));
-        tfNickname.setForeground(new java.awt.Color(0, 0, 0));
-        tfNickname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel10.add(tfNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfNicknameJ.setBackground(new java.awt.Color(204, 204, 204));
+        tfNicknameJ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel10.add(tfNicknameJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 260, 40));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
-        tfTelefono.setForeground(new java.awt.Color(0, 0, 0));
-        tfTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel11.add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfTelefonoJ.setBackground(new java.awt.Color(204, 204, 204));
+        tfTelefonoJ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel11.add(tfTelefonoJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 260, 40));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nacionalidad");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, -1, -1));
 
         jPanel12.setBackground(new java.awt.Color(204, 204, 204));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfNacionalidad.setBackground(new java.awt.Color(204, 204, 204));
-        tfNacionalidad.setForeground(new java.awt.Color(0, 0, 0));
-        tfNacionalidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel12.add(tfNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfNacionalidadJ.setBackground(new java.awt.Color(204, 204, 204));
+        tfNacionalidadJ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel12.add(tfNacionalidadJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 260, 40));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Rol");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
         jPanel13.setBackground(new java.awt.Color(204, 204, 204));
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfRol.setBackground(new java.awt.Color(204, 204, 204));
-        tfRol.setForeground(new java.awt.Color(0, 0, 0));
-        tfRol.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel13.add(tfRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        tfRolJ.setBackground(new java.awt.Color(204, 204, 204));
+        tfRolJ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel13.add(tfRolJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 260, 40));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nombre Equipo");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(204, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cbEquipos.setBackground(new java.awt.Color(204, 204, 204));
-        cbEquipos.setForeground(new java.awt.Color(0, 0, 0));
-        cbEquipos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        cbEquiposJ.setBackground(new java.awt.Color(204, 204, 204));
+        cbEquiposJ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel14.add(cbEquiposJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 260, 40));
 
@@ -349,27 +361,44 @@ public class VModificarJugadores extends javax.swing.JFrame {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel4MouseDragged
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        try {
+            equipoNuevo = Controlador.buscarEquipoPKID(jugador.getEquipo().getId_equipo());
+
+            jugador.setNombreCompleto(this.tfNombreJ.getText());
+            jugador.setSueldo(this.tfSueldoJ.getText());
+            jugador.setNickname(this.tfNicknameJ.getText());
+            jugador.setTelefono(this.tfTelefonoJ.getText());
+            jugador.setNacionalidad(this.tfNacionalidadJ.getText());
+            jugador.setRol(this.tfRolJ.getText());
+            jugador.setEquipo(equipoNuevo);
+
+            Controlador.modificarJugador(jugador);
+            showMessageDialog(null, "dueno modificado");
+        } catch (Exception ex) {
+            showMessageDialog(null, "Error al modificar el dueño " + ex.getMessage());
+        }
+    
 
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -377,9 +406,22 @@ public class VModificarJugadores extends javax.swing.JFrame {
         Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
 
-    private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfNombreActionPerformed
+    private void tfNombreJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreJActionPerformed
+        try{
+            jugador = Controlador.buscarJugador(this.tfNombreJ.getText());
+            if(jugador==null)
+                showMessageDialog(null,"No se ha encontrado el jugador");
+            equipo=jugador.getEquipo();
+            if(equipo==null)
+                    showMessageDialog(null,"No se ha encontrado el equipo del jugador");    
+           
+            ensenarDatos();
+            
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
+    }//GEN-LAST:event_tfNombreJActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,16 +437,28 @@ public class VModificarJugadores extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VModificarJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VModificarJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VModificarJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VModificarJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VModificarJugadores.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VModificarJugadores.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VModificarJugadores.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VModificarJugadores.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -414,7 +468,14 @@ public class VModificarJugadores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VModificarJugadores().setVisible(true);
+                try {
+                    new VModificarJugadores().setVisible(true);
+                
+
+} catch (Exception ex) {
+                    Logger.getLogger(VModificarJugadores.class
+.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -422,7 +483,7 @@ public class VModificarJugadores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
-    private javax.swing.JComboBox<String> cbEquipos;
+    private javax.swing.JComboBox<String> cbEquiposJ;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -448,11 +509,11 @@ public class VModificarJugadores extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
-    private javax.swing.JTextField tfNacionalidad;
-    private javax.swing.JTextField tfNickname;
-    private javax.swing.JTextField tfNombre;
-    private javax.swing.JTextField tfRol;
-    private javax.swing.JTextField tfSueldo;
-    private javax.swing.JTextField tfTelefono;
+    private javax.swing.JTextField tfNacionalidadJ;
+    private javax.swing.JTextField tfNicknameJ;
+    private javax.swing.JTextField tfNombreJ;
+    private javax.swing.JTextField tfRolJ;
+    private javax.swing.JTextField tfSueldoJ;
+    private javax.swing.JTextField tfTelefonoJ;
     // End of variables declaration//GEN-END:variables
 }

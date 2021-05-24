@@ -1,8 +1,8 @@
 
 package Views.Entrenadores;
 
-import Views.Asistentes.*;
-import Modelo_UML.Asistente;
+
+import Modelo_UML.Entrenador;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,7 +16,7 @@ import static javax.swing.JOptionPane.*;
 public class VConsultarEntrenador extends javax.swing.JFrame {
     int xx;
     int xy; 
-    Asistente asistente;
+    Entrenador entrenador;
     /**
      * Creates new form VInsertarAsistente
      */
@@ -25,7 +25,17 @@ public class VConsultarEntrenador extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
     }
+    
     public void validarDatosAsistente(String n,String s,String t,String na){}
+    
+    public void ensenarEntrenador(){
+        this.taEntrenador.setText(" Nombre : "+entrenador.getNombreCompleto()+ "\n" +
+                "Sueldo : "+ entrenador.getSueldo()+"\n"+
+                " Telefono : "+entrenador.getTelefono()+ "\n" +
+                " Nacionalidad : "+entrenador.getNacionalidad()+ "\n" +
+                " Equipo : "+entrenador.getEqui().getNombre());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,9 +202,7 @@ public class VConsultarEntrenador extends javax.swing.JFrame {
         });
         jPanel1.add(bConsultarEntr, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 110, 20));
 
-        taEntrenador.setBackground(new java.awt.Color(255, 255, 255));
         taEntrenador.setColumns(20);
-        taEntrenador.setForeground(new java.awt.Color(0, 0, 0));
         taEntrenador.setRows(5);
         jScrollPane1.setViewportView(taEntrenador);
 
@@ -219,6 +227,11 @@ public class VConsultarEntrenador extends javax.swing.JFrame {
 
         tfNombreEntr.setBackground(new java.awt.Color(204, 204, 204));
         tfNombreEntr.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfNombreEntr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNombreEntrActionPerformed(evt);
+            }
+        });
         jPanel9.add(tfNombreEntr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 260, 40));
@@ -238,7 +251,15 @@ public class VConsultarEntrenador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bConsultarEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarEntrActionPerformed
-        
+        try {
+            entrenador = Controlador.buscarEntrenador(this.tfNombreEntr.getText());
+            if(entrenador==null){
+                showMessageDialog(null,"Entrenador no encontrado");
+            }
+            ensenarEntrenador();
+        } catch (Exception gnr) {
+            System.out.println("Problemas en la busqueda del Entrenador " + gnr.getMessage());
+        }
     }//GEN-LAST:event_bConsultarEntrActionPerformed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
@@ -276,6 +297,10 @@ public class VConsultarEntrenador extends javax.swing.JFrame {
     private void bCancelarEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarEntrActionPerformed
         Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarEntrActionPerformed
+
+    private void tfNombreEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreEntrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNombreEntrActionPerformed
 
     /**
      * @param args the command line arguments

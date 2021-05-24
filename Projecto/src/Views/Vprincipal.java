@@ -942,11 +942,19 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lInsertarAsistentesMouseClicked
 
     private void lInsertarEntrenadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarEntrenadoresMouseClicked
-        Controlador.abrirInsertarEntrenador();
+        try {
+            Controlador.abrirInsertarEntrenador();
+        } catch (Exception ex) {
+            System.out.println("Problema al abrir InsertarEntrenadoresClicked "+ex.getMessage());
+        }
     }//GEN-LAST:event_lInsertarEntrenadoresMouseClicked
 
     private void lInsertarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarJugadorMouseClicked
-        Controlador.abrirInsertarJugador();
+        try {
+            Controlador.abrirInsertarJugador();
+        } catch (Exception ex) {
+            System.out.println("Problema al abrir InsertarJugador "+ex.getMessage());
+        }
     }//GEN-LAST:event_lInsertarJugadorMouseClicked
 
     private void lInsertarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarDueñoMouseClicked
@@ -973,7 +981,7 @@ public class Vprincipal extends javax.swing.JFrame {
         try {
             Controlador.abrirModificarDueño();
         } catch (Exception ex) {
-            Logger.getLogger(Vprincipal.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Problema al abrir ModificarDuenoClicked " +ex.getMessage());
         }
     }//GEN-LAST:event_lModificarDueñoMouseClicked
 
@@ -982,11 +990,19 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lModificarUsuarioMouseClicked
 
     private void lModificarEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarEntrenadorMouseClicked
-        Controlador.abrirModificarEntrenador();
+        try {
+            Controlador.abrirModificarEntrenador();
+        } catch (Exception ex) {
+            System.out.println("Problema al abrir modificarEntrenadorClicked "+ex.getMessage());
+        }
     }//GEN-LAST:event_lModificarEntrenadorMouseClicked
 
     private void lModificarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarJugadorMouseClicked
-        Controlador.abrirModificarJugador();
+        try {
+            Controlador.abrirModificarJugador();
+        } catch (Exception ex) {
+            Logger.getLogger(Vprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lModificarJugadorMouseClicked
 
     private void lModificarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarEquipoMouseClicked
@@ -1001,7 +1017,7 @@ public class Vprincipal extends javax.swing.JFrame {
         try {
             Controlador.abrirEliminarEquipo();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Problema al abrir EliminarEquipo " + ex.getMessage());
         }
             
    

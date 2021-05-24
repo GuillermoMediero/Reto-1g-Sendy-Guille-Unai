@@ -5,9 +5,15 @@
  */
 package Views.Entrenadores;
 
+import Modelo_UML.Entrenador;
+import Modelo_UML.Equipo;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import projecto.Controlador;
+import static javax.swing.JOptionPane.*;
 
 /**
  *
@@ -16,16 +22,32 @@ import projecto.Controlador;
 public class VModificarEntrenadores extends javax.swing.JFrame {
     int xx;
     int xy; 
+    Entrenador entrenador;
+    Equipo equipo;
+    ArrayList<Equipo> aListaEquipo;
     /**
      * Creates new form InsertalEntrenadores
      */
-    public VModificarEntrenadores() {
+    public VModificarEntrenadores() throws Exception {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
+        aListaEquipo=new ArrayList();
+        aListaEquipo = Controlador.llenarComboBox();
     }
-
+     public void ensenarDatos(){
+        this.tfNombre.setText(entrenador.getNombreCompleto());
+        this.tfTelefono.setText(entrenador.getTelefono());
+        this.tfNacionalidad.setText(entrenador.getNacionalidad());
+        this.cbEquipos.addItem(equipo.getNombre());
+        llenado();
+    }
+     
+      public void llenado() {
+        for (int i = 0; i < aListaEquipo.size(); i++) {
+            cbEquipos.insertItemAt(aListaEquipo.get(i).getNombre(), i);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -336,7 +358,20 @@ public class VModificarEntrenadores extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
+        try{
+            entrenador = Controlador.buscarEntrenador(this.tfNombre.getText());
+            if(entrenador==null)
+                showMessageDialog(null,"No se ha encontrado el entrenador");
+            equipo=entrenador.getEqui();
+            if(equipo==null)
+                    showMessageDialog(null,"No se ha encontrado el equipo del entrenador");    
+           
+            ensenarDatos();
+            
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
@@ -384,7 +419,11 @@ public class VModificarEntrenadores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VModificarEntrenadores().setVisible(true);
+                try {
+                    new VModificarEntrenadores().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(VModificarEntrenadores.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

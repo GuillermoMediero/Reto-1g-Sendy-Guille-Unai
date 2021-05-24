@@ -25,7 +25,9 @@ public class VConsultarDueno extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
     }
+    
     public void validarDatosDueno(String n,String s,String t,String na){}
+   
     public void ensenarDueno(){
         this.taDueno.setText(" Nombre : "+dueno.getNombreCompleto()+ "\n" +
                 " Telefono : "+dueno.getTelefono()+ "\n" +

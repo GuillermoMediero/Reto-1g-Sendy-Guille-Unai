@@ -357,11 +357,11 @@ public class VInsertarDueno extends javax.swing.JFrame {
             if (dueno == null) {
                 Controlador.insertarDueno(tfNombre.getText(), 
                         tfNacionalidad.getText(),tfTelefono.getText(),equipo);
-                showMessageDialog(null, "Dueño " + tfNombre.getText() + " Insertado");
+                showMessageDialog(null, "Dueño  Insertado");
                 Controlador.cerrarVentana(this);
 
             } else {
-                showMessageDialog(null, "Ya existe un Dueño con ese Nombre");
+                showMessageDialog(null, "Ya existe el Dueño ");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

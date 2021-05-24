@@ -35,22 +35,24 @@ public class TJugador {
         if (resultado.next()) {
             Jugador juga;
             juga = new Jugador();
-            juga.setNombre(resultado.getString("NOMBRE"));
+            juga.setNombreCompleto(resultado.getString("NOMBRE"));
             juga.setSueldo(resultado.getString("SUELDO"));
             juga.setNickname(resultado.getString("NICKNAME"));
             juga.setTelefono(resultado.getString("TELEFONO"));
             juga.setNacionalidad(resultado.getString("NACIONALIDAD"));
             juga.setRol(resultado.getString("ROL"));
-            juga.setEquipo(tequi.buscarEquipoPK(juga.getEquipo().getId_equipo()));
+            juga.setEquipo(tequi.buscarEquipoById(juga.getEquipo().getId_equipo()));
+            juga.setId(Integer.parseInt(resultado.getString("ID_JUGADOR")));
             return juga;
         } else {
             return null;
         }
     }
       
-    public Jugador buscarJugador(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE, SUELDO, NICKNAME, TELEFONO, NACIONALIDAD,ROL, ID_EQUIPO FROM JUGADOR"
-                + " WHERE id_jugador=?";
+
+     public Jugador buscarJugador(String nombre) throws Exception {
+        String sentencia = "SELECT NOMBRE, SUELDO, NICKNAME, TELEFONO, NACIONALIDAD, ROL, ID_EQUIPO FROM JUGADOR"
+                + " WHERE NOMBRE = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(nombre));
 
@@ -58,13 +60,16 @@ public class TJugador {
         if (resultado.next()) {
             Jugador juga;
             juga = new Jugador();
-            juga.setNombre(resultado.getString("NOMBRE"));
+            juga.setNombreCompleto(resultado.getString("NOMBRE"));
             juga.setSueldo(resultado.getString("SUELDO"));
             juga.setNickname(resultado.getString("NICKNAME"));
             juga.setTelefono(resultado.getString("TELEFONO"));
             juga.setNacionalidad(resultado.getString("NACIONALIDAD"));
             juga.setRol(resultado.getString("ROL"));
-            juga.setEquipo(tequi.buscarEquipoPK(Integer.parseInt("ID_EQUIPO")));
+            juga.setEquipo(tequi.buscarEquipoById(Integer.parseInt(resultado.getString("ID_EQUIPO"))));
+            juga.setId(Integer.parseInt(resultado.getString("ID")));
+             
+           
             return juga;
         } else {
             return null;
@@ -76,14 +81,14 @@ public class TJugador {
         String sentencia = "INSERT INTO JUGADOR(NOMBRE,SUELDO,NICKNAME, TELEFONO, NACIONALIDAD, ROL, ID_EQUIPO)"
                 + "VALUES (?,?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, juga.getNombre());
+        ps.setString(1, juga.getNombreCompleto());
         ps.setString(2, String.valueOf(juga.getSueldo()));
         ps.setString(3, juga.getNickname());
         ps.setString(4, juga.getTelefono());
         ps.setString(5, juga.getNacionalidad());
         ps.setString(6, juga.getRol());
-        // Si coge el nombre o el id_equipo?
-        ps.setString(7, juga.getEquipo().getNombre());
+        ps.setString(7, String.valueOf(juga.getEquipo().getId_equipo()));
+        
 
         int resultado = ps.executeUpdate();
         ps.close();
@@ -95,14 +100,17 @@ public class TJugador {
 
     public void modificarJugador(Jugador juga) throws Exception {
         // No podemos modificar el nombre del asistente
-        String sentencia = "UPDATE JUGADOR SET SUELDO=?, NICKNAME=?,TELEFONO=?, NACIONALIDAD=? ,ROL=?"
-                + "WHERE NOMBRE = ?";
+        String sentencia = "UPDATE JUGADOR SET NOMBRE=?, SUELDO=?, NICKNAME=?,TELEFONO=?, NACIONALIDAD=? ,ROL=?, ID_EQUIPO=?"
+                + "WHERE ID_JUGADOR = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, juga.getSueldo());
-        ps.setString(2, juga.getNickname());
-        ps.setString(3, juga.getTelefono());
-        ps.setString(4, juga.getNacionalidad());
-        ps.setString(5, juga.getRol());
+        ps.setString(1, juga.getNombreCompleto());
+        ps.setString(2, juga.getSueldo());
+        ps.setString(3, juga.getNickname());
+        ps.setString(4, juga.getTelefono());
+        ps.setString(5, juga.getNacionalidad());
+        ps.setString(6, juga.getRol());
+        ps.setString(7,String.valueOf(juga.getEquipo().getId_equipo()));
+        ps.setString(7, String.valueOf(juga.getId()));
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {
@@ -111,12 +119,12 @@ public class TJugador {
 
     }
 
-    public void borrarJugador(String nombre) throws Exception {
+    public void borrarJugador(int id_jugador) throws Exception {
 
         {
-            String sentencia = "DELETE FROM JUGADOR WHERE NOMBRE =?";
+            String sentencia = "DELETE FROM JUGADOR WHERE ID_JUGADOR =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
-            ps.setString(1, nombre);
+            ps.setString(1, String.valueOf(id_jugador));
             int n = ps.executeUpdate();
             ps.close();
             if (n != 1) {

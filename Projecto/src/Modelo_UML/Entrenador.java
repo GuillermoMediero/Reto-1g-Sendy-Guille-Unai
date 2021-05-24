@@ -13,17 +13,16 @@ public class Entrenador extends Integrante{
     private String sueldo;
     private Equipo equi;
 
+    public Entrenador() {
+    }
+
     public Entrenador(String sueldo, Equipo equi) {
         this.sueldo = sueldo;
         this.equi = equi;
     }
 
-    public Entrenador() {
-    }
-    
-    
-    public Entrenador(String sueldo, Equipo equi, int id, String nombre, String telefono, String nacionalidad) {
-        super(id, nombre, telefono, nacionalidad);
+    public Entrenador(String sueldo, Equipo equi, String nombreCompleto, String nacionalidad, String telefono, int id) {
+        super(nombreCompleto, nacionalidad, telefono, id);
         this.sueldo = sueldo;
         this.equi = equi;
     }
@@ -44,6 +43,6 @@ public class Entrenador extends Integrante{
         this.equi = equi;
     }
 
-  
-
+    
+    
 }

@@ -2,6 +2,8 @@
 package Views.Asistentes;
 
 import Modelo_UML.Asistente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import projecto.Controlador;
@@ -22,13 +24,21 @@ public class VEliminarAsistente extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
+        tfNombre.setEditable(true);
         tfSueldo.setEditable(false);
         tfNacionalidad.setEditable(false);
         tfTelefono.setEditable(false);
              
     }
+    
     public void validarDatosAsistente(String n,String s,String t,String na){}
+    public void ensenarDatos(){
+        this.tfNombre.setText(asistente.getNombreCompleto());
+        this.tfSueldo.setText(asistente.getSueldo());
+        this.tfTelefono.setText(asistente.getTelefono());
+        this.tfNacionalidad.setText(asistente.getNacionalidad());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -313,11 +323,24 @@ public class VEliminarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
+        try{
+            asistente= Controlador.buscarAsistente(this.tfNombre.getText());
+            if(asistente==null){
+                throw new Exception("Asistente no encontrado");
+            }
+            ensenarDatos();
+        }catch(Exception gnr){
+            showMessageDialog(this,"Error, al buscar asistente");
+        }
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+        try {
+            Controlador.borrarAsistente(asistente.getId());
+             showMessageDialog(this,"Asistente Borrado");
+        } catch (Exception ex) {
+             showMessageDialog(this,"Error, al borrar asistente " + ex.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed

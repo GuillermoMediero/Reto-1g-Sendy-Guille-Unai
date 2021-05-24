@@ -5,8 +5,11 @@
  */
 package Views.Jugadores;
 
+import Modelo_UML.Equipo;
+import Modelo_UML.Jugador;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import static javax.swing.JOptionPane.*;
 import projecto.Controlador;
 
 /**
@@ -16,6 +19,8 @@ import projecto.Controlador;
 public class VEliminarJugadores extends javax.swing.JFrame {
     int xx;
     int xy; 
+    Jugador jugador;
+    Equipo equipo;
     /**
      * Creates new form InsertarJugadores
      */
@@ -23,7 +28,11 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
+        editableFalse();
+
+        
+    }
+    public void editableFalse(){
         tfSueldo.setEditable(false);
         tfNickname.setEditable(false);
         tfTelefono.setEditable(false);
@@ -31,7 +40,15 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         tfRol.setEditable(false);
         cbEquipos.setEditable(false);
     }
-
+     public void ensenarDatos(){
+        this.tfNombre.setText(jugador.getNombreCompleto());
+        this.tfSueldo.setText(jugador.getSueldo());
+        this.tfNickname.setText(jugador.getNickname());
+        this.tfTelefono.setText(jugador.getTelefono());
+        this.tfNacionalidad.setText(jugador.getNacionalidad());
+        this.tfRol.setText(jugador.getRol());
+        this.cbEquipos.addItem(equipo.getNombre());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -200,15 +217,12 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Insertar Jugadores");
+        jLabel1.setText("Eliminar Jugadores");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Sueldo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
 
@@ -216,7 +230,6 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfSueldo.setBackground(new java.awt.Color(204, 204, 204));
-        tfSueldo.setForeground(new java.awt.Color(0, 0, 0));
         tfSueldo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel8.add(tfSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
@@ -226,7 +239,6 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        tfNombre.setForeground(new java.awt.Color(0, 0, 0));
         tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,7 +271,6 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         });
         jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 120, 30));
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nickname");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
 
@@ -267,13 +278,11 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNickname.setBackground(new java.awt.Color(204, 204, 204));
-        tfNickname.setForeground(new java.awt.Color(0, 0, 0));
         tfNickname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel10.add(tfNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 260, 40));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
 
@@ -281,13 +290,11 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
-        tfTelefono.setForeground(new java.awt.Color(0, 0, 0));
         tfTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel11.add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 260, 40));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nacionalidad");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, -1, -1));
 
@@ -295,13 +302,11 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNacionalidad.setBackground(new java.awt.Color(204, 204, 204));
-        tfNacionalidad.setForeground(new java.awt.Color(0, 0, 0));
         tfNacionalidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel12.add(tfNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 260, 40));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Rol");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
@@ -309,13 +314,11 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfRol.setBackground(new java.awt.Color(204, 204, 204));
-        tfRol.setForeground(new java.awt.Color(0, 0, 0));
         tfRol.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel13.add(tfRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 260, 40));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nombre Equipo");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
 
@@ -323,7 +326,6 @@ public class VEliminarJugadores extends javax.swing.JFrame {
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbEquipos.setBackground(new java.awt.Color(204, 204, 204));
-        cbEquipos.setForeground(new java.awt.Color(0, 0, 0));
         cbEquipos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
@@ -376,7 +378,12 @@ public class VEliminarJugadores extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+         try {
+            Controlador.borrarJugador(jugador.getId());
+            showMessageDialog(null, "Jugador borrado");
+        } catch (Exception gnr) {
+            System.out.println("Error al borrar el jugador "+ gnr.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -384,7 +391,20 @@ public class VEliminarJugadores extends javax.swing.JFrame {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
+        try{
+            jugador = Controlador.buscarJugador(this.tfNombre.getText());
+            if(jugador==null)
+                showMessageDialog(null,"No se ha encontrado el dueno");
+            equipo=jugador.getEquipo();
+            if(equipo==null)
+                    showMessageDialog(null,"No se ha encontrado el equipo del dueno");    
+           
+            ensenarDatos();
+            
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
     }//GEN-LAST:event_tfNombreActionPerformed
 
     /**

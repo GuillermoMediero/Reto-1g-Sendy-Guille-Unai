@@ -26,6 +26,13 @@ public class VConsultarAsistente extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     public void validarDatosAsistente(String n,String s,String t,String na){}
+    public void ensenarDatos(){
+        this.taAsistentes.setText(asistente.getNombreCompleto() + "\n"+
+                asistente.getSueldo()+ "\n"+
+                asistente.getTelefono()+ "\n"+
+                asistente.getNacionalidad());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -238,7 +245,12 @@ public class VConsultarAsistente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bConsultarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarAsisActionPerformed
-        
+            try{
+                asistente = Controlador.buscarAsistente(this.tfNombreAsis.getText());
+                ensenarDatos();
+            }catch(Exception gnr){
+                showMessageDialog(null,"Error al buscar el Asistente");
+            }
     }//GEN-LAST:event_bConsultarAsisActionPerformed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
