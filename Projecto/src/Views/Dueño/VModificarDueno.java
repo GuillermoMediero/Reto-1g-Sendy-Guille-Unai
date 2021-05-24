@@ -25,29 +25,34 @@ public class VModificarDueno extends javax.swing.JFrame {
     Dueno dueno;
     Equipo equipo;
     Equipo equipoNuevo;
+    
     ArrayList<Equipo> aListaEquipo;
     /**
      * Creates new form InsertarDueño
      */
     public VModificarDueno() throws Exception {
         initComponents();
-        aListaEquipo = Controlador.llenarComboBox();
-        llenado();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
+        aListaEquipo = Controlador.llenarComboBox();
+        
        
     }
+     public void ensenarDatos(){
+        this.tfNombreDM.setText(dueno.getNombreCompleto());
+        this.tfNombreDM.setEditable(false);
+        this.tfTelefonoDM.setText(dueno.getTelefono());
+        this.tfNacionalidadDM.setText(dueno.getNacionalidad());
+        this.cbEquiposDM.addItem(equipo.getNombre());
+        llenado();
+    }
+     
       public void llenado() {
         for (int i = 0; i < aListaEquipo.size(); i++) {
             cbEquiposDM.insertItemAt(aListaEquipo.get(i).getNombre(), i);
         }
     }
-    public void ensenarDatos(){
-        this.tfNombreDM.setText(dueno.getNombre());
-        this.tfNombreDM.setEditable(false);
-        this.tfTelefonoDM.setText(dueno.getTelefono());
-     
-    }
+   
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -360,7 +365,7 @@ public class VModificarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreDMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreDMActionPerformed
-        try{
+          try{
             dueno = Controlador.buscarDueno(this.tfNombreDM.getText());
             if(dueno==null)
                 showMessageDialog(null,"No se ha encontrado el dueno");
@@ -378,9 +383,16 @@ public class VModificarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreDMActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        try {
-           equipoNuevo = dueno.getEquipo();
-            Controlador.modificarDueno(this.tfNombreDM.getText(),this.tfTelefonoDM.getText(),this.tfNacionalidadDM.getText(),equipoNuevo);
+             
+        try {                    
+            equipoNuevo= Controlador.buscarEquipoPKID(this.cbEquiposDM.getSelectedIndex());
+           
+            dueno.setNombreCompleto(this.tfNombreDM.getText());
+            dueno.setNacionalidad(this.tfNacionalidadDM.getText());
+            dueno.setTelefono(this.tfTelefonoDM.getText());
+            dueno.setEquipo(equipoNuevo);
+            
+            Controlador.modificarDueno(dueno);
             showMessageDialog(null, "dueno modificado");
         } catch (Exception ex) {
             showMessageDialog(null,"Error al modificar el dueño "+ex.getMessage());

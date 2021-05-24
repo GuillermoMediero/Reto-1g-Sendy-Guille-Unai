@@ -28,6 +28,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
     int xx;
     int xy;
     Dueno dueno;
+    Equipo equipo;
     ArrayList<Equipo> aListaEquipo;
     
 
@@ -352,10 +353,10 @@ public class VInsertarDueno extends javax.swing.JFrame {
             validarDatos(tfNombre.getText(), tfTelefono.getText(), tfNacionalidad.getText());
             //buscar  por nombre al dueno
             dueno = Controlador.buscarDueno(tfNombre.getText());
-            Controlador.buscarEquipoPK(String.valueOf(this.cbEquipos.getSelectedItem()));
+            equipo = Controlador.buscarEquipo(String.valueOf(this.cbEquipos.getSelectedItem()));
             if (dueno == null) {
                 Controlador.insertarDueno(tfNombre.getText(), 
-                        tfNacionalidad.getText(),tfTelefono.getText());
+                        tfNacionalidad.getText(),tfTelefono.getText(),equipo);
                 showMessageDialog(null, "Dueño " + tfNombre.getText() + " Insertado");
                 Controlador.cerrarVentana(this);
 

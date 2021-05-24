@@ -27,7 +27,7 @@ public class VConsultarDueno extends javax.swing.JFrame {
     }
     public void validarDatosDueno(String n,String s,String t,String na){}
     public void ensenarDueno(){
-        this.taDueno.setText(" Nombre : "+dueno.getNombre()+ "\n" +
+        this.taDueno.setText(" Nombre : "+dueno.getNombreCompleto()+ "\n" +
                 " Telefono : "+dueno.getTelefono()+ "\n" +
                 " Nacionalidad : "+dueno.getNacionalidad()+ "\n" +
                 " Equipo : "+dueno.getEquipo().getNombre());

@@ -28,11 +28,9 @@ import Views.equipos.VInsertarEquipo;
 
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-
+import static javax.swing.JOptionPane.*;
 /**
  *
  * @author ketro
@@ -211,8 +209,13 @@ public class Controlador {
         return due;
     }
 
-    public static void insertarDueno(String nombre, String telefono ,String nacionalidad) throws Exception {        
-        due = new Dueno(equipoPK,nombre, telefono, nacionalidad);
+    public static void insertarDueno(String nombre, String telefono ,String nacionalidad, Equipo equi) throws Exception {        
+        due = new Dueno();
+        due.setNombreCompleto(nombre);
+        due.setTelefono(telefono);
+        due.setNacionalidad(nacionalidad);
+        due.setEquipo(equi);
+        
         tdue.insertarDueno(due);
     }
 
@@ -220,9 +223,9 @@ public class Controlador {
         tdue.borrarDueno(nombreCompleto);
     }
 
-    public static void modificarDueno(String nom,String tele,String nac,Equipo equi) throws Exception {
-        Dueno duenoNuevo=new Dueno(equi,nom,tele,nac);
-        tdue.modificarDueno(duenoNuevo);
+    public static void modificarDueno(Dueno duenoM) throws Exception {
+       showMessageDialog(null,duenoM.getId());
+        tdue.modificarDueno(duenoM);
     }
 
     // Entrenador
@@ -246,6 +249,11 @@ public class Controlador {
 
     // Equipo
 
+    public static Equipo buscarEquipoPKID(int id) throws Exception {
+        Equipo nuevoEquipo;
+        nuevoEquipo = tequi.buscarEquipoById(id);   
+        return nuevoEquipo;
+    }
     public static void buscarEquipoPK(String nombre) throws Exception {
         equipoPK = tequi.buscarEquipoByNombre(nombre);      
     }

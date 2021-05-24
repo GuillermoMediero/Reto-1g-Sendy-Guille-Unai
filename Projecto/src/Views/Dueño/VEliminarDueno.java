@@ -42,6 +42,7 @@ public class VEliminarDueno extends javax.swing.JFrame {
    
     
     public void ensenarDatos(){
+        this.tfNombreD.setText(dueno.getNombreCompleto());
         this.tfTelefonoD.setText(dueno.getTelefono());
         this.tfNacionalidadD.setText(dueno.getNacionalidad());
         this.cbEquiposD.addItem(equipo.getNombre());
@@ -348,7 +349,7 @@ public class VEliminarDueno extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try {
-            Controlador.borrarDueno(dueno.getNombre());
+            Controlador.borrarDueno(dueno.getNombreCompleto());
             showMessageDialog(null, "Dueño borrado");
         } catch (Exception gnr) {
             System.out.println("Error "+ gnr.getMessage());

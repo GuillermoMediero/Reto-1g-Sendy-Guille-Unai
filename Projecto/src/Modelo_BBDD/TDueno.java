@@ -44,7 +44,7 @@ private TEquipo tequi;
     }
     
      public Dueno buscarDueno(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE NOMBRE=?";
+        String sentencia = "SELECT ID_DUENO, NOMBRE,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(nombre));
 
@@ -52,10 +52,12 @@ private TEquipo tequi;
         if (resultado.next()) {
            Dueno due;
             due = new Dueno();
-            due.setNombre(resultado.getString("NOMBRE"));
+            due.setId(Integer.parseInt(resultado.getString("ID_DUENO")));
+            due.setNombreCompleto(resultado.getString("NOMBRE"));
             due.setTelefono(resultado.getString("TELEFONO"));
             due.setNacionalidad(resultado.getString("NACIONALIDAD"));
             due.setEquipo(tequi.buscarEquipoById(Integer.parseInt(resultado.getString("ID_EQUIPO"))));
+            
             return due;
         } else {
             return null;
@@ -64,11 +66,11 @@ private TEquipo tequi;
 
     public void insertarDueno(Dueno due) throws Exception {
 
-        String sentencia = "INSERT INTO DUENO(NOMBRE, NACIONALIDAD, TELEFONO, ID_EQUIPO)VALUES (?,?,?,?)";
+        String sentencia = "INSERT INTO DUENO(NOMBRE, TELEFONO,NACIONALIDAD, ID_EQUIPO)VALUES (?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, due.getNombre());
-        ps.setString(2, due.getNacionalidad());
-        ps.setString(3, due.getTelefono());
+        ps.setString(1, due.getNombreCompleto());
+        ps.setString(2, due.getTelefono());
+        ps.setString(3, due.getNacionalidad()); 
         ps.setString(4, String.valueOf(due.getEquipo().getId_equipo()));
         
 
@@ -82,13 +84,15 @@ private TEquipo tequi;
 
     public void modificarDueno(Dueno due) throws Exception {
         // No podemos modificar el nombre del dueño
-        String sentencia = "UPDATE DUENO SET TELEFONO=?, NACIONALIDAD=? ,ID_EQUIPO=?"
-                + "WHERE NOMBRE = ?";
+        String sentencia = "UPDATE DUENO SET nombre=?,TELEFONO=?, NACIONALIDAD=? ,ID_EQUIPO=?"
+                + "WHERE ID_DUENO = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, due.getTelefono());
-        ps.setString(2, due.getNacionalidad());
-        ps.setString(3, String.valueOf(due.getEquipo().getId_equipo()));
-        ps.setString(4, due.getNombre());
+        ps.setString(1, due.getNombreCompleto());
+        ps.setString(2, due.getTelefono());
+        ps.setString(3, due.getNacionalidad());
+        ps.setString(4, String.valueOf(due.getEquipo().getId_equipo()));
+        ps.setString(5,String.valueOf( due.getId()));
+      
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {
