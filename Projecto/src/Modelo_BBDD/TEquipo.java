@@ -76,10 +76,11 @@ public class TEquipo {
 
     public void modificarEquipo(Equipo equi) throws Exception {
         // No podemos modificar el nombre del equipo
-        String sentencia = "UPDATE EQUIPO SET SUELDO=?,ESCUDO=? WHERE NOMBRE = ?";
+        String sentencia = "UPDATE EQUIPO SET NOMBRE=?,ESCUDO=? WHERE ID_EQUIPO = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, equi.getNombre());
         ps.setString(2, equi.getEscudo());
+        ps.setString(3, String.valueOf(equi.getId_equipo()));
        
         int n = ps.executeUpdate();
         ps.close();

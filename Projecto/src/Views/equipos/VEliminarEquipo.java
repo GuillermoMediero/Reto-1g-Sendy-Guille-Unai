@@ -25,20 +25,23 @@ public class VEliminarEquipo extends javax.swing.JFrame {
      * Creates new form InstertarEquipo
      */
     public VEliminarEquipo() {
-       
-    }
-
-    public VEliminarEquipo(String nombre, String escudo) {
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
-        this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
-        tfEscudo.setEditable(false);
-        tfNombre.setText(nombre);
-        tfEscudo.setText(escudo);
+        EditableFalse();
+
     }
 
+      private void EditableFalse() {
+        tfEscudo.setEditable(false);
+    }
+
+      
+      public void ensenarDatos(){
+        this.tfNombre.setText(equi.getNombre());
+        this.tfEscudo.setText(equi.getEscudo());
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -214,6 +217,11 @@ public class VEliminarEquipo extends javax.swing.JFrame {
 
         tfNombre.setBackground(new java.awt.Color(204, 204, 204));
         tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNombreActionPerformed(evt);
+            }
+        });
         jPanel9.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 260, 40));
@@ -288,9 +296,8 @@ public class VEliminarEquipo extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-               Controlador.borrarEquipo(tfNombre.getText());
-               showMessageDialog(null,"Equipo " + tfNombre.getText() +" Insertado");
-               Controlador.cerrarVentana(this);
+               Controlador.borrarEquipo(equi.getNombre());
+               showMessageDialog(null, "Equipo borrado");
            
         }
         catch(Exception e){
@@ -301,6 +308,21 @@ public class VEliminarEquipo extends javax.swing.JFrame {
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
+        try{
+            equi = Controlador.buscarEquipo(tfNombre.getText());
+            if(equi==null)
+                showMessageDialog(null,"No se ha encontrado el equipo");
+   
+            ensenarDatos();
+            
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
+       
+    }//GEN-LAST:event_tfNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,7 +388,7 @@ public class VEliminarEquipo extends javax.swing.JFrame {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        return false;
-    }
+ 
+
+  
 }

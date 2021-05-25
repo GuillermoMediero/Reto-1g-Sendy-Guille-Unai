@@ -90,6 +90,7 @@ public class TAsistente {
         ps.setString(2, asis.getSueldo());
         ps.setString(3, asis.getTelefono());
         ps.setString(4, asis.getNacionalidad());
+        ps.setString(5,String.valueOf(asis.getId()));
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {

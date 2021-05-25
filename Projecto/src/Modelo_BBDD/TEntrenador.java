@@ -48,7 +48,25 @@ private TEquipo tequi;
             return null;
         }
     }
-   
+      
+   /*     public Entrenador buscarEntrenadorById(int id_entrenador) throws Exception {
+        String sentencia = "SELECT * FROM ENTRENADOR WHERE ID_ENTRENADORr=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, String.valueOf(id_entrenador));
+
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+            Entrenador ent;
+            ent = new Entrenador();
+            ent.setNombreCompleto(resultado.getString("NOMBRE"));
+            ent.setSueldo(resultado.getString("ESCUDO"));
+            ent.setEqui(resultado.getInt("ID_EQUIPO"));
+            return ent;
+        } else {
+            return null;
+        }
+    }
+   */
 
     public void insertarEntrenador(Entrenador ent) throws Exception {
 

@@ -32,7 +32,7 @@ public class TAdministrador {
         if (resultado.next()) {
             
             Administrador  adm = new Administrador ();
-            adm.setNombre(resultado.getString("nombre"));
+            adm.setNombreCompleto(resultado.getString("nombre"));
             adm.setCorreo(resultado.getString("correo"));
             adm.setClave(resultado.getString("contrasena"));
             

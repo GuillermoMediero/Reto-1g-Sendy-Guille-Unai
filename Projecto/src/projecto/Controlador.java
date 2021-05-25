@@ -113,9 +113,9 @@ public class Controlador {
 
             tadm = new TAdministrador(con);
             tusu = new TUsuario(con);
-            tasis = new TAsistente(con, tent);
-            tent = new TEntrenador(con, tequi);
             tequi = new TEquipo(con);
+            tent = new TEntrenador(con, tequi);
+            tasis = new TAsistente(con, tent);
             tdue = new TDueno(con, tequi);
             tjorn = new TJornada(con);
             tjuga = new TJugador(con, tequi);
@@ -147,11 +147,11 @@ public class Controlador {
                     // Si usuario no existe, error.
                     throw new Exception("Error, El usuario no existe");
                 } else {
-                    nombre = usu.getNombre();
+                    nombre = usu.getNombreCompleto();
                     llamarPrincipal(Rol.USUARIO, nombre);
                 }
             } else {
-                nombre = adm.getNombre();
+                nombre = adm.getNombreCompleto();
                 llamarPrincipal(Rol.ADMINISTRADOR, nombre);
             }
         } catch (Exception gnr) {
@@ -279,8 +279,8 @@ public class Controlador {
         tequi.insertarEquipo(equi);
     }
 
-    public static void modificarEquipo() throws Exception {
-        tequi.modificarEquipo(equi);
+    public static void modificarEquipo(Equipo equipoM) throws Exception {
+        tequi.modificarEquipo(equipoM);
 
     }
 
@@ -449,12 +449,10 @@ public class Controlador {
               
     }*/
 
-    public static void abrirEliminarEquipo() throws Exception {
-        equi = buscarEquipo(nombre);
-        vee = new VEliminarEquipo(equi.getNombre(),equi.getEscudo());
+    public static void abrirEliminarEquipo()   {
+        vee = new VEliminarEquipo();
         vee.setVisible(true);
     }
- 
     
     public static void abrirEliminarJugador() {
         
@@ -510,7 +508,7 @@ public class Controlador {
         vcj.setVisible(true);
     }
 
-    public static void abrirConsultarEquipo() {
+    public static void abrirConsultarEquipo()  {
         vce = new VConsultarEquipo();
         vce.setVisible(true);
     }

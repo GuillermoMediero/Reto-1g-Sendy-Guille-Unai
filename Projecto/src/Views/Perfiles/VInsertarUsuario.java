@@ -310,17 +310,16 @@ public class VInsertarUsuario extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-            if(datosCorrectos()){
                 usu = Controlador.buscarUsuario(this.tfNombre.getText());
                 if(usu==null){
                     Controlador.insertarUsuario(tfNombre.getText(),tfCorreo.getText(),String.valueOf(this.pfContrasena.getPassword()));
-                    showMessageDialog(null,"Usuario" + tfNombre.getText() +" Insertado");
+                    showMessageDialog(null,"Usuario Insertado");
                     Controlador.cerrarVentana(this);
                    }
                 else{
                     showMessageDialog(null,"Ya existe un Usuario con ese Nombre");
             }
-        }
+        
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
