@@ -1,4 +1,5 @@
 SET SERVEROUTPUT ON;
+----paquete de consultas de los equipos----
 CREATE OR REPLACE PACKAGE pk_consultasEquipoJugador AS
     PROCEDURE  informaciones_equipo;
     PROCEDURE  informaciones_jugador;
@@ -7,9 +8,9 @@ CREATE OR REPLACE PACKAGE pk_consultasEquipoJugador AS
 END pk_consultasEquipoJugador;
 
 
-
+---- cuerpo del paquete de consultas de los equipos----
 CREATE OR REPLACE PACKAGE BODY pk_consultasEquipoJugador AS
-
+---proceso para sacar la informacion del equipo----
   PROCEDURE  informaciones_equipo AS        
     BEGIN
         DECLARE
@@ -31,7 +32,7 @@ CREATE OR REPLACE PACKAGE BODY pk_consultasEquipoJugador AS
  
   
   
-  
+---proceso para sacar la informacion de cada jugador----  
    PROCEDURE informaciones_jugador AS 
    BEGIN 
         DECLARE
@@ -55,6 +56,7 @@ CREATE OR REPLACE PACKAGE BODY pk_consultasEquipoJugador AS
            END LOOP;
         END;
    END;  
+---funcion para devolver el numero de victorias----     
    function ver_victoriaL (p_id_equipo number) Return number
 as
 
@@ -76,7 +78,7 @@ BEGIN
         return Victoria_total;
     end;
 END ver_victoria;
-
+---proceso para sacar la cantidad de victorias de cada equipo----  
 PROCEDURE  cantidad_victorias AS        
     BEGIN
         DECLARE
@@ -98,12 +100,10 @@ PROCEDURE  cantidad_victorias AS
      END;
 END pk_consultasEquipoJugador;
 
-select * from JUGADOR;
-select * from pARTIDO;
-select * from equipo;
 
 
 SET SERVEROUTPUT ON;
+---paquete para generar la liga----  
 CREATE OR REPLACE PACKAGE generar_liga AS
     PROCEDURE  crearjornadas;
     PROCEDURE  informaciones_jugador;
@@ -114,7 +114,7 @@ END generar_liga;
 
 
 CREATE OR REPLACE PACKAGE BODY generar_liga AS
-             
+---proceso para la creacion de las jornadas----               
  PROCEDURE  crearjornadas AS 
 v_count number(2):=0;
 v_bucle number(2):=0;
@@ -129,7 +129,7 @@ v_fecha date;
         v_bucle:=v_bucle+1;
         END LOOP;  
      END;
-
+---funcion  para devolver una hora dependiendo de la cantidad de partidos insertados previamente----  
 function hora (p_jornada number) Return date
 as
         dia_partido date;
@@ -145,7 +145,7 @@ as
         hora_partido:=dia_partido+ (cant_partidos+12)/24;
         return hora_partido;
 END hora;
-
+---proceso para generar el calendario insertando los partidos ----  
 PROCEDURE  crearcalendario AS        
     BEGIN
         DECLARE
@@ -166,7 +166,7 @@ PROCEDURE  crearcalendario AS
              FROM JORNADA ;
            FOR v_cursor IN C
            LOOP
-            SELECT min(NUM_JORNADA ) into v_jornada
+            SELECT min(NUM_JORNADA) into v_jornada
              FROM JORNADA ;
            while  v_jornada<=v_max_jornada
            LOOP
