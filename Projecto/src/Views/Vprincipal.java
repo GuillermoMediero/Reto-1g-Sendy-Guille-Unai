@@ -1055,7 +1055,11 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lConsultarEquipoMouseClicked
 
     private void lConsultarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarJugadorMouseClicked
-        Controlador.abrirConsultarJugadores();
+        try {
+            Controlador.abrirConsultarJugadores();
+        } catch (Exception ex) {
+             System.out.println("Problema al abrir ConsultarJugador " + ex.getMessage());
+        }
     }//GEN-LAST:event_lConsultarJugadorMouseClicked
 
     private void lConsultarEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarEntrenadorMouseClicked
@@ -1067,7 +1071,11 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lConsultarAsistenteMouseClicked
 
     private void lConsultarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarDueñoMouseClicked
-        Controlador.abrirConsultarDueno();
+        try {
+            Controlador.abrirConsultarDueno();
+        } catch (Exception ex) {
+             System.out.println("Problema al abrir ConsultarDueño " + ex.getMessage());
+        }
     }//GEN-LAST:event_lConsultarDueñoMouseClicked
 
     private void lConsultarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarUsuarioMouseClicked

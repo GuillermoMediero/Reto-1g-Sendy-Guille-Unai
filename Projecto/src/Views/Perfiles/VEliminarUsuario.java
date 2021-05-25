@@ -186,7 +186,7 @@ public class VEliminarUsuario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Insertar Usuario");
+        jLabel1.setText("Eliminar Usuario");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
