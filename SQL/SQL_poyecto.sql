@@ -289,9 +289,9 @@ END;
 
 ----------------------Insercion de datos en las tablas--------------------------
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('BLACK BIRDS','http://imagenescudoblackbirds.es');
-INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('CHAIR MONSTERS','http://imagenescudocahinmosters.es');
-INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('LOS PITUFOS','http://imagenescudolospitufos.es');
-INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('LOS INCREIBLES','http://imagenescudolosincreibles.es');
+INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('MONSTERS','http://imagenescudocahinmosters.es');
+INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('PITUFOS','http://imagenescudolospitufos.es');
+INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('INCREIBLES','http://imagenescudolosincreibles.es');
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('LEG BROKERS','http://imagenescudolegbrokers.es');
 INSERT INTO EQUIPO(NOMBRE,ESCUDO) VALUES ('ROMPEMUROS','http://imagenescudorompemuros.es');
 
