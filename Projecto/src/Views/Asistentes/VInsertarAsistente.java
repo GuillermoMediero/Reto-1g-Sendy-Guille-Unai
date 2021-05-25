@@ -1,5 +1,6 @@
 package Views.Asistentes;
 
+import Excepciones.DatoNoValido;
 import Modelo_UML.Asistente;
 import Modelo_UML.Entrenador;
 import javax.swing.ImageIcon;
@@ -7,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import projecto.Controlador;
 import static javax.swing.JOptionPane.*;
+import validaciones.validaciones;
 
 /**
  *
@@ -28,7 +30,12 @@ public class VInsertarAsistente extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public void validarDatosAsistente(String n, String s, String t, String na) {
+    public void validarDatosAsistente(String n, String s, String t, String na) throws DatoNoValido {
+       validaciones.validarNombre(n);
+       validaciones.validarsueldo(s);
+       validaciones.validartelefono(t);
+       validaciones.validarnacionalidad(na);
+       
     }
 
     /**

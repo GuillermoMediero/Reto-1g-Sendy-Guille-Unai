@@ -52,7 +52,7 @@ public class validaciones {
           throw new DatoNoValido("El nickname del jugadr está formado sólamente por letras y numeros");
     }
           // Comprobar sueldo
-    public static void validarsueldo(String sueldo,String tabla) throws DatoNoValido {
+    public static void validarsueldo(String sueldo) throws DatoNoValido {
       // Comprobar si no esta vacio el dato recibido
         if (sueldo.isEmpty())
            throw new DatoNoValido("Es obligatorio indicar el nombre");
@@ -61,7 +61,7 @@ public class validaciones {
       Pattern p = Pattern.compile("^[0-9 ]{1,}(\\,[\\\\w-]{2})?$");
       Matcher m = p.matcher(sueldo);
       if (!m.matches())
-          throw new DatoNoValido("El sueldo del "+ tabla+" debe ser numerico");
+          throw new DatoNoValido("El sueldo debe ser numerico");
     }
     public static void validarcorreo(String correo) throws DatoNoValido {
       

@@ -185,7 +185,7 @@ public class VConsultarEquipo extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Consular Equipo");
+        jLabel1.setText("Consultar Equipo");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
 
         bConsultarEqu.setBackground(new java.awt.Color(0, 0, 0));
