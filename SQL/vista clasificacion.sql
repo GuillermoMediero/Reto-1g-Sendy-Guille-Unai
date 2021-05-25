@@ -2,8 +2,9 @@ CREATE OR REPLACE view clasificacion AS
   SELECT DISTINCT e.nombre,(
               SELECT count(*) 
               FROM PARTIDO 
-              wHERE id_equipol = e.id_equipo
-              OR ID_EQUIPOV = e.id_equipo
+              wHERE (id_equipol = e.id_equipo
+              OR ID_EQUIPOV = e.id_equipo)
+              AND  ResultadoL IS NOT NULL)
         ) AS PARTIDOS_JUGADOS ,(
               SELECT count(*) 
               FROM PARTIDO 
