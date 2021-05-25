@@ -3,6 +3,7 @@ package projecto;
 import Modelo_BBDD.*;
 import Modelo_UML.Administrador;
 import Modelo_UML.Asistente;
+import Modelo_UML.Clasificacion;
 import Modelo_UML.Dueno;
 import Modelo_UML.Entrenador;
 import Modelo_UML.Equipo;
@@ -49,6 +50,7 @@ public class Controlador {
     private static TJornada tjorn;
     private static TJugador tjuga;
     private static TPartido tpart;
+    private static VClasificacion vcla;
 
     // Variables de las UML
     private static Administrador adm;
@@ -60,6 +62,7 @@ public class Controlador {
     private static Jornada jor;
     private static Jugador juga;
     private static Partido part;
+    private static Clasificacion cla;
 
     // Creación de las Variables de las Ventanas
     private static VentanaLogin vl;
@@ -104,6 +107,7 @@ public class Controlador {
     // Otras Variables 
     private static String nombre;
     private static ArrayList<Equipo> aListaEquipo;
+    private static ArrayList<Clasificacion> aListaClasificacion;
     private static Equipo equipoPK;
 
     public static void main(String[] args) {
@@ -114,6 +118,7 @@ public class Controlador {
             tadm = new TAdministrador(con);
             tusu = new TUsuario(con);
             tequi = new TEquipo(con);
+            vcla = new VClasificacion(con);
             tent = new TEntrenador(con, tequi);
             tasis = new TAsistente(con, tent);
             tdue = new TDueno(con, tequi);
@@ -517,8 +522,20 @@ public class Controlador {
         aThis.dispose();
     }
 
+    
+
+   
+
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }
 
+    
+    //generar clasificacion
+    public static ArrayList<Clasificacion> consultarClasificacion() throws Exception {
+       aListaClasificacion=new ArrayList();
+        aListaClasificacion=vcla.consultarTodasClasificacion();
+       return aListaClasificacion;
+    
+    }
 }

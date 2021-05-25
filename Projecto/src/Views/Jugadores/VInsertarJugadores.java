@@ -5,6 +5,7 @@
  */
 package Views.Jugadores;
 
+import Excepciones.DatoNoValido;
 import Modelo_UML.Equipo;
 import Modelo_UML.Jugador;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
+import validaciones.validaciones;
 
 /**
  *
@@ -49,6 +51,14 @@ public class VInsertarJugadores extends javax.swing.JFrame {
         }
     }
 
+    private void validarDatos(String n, String s, String nick, String t, String na, String r) throws DatoNoValido {
+       validaciones.validarNombre(n);
+       validaciones.validarsueldo(s);
+       validaciones.validarnickname(nick);
+       validaciones.validartelefono(t);
+       validaciones.validarnacionalidad(na);
+       validaciones.validarRol(r);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -395,7 +405,7 @@ public class VInsertarJugadores extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try {
             
-            
+            validarDatos(tfNombre.getText(),tfSueldo.getText(),tfNickname.getText(), tfTelefono.getText(), tfNacionalidad.getText(),tfRol.getText());
             jug = Controlador.buscarJugador(this.tfNombre.getText());
             equipo = Controlador.buscarEquipoPKID(this.cbEquipos.getSelectedIndex());
             if(equipo==null){
@@ -500,7 +510,7 @@ public class VInsertarJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
+
+    
 }

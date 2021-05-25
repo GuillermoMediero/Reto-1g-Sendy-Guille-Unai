@@ -346,7 +346,5 @@ public class VConsultarAsistente extends javax.swing.JFrame {
     private javax.swing.JTextField tfNombreAsis;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }

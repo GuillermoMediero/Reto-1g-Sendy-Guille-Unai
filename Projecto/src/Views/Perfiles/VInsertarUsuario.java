@@ -5,12 +5,14 @@
  */
 package Views.Perfiles;
 
+import Excepciones.DatoNoValido;
 import Modelo_UML.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
+import validaciones.validaciones;
 
 /**
  *
@@ -29,6 +31,12 @@ public class VInsertarUsuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    
+    private void validarDatos(String n, String cor, String con) throws DatoNoValido {
+        validaciones.validarNombre(n);
+        validaciones.validarcorreo(cor);
+        validaciones.validarcontrasena(con);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -310,6 +318,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
+            validarDatos(tfNombre.getText(),tfCorreo.getText(),String.valueOf(this.pfContrasena.getPassword()));
                 usu = Controlador.buscarUsuario(this.tfNombre.getText());
                 if(usu==null){
                     Controlador.insertarUsuario(tfNombre.getText(),tfCorreo.getText(),String.valueOf(this.pfContrasena.getPassword()));
@@ -390,7 +399,7 @@ public class VInsertarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+
+  
 }

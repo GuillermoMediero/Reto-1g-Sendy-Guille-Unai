@@ -5,10 +5,12 @@
  */
 package Views;
 
+import Modelo_UML.Clasificacion;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -25,19 +27,24 @@ import projecto.Controlador.Rol;
  *
  * @author ketro
  */
-
 public class Vprincipal extends javax.swing.JFrame {
-    Border borde_defecto = BorderFactory.createMatteBorder(1,1, 1, 1, new Color(51,51,51));
-    Border borde_amarillo = BorderFactory.createMatteBorder(1,1, 1, 1, Color.YELLOW);
+
+    Border borde_defecto = BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(51, 51, 51));
+    Border borde_amarillo = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.YELLOW);
     JLabel[] menuLabel = new JLabel[5];
     JPanel[] paneles = new JPanel[6];
-    
+
     int xx;
     int xy;
+    ArrayList<Clasificacion> aListaClasificacion;
+    Clasificacion Cla;
+
     /**
      * Creates new form Vprincipal
      */
-    public Vprincipal() {}
+    public Vprincipal() {
+    }
+
     public Vprincipal(Rol rol, String nombre) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -51,17 +58,18 @@ public class Vprincipal extends javax.swing.JFrame {
         menuLabel[2] = lEquipos;
         menuLabel[3] = lIntegrantes;
         menuLabel[4] = lPerfiles;
-        
+
         paneles[0] = pPrincipal;
         paneles[1] = pJornadas;
         paneles[2] = pClasificaciones;
         paneles[3] = pEquipos;
         paneles[5] = pPerfiles;
-        
+
         pDesplegableIntegrantes.setVisible(false);
     }
-     private void tipoVista(Controlador.Rol rol){
-        switch (rol){
+
+    private void tipoVista(Controlador.Rol rol) {
+        switch (rol) {
             case USUARIO:
                 this.lEquipos.setVisible(false);
                 this.lIntegrantes.setVisible(false);
@@ -70,9 +78,19 @@ public class Vprincipal extends javax.swing.JFrame {
             default:
                 break;
         }
-        
-     
+
     }
+
+    private void mostarClasificacion() {
+        this.taClasificaciones.setText("nombre: " + "\t\t" + "Partidos Jugados: " + "\t" + "Victorias: " + "\t" + "Derrotas: " + "\t" + "Puntos:");
+        for (int i = 0; i < aListaClasificacion.size(); i++) {
+            this.taClasificaciones.append("\n"
+                    + aListaClasificacion.get(i).getNombre() + "\t\t" + aListaClasificacion.get(i).getPartidos_jugados() + "\t" + aListaClasificacion.get(i).getVictorias() + "\t" + aListaClasificacion.get(i).getDerrotas() + "\t" + aListaClasificacion.get(i).getPuntos());
+
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,12 +128,15 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
         pClasificaciones = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        taClasificaciones = new javax.swing.JTextArea();
+        bConsultar = new javax.swing.JToggleButton();
+        bGenerarXML = new javax.swing.JToggleButton();
         pEquipos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jToolBar10 = new javax.swing.JToolBar();
@@ -438,28 +459,46 @@ public class Vprincipal extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
+        jToggleButton1.setText("jToggleButton1");
+
+        jToggleButton2.setText("jToggleButton2");
+
+        jToggleButton3.setText("jToggleButton3");
+
         javax.swing.GroupLayout pJornadasLayout = new javax.swing.GroupLayout(pJornadas);
         pJornadas.setLayout(pJornadasLayout);
         pJornadasLayout.setHorizontalGroup(
             pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pJornadasLayout.createSequentialGroup()
-                .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pJornadasLayout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jLabel2))
-                    .addGroup(pJornadasLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(252, 252, 252)
+                .addComponent(jLabel2)
+                .addContainerGap(262, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jToggleButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToggleButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToggleButton3)
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
         );
         pJornadasLayout.setVerticalGroup(
             pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pJornadasLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(jToggleButton2)
+                    .addComponent(jToggleButton3))
+                .addGap(33, 33, 33))
         );
 
         jPanel1.add(pJornadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
@@ -470,13 +509,23 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setText("Clasificaciones");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        taClasificaciones.setColumns(20);
+        taClasificaciones.setRows(5);
+        jScrollPane1.setViewportView(taClasificaciones);
 
-        jToggleButton1.setText("jToggleButton1");
+        bConsultar.setText("Consultar");
+        bConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarActionPerformed(evt);
+            }
+        });
 
-        jToggleButton2.setText("jToggleButton2");
+        bGenerarXML.setText("Generar XML");
+        bGenerarXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGenerarXMLActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pClasificacionesLayout = new javax.swing.GroupLayout(pClasificaciones);
         pClasificaciones.setLayout(pClasificacionesLayout);
@@ -493,9 +542,9 @@ public class Vprincipal extends javax.swing.JFrame {
                 .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pClasificacionesLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
+                .addComponent(bConsultar)
                 .addGap(28, 28, 28)
-                .addComponent(jToggleButton2)
+                .addComponent(bGenerarXML)
                 .addGap(69, 69, 69))
         );
         pClasificacionesLayout.setVerticalGroup(
@@ -507,8 +556,8 @@ public class Vprincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2))
+                    .addComponent(bConsultar)
+                    .addComponent(bGenerarXML))
                 .addGap(24, 24, 24))
         );
 
@@ -926,31 +975,31 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lMinimizarMouseClicked
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
-        this.setLocation(x-xx, y-xy);
+
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel4MouseDragged
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
-        this.setLocation(x-xx, y-xy);
+
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-       Controlador.cerrarSesion();
+        Controlador.cerrarSesion();
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void lInsertarAsistentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lInsertarAsistentesMouseClicked
@@ -961,7 +1010,7 @@ public class Vprincipal extends javax.swing.JFrame {
         try {
             Controlador.abrirInsertarEntrenador();
         } catch (Exception ex) {
-            System.out.println("Problema al abrir InsertarEntrenadoresClicked "+ex.getMessage());
+            System.out.println("Problema al abrir InsertarEntrenadoresClicked " + ex.getMessage());
         }
     }//GEN-LAST:event_lInsertarEntrenadoresMouseClicked
 
@@ -969,7 +1018,7 @@ public class Vprincipal extends javax.swing.JFrame {
         try {
             Controlador.abrirInsertarJugador();
         } catch (Exception ex) {
-            System.out.println("Problema al abrir InsertarJugador "+ex.getMessage());
+            System.out.println("Problema al abrir InsertarJugador " + ex.getMessage());
         }
     }//GEN-LAST:event_lInsertarJugadorMouseClicked
 
@@ -997,7 +1046,7 @@ public class Vprincipal extends javax.swing.JFrame {
         try {
             Controlador.abrirModificarDueño();
         } catch (Exception ex) {
-            System.out.println("Problema al abrir ModificarDuenoClicked " +ex.getMessage());
+            System.out.println("Problema al abrir ModificarDuenoClicked " + ex.getMessage());
         }
     }//GEN-LAST:event_lModificarDueñoMouseClicked
 
@@ -1009,7 +1058,7 @@ public class Vprincipal extends javax.swing.JFrame {
         try {
             Controlador.abrirModificarEntrenador();
         } catch (Exception ex) {
-            System.out.println("Problema al abrir modificarEntrenadorClicked "+ex.getMessage());
+            System.out.println("Problema al abrir modificarEntrenadorClicked " + ex.getMessage());
         }
     }//GEN-LAST:event_lModificarEntrenadorMouseClicked
 
@@ -1022,53 +1071,52 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lModificarJugadorMouseClicked
 
     private void lModificarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lModificarEquipoMouseClicked
-      
-            
-           Controlador.abrirModificarEquipos();
-    
+
+        Controlador.abrirModificarEquipos();
+
     }//GEN-LAST:event_lModificarEquipoMouseClicked
 
     private void lBorrarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEquipoMouseClicked
-            Controlador.abrirEliminarEquipo();
-  
+        Controlador.abrirEliminarEquipo();
+
     }//GEN-LAST:event_lBorrarEquipoMouseClicked
 
     private void lBorrarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarJugadorMouseClicked
 
-            Controlador.abrirEliminarJugador();
-   
+        Controlador.abrirEliminarJugador();
+
     }//GEN-LAST:event_lBorrarJugadorMouseClicked
 
     private void lBorrarEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEntrenadorMouseClicked
-   
-            Controlador.abrirEliminarEntrenador();
+
+        Controlador.abrirEliminarEntrenador();
 
     }//GEN-LAST:event_lBorrarEntrenadorMouseClicked
 
     private void lBorrarAsistenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarAsistenteMouseClicked
 
-            Controlador.abrirEliminarAsistente();
+        Controlador.abrirEliminarAsistente();
 
     }//GEN-LAST:event_lBorrarAsistenteMouseClicked
 
     private void lBorrarDueñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarDueñoMouseClicked
-       
-            Controlador.abrirEliminarDueno(); 
+
+        Controlador.abrirEliminarDueno();
     }//GEN-LAST:event_lBorrarDueñoMouseClicked
 
     private void lBorrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarUsuarioMouseClicked
-            Controlador.abrirEliminarUsuario();
+        Controlador.abrirEliminarUsuario();
     }//GEN-LAST:event_lBorrarUsuarioMouseClicked
 
     private void lConsultarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarEquipoMouseClicked
-            Controlador.abrirConsultarEquipo();
+        Controlador.abrirConsultarEquipo();
     }//GEN-LAST:event_lConsultarEquipoMouseClicked
 
     private void lConsultarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarJugadorMouseClicked
         try {
             Controlador.abrirConsultarJugadores();
         } catch (Exception ex) {
-             System.out.println("Problema al abrir ConsultarJugador " + ex.getMessage());
+            System.out.println("Problema al abrir ConsultarJugador " + ex.getMessage());
         }
     }//GEN-LAST:event_lConsultarJugadorMouseClicked
 
@@ -1084,13 +1132,28 @@ public class Vprincipal extends javax.swing.JFrame {
         try {
             Controlador.abrirConsultarDueno();
         } catch (Exception ex) {
-             System.out.println("Problema al abrir ConsultarDueño " + ex.getMessage());
+            System.out.println("Problema al abrir ConsultarDueño " + ex.getMessage());
         }
     }//GEN-LAST:event_lConsultarDueñoMouseClicked
 
     private void lConsultarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarUsuarioMouseClicked
         Controlador.abrirConsultarUsuario();
     }//GEN-LAST:event_lConsultarUsuarioMouseClicked
+
+    private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
+        try {
+            aListaClasificacion = new ArrayList();
+            aListaClasificacion = Controlador.consultarClasificacion();
+
+            mostarClasificacion();
+        } catch (Exception ex) {
+            Logger.getLogger(Vprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bConsultarActionPerformed
+
+    private void bGenerarXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarXMLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bGenerarXMLActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1143,158 +1206,163 @@ public class Vprincipal extends javax.swing.JFrame {
     }
 
     public void mostrarPanelesJornadas() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(false);
-          pEquipos.setVisible(false);
-          pPerfiles.setVisible(false);
-          pJornadas.setVisible(true);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(false);
-          pEntrenadores.setVisible(false);
-          pAsistentes.setVisible(false);
-          pDueño.setVisible(false);
-    
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(false);
+        pEquipos.setVisible(false);
+        pPerfiles.setVisible(false);
+        pJornadas.setVisible(true);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(false);
+        pEntrenadores.setVisible(false);
+        pAsistentes.setVisible(false);
+        pDueño.setVisible(false);
+
     }
-    
+
     public void mostrarPanelesClasificaciones() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(true);
-          pEquipos.setVisible(false);
-          pPerfiles.setVisible(false);
-          pJornadas.setVisible(false);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(false);
-          pEntrenadores.setVisible(false);
-          pAsistentes.setVisible(false);
-          pDueño.setVisible(false);
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(true);
+        pEquipos.setVisible(false);
+        pPerfiles.setVisible(false);
+        pJornadas.setVisible(false);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(false);
+        pEntrenadores.setVisible(false);
+        pAsistentes.setVisible(false);
+        pDueño.setVisible(false);
     }
-     
+
     public void mostrarPanelesEquipos() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(false);
-          pEquipos.setVisible(true);
-          pPerfiles.setVisible(false);
-          pJornadas.setVisible(false);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(false);
-          pEntrenadores.setVisible(false);
-          pAsistentes.setVisible(false);
-          pDueño.setVisible(false);
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(false);
+        pEquipos.setVisible(true);
+        pPerfiles.setVisible(false);
+        pJornadas.setVisible(false);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(false);
+        pEntrenadores.setVisible(false);
+        pAsistentes.setVisible(false);
+        pDueño.setVisible(false);
     }
 
     public void mostrarPanelesIntegrantes() {
-          pDesplegableIntegrantes.setVisible(true);
+        pDesplegableIntegrantes.setVisible(true);
     }
-     
+
     public void mostrarPanelesPerfiles() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(false);
-          pEquipos.setVisible(false);
-          pPerfiles.setVisible(true);
-          pJornadas.setVisible(false);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(false);
-          pEntrenadores.setVisible(false);
-          pAsistentes.setVisible(false);
-          pDueño.setVisible(false);
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(false);
+        pEquipos.setVisible(false);
+        pPerfiles.setVisible(true);
+        pJornadas.setVisible(false);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(false);
+        pEntrenadores.setVisible(false);
+        pAsistentes.setVisible(false);
+        pDueño.setVisible(false);
     }
-    
+
     public void mostrarPanelesIntegrantesJugadores() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(false);
-          pEquipos.setVisible(false);
-          pJornadas.setVisible(false);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(true);
-          pEntrenadores.setVisible(false);
-          pAsistentes.setVisible(false);
-          pDueño.setVisible(false);
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(false);
+        pEquipos.setVisible(false);
+        pJornadas.setVisible(false);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(true);
+        pEntrenadores.setVisible(false);
+        pAsistentes.setVisible(false);
+        pDueño.setVisible(false);
     }
-    
-     public void mostrarPanelesIntegrantesEntrenadores() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(false);
-          pEquipos.setVisible(false);
-          pJornadas.setVisible(false);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(false);
-          pEntrenadores.setVisible(true);
-          pAsistentes.setVisible(false);
-          pDueño.setVisible(false);
+
+    public void mostrarPanelesIntegrantesEntrenadores() {
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(false);
+        pEquipos.setVisible(false);
+        pJornadas.setVisible(false);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(false);
+        pEntrenadores.setVisible(true);
+        pAsistentes.setVisible(false);
+        pDueño.setVisible(false);
     }
-     
-      public void mostrarPanelesIntegrantesAsistentes() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(false);
-          pEquipos.setVisible(false);
-          pJornadas.setVisible(false);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(false);
-          pEntrenadores.setVisible(false);
-          pAsistentes.setVisible(true);
-          pDueño.setVisible(false);
+
+    public void mostrarPanelesIntegrantesAsistentes() {
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(false);
+        pEquipos.setVisible(false);
+        pJornadas.setVisible(false);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(false);
+        pEntrenadores.setVisible(false);
+        pAsistentes.setVisible(true);
+        pDueño.setVisible(false);
     }
-      
-     public void mostrarPanelesIntegrantesDueño() {
-          pPrincipal.setVisible(false);
-          pClasificaciones.setVisible(false);
-          pEquipos.setVisible(false);
-          pJornadas.setVisible(false);
-          pDesplegableIntegrantes.setVisible(false);
-          pJugadores.setVisible(false);
-          pEntrenadores.setVisible(false);
-          pAsistentes.setVisible(false);
-          pDueño.setVisible(true);
-     }
-    public void setFondoLabel(JLabel label){
-        for (JLabel menuLabels : menuLabel )   {
+
+    public void mostrarPanelesIntegrantesDueño() {
+        pPrincipal.setVisible(false);
+        pClasificaciones.setVisible(false);
+        pEquipos.setVisible(false);
+        pJornadas.setVisible(false);
+        pDesplegableIntegrantes.setVisible(false);
+        pJugadores.setVisible(false);
+        pEntrenadores.setVisible(false);
+        pAsistentes.setVisible(false);
+        pDueño.setVisible(true);
+    }
+
+    public void setFondoLabel(JLabel label) {
+        for (JLabel menuLabels : menuLabel) {
             menuLabels.setForeground(Color.white);
         }
         label.setForeground(Color.red);
     }
-    
-    public void addActionToMenuTables(){
-        Component [] components = pMenu.getComponents();
-        
-        for (Component component : components){
-            if(component instanceof JLabel){
+
+    public void addActionToMenuTables() {
+        Component[] components = pMenu.getComponents();
+
+        for (Component component : components) {
+            if (component instanceof JLabel) {
                 JLabel label = (JLabel) component;
-                
+
                 label.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         setFondoLabel(label);
-                        
-                        switch (label.getText().trim()){
+
+                        switch (label.getText().trim()) {
                             case "Jornadas":
-                                   mostrarPanelesJornadas();
-                                   break;
+                                mostrarPanelesJornadas();
+                                break;
                             case "Clasificaciones":
-                                   mostrarPanelesClasificaciones();
-                                   break;
+                                mostrarPanelesClasificaciones();
+                                break;
                             case "Equipos":
-                                   mostrarPanelesEquipos();
-                                   break;         
+                                mostrarPanelesEquipos();
+                                break;
                             case "Integrantes":
-                                   mostrarPanelesIntegrantes();
-                                   break;      
+                                mostrarPanelesIntegrantes();
+                                break;
                             case "Perfiles":
-                                   mostrarPanelesPerfiles();
-                                   break;          
+                                mostrarPanelesPerfiles();
+                                break;
                         }
                     }
+
                     @Override
                     public void mousePressed(MouseEvent e) {
-                       
+
                     }
+
                     @Override
                     public void mouseReleased(MouseEvent e) {
-                       
+
                     }
+
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         label.setBorder(borde_amarillo);
                     }
+
                     @Override
                     public void mouseExited(MouseEvent e) {
                         label.setBorder(borde_defecto);
@@ -1303,30 +1371,30 @@ public class Vprincipal extends javax.swing.JFrame {
             }
         }
     }
-    
-     public void añadirAccionAlMenuIntegrantes(){
-        Component [] components = pDesplegableIntegrantes.getComponents();
-        for(Component component : components){
-            if(component instanceof JLabel){
+
+    public void añadirAccionAlMenuIntegrantes() {
+        Component[] components = pDesplegableIntegrantes.getComponents();
+        for (Component component : components) {
+            if (component instanceof JLabel) {
                 JLabel label = (JLabel) component;
-                
+
                 label.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-         
-                         switch (label.getText().trim()){
+
+                        switch (label.getText().trim()) {
                             case "Jugadores":
-                                   mostrarPanelesIntegrantesJugadores();
-                                   break;
+                                mostrarPanelesIntegrantesJugadores();
+                                break;
                             case "Entrenadores":
-                                   mostrarPanelesIntegrantesEntrenadores();
-                                   break;
+                                mostrarPanelesIntegrantesEntrenadores();
+                                break;
                             case "Asistentes":
-                                   mostrarPanelesIntegrantesAsistentes();
-                                   break;         
+                                mostrarPanelesIntegrantesAsistentes();
+                                break;
                             case "Dueño":
-                                   mostrarPanelesIntegrantesDueño();
-                                   break;            
+                                mostrarPanelesIntegrantesDueño();
+                                break;
                         }
 
                     }
@@ -1343,7 +1411,7 @@ public class Vprincipal extends javax.swing.JFrame {
 
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                       label.setBorder(borde_amarillo);
+                        label.setBorder(borde_amarillo);
                     }
 
                     @Override
@@ -1355,8 +1423,10 @@ public class Vprincipal extends javax.swing.JFrame {
             }
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton bConsultar;
+    private javax.swing.JToggleButton bGenerarXML;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -1393,10 +1463,10 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToolBar jToolBar10;
     private javax.swing.JToolBar jToolBar11;
     private javax.swing.JToolBar jToolBar4;
@@ -1451,5 +1521,7 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pMenu;
     private javax.swing.JPanel pPerfiles;
     private javax.swing.JPanel pPrincipal;
+    private javax.swing.JTextArea taClasificaciones;
     // End of variables declaration//GEN-END:variables
+
 }
