@@ -5,6 +5,7 @@
  */
 package Views.equipos;
 
+import Excepciones.DatoNoValido;
 import Modelo_UML.Equipo;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -31,6 +32,10 @@ public class VInsertarEquipo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    private void validarDatos(String nombre, String escudo) throws DatoNoValido{
+         validaciones.validarNombre(nombre);
+         validaciones.validarescudo(escudo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,7 +285,7 @@ public class VInsertarEquipo extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-               
+            validarDatos(tfNombre.getText(),tfEscudo.getText());  
             equi= Controlador.buscarEquipo(tfNombre.getText());
                 if(equi==null){
                     Controlador.insertarEquipo(tfNombre.getText(),tfEscudo.getText());
@@ -359,6 +364,8 @@ public class VInsertarEquipo extends javax.swing.JFrame {
     private javax.swing.JTextField tfEscudo;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
+
+   
 
 
 }

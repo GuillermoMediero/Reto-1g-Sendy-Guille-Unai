@@ -43,7 +43,7 @@ public class TUsuario {
         if (resultado.next()) {
 
             Usuario  usu = new Usuario();
-            usu.setNombre(resultado.getString("nombre"));
+            usu.setNombreCompleto(resultado.getString("nombre"));
             usu.setCorreo(resultado.getString("correo"));
             usu.setClave(resultado.getString("contrasena"));
             
@@ -55,39 +55,44 @@ public class TUsuario {
         String sentencia = "SELECT NOMBRE,ESCUDO FROM USUARIO"
                 + " WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(nombre));
+        ps.setString(1,nombre);
         
         ResultSet resultado = ps.executeQuery();
          if (resultado.next()) {
             
             Usuario  usu = new Usuario ();
-            usu.setNombre(resultado.getString("nombre"));
+            usu.setNombreCompleto(resultado.getString("nombre"));
             usu.setCorreo(resultado.getString("correo"));
             usu.setClave(resultado.getString("contrasena"));
-            
+            usu.setId(Integer.parseInt(resultado.getString("id_usuario")));
             return usu;
         }
         return null;
      }
-     public int buscarUsuarioPK (String nombre) throws Exception {
-        String sentencia = "SELECT * FROM usuario where nombre=?";
+     public Usuario buscarUsuarioPK (String nombre) throws Exception {
+        String sentencia = "SELECT * FROM usuario where ID_USUARIO=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, nombre);
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
+            
+            Usuario  usu = new Usuario ();
+            usu.setNombreCompleto(resultado.getString("nombre"));
+            usu.setCorreo(resultado.getString("correo"));
+            usu.setClave(resultado.getString("contrasena"));
      
-            return resultado.getInt("id_usuario");
-        } else {
-            return 0;
+            
+            return usu;
         }
+        return null;
     }
 
     public void insertarUsuario(Usuario usu) throws Exception {
 
         String sentencia = "INSERT INTO USUARIO(NOMBRE,CORREO,CONTRASENA) VALUES (?,?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, usu.getNombre());
+        ps.setString(1, usu.getNombreCompleto());
         ps.setString(2, usu.getCorreo());
         ps.setString(3, usu.getClave());
    
@@ -102,10 +107,12 @@ public class TUsuario {
 
     public void modificarUsuario(Usuario usu) throws Exception {
      
-        String sentencia = "UPDATE USUARIO SET NOMBRE=?,CORREO=? WHERE CONTRASENA = ?";
+        String sentencia = "UPDATE USUARIO SET NOMBRE=?,CORREO=? WHERE ID_USUARIO = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, usu.getNombre());
+        ps.setString(1, usu.getNombreCompleto());
         ps.setString(2, usu.getCorreo());
+        ps.setString(3, usu.getClave());
+        ps.setString(4,String.valueOf(usu.getId()));
         
        
         int n = ps.executeUpdate();

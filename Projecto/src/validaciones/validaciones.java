@@ -121,4 +121,16 @@ public class validaciones {
       if (!m.matches())
           throw new DatoNoValido("El telefono debe ser numerico");
     }
+      
+         public static void validarescudo(String escudo) throws DatoNoValido {
+      // Comprobar si no esta vacio el dato recibido
+        if (escudo.isEmpty())
+           throw new DatoNoValido("Es obligatorio indicar la nacionalidad");
+       
+      // Expresión regular solo letras y 1 como mínimo
+      Pattern p = Pattern.compile("^[a-zA-Z ]{1,}$");
+      Matcher m = p.matcher(escudo);
+      if (!m.matches())
+          throw new DatoNoValido("El nombre debe estar formado solo por letras");
+    }
 }

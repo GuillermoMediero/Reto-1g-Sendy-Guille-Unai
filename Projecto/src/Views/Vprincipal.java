@@ -114,6 +114,8 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
         pEquipos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jToolBar10 = new javax.swing.JToolBar();
@@ -472,6 +474,10 @@ public class Vprincipal extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jToggleButton1.setText("jToggleButton1");
+
+        jToggleButton2.setText("jToggleButton2");
+
         javax.swing.GroupLayout pClasificacionesLayout = new javax.swing.GroupLayout(pClasificaciones);
         pClasificaciones.setLayout(pClasificacionesLayout);
         pClasificacionesLayout.setHorizontalGroup(
@@ -485,6 +491,12 @@ public class Vprincipal extends javax.swing.JFrame {
                         .addGap(222, 222, 222)
                         .addComponent(jLabel3)))
                 .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pClasificacionesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jToggleButton1)
+                .addGap(28, 28, 28)
+                .addComponent(jToggleButton2)
+                .addGap(69, 69, 69))
         );
         pClasificacionesLayout.setVerticalGroup(
             pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,7 +505,11 @@ public class Vprincipal extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(jToggleButton2))
+                .addGap(24, 24, 24))
         );
 
         jPanel1.add(pClasificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
@@ -1013,14 +1029,8 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lModificarEquipoMouseClicked
 
     private void lBorrarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarEquipoMouseClicked
-
-        try {
             Controlador.abrirEliminarEquipo();
-        } catch (Exception ex) {
-            System.out.println("Problema al abrir EliminarEquipo " + ex.getMessage());
-        }
-            
-   
+  
     }//GEN-LAST:event_lBorrarEquipoMouseClicked
 
     private void lBorrarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lBorrarJugadorMouseClicked
@@ -1051,7 +1061,7 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lBorrarUsuarioMouseClicked
 
     private void lConsultarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarEquipoMouseClicked
-        Controlador.abrirConsultarEquipo();
+            Controlador.abrirConsultarEquipo();
     }//GEN-LAST:event_lConsultarEquipoMouseClicked
 
     private void lConsultarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConsultarJugadorMouseClicked
@@ -1385,6 +1395,8 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToolBar jToolBar10;
     private javax.swing.JToolBar jToolBar11;
     private javax.swing.JToolBar jToolBar4;

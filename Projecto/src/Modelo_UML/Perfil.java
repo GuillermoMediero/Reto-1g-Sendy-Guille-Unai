@@ -10,6 +10,7 @@ package Modelo_UML;
  * @author ketro
  */
 public abstract class Perfil {
+    private int id;
     private String nombreCompleto  ;
     private String correo  ;
     private String clave  ;
@@ -29,14 +30,28 @@ public abstract class Perfil {
         this.clave = clave;
     }
 
-    public String getNombre() {
+    public Perfil(int id, String nombreCompleto, String correo, String clave) {
+        this.id = id;
+        this.nombreCompleto = nombreCompleto;
+        this.correo = correo;
+        this.clave = clave;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombreCompleto() {
         return nombreCompleto;
     }
 
-    public void setNombre(String nombreCompleto) {
+    public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
-    }
-    
+    }    
 
     public String getCorreo() {
         return correo;

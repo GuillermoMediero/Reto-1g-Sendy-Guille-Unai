@@ -254,7 +254,7 @@ public class VConsultarJugadores extends javax.swing.JFrame {
             }
             ensenarJugador();
         } catch (Exception gnr) {
-            System.out.println("Problemas en la busqueda del dueno " + gnr.getMessage());
+            System.out.println("Problemas en la busqueda del Jugador " + gnr.getMessage());
         }
     }//GEN-LAST:event_bConsultarJugActionPerformed
 

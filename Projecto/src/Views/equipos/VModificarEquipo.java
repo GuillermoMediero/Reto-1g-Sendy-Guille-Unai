@@ -5,8 +5,10 @@
  */
 package Views.equipos;
 
+import Modelo_UML.Equipo;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
 
 /**
@@ -16,6 +18,7 @@ import projecto.Controlador;
 public class VModificarEquipo extends javax.swing.JFrame {
     int xx;
     int xy;
+    Equipo equipo;
     /**
      * Creates new form InstertarEquipo
      */
@@ -23,10 +26,13 @@ public class VModificarEquipo extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
-        this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
+        
     }
 
+    public void ensenarDatos(){
+        this.tfNombre.setText(equipo.getNombre());
+        this.tfEscudo.setText(equipo.getEscudo());
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -202,6 +208,11 @@ public class VModificarEquipo extends javax.swing.JFrame {
 
         tfNombre.setBackground(new java.awt.Color(204, 204, 204));
         tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNombreActionPerformed(evt);
+            }
+        });
         jPanel9.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 260, 40));
@@ -275,13 +286,34 @@ public class VModificarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+         try { 
+            equipo.getId_equipo();
+            equipo.setNombre(this.tfNombre.getText());
+            equipo.setEscudo(this.tfEscudo.getText());
+            
+            Controlador.modificarEquipo(equipo);
+            showMessageDialog(null, "Equipo modificado");
+        } catch (Exception ex) {
+            showMessageDialog(null,"Error al modificar el equipo "+ex.getMessage());
+        }
 
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
+         try{
+            equipo = Controlador.buscarEquipo(this.tfNombre.getText());
+            if(equipo==null)
+                showMessageDialog(null,"No se ha encontrado el Equipo");
+            
+            ensenarDatos();
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
+    }//GEN-LAST:event_tfNombreActionPerformed
 
     /**
      * @param args the command line arguments

@@ -22,7 +22,7 @@ public class VModificarAsistente extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
+        
     }
     public void validarDatosAsistente(String n,String s,String t,String na){}
     public void ensenarDatos(){
