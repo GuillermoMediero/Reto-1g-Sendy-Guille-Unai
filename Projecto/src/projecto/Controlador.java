@@ -189,12 +189,13 @@ public class Controlador {
         return asis;
     }
 
-    public static void insertarAsistente(String nombre, String sueldo, String telefono, String nacionalidad) throws Exception {
+    public static void insertarAsistente(String nombre, String sueldo, String telefono, String nacionalidad,Entrenador entrenador) throws Exception {
         asis = new Asistente();
         asis.setNombreCompleto(nombre);
         asis.setSueldo(sueldo);
         asis.setTelefono(telefono);
         asis.setNacionalidad(nacionalidad);
+        asis.setEntrenador(entrenador);
         
         tasis.insertarAsistente(asis);
     }
@@ -350,7 +351,8 @@ public class Controlador {
         return usu;
     }
 
-    public static void insertarUsuario(String nombre, String correo, String contrasena) throws Exception {
+    public static void insertarUsuario(String nombreCompleto, String correo, String clave) throws Exception {
+        usu = new Usuario(nombreCompleto,correo,clave);
         tusu.insertarUsuario(usu);
     }
     public static void modificarUsuario() throws Exception{

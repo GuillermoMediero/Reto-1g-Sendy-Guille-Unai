@@ -39,8 +39,9 @@ private TEquipo tequi;
             ent.setSueldo(resultado.getString("SUELDO"));
             ent.setTelefono(resultado.getString("TELEFONO"));
             ent.setNacionalidad(resultado.getString("NACIONALIDAD"));
+            ent.setEqui(tequi.buscarEquipoById(Integer.parseInt(resultado.getString("ID_EQUIPO"))));
             ent.setId(Integer.parseInt(resultado.getString("ID_ENTRENADOR")));
-            ent.setEqui((tequi.buscarEquipoById(Integer.parseInt(resultado.getString("ID_EQUIPO")))));
+            
             
             return ent;
         } else {

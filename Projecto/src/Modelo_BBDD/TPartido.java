@@ -35,8 +35,8 @@ private TJornada tjor;
             part.setResultado_l(resultado.getString(String.valueOf("RESULTADOL")));
             part.setResultado_v(resultado.getString(String.valueOf("RESULTADOV")));
             part.setJornada(tjor.buscarJornada(("NUM_JORNADA")));
-            part.setEquipol(tequi.buscarEquipoPK(Integer.getInteger("ID_EQUIPOL")));
-            part.setEquipov(tequi.buscarEquipoPK((Integer.getInteger("ID_EQUIPOV"))));                                
+            part.setEquipol(tequi.buscarEquipoById(Integer.getInteger("ID_EQUIPOL")));
+            part.setEquipov(tequi.buscarEquipoById((Integer.getInteger("ID_EQUIPOV"))));                                
             
             return part;
         } else {

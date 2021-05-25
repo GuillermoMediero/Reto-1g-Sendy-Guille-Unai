@@ -65,12 +65,13 @@ public class TAsistente {
      
     public void insertarAsistente(Asistente asis) throws Exception {
 
-        String sentencia = "INSERT INTO ASISTENTE(NOMBRE, SUELDO, TELEFONO, NACIONALIDAD)VALUES (?,?,?,?)";
+        String sentencia = "INSERT INTO ASISTENTE(NOMBRE, SUELDO, TELEFONO, NACIONALIDAD,ID_ENTRENADOR)VALUES (?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, asis.getNombreCompleto());
         ps.setString(2, String.valueOf(asis.getSueldo()));
         ps.setString(3, asis.getTelefono());
         ps.setString(4, asis.getNacionalidad());
+        ps.setString(5, String.valueOf(asis.getEntrenador().getId()));
 
         int resultado = ps.executeUpdate();
         ps.close();

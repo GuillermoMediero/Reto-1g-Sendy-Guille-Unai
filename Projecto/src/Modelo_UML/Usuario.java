@@ -13,6 +13,10 @@ public class Usuario extends Perfil{
     
     public Usuario() {
     }
+
+    public Usuario(String nombreCompleto, String correo, String clave) {
+        super(nombreCompleto, correo, clave);
+    }
     
     
     

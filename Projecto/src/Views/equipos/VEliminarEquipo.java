@@ -288,7 +288,7 @@ public class VEliminarEquipo extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
-               Controlador.borrarEquipo(tfNombre.getText(),tfEscudo.getText());
+               Controlador.borrarEquipo(tfNombre.getText());
                showMessageDialog(null,"Equipo " + tfNombre.getText() +" Insertado");
                Controlador.cerrarVentana(this);
            

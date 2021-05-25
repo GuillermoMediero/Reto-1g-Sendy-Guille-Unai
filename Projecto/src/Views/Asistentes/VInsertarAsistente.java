@@ -1,6 +1,7 @@
 package Views.Asistentes;
 
 import Modelo_UML.Asistente;
+import Modelo_UML.Entrenador;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
     int xx;
     int xy;
     Asistente asistente;
+    Entrenador entrenador;
 
     /**
      * Creates new form VInsertarAsistente
@@ -342,10 +344,10 @@ public class VInsertarAsistente extends javax.swing.JFrame {
             validarDatosAsistente(this.tfNombreAsis.getText(), this.tfSueldoAsis.getText(),
                     this.tfTelefonoAsis.getText(), this.tfNacionalidadAsis.getText());
             asistente = Controlador.buscarAsistente(this.tfNombreAsis.getText());
-
+            entrenador = Controlador.buscarEntrenador(tfIdAsis.getText());
             if (asistente == null) {
                 Controlador.insertarAsistente(tfNombreAsis.getText(), tfSueldoAsis.getText(),
-                        tfTelefonoAsis.getText(), tfNacionalidadAsis.getText());
+                        tfTelefonoAsis.getText(), tfNacionalidadAsis.getText(),entrenador);
                 showMessageDialog(null, "Asistente Insertado");
                 // Cerrar ventanas
                 Controlador.cerrarVentana(this);
