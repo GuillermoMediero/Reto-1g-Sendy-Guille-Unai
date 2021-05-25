@@ -31,7 +31,6 @@ import Views.equipos.VInsertarEquipo;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import static javax.swing.JOptionPane.*;
 /**
  *
  * @author ketro
@@ -108,6 +107,7 @@ public class Controlador {
     private static String nombre;
     private static ArrayList<Equipo> aListaEquipo;
     private static ArrayList<Clasificacion> aListaClasificacion;
+    private static ArrayList<Partido> aListaJornada;
     private static Equipo equipoPK;
 
     public static void main(String[] args) {
@@ -522,10 +522,8 @@ public class Controlador {
         aThis.dispose();
     }
 
-    
 
-   
-
+  
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }
@@ -538,4 +536,11 @@ public class Controlador {
        return aListaClasificacion;
     
     }
+    
+    public static ArrayList<Partido> consultarJornada() throws Exception{
+       aListaJornada=new ArrayList();
+        aListaJornada=tpart.consultarPartidos();
+       return aListaJornada;
+    }
+
 }

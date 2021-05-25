@@ -6,6 +6,7 @@
 package Views;
 
 import Modelo_UML.Clasificacion;
+import Modelo_UML.Partido;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
@@ -37,7 +38,9 @@ public class Vprincipal extends javax.swing.JFrame {
     int xx;
     int xy;
     ArrayList<Clasificacion> aListaClasificacion;
-    Clasificacion Cla;
+    ArrayList<Partido> aListaJornada;
+    int position=0;
+    
 
     /**
      * Creates new form Vprincipal
@@ -74,6 +77,9 @@ public class Vprincipal extends javax.swing.JFrame {
                 this.lEquipos.setVisible(false);
                 this.lIntegrantes.setVisible(false);
                 this.lPerfiles.setVisible(false);
+                this.bMoverDerecha.setVisible(false);
+                this.bMoverIzquierda.setVisible(false);
+                this.bModificarJornada.setVisible(false);
                 break;
             default:
                 break;
@@ -89,6 +95,13 @@ public class Vprincipal extends javax.swing.JFrame {
 
         }
 
+    }
+    
+     private void mostarJornada() {
+        
+        taJornada.setText("Hora: \\t\\t Resultado Local: \t Resultado Visitante \t Numero de la jornada \n Equipo Local \t Equipo Visitante \n" 
+                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).setJornada(jornada) + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
+     
     }
 
     /**
@@ -127,16 +140,18 @@ public class Vprincipal extends javax.swing.JFrame {
         pJornadas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        taJornada = new javax.swing.JTextArea();
+        bGenerarXMLJornada = new javax.swing.JButton();
+        bConsutarJornada = new javax.swing.JButton();
+        bModificarJornada = new javax.swing.JButton();
+        bMoverDerecha = new javax.swing.JButton();
+        bMoverIzquierda = new javax.swing.JButton();
         pClasificaciones = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taClasificaciones = new javax.swing.JTextArea();
-        bConsultar = new javax.swing.JToggleButton();
-        bGenerarXML = new javax.swing.JToggleButton();
+        bConsultar = new javax.swing.JButton();
+        bGenerarXML = new javax.swing.JButton();
         pEquipos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jToolBar10 = new javax.swing.JToolBar();
@@ -455,50 +470,105 @@ public class Vprincipal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setText("Jornadas");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        taJornada.setColumns(20);
+        taJornada.setRows(5);
+        jScrollPane2.setViewportView(taJornada);
 
-        jToggleButton1.setText("jToggleButton1");
+        bGenerarXMLJornada.setBackground(new java.awt.Color(0, 0, 0));
+        bGenerarXMLJornada.setForeground(new java.awt.Color(255, 255, 255));
+        bGenerarXMLJornada.setText("Generar XML");
+        bGenerarXMLJornada.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bGenerarXMLJornada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGenerarXMLJornadaActionPerformed(evt);
+            }
+        });
 
-        jToggleButton2.setText("jToggleButton2");
+        bConsutarJornada.setBackground(new java.awt.Color(0, 0, 0));
+        bConsutarJornada.setForeground(new java.awt.Color(255, 255, 255));
+        bConsutarJornada.setText("Cancelar");
+        bConsutarJornada.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bConsutarJornada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsutarJornadaActionPerformed(evt);
+            }
+        });
 
-        jToggleButton3.setText("jToggleButton3");
+        bModificarJornada.setBackground(new java.awt.Color(0, 0, 0));
+        bModificarJornada.setForeground(new java.awt.Color(255, 255, 255));
+        bModificarJornada.setText("Modificar Resultado");
+        bModificarJornada.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bModificarJornada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModificarJornadaActionPerformed(evt);
+            }
+        });
+
+        bMoverDerecha.setBackground(new java.awt.Color(0, 0, 0));
+        bMoverDerecha.setForeground(new java.awt.Color(255, 255, 255));
+        bMoverDerecha.setText(">");
+        bMoverDerecha.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bMoverDerecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMoverDerechaActionPerformed(evt);
+            }
+        });
+
+        bMoverIzquierda.setBackground(new java.awt.Color(0, 0, 0));
+        bMoverIzquierda.setForeground(new java.awt.Color(255, 255, 255));
+        bMoverIzquierda.setText("<");
+        bMoverIzquierda.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bMoverIzquierda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMoverIzquierdaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pJornadasLayout = new javax.swing.GroupLayout(pJornadas);
         pJornadas.setLayout(pJornadasLayout);
         pJornadasLayout.setHorizontalGroup(
             pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
+                        .addComponent(bMoverIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bMoverDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
+                        .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(pJornadasLayout.createSequentialGroup()
+                                .addGap(0, 105, Short.MAX_VALUE)
+                                .addComponent(bModificarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bConsutarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bGenerarXMLJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(55, 55, 55))))
             .addGroup(pJornadasLayout.createSequentialGroup()
                 .addGap(252, 252, 252)
                 .addComponent(jLabel2)
-                .addContainerGap(262, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton3)
-                .addGap(29, 29, 29))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pJornadasLayout.setVerticalGroup(
             pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pJornadasLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton3))
-                .addGap(33, 33, 33))
+                    .addComponent(bMoverDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bMoverIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bGenerarXMLJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bConsutarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bModificarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
         );
 
         jPanel1.add(pJornadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
@@ -513,14 +583,20 @@ public class Vprincipal extends javax.swing.JFrame {
         taClasificaciones.setRows(5);
         jScrollPane1.setViewportView(taClasificaciones);
 
+        bConsultar.setBackground(new java.awt.Color(0, 0, 0));
+        bConsultar.setForeground(new java.awt.Color(255, 255, 255));
         bConsultar.setText("Consultar");
+        bConsultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         bConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bConsultarActionPerformed(evt);
             }
         });
 
+        bGenerarXML.setBackground(new java.awt.Color(0, 0, 0));
+        bGenerarXML.setForeground(new java.awt.Color(255, 255, 255));
         bGenerarXML.setText("Generar XML");
+        bGenerarXML.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         bGenerarXML.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bGenerarXMLActionPerformed(evt);
@@ -531,21 +607,21 @@ public class Vprincipal extends javax.swing.JFrame {
         pClasificaciones.setLayout(pClasificacionesLayout);
         pClasificacionesLayout.setHorizontalGroup(
             pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pClasificacionesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bGenerarXML, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
             .addGroup(pClasificacionesLayout.createSequentialGroup()
                 .addGroup(pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pClasificacionesLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pClasificacionesLayout.createSequentialGroup()
-                        .addGap(222, 222, 222)
+                        .addGap(215, 215, 215)
                         .addComponent(jLabel3)))
-                .addContainerGap(52, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pClasificacionesLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bConsultar)
-                .addGap(28, 28, 28)
-                .addComponent(bGenerarXML)
-                .addGap(69, 69, 69))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         pClasificacionesLayout.setVerticalGroup(
             pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,12 +629,12 @@ public class Vprincipal extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(pClasificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bConsultar)
-                    .addComponent(bGenerarXML))
-                .addGap(24, 24, 24))
+                    .addComponent(bConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bGenerarXML, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
 
         jPanel1.add(pClasificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 620, 490));
@@ -1152,8 +1228,40 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bConsultarActionPerformed
 
     private void bGenerarXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarXMLActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_bGenerarXMLActionPerformed
+
+    private void bGenerarXMLJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarXMLJornadaActionPerformed
+        Controlador.cerrarVentana(this);
+    }//GEN-LAST:event_bGenerarXMLJornadaActionPerformed
+
+    private void bConsutarJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsutarJornadaActionPerformed
+         try {
+            aListaJornada = new ArrayList();
+            aListaJornada = Controlador.consultarJornada();
+
+            mostarJornada();
+        } catch (Exception ex) {
+            Logger.getLogger(Vprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bConsutarJornadaActionPerformed
+
+    private void bModificarJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarJornadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bModificarJornadaActionPerformed
+
+    private void bMoverDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMoverDerechaActionPerformed
+      position = position + 1;
+      taJornada.setText("Hora: \\t\\t Resultado Local: \t Resultado Visitante \t Numero de la jornada \n Equipo Local \t Equipo Visitante \n" 
+                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).setJornada(jornada) + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
+                
+    }//GEN-LAST:event_bMoverDerechaActionPerformed
+
+    private void bMoverIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMoverIzquierdaActionPerformed
+        position = position - 1;
+        taJornada.setText("Hora: \\t\\t Resultado Local: \t Resultado Visitante \t Numero de la jornada \n Equipo Local \t Equipo Visitante \n" 
+                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).setJornada(jornada) + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
+    }//GEN-LAST:event_bMoverIzquierdaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1425,8 +1533,13 @@ public class Vprincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton bConsultar;
-    private javax.swing.JToggleButton bGenerarXML;
+    private javax.swing.JButton bConsultar;
+    private javax.swing.JButton bConsutarJornada;
+    private javax.swing.JButton bGenerarXML;
+    private javax.swing.JButton bGenerarXMLJornada;
+    private javax.swing.JButton bModificarJornada;
+    private javax.swing.JButton bMoverDerecha;
+    private javax.swing.JButton bMoverIzquierda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -1463,10 +1576,6 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToolBar jToolBar10;
     private javax.swing.JToolBar jToolBar11;
     private javax.swing.JToolBar jToolBar4;
@@ -1522,6 +1631,9 @@ public class Vprincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pPerfiles;
     private javax.swing.JPanel pPrincipal;
     private javax.swing.JTextArea taClasificaciones;
+    private javax.swing.JTextArea taJornada;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

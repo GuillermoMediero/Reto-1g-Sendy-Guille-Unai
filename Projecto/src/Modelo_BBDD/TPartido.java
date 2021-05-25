@@ -5,6 +5,7 @@ import Modelo_UML.Partido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +15,7 @@ public class TPartido {
 private Connection con;
 private TEquipo tequi;
 private TJornada tjor;
+private ArrayList<Partido> aListaJornada;
 
     public TPartido(Connection con, TEquipo tequi, TJornada tjor) {
         this.con = con;
@@ -98,4 +100,28 @@ private TJornada tjor;
             }
         }
     }
-}
+    
+        public ArrayList<Partido> consultarPartidos() throws Exception {
+         aListaJornada= new ArrayList();
+        String sentencia = "SELECT HORA, RESULTADOL, RESULTADOV, NUM_JORNADA, ID_EQUIPOL, ID_EQUIPOV FROM PARTIDO";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+  
+        ResultSet resultado = ps.executeQuery();
+        
+        while (resultado.next()) {
+            Partido part = new Partido();
+            part.setHora(resultado.getString(String.valueOf("HORA")));
+            part.setResultado_l(resultado.getString(String.valueOf("RESULTADOL")));
+            part.setResultado_v(resultado.getString(String.valueOf("RESULTADOV")));
+            part.setJornada(tjor.buscarJornada(("NUM_JORNADA")));
+            part.setEquipol(tequi.buscarEquipoById(Integer.getInteger("ID_EQUIPOL")));
+            part.setEquipov(tequi.buscarEquipoById((Integer.getInteger("ID_EQUIPOV"))));                                
+            
+            aListaJornada.add(part);
+        }
+        if (  aListaJornada.isEmpty())
+           throw new Exception("no se ha encontrado ningun equipo");
+        return  aListaJornada;
+        }
+    }
+
