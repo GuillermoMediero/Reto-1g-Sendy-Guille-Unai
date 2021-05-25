@@ -85,7 +85,7 @@ public class Vprincipal extends javax.swing.JFrame {
         this.taClasificaciones.setText("nombre: " + "\t\t" + "Partidos Jugados: " + "\t" + "Victorias: " + "\t" + "Derrotas: " + "\t" + "Puntos:");
         for (int i = 0; i < aListaClasificacion.size(); i++) {
             this.taClasificaciones.append("\n"
-                    + aListaClasificacion.get(i).getNombre() + "\t\t" + aListaClasificacion.get(i).getPartidos_jugados() + "\t" + aListaClasificacion.get(i).getVictorias() + "\t" + aListaClasificacion.get(i).getDerrotas() + "\t" + aListaClasificacion.get(i).getPuntos());
+                    + aListaClasificacion.get(i).getNombre() + "\t\t\t" + aListaClasificacion.get(i).getPartidos_jugados() + "\t" + aListaClasificacion.get(i).getVictorias() + "\t" + aListaClasificacion.get(i).getDerrotas() + "\t" + aListaClasificacion.get(i).getPuntos());
 
         }
 
