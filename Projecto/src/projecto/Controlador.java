@@ -29,8 +29,11 @@ import Views.equipos.VInsertarEquipo;
 
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JFrame;
+
 /**
  *
  * @author ketro
@@ -176,12 +179,12 @@ public class Controlador {
         vl.setVisible(true);
     }
 
-    public static ArrayList <Equipo> llenarComboBox() throws Exception {
+    public static ArrayList<Equipo> llenarComboBox() throws Exception {
         aListaEquipo = new ArrayList();
         aListaEquipo = tequi.cogerEquipos();
-        
+
         return aListaEquipo;
-        
+
     }
     //public static void usuConsultaUltimoJornada(){
 //busqueda en la   base de datos, de manera ordenada por la jornada mas reciente
@@ -194,14 +197,14 @@ public class Controlador {
         return asis;
     }
 
-    public static void insertarAsistente(String nombre, String sueldo, String telefono, String nacionalidad,Entrenador entrenador) throws Exception {
+    public static void insertarAsistente(String nombre, String sueldo, String telefono, String nacionalidad, Entrenador entrenador) throws Exception {
         asis = new Asistente();
         asis.setNombreCompleto(nombre);
         asis.setSueldo(sueldo);
         asis.setTelefono(telefono);
         asis.setNacionalidad(nacionalidad);
         asis.setEntrenador(entrenador);
-        
+
         tasis.insertarAsistente(asis);
     }
 
@@ -220,13 +223,13 @@ public class Controlador {
         return due;
     }
 
-    public static void insertarDueno(String nombre, String telefono ,String nacionalidad, Equipo equi) throws Exception {        
+    public static void insertarDueno(String nombre, String telefono, String nacionalidad, Equipo equi) throws Exception {
         due = new Dueno();
         due.setNombreCompleto(nombre);
         due.setTelefono(telefono);
         due.setNacionalidad(nacionalidad);
         due.setEquipo(equi);
-        
+
         tdue.insertarDueno(due);
     }
 
@@ -235,7 +238,7 @@ public class Controlador {
     }
 
     public static void modificarDueno(Dueno duenoM) throws Exception {
-       
+
         tdue.modificarDueno(duenoM);
     }
 
@@ -252,7 +255,7 @@ public class Controlador {
         ent.setTelefono(telefono);
         ent.setNacionalidad(nacionalidad);
         ent.setEqui(equi);
-        
+
         tent.insertarEntrenador(ent);
     }
 
@@ -265,15 +268,16 @@ public class Controlador {
     }
 
     // Equipo
-
     public static Equipo buscarEquipoPKID(int id) throws Exception {
         Equipo nuevoEquipo;
-        nuevoEquipo = tequi.buscarEquipoById(id);   
+        nuevoEquipo = tequi.buscarEquipoById(id);
         return nuevoEquipo;
     }
+
     public static void buscarEquipoPK(String nombre) throws Exception {
-        equipoPK = tequi.buscarEquipoByNombre(nombre);      
+        equipoPK = tequi.buscarEquipoByNombre(nombre);
     }
+
     public static Equipo buscarEquipo(String nombre) throws Exception {
         equi = tequi.buscarEquipoByNombre(nombre);
         return equi;
@@ -314,7 +318,7 @@ public class Controlador {
 
     // Jugador
     public static Jugador buscarJugador(String nombre) throws Exception {
-        juga=new Jugador();
+        juga = new Jugador();
         juga = tjuga.buscarJugador(nombre);
         return juga;
     }
@@ -322,7 +326,7 @@ public class Controlador {
     public static void insertarJugador(String nombre, int sueldo,
             String nickname, String telefono, String nacionalidad,
             String rol, Equipo equipo) throws Exception {
-        juga= new Jugador();
+        juga = new Jugador();
         juga.setNombreCompleto(nombre);
         juga.setSueldo(String.valueOf(sueldo));
         juga.setNickname(nickname);
@@ -330,7 +334,7 @@ public class Controlador {
         juga.setNacionalidad(nacionalidad);
         juga.setRol(rol);
         juga.setEquipo(equipo);
-        
+
         tjuga.insertarJugador(juga);
     }
 
@@ -343,28 +347,29 @@ public class Controlador {
         tjuga.borrarJugador(id_jugador);
     }
 
-
     public static Usuario buscarUsuario(String nombre) throws Exception {
         usu = tusu.buscarUsuario(nombre);
         return usu;
     }
-    
+
     // Usuario
-    public static Usuario buscarUsuario(String correo,String contrasena) throws Exception {
-        usu = tusu.consultarUsu(correo,contrasena);
+    public static Usuario buscarUsuario(String correo, String contrasena) throws Exception {
+        usu = tusu.consultarUsu(correo, contrasena);
 
         return usu;
     }
 
     public static void insertarUsuario(String nombreCompleto, String correo, String clave) throws Exception {
-        usu = new Usuario(nombreCompleto,correo,clave);
+        usu = new Usuario(nombreCompleto, correo, clave);
         tusu.insertarUsuario(usu);
     }
-    public static void modificarUsuario(Usuario usuarioM) throws Exception{
-     tusu.modificarUsuario(usuarioM);
+
+    public static void modificarUsuario(Usuario usuarioM) throws Exception {
+        tusu.modificarUsuario(usuarioM);
     }
-    public static void borrarUsuario(Usuario usuario) throws Exception{
-     tusu.borrarUsuario(usuario.getId());
+
+    public static void borrarUsuario(Usuario usuario) throws Exception {
+        tusu.borrarUsuario(usuario.getId());
     }
 
 // Partido 
@@ -407,14 +412,14 @@ public class Controlador {
         via.setVisible(true);
     }
 
-   /* public static void abrirInsertarDueno() throws Exception {
-*/
+    /* public static void abrirInsertarDueno() throws Exception {
+     */
     public static void abrirInsertarDueno() throws Exception {
-
 
         vid = new VInsertarDueno();
         vid.setVisible(true);
-     }
+    }
+
     public static void abrirInsertarUsuario() {
         viu = new VInsertarUsuario();
         viu.setVisible(true);
@@ -435,7 +440,7 @@ public class Controlador {
         vmu.setVisible(true);
     }
 
-    public static void abrirModificarEntrenador() throws Exception {        
+    public static void abrirModificarEntrenador() throws Exception {
         vmen = new VModificarEntrenadores();
         vmen.setVisible(true);
     }
@@ -453,14 +458,13 @@ public class Controlador {
     /*public static String getNombreEquipos(int x) {
               
     }*/
-
-    public static void abrirEliminarEquipo()   {
+    public static void abrirEliminarEquipo() {
         vee = new VEliminarEquipo();
         vee.setVisible(true);
     }
-    
+
     public static void abrirEliminarJugador() {
-        
+
         vej = new VEliminarJugadores();
         vej.setVisible(true);
     }
@@ -493,7 +497,7 @@ public class Controlador {
         vcu.setVisible(true);
     }
 
-    public static void abrirConsultarDueno()throws Exception {
+    public static void abrirConsultarDueno() throws Exception {
         vcd = new VConsultarDueno();
         vcd.setVisible(true);
     }
@@ -508,12 +512,12 @@ public class Controlador {
         vcen.setVisible(true);
     }
 
-    public static void abrirConsultarJugadores() throws Exception{
+    public static void abrirConsultarJugadores() throws Exception {
         vcj = new VConsultarJugadores();
         vcj.setVisible(true);
     }
 
-    public static void abrirConsultarEquipo()  {
+    public static void abrirConsultarEquipo() {
         vce = new VConsultarEquipo();
         vce.setVisible(true);
     }
@@ -522,25 +526,69 @@ public class Controlador {
         aThis.dispose();
     }
 
-
-  
     public enum Rol {
         USUARIO, ADMINISTRADOR
     }
 
-    
     //generar clasificacion
     public static ArrayList<Clasificacion> consultarClasificacion() throws Exception {
-       aListaClasificacion=new ArrayList();
-        aListaClasificacion=vcla.consultarTodasClasificacion();
-       return aListaClasificacion;
-    
-    }
-    
-    public static ArrayList<Partido> consultarJornada() throws Exception{
-       aListaJornada=new ArrayList();
-        aListaJornada=tpart.consultarPartidos();
-       return aListaJornada;
+        aListaClasificacion = new ArrayList();
+        aListaClasificacion = vcla.consultarTodasClasificacion();
+        return aListaClasificacion;
+
     }
 
+    public static ArrayList<Partido> consultarJornada() throws Exception {
+        aListaJornada = new ArrayList();
+        aListaJornada = tpart.consultarPartidos();
+        return aListaJornada;
+    }
+    //Generar el calendario. Un calendario es un conjunto de jornadas
+    public static void generarCalendario() throws Exception {
+        // Leemos los equipos
+        aListaEquipo = tequi.cogerEquipos();
+        
+        // Numero de equipos del array y numero de partidos que tiene la jornada
+        int numEquipos = aListaEquipo.size();
+        int numPartidosJornada = numEquipos / 2;
+        
+        // NumJornadas ida y vuelta. -2 es porque el equipo no puede competir contra si mismo.
+        int numJornadas = (numEquipos * 2) - 2;
+
+        // Bucle para generar las jornadas (Ejemplo: si tenemos 20 equipos haremos 38 jornadas con ida y vuelta)
+        for (int x = 1; x <= numJornadas; x++) {
+            
+            // Bucle para generar patidos (Ejemplo: si tenemos 20 equipos haremos 10 partidos)
+            for (int j = 1; j <= numPartidosJornada; j++) {
+            
+                // Generamos partido entre 2 equipos de forma aleatoria
+                int posicionEqLocal = generarRamdon(x, numJornadas);
+                int posicionEqVisitante = generarRamdon(x, numJornadas);
+
+                // Si ha generado el mismo num aleatorio para ambos equipos, reintentamos emparejarlos de nuevo
+                if(posicionEqVisitante == posicionEqLocal){
+                    j--;
+                    continue;
+                }
+                
+                // Creamos el partido
+                Partido partido = new Partido();
+                partido.setEquipol(aListaEquipo.get(posicionEqLocal));
+                partido.setEquipov(aListaEquipo.get(posicionEqVisitante));
+                partido.setHora("9:00");
+                partido.setJornada(new Jornada(x, LocalDate.now()));
+                
+                
+                // Y lo guardamos en BBDD
+                tpart.insertarPartido(partido);
+            }
+
+        }
+    }
+
+    public static int generarRamdon(int x, int numJornadas) {
+        Random random = new Random();
+        return random.nextInt(numJornadas - x) + x;
+
+    }
 }

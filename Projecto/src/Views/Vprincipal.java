@@ -6,6 +6,7 @@
 package Views;
 
 import Modelo_UML.Clasificacion;
+import Modelo_UML.Jornada;
 import Modelo_UML.Partido;
 import java.awt.Color;
 import java.awt.Component;
@@ -18,7 +19,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.*;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import projecto.Controlador;
@@ -37,6 +38,7 @@ public class Vprincipal extends javax.swing.JFrame {
 
     int xx;
     int xy;
+    
     ArrayList<Clasificacion> aListaClasificacion;
     ArrayList<Partido> aListaJornada;
     int position=0;

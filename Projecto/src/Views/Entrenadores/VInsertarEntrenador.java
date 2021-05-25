@@ -352,9 +352,9 @@ public class VInsertarEntrenador extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try {
-            validarDatos(tfNombre.getText(), tfTelefono.getText(), tfNacionalidad.getText());
+            validarDatos(this.tfNombre.getText(), this.tfTelefono.getText(), this.tfNacionalidad.getText());
             //buscar  por nombre al dueno
-            entrenador = Controlador.buscarEntrenador(tfNombre.getText());
+            entrenador = Controlador.buscarEntrenador(this.tfNombre.getText());
             equipo = Controlador.buscarEquipo(String.valueOf(this.cbEquipos.getSelectedItem()));
             if (entrenador == null) {
                 Controlador.insertarDueno(tfNombre.getText(), 
