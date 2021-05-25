@@ -52,7 +52,7 @@ public class TUsuario {
         return null;
     }
      public Usuario buscarUsuario(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,ESCUDO FROM USUARIO"
+        String sentencia = "SELECT * FROM USUARIO"
                 + " WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1,nombre);
@@ -64,7 +64,7 @@ public class TUsuario {
             usu.setNombreCompleto(resultado.getString("nombre"));
             usu.setCorreo(resultado.getString("correo"));
             usu.setClave(resultado.getString("contrasena"));
-            usu.setId(Integer.parseInt(resultado.getString("id_usuario")));
+            usu.setId(Integer.parseInt(resultado.getString("cod_usuario")));
             return usu;
         }
         return null;
@@ -107,7 +107,7 @@ public class TUsuario {
 
     public void modificarUsuario(Usuario usu) throws Exception {
      
-        String sentencia = "UPDATE USUARIO SET NOMBRE=?,CORREO=? WHERE ID_USUARIO = ?";
+        String sentencia = "UPDATE USUARIO SET NOMBRE=?,CORREO=?,CONTRASENA=? WHERE COD_USUARIO = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, usu.getNombreCompleto());
         ps.setString(2, usu.getCorreo());
@@ -126,7 +126,7 @@ public class TUsuario {
     public void borrarUsuario(int id_usuario) throws Exception {
 
         {
-            String sentencia = "DELETE FROM USUARIO WHERE ID_USUARIO =?";
+            String sentencia = "DELETE FROM USUARIO WHERE COD_USUARIO =?";
             PreparedStatement ps = con.prepareStatement(sentencia);
             ps.setString(1, String.valueOf(id_usuario));
             int n = ps.executeUpdate();

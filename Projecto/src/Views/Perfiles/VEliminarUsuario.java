@@ -5,8 +5,12 @@
  */
 package Views.Perfiles;
 
+import Modelo_UML.Usuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
 
 /**
@@ -16,6 +20,7 @@ import projecto.Controlador;
 public class VEliminarUsuario extends javax.swing.JFrame {
     int xx;
     int xy;
+    Usuario usuario;
     /**
      * Creates new form VInsertarUsuario
      */
@@ -23,12 +28,19 @@ public class VEliminarUsuario extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
-        tfCorreo.setEditable(false);
-        pfContraseña.setEditable(false);
+        EditableFalse();
 
     }
-
+    public void EditableFalse() {
+        tfCorreo.setEditable(false);
+        pfContraseña.setEditable(false);
+    }
+    public void ensenarDatos(){
+        this.tfNombre.setText(usuario.getNombreCompleto());
+        this.tfCorreo.setText(usuario.getCorreo());
+        this.pfContraseña.setText(usuario.getClave());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -305,11 +317,28 @@ public class VEliminarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
+        try{
+            usuario = Controlador.buscarUsuario(this.tfNombre.getText());
+            if(usuario==null)
+                showMessageDialog(null,"No se ha encontrado el dueno");
+               
+           
+            ensenarDatos();
+            
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+        try {
+            Controlador.borrarUsuario(usuario);
+            showMessageDialog(null, "Usuario borrado");
+            Controlador.cerrarVentana(this);
+        } catch (Exception ex) {
+            Logger.getLogger(VEliminarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -376,4 +405,6 @@ public class VEliminarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField tfCorreo;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
+
+
 }

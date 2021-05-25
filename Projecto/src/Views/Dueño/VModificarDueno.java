@@ -394,6 +394,7 @@ public class VModificarDueno extends javax.swing.JFrame {
             
             Controlador.modificarDueno(dueno);
             showMessageDialog(null, "dueno modificado");
+            Controlador.cerrarVentana(this);
         } catch (Exception ex) {
             showMessageDialog(null,"Error al modificar el dueño "+ex.getMessage());
         }

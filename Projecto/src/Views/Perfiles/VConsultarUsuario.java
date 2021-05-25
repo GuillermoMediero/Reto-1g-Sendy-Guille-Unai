@@ -3,6 +3,7 @@ package Views.Perfiles;
 
 import Views.Asistentes.*;
 import Modelo_UML.Asistente;
+import Modelo_UML.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,7 +17,7 @@ import static javax.swing.JOptionPane.*;
 public class VConsultarUsuario extends javax.swing.JFrame {
     int xx;
     int xy; 
-    Asistente asistente;
+    Usuario usuario;
     /**
      * Creates new form VInsertarAsistente
      */
@@ -26,6 +27,12 @@ public class VConsultarUsuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     public void validarDatosAsistente(String n,String s,String t,String na){}
+    public void ensenarDatos(){
+    this.taUsuarios.setText(" Nombre : "+ usuario.getNombreCompleto()+ "\n" +
+                " Correo : "+ usuario.getCorreo()+ "\n" +
+                " Clave : "+ usuario.getClave());
+                
+                  }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -238,7 +245,18 @@ public class VConsultarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bConsultarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarUsuActionPerformed
-        
+        try{
+            usuario = Controlador.buscarUsuario(this.tfNombreUsu.getText());
+            if(usuario==null)
+                showMessageDialog(null,"No se ha encontrado el dueno");
+               
+           
+            ensenarDatos();
+            
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
     }//GEN-LAST:event_bConsultarUsuActionPerformed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed

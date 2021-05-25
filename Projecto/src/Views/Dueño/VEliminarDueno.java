@@ -33,6 +33,7 @@ public class VEliminarDueno extends javax.swing.JFrame {
         EditableFalse();
         
     }
+    
    
     public void EditableFalse(){
         tfTelefonoD.setEditable(false);
@@ -351,6 +352,7 @@ public class VEliminarDueno extends javax.swing.JFrame {
         try {
             Controlador.borrarDueno(dueno.getNombreCompleto());
             showMessageDialog(null, "Dueño borrado");
+            Controlador.cerrarVentana(this);
         } catch (Exception gnr) {
             System.out.println("Error "+ gnr.getMessage());
         }

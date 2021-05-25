@@ -355,11 +355,11 @@ public class Controlador {
         usu = new Usuario(nombreCompleto,correo,clave);
         tusu.insertarUsuario(usu);
     }
-    public static void modificarUsuario() throws Exception{
-     tusu.modificarUsuario(usu);
+    public static void modificarUsuario(Usuario usuarioM) throws Exception{
+     tusu.modificarUsuario(usuarioM);
     }
-    public static void borrarUsuario(int id_usuario) throws Exception{
-     tusu.borrarUsuario(id_usuario);
+    public static void borrarUsuario(Usuario usuario) throws Exception{
+     tusu.borrarUsuario(usuario.getId());
     }
 
 // Partido 

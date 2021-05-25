@@ -5,8 +5,10 @@
  */
 package Views.Perfiles;
 
+import Modelo_UML.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
 
 /**
@@ -16,6 +18,7 @@ import projecto.Controlador;
 public class VModificarUsuario extends javax.swing.JFrame {
     int xx;
     int xy;
+    Usuario usuario;
     /**
      * Creates new form VInsertarUsuario
      */
@@ -23,9 +26,15 @@ public class VModificarUsuario extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        tfNombre.setEditable(false);
-    }
 
+    }
+    
+    public void ensenarDatos(){
+        this.tfNombre.setText(usuario.getNombreCompleto());
+        this.tfCorreo.setText(usuario.getCorreo());
+        this.pfContraseña.setText(usuario.getClave());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +65,7 @@ public class VModificarUsuario extends javax.swing.JFrame {
         bCancelar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        tfContraseña = new javax.swing.JTextField();
+        pfContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -248,10 +257,10 @@ public class VModificarUsuario extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tfContraseña.setBackground(new java.awt.Color(204, 204, 204));
-        tfContraseña.setForeground(new java.awt.Color(0, 0, 0));
-        tfContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel11.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        pfContraseña.setBackground(new java.awt.Color(204, 204, 204));
+        pfContraseña.setForeground(new java.awt.Color(0, 0, 0));
+        pfContraseña.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel11.add(pfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 2, 240, 40));
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 260, 40));
 
@@ -302,11 +311,31 @@ public class VModificarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
+        try{
+            usuario = Controlador.buscarUsuario(this.tfNombre.getText());
+            if(usuario==null)
+                showMessageDialog(null,"No se ha encontrado el dueno");  
+           
+            ensenarDatos();
+      
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-
+         try {                    
+            usuario.setNombreCompleto(this.tfNombre.getText());
+            usuario.setCorreo(this.tfCorreo.getText());
+            usuario.setClave(String.valueOf(this.pfContraseña.getPassword()));
+            
+            Controlador.modificarUsuario(usuario);
+            showMessageDialog(null, "Usuario modificado");
+            Controlador.cerrarVentana(this);
+        } catch (Exception ex) {
+            showMessageDialog(null,"Error al modificar el usuario "+ex.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -369,7 +398,7 @@ public class VModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lMinimizar;
     private javax.swing.JLabel lNombreUsuario;
     private javax.swing.JPanel pMenu;
-    private javax.swing.JTextField tfContraseña;
+    private javax.swing.JPasswordField pfContraseña;
     private javax.swing.JTextField tfCorreo;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
