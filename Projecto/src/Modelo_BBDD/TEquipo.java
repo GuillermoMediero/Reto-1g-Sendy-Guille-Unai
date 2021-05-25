@@ -9,8 +9,6 @@ import Modelo_UML.Equipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +22,7 @@ public class TEquipo {
     public TEquipo(Connection con) {
         this.con = con;
     }
-    public Equipo buscarEquipo(String nombre) throws Exception {
+    public Equipo buscarEquipoByNombre(String nombre) throws Exception {
         String sentencia = "SELECT * FROM EQUIPO WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, String.valueOf(nombre));
@@ -41,21 +39,24 @@ public class TEquipo {
             return null;
         }
     }
-    
-     public int buscarEquipoPK(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,ESCUDO FROM EQUIPO"
-                + " WHERE NOMBRE=?";
+    public Equipo buscarEquipoById(int id_equipo) throws Exception {
+        String sentencia = "SELECT * FROM EQUIPO WHERE id_equipo=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(nombre));
+        ps.setString(1, String.valueOf(id_equipo));
 
         ResultSet resultado = ps.executeQuery();
         if (resultado.next()) {
-     
-            return resultado.getInt("ID_EQUIPO");
+            Equipo equi;
+            equi = new Equipo();
+            equi.setNombre(resultado.getString("NOMBRE"));
+            equi.setEscudo(resultado.getString("ESCUDO"));
+            equi.setId_equipo(resultado.getInt("ID_EQUIPO"));
+            return equi;
         } else {
-            return 0;
+            return null;
         }
     }
+   
 
     public void insertarEquipo(Equipo equi) throws Exception {
 

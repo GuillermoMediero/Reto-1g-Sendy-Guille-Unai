@@ -7,12 +7,8 @@ package Views.Dueño;
 
 import Modelo_UML.Dueno;
 import Modelo_UML.Equipo;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.*;
 import projecto.Controlador;
 
@@ -24,29 +20,32 @@ public class VEliminarDueno extends javax.swing.JFrame {
     int xx;
     int xy;
     private Dueno dueno;
-     ArrayList<Equipo> aListaEquipo;
-    private String equipo;
+    private Equipo equipo;
+    
      
     /**
      * Creates new form InsertarDueño
      */
-    public VEliminarDueno() throws Exception{
+    public VEliminarDueno() {
         initComponents(); 
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-        noEditarCampos();
+        EditableFalse();
         
     }
    
-    public void noEditarCampos(){
+    public void EditableFalse(){
         tfTelefonoD.setEditable(false);
         tfNacionalidadD.setEditable(false);
-        cbEquiposD.setEnabled(false);
+        cbEquiposD.setEditable(false);
     }
+   
+    
     public void ensenarDatos(){
+        this.tfNombreD.setText(dueno.getNombreCompleto());
         this.tfTelefonoD.setText(dueno.getTelefono());
         this.tfNacionalidadD.setText(dueno.getNacionalidad());
-        this.cbEquiposD.setSelectedItem(equipo);
+        this.cbEquiposD.addItem(equipo.getNombre());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -334,9 +333,14 @@ public class VEliminarDueno extends javax.swing.JFrame {
     private void tfNombreDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreDActionPerformed
         try{
             dueno = Controlador.buscarDueno(this.tfNombreD.getText());
-            equipo=dueno.getId_equipo().getNombre();
-            if(dueno!=null)
-                ensenarDatos();
+            if(dueno==null)
+                showMessageDialog(null,"No se ha encontrado el dueno");
+            equipo=dueno.getEquipo();
+            if(equipo==null)
+                    showMessageDialog(null,"No se ha encontrado el equipo del dueno");    
+           
+            ensenarDatos();
+            
             
         }catch(Exception gnr){
         showMessageDialog(null,gnr.getMessage());
@@ -344,7 +348,12 @@ public class VEliminarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreDActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-             
+        try {
+            Controlador.borrarDueno(dueno.getNombreCompleto());
+            showMessageDialog(null, "Dueño borrado");
+        } catch (Exception gnr) {
+            System.out.println("Error "+ gnr.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed

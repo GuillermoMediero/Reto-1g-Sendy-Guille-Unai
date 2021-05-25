@@ -27,7 +27,7 @@ private TEquipo tequi;
 
     
       public Entrenador buscarEntrenador(String nombre) throws Exception {
-        String sentencia = "SELECT NOMBRE,SUELDO,TELEFONO, NACIONALIDAD,ID_EQUIPO FROM DUENO WHERE NOMBRE=?";
+        String sentencia = "SELECT NOMBRE,SUELDO,TELEFONO, NACIONALIDAD,ID_EQUIPO, ID_ENTRENADOR FROM ENTRENADOR WHERE NOMBRE=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
         ps.setString(1, nombre);
 
@@ -35,25 +35,30 @@ private TEquipo tequi;
         if (resultado.next()) {
            Entrenador ent;
             ent = new Entrenador();
-            ent.setNombre(resultado.getString("NOMBRE"));
-            ent.setNombre(resultado.getString("SUELDO"));
+            ent.setNombreCompleto(resultado.getString("NOMBRE"));
+            ent.setSueldo(resultado.getString("SUELDO"));
             ent.setTelefono(resultado.getString("TELEFONO"));
             ent.setNacionalidad(resultado.getString("NACIONALIDAD"));
+            ent.setId(Integer.parseInt(resultado.getString("ID_ENTRENADOR")));
+            ent.setEqui((tequi.buscarEquipoById(Integer.parseInt(resultado.getString("ID_EQUIPO")))));
             
             return ent;
         } else {
             return null;
         }
     }
+   
 
     public void insertarEntrenador(Entrenador ent) throws Exception {
 
-        String sentencia = "INSERT INTO ENTRENADOR(NOMBRE,SUELDO, TELEFONO, NACIONALIDAD) VALUES (?,?,?,?)";
+        String sentencia = "INSERT INTO ENTRENADOR(NOMBRE,SUELDO, TELEFONO, NACIONALIDAD, ID_EQUIPO) VALUES (?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, ent.getNombre());
+        ps.setString(1, ent.getNombreCompleto());
         ps.setString(2,String.valueOf(ent.getSueldo()));
         ps.setString(3, ent.getTelefono());
         ps.setString(4, ent.getNacionalidad());
+        ps.setString(5, String.valueOf(ent.getEqui().getId_equipo()));
+         
         
 
         int resultado = ps.executeUpdate();
@@ -66,12 +71,16 @@ private TEquipo tequi;
 
     public void modificarEntrenador(Entrenador ent) throws Exception {
         // No podemos modificar el nombre del asistente
-            String sentencia = "UPDATE ENTRENADOR SET SUELDO=?, TELEFONO=?, NACIONALIDAD=? "
-                + "WHERE NOMBRE = ?";
+            String sentencia = "UPDATE ENTRENADOR SET NOMBRE=?, SUELDO=?, TELEFONO=?, NACIONALIDAD=?,ID_EQUIPO=? "
+                + "WHERE ID_ENTRENADOR = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-         ps.setString(1, ent.getSueldo());
-        ps.setString(2, ent.getTelefono());
-        ps.setString(3, ent.getNacionalidad());
+        ps.setString(1, ent.getNombreCompleto());
+        ps.setString(2, ent.getSueldo());
+        ps.setString(3, ent.getTelefono());
+        ps.setString(4, ent.getNacionalidad());
+        ps.setString(5, String.valueOf(ent.getEqui().getId_equipo()));
+        ps.setString(6,String.valueOf(ent.getId()));
+       
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {

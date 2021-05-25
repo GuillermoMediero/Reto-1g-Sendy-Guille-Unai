@@ -25,6 +25,12 @@ public class VModificarAsistente extends javax.swing.JFrame {
         tfNombre.setEditable(false);
     }
     public void validarDatosAsistente(String n,String s,String t,String na){}
+    public void ensenarDatos(){
+        this.tfNombre.setText(asistente.getNombreCompleto());
+        this.tfTelefono.setText(asistente.getTelefono());
+        this.tfNacionalidad.setText(asistente.getNacionalidad());
+        this.tfSueldo.setText(asistente.getSueldo());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -309,27 +315,31 @@ public class VModificarAsistente extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
+         try{
+            asistente = Controlador.buscarAsistente(this.tfNombre.getText());
+            if(asistente==null)
+                showMessageDialog(null,"No se ha encontrado el Asistente");          
+            ensenarDatos();
+            
+            
+        }catch(Exception gnr){
+        showMessageDialog(null,gnr.getMessage());
+        }
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        /*try{
-            // Validar los datos de los asistentes
-            validarDatosAsistente(this.tfNombre.getText(),this.tfSueldo.getText(),
-                    this.tfTelefono.getText(),this.tfNacionalidad.getText());
+        try {             
+            asistente.setId(asistente.getId());
+            asistente.setNombreCompleto(this.tfNombre.getText());
+            asistente.setNacionalidad(this.tfNacionalidad.getText());
+            asistente.setTelefono(this.tfTelefono.getText());
+            asistente.setSueldo(asistente.getSueldo());
             
-            // Buscar el asistente
-            asistente = Controlador.buscarAsistente(this.tfNombre.getText());
-            
-            // Si lo que me han devolto es null insertamos el asistente
-            if(asistente==null){
-                Controlador.insertarAsistente();
-                showMessageDialog(null,"Asistente " + asistente.getNombre()+" Insertado");
-            }else
-                showMessageDialog(null,"Ya existe un asistente con ese Nombre");
-        }catch(Exception gnr){
-            showMessageDialog(null, gnr.getClass()+ "\n"+ gnr.getMessage());
-        }*/
+            Controlador.modificarAsistente(asistente);
+            showMessageDialog(null, "dueno modificado");
+        } catch (Exception ex) {
+            showMessageDialog(null,"Error al modificar el dueño "+ex.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed

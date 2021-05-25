@@ -5,7 +5,11 @@
  */
 package Views.Jugadores;
 
+import Modelo_UML.Equipo;
 import Modelo_UML.Jugador;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,17 +21,32 @@ import projecto.Controlador;
  * @author 1GDAW12
  */
 public class VInsertarJugadores extends javax.swing.JFrame {
+
     int xx;
-    int xy; 
+    int xy;
     Jugador jug;
+    ArrayList<Equipo> aListaEquipo;
+    Equipo equipo;
+
     /**
      * Creates new form InsertarJugadores
      */
-    public VInsertarJugadores() {
+    public VInsertarJugadores() throws Exception {
         initComponents();
+        aListaEquipo=new ArrayList();
+        aListaEquipo = Controlador.llenarComboBox();
+        llenado();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
-       
+        
+        
+    }
+    
+
+    public void llenado() {
+        for (int i = 0; i < aListaEquipo.size(); i++) {
+            this.cbEquipos.insertItemAt(aListaEquipo.get(i).getNombre(), i);
+        }
     }
 
     /**
@@ -353,41 +372,45 @@ public class VInsertarJugadores extends javax.swing.JFrame {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel4MouseDragged
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-             try{
-            if(datosCorrectos()){
-                jug = Controlador.buscarJugador(tfNombre.getText());
-                if(jug==null){
-                    Controlador.insertarJugador(tfNombre.getText(),Integer.parseInt(tfSueldo.getText()),tfNickname.getText(),tfTelefono.getText(),tfNacionalidad.getText(),tfRol.getText(),cbEquipos.getSelectedIndex());
-                    showMessageDialog(null,"Jugador " + tfNombre.getText() +" Insertado");
-                   Controlador.cerrarVentana(this);
-                   }
-                else{
-                    showMessageDialog(null,"Ya existe un Jugador con ese Nombre");
+        try {
+            
+            
+            jug = Controlador.buscarJugador(this.tfNombre.getText());
+            equipo = Controlador.buscarEquipoPKID(this.cbEquipos.getSelectedIndex());
+            if(equipo==null){
+                showMessageDialog(null, "Equipo no encontrado");
             }
-        }
-        }
-        catch(Exception e){
+            if (jug == null) {
+                Controlador.insertarJugador(tfNombre.getText(), Integer.parseInt(tfSueldo.getText()), tfNickname.getText(),
+                        tfTelefono.getText(), tfNacionalidad.getText(), tfRol.getText(), equipo);
+                showMessageDialog(null, "Jugador Insertado");
+                Controlador.cerrarVentana(this);
+            } else {
+                showMessageDialog(null, "Ya existe el Jugador");
+            }
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -431,7 +454,11 @@ public class VInsertarJugadores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VInsertarJugadores().setVisible(true);
+                try {
+                    new VInsertarJugadores().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(VInsertarJugadores.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -472,7 +499,6 @@ public class VInsertarJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField tfSueldo;
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
-
 
     private boolean datosCorrectos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

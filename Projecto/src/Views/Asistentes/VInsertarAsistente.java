@@ -269,7 +269,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 260, 40));
 
-        jLabel6.setText("ID asistente");
+        jLabel6.setText("Entrenador");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
 
         jPanel10.setBackground(new java.awt.Color(204, 204, 204));
@@ -346,7 +346,7 @@ public class VInsertarAsistente extends javax.swing.JFrame {
             if (asistente == null) {
                 Controlador.insertarAsistente(tfNombreAsis.getText(), tfSueldoAsis.getText(),
                         tfTelefonoAsis.getText(), tfNacionalidadAsis.getText());
-                showMessageDialog(null, "Asistente " + tfNombreAsis.getText() + " Insertado");
+                showMessageDialog(null, "Asistente Insertado");
                 // Cerrar ventanas
                 Controlador.cerrarVentana(this);
             } else {

@@ -6,11 +6,9 @@
 package Views.Dueño;
 
 import Excepciones.DatoNoValido;
-import Modelo_BBDD.TDueno;
-import Modelo_BBDD.TEquipo;
+
 import Modelo_UML.Dueno;
 import Modelo_UML.Equipo;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +28,7 @@ public class VInsertarDueno extends javax.swing.JFrame {
     int xx;
     int xy;
     Dueno dueno;
+    Equipo equipo;
     ArrayList<Equipo> aListaEquipo;
     
 
@@ -354,15 +353,15 @@ public class VInsertarDueno extends javax.swing.JFrame {
             validarDatos(tfNombre.getText(), tfTelefono.getText(), tfNacionalidad.getText());
             //buscar  por nombre al dueno
             dueno = Controlador.buscarDueno(tfNombre.getText());
-            Controlador.buscarEquipoPK(String.valueOf(this.cbEquipos.getSelectedItem()));
+            equipo = Controlador.buscarEquipo(String.valueOf(this.cbEquipos.getSelectedItem()));
             if (dueno == null) {
                 Controlador.insertarDueno(tfNombre.getText(), 
-                        tfNacionalidad.getText(),tfTelefono.getText());
-                showMessageDialog(null, "Dueño " + tfNombre.getText() + " Insertado");
+                        tfNacionalidad.getText(),tfTelefono.getText(),equipo);
+                showMessageDialog(null, "Dueño  Insertado");
                 Controlador.cerrarVentana(this);
 
             } else {
-                showMessageDialog(null, "Ya existe un Dueño con ese Nombre");
+                showMessageDialog(null, "Ya existe el Dueño ");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

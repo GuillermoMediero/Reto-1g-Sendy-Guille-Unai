@@ -21,18 +21,16 @@ import Views.equipos.*;
 
 import Views.Asistentes.VInsertarAsistente;
 import Views.Asistentes.VModificarAsistente;
-import Views.Entrenadores.VInsertarEntrenadores;
+import Views.Entrenadores.VInsertarEntrenador;
 import Views.Jugadores.VInsertarJugadores;
 import Views.Perfiles.VInsertarUsuario;
 import Views.equipos.VInsertarEquipo;
 
 //import Views.Vprincipal.Tipo;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-
+import static javax.swing.JOptionPane.*;
 /**
  *
  * @author ketro
@@ -80,7 +78,7 @@ public class Controlador {
     private static VConsultarJugadores vcj;
 
     // Ventanas Entrenadore
-    private static VInsertarEntrenadores vien;
+    private static VInsertarEntrenador vien;
     private static VModificarEntrenadores vmen;
     private static VEliminarEntrenadores veen;
     private static VConsultarEntrenador vcen;
@@ -192,12 +190,17 @@ public class Controlador {
     }
 
     public static void insertarAsistente(String nombre, String sueldo, String telefono, String nacionalidad) throws Exception {
-        asis = new Asistente(nombre, sueldo, telefono, nacionalidad);
+        asis = new Asistente();
+        asis.setNombreCompleto(nombre);
+        asis.setSueldo(sueldo);
+        asis.setTelefono(telefono);
+        asis.setNacionalidad(nacionalidad);
+        
         tasis.insertarAsistente(asis);
     }
 
-    public static void modificarAsistente(String s, String t, String nac) throws Exception {
-        tasis.modificarAsistente(asis);
+    public static void modificarAsistente(Asistente asistente) throws Exception {
+        tasis.modificarAsistente(asistente);
 
     }
 
@@ -211,17 +214,23 @@ public class Controlador {
         return due;
     }
 
-    public static void insertarDueno(String nombre, String telefono ,String nacionalidad) throws Exception {        
-        due = new Dueno(equipoPK,nombre, telefono, nacionalidad);
+    public static void insertarDueno(String nombre, String telefono ,String nacionalidad, Equipo equi) throws Exception {        
+        due = new Dueno();
+        due.setNombreCompleto(nombre);
+        due.setTelefono(telefono);
+        due.setNacionalidad(nacionalidad);
+        due.setEquipo(equi);
+        
         tdue.insertarDueno(due);
     }
 
-    public static void borrarDueno(int id_dueno) throws Exception {
-        tdue.borrarDueno(id_dueno);
+    public static void borrarDueno(String nombreCompleto) throws Exception {
+        tdue.borrarDueno(nombreCompleto);
     }
 
-    public static void modificarDueno() throws Exception {
-        tdue.modificarDueno(due);
+    public static void modificarDueno(Dueno duenoM) throws Exception {
+       
+        tdue.modificarDueno(duenoM);
     }
 
     // Entrenador
@@ -230,8 +239,14 @@ public class Controlador {
         return ent;
     }
 
-    public static void insertarEntrenador(String nombre, int sueldo, String telefono, String nacionalidad, int equipo) throws Exception {
+    public static void insertarEntrenador(String nombre, int sueldo, String telefono, String nacionalidad, Equipo equipo) throws Exception {
         ent = new Entrenador();
+        ent.setNombreCompleto(nombre);
+        ent.setSueldo(telefono);
+        ent.setTelefono(telefono);
+        ent.setNacionalidad(nacionalidad);
+        ent.setEqui(equi);
+        
         tent.insertarEntrenador(ent);
     }
 
@@ -245,11 +260,16 @@ public class Controlador {
 
     // Equipo
 
+    public static Equipo buscarEquipoPKID(int id) throws Exception {
+        Equipo nuevoEquipo;
+        nuevoEquipo = tequi.buscarEquipoById(id);   
+        return nuevoEquipo;
+    }
     public static void buscarEquipoPK(String nombre) throws Exception {
-        equipoPK = tequi.buscarEquipo(nombre);      
+        equipoPK = tequi.buscarEquipoByNombre(nombre);      
     }
     public static Equipo buscarEquipo(String nombre) throws Exception {
-        equi = tequi.buscarEquipo(nombre);
+        equi = tequi.buscarEquipoByNombre(nombre);
         return equi;
     }
 
@@ -288,23 +308,33 @@ public class Controlador {
 
     // Jugador
     public static Jugador buscarJugador(String nombre) throws Exception {
+        juga=new Jugador();
         juga = tjuga.buscarJugador(nombre);
         return juga;
     }
 
     public static void insertarJugador(String nombre, int sueldo,
             String nickname, String telefono, String nacionalidad,
-            String rol, int equipo) throws Exception {
+            String rol, Equipo equipo) throws Exception {
+        juga= new Jugador();
+        juga.setNombreCompleto(nombre);
+        juga.setSueldo(String.valueOf(sueldo));
+        juga.setNickname(nickname);
+        juga.setTelefono(telefono);
+        juga.setNacionalidad(nacionalidad);
+        juga.setRol(rol);
+        juga.setEquipo(equipo);
+        
         tjuga.insertarJugador(juga);
     }
 
-    public static void modificarJugador() throws Exception {
-        tjuga.modificarJugador(juga);
+    public static void modificarJugador(Jugador jug) throws Exception {
+        tjuga.modificarJugador(jug);
 
     }
 
-    public static void borrarJugador(String nombre) throws Exception {
-        tjuga.borrarJugador(nombre);
+    public static void borrarJugador(int id_jugador) throws Exception {
+        tjuga.borrarJugador(id_jugador);
     }
 
 
@@ -355,13 +385,13 @@ public class Controlador {
         vie.setVisible(true);
     }
 
-    public static void abrirInsertarJugador() {
+    public static void abrirInsertarJugador() throws Exception {
         vij = new VInsertarJugadores();
         vij.setVisible(true);
     }
 
-    public static void abrirInsertarEntrenador() {
-        vien = new VInsertarEntrenadores();
+    public static void abrirInsertarEntrenador() throws Exception {
+        vien = new VInsertarEntrenador();
         vien.setVisible(true);
     }
 
@@ -388,7 +418,7 @@ public class Controlador {
         vma.setVisible(true);
     }
 
-    public static void abrirModificarDueño() {
+    public static void abrirModificarDueño() throws Exception {
         vmd = new VModificarDueno();
         vmd.setVisible(true);
     }
@@ -398,12 +428,12 @@ public class Controlador {
         vmu.setVisible(true);
     }
 
-    public static void abrirModificarEntrenador() {
+    public static void abrirModificarEntrenador() throws Exception {        
         vmen = new VModificarEntrenadores();
-        vmd.setVisible(true);
+        vmen.setVisible(true);
     }
 
-    public static void abrirModificarJugador() {
+    public static void abrirModificarJugador() throws Exception {
         vmj = new VModificarJugadores();
         vmj.setVisible(true);
     }
@@ -417,37 +447,37 @@ public class Controlador {
               
     }*/
 
-    public static void abrirEliminarEquipo(String nombre) throws Exception {
+    public static void abrirEliminarEquipo() throws Exception {
         equi = buscarEquipo(nombre);
         vee = new VEliminarEquipo(equi.getNombre(),equi.getEscudo());
         vee.setVisible(true);
     }
  
     
-    public static void abrirEliminarJugador(String nombre) {
+    public static void abrirEliminarJugador() {
         
         vej = new VEliminarJugadores();
         vej.setVisible(true);
     }
 
-    public static void abrirEliminarEntrenador(String nombre) {
+    public static void abrirEliminarEntrenador() {
 
         veen = new VEliminarEntrenadores();
         veen.setVisible(true);
     }
 
-    public static void abrirEliminarAsistente(String nombre) {
+    public static void abrirEliminarAsistente() {
 
         vea = new VEliminarAsistente();
         vea.setVisible(true);
     }
 
-    public static void abrirEliminarDueno() throws Exception {
+    public static void abrirEliminarDueno() {
         ved = new VEliminarDueno();
         ved.setVisible(true);
     }
 
-    public static void abrirEliminarUsuario(String nombre) {
+    public static void abrirEliminarUsuario() {
 
         veu = new VEliminarUsuario();
         veu.setVisible(true);
@@ -458,7 +488,7 @@ public class Controlador {
         vcu.setVisible(true);
     }
 
-    public static void abrirConsultarDueno() {
+    public static void abrirConsultarDueno()throws Exception {
         vcd = new VConsultarDueno();
         vcd.setVisible(true);
     }
@@ -473,7 +503,7 @@ public class Controlador {
         vcen.setVisible(true);
     }
 
-    public static void abrirConsultarJugadores() {
+    public static void abrirConsultarJugadores() throws Exception{
         vcj = new VConsultarJugadores();
         vcj.setVisible(true);
     }

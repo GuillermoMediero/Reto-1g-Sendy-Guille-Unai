@@ -5,28 +5,57 @@
  */
 package Views.Entrenadores;
 
+
+import Excepciones.DatoNoValido;
+
+import Modelo_UML.Dueno;
 import Modelo_UML.Entrenador;
+import Modelo_UML.Equipo;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import projecto.Controlador;
+import validaciones.validaciones;
 
 /**
  *
  * @author 1GDAW12
  */
-public class VInsertarEntrenadores extends javax.swing.JFrame {
+public class VInsertarEntrenador extends javax.swing.JFrame {
+
     int xx;
-    int xy; 
-    Entrenador entre;
+    int xy;
+   Entrenador entrenador;
+    Equipo equipo;
+    ArrayList<Equipo> aListaEquipo;
+    
+
     /**
-     * Creates new form InsertalEntrenadores
+     * Creates new form InsertarDueño
      */
-    public VInsertarEntrenadores() {
+    public VInsertarEntrenador() throws Exception {
         initComponents();
+        aListaEquipo = Controlador.llenarComboBox();
+        llenado();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/descarga.png")).getImage());
         this.setLocationRelativeTo(null);
+
+    }
+
+    public void llenado() {
+        for (int i = 0; i < aListaEquipo.size(); i++) {
+            cbEquipos.insertItemAt(aListaEquipo.get(i).getNombre(), i);
+        }
+    }
+
+    public void validarDatos(String nombre, String Telefono, String Nacionalidad) throws DatoNoValido {
+        validaciones.validarNombre(nombre);
+        validaciones.validartelefono(Telefono);
+        validaciones.validarnacionalidad(Nacionalidad);
     }
 
     /**
@@ -50,9 +79,6 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        tfSueldo = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         tfNombre = new javax.swing.JTextField();
         bAceptar = new javax.swing.JButton();
@@ -191,33 +217,16 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         jPanel1.add(pMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Insertar Entrenadores");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
+        jLabel1.setText("Insertar Entrenador");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
-
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Sueldo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
-
-        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tfSueldo.setBackground(new java.awt.Color(204, 204, 204));
-        tfSueldo.setForeground(new java.awt.Color(0, 0, 0));
-        tfSueldo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel8.add(tfSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
-
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 260, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
         jPanel9.setBackground(new java.awt.Color(204, 204, 204));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        tfNombre.setForeground(new java.awt.Color(0, 0, 0));
         tfNombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,7 +235,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         });
         jPanel9.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 260, 40));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 260, 40));
 
         bAceptar.setBackground(new java.awt.Color(0, 0, 0));
         bAceptar.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,7 +246,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
                 bAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(bAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 120, 30));
+        jPanel1.add(bAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 120, 30));
 
         bCancelar.setBackground(new java.awt.Color(0, 0, 0));
         bCancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -248,49 +257,48 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
                 bCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 120, 30));
+        jPanel1.add(bCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 120, 30));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
-        tfTelefono.setForeground(new java.awt.Color(0, 0, 0));
         tfTelefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel11.add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
-        jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 260, 40));
+        jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 260, 40));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nacionalidad");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
         jPanel12.setBackground(new java.awt.Color(204, 204, 204));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfNacionalidad.setBackground(new java.awt.Color(204, 204, 204));
-        tfNacionalidad.setForeground(new java.awt.Color(0, 0, 0));
         tfNacionalidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel12.add(tfNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
 
-        jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 260, 40));
+        jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 260, 40));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nombre Equipo");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(204, 204, 204));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbEquipos.setBackground(new java.awt.Color(204, 204, 204));
-        cbEquipos.setForeground(new java.awt.Color(0, 0, 0));
         cbEquipos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 40));
+        cbEquipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEquiposActionPerformed(evt);
+            }
+        });
+        jPanel14.add(cbEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 250, 60));
 
-        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 260, 40));
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 260, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -318,24 +326,24 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel4MouseDragged
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
 
-        this.setLocation(x-xx, y-xy);
+        this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        xx=evt.getX();
-        xy=evt.getY();
+        xx = evt.getX();
+        xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
@@ -343,20 +351,21 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-    try{
-            if(datosCorrectos()){
-                entre = Controlador.buscarEntrenador(this.tfNombre.getText());
-                if(entre==null){
-                    Controlador.insertarEntrenador(tfNombre.getText(),Integer.parseInt(tfSueldo.getText()),tfTelefono.getText(),tfNacionalidad.getText(),cbEquipos.getSelectedIndex());
-                    showMessageDialog(null,"Entrenador " + tfNombre.getText() +" Insertado");
-                    Controlador.cerrarVentana(this);
-                   }
-                else{
-                    showMessageDialog(null,"Ya existe un Asistente con ese Nombre");
+        try {
+            validarDatos(tfNombre.getText(), tfTelefono.getText(), tfNacionalidad.getText());
+            //buscar  por nombre al dueno
+            entrenador = Controlador.buscarEntrenador(tfNombre.getText());
+            equipo = Controlador.buscarEquipo(String.valueOf(this.cbEquipos.getSelectedItem()));
+            if (entrenador == null) {
+                Controlador.insertarDueno(tfNombre.getText(), 
+                        tfNacionalidad.getText(),tfTelefono.getText(),equipo);
+                showMessageDialog(null, "Entrenador  Insertado");
+                Controlador.cerrarVentana(this);
+
+            } else {
+                showMessageDialog(null, "Ya existe el Entrenador ");
             }
-        }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -364,6 +373,10 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
         Controlador.cerrarVentana(this);
     }//GEN-LAST:event_bCancelarActionPerformed
+
+    private void cbEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEquiposActionPerformed
+        // Hacer metodo para coger el nombre y cambiar por id
+    }//GEN-LAST:event_cbEquiposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,14 +395,18 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEntrenadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VInsertarEntrenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEntrenadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VInsertarEntrenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEntrenadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VInsertarEntrenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VInsertarEntrenadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VInsertarEntrenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -398,7 +415,11 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VInsertarEntrenadores().setVisible(true);
+                try {
+                    new VInsertarEntrenador().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(VInsertarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -410,7 +431,6 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -422,7 +442,6 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lCerrar;
     private javax.swing.JLabel lMinimizar;
@@ -430,11 +449,7 @@ public class VInsertarEntrenadores extends javax.swing.JFrame {
     private javax.swing.JPanel pMenu;
     private javax.swing.JTextField tfNacionalidad;
     private javax.swing.JTextField tfNombre;
-    private javax.swing.JTextField tfSueldo;
     private javax.swing.JTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private boolean datosCorrectos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

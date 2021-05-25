@@ -10,36 +10,37 @@ package Modelo_UML;
  * @author ketro
  */
 public class Integrante {
-    private String nombre;
-    private String telefono;
+    private String nombreCompleto;
     private String nacionalidad;
+    private String telefono;
+    private int id;
 
     public Integrante() {
     }
 
-    public Integrante(String nombre, String telefono, String nacionalidad) {
-
-        this.nombre = nombre;
-        this.telefono = telefono;
+    public Integrante(String nombreCompleto, String nacionalidad, String telefono, int id) {
+        this.nombreCompleto = nombreCompleto;
         this.nacionalidad = nacionalidad;
+        this.telefono = telefono;
+        this.id = id;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     
 
-
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getNacionalidad() {
@@ -49,6 +50,15 @@ public class Integrante {
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-   
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
     
+
+  
 }

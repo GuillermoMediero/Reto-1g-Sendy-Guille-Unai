@@ -1,11 +1,10 @@
 
 package Views.Jugadores;
 
-import Views.Asistentes.*;
-import Modelo_UML.Asistente;
+
+import Modelo_UML.Jugador;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import projecto.Controlador;
 import static javax.swing.JOptionPane.*;
 
@@ -16,7 +15,7 @@ import static javax.swing.JOptionPane.*;
 public class VConsultarJugadores extends javax.swing.JFrame {
     int xx;
     int xy; 
-    Asistente asistente;
+    Jugador jugador;
     /**
      * Creates new form VInsertarAsistente
      */
@@ -26,6 +25,16 @@ public class VConsultarJugadores extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     public void validarDatosAsistente(String n,String s,String t,String na){}
+    public void ensenarJugador(){
+        this.taJugador.setText(" Nombre : "+jugador.getNombreCompleto()+ "\n" +
+                " Sueldo : "+jugador.getSueldo()+ "\n" +
+                " Nickname : "+jugador.getNickname()+ "\n" +
+                " Telefono : "+jugador.getTelefono()+ "\n" +
+                " Nacionalidad : "+jugador.getNacionalidad()+ "\n" +
+                " Rol : "+jugador.getRol()+ "\n" +
+                " Equipo : "+jugador.getEquipo().getNombre());
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -238,7 +247,15 @@ public class VConsultarJugadores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bConsultarJugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarJugActionPerformed
-        
+         try {
+            jugador = Controlador.buscarJugador(this.tfNombreJug.getText());
+            if(jugador==null){
+                showMessageDialog(null,"Jugador no encontrado");
+            }
+            ensenarJugador();
+        } catch (Exception gnr) {
+            System.out.println("Problemas en la busqueda del dueno " + gnr.getMessage());
+        }
     }//GEN-LAST:event_bConsultarJugActionPerformed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
