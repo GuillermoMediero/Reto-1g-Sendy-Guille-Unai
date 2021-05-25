@@ -147,7 +147,7 @@ as
 END hora;
 ---proceso para generar el calendario insertando los partidos ----  
 PROCEDURE  crearcalendario AS        
-    BEGIN
+     BEGIN
         DECLARE
              CURSOR C
              IS 
@@ -155,17 +155,17 @@ PROCEDURE  crearcalendario AS
              FROM equipo e1, equipo e2 
              WHERE e1.ID_EQUIPO <> e2.ID_EQUIPO;
              v_cursor C%ROWTYPE;
-             
+
              v_max_jornada JORNADA.NUM_JORNADA%TYPE;
              v_jornada JORNADA.NUM_JORNADA%TYPE;
              v_partidoL partido.ID_PARTIDO%TYPE;
              v_partidoV partido.ID_PARTIDO%TYPE;
         v_cant date;
         BEGIN
-        SELECT max(NUM_JORNADA )into v_max_jornada
-             FROM JORNADA ;
            FOR v_cursor IN C
            LOOP
+           SELECT max(NUM_JORNADA)into v_max_jornada
+             FROM JORNADA ;
             SELECT min(NUM_JORNADA) into v_jornada
              FROM JORNADA ;
            while  v_jornada<=v_max_jornada
