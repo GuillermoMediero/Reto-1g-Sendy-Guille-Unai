@@ -19,9 +19,9 @@ public class BaseDatos {
    public Connection conectar(){
        try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            String url = "jdbc:oracle:thin:@localhost:1522:orcl19c";
-            String login="USUARIO1";
-            String password = "usuario1";
+            String url = "jdbc:oracle:thin:@SrvOracle:1521:ORCL ";
+            String login="eqdaw04";
+            String password = "eqdaw04";
             con = DriverManager.getConnection(url,login,password);
  
             if (con==null){
