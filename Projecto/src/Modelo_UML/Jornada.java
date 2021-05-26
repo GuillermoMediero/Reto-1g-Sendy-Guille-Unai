@@ -12,6 +12,7 @@ import java.time.LocalDate;
  * @author ketro
  */
 public class Jornada {
+    private int num_jornada;
     private LocalDate fecha ;
 
     /**
@@ -30,6 +31,16 @@ public class Jornada {
     }
 
     /**
+     *
+     * @param num_jornada
+     * @param fecha
+     */
+    public Jornada(int num_jornada, LocalDate fecha) {
+        this.num_jornada = num_jornada;
+        this.fecha = fecha;
+    }
+
+    /**
      * obtencioncion dela fecha de la jornada
      * @return dia de la jornada
      */
@@ -43,6 +54,22 @@ public class Jornada {
      */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getNum_jornada() {
+        return num_jornada;
+    }
+
+    /**
+     *
+     * @param num_jornada
+     */
+    public void setNum_jornada(int num_jornada) {
+        this.num_jornada = num_jornada;
     }
     
     

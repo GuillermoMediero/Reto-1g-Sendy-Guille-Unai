@@ -19,11 +19,7 @@ public class BaseDatos {
    public Connection conectar(){
        try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-<<<<<<< Updated upstream
-            String url = "jdbc:oracle:thin:@SrvOracle:1521:ORCL ";
-=======
             String url = "jdbc:oracle:thin:@SrvOracle:1521:ORCL";
->>>>>>> Stashed changes
             String login="eqdaw04";
             String password = "eqdaw04";
             con = DriverManager.getConnection(url,login,password);

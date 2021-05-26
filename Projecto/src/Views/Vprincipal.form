@@ -499,7 +499,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="bMoverIzquierda" min="-2" pref="39" max="-2" attributes="0"/>
@@ -509,11 +509,12 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="105" max="32767" attributes="0"/>
                                       <Component id="bModificarJornada" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="bGenerarCalendario" min="-2" pref="129" max="-2" attributes="0"/>
+                                      <EmptySpace pref="12" max="32767" attributes="0"/>
                                       <Component id="bConsutarJornada" min="-2" pref="120" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="bGenerarXMLJornada" min="-2" pref="120" max="-2" attributes="0"/>
@@ -547,6 +548,7 @@
                           <Component id="bGenerarXMLJornada" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="bConsutarJornada" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="bModificarJornada" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="bGenerarCalendario" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
@@ -673,6 +675,25 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bMoverIzquierdaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="bGenerarCalendario">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Generar Calendario"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bGenerarCalendarioActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

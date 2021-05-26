@@ -148,6 +148,7 @@ public class Vprincipal extends javax.swing.JFrame {
         bModificarJornada = new javax.swing.JButton();
         bMoverDerecha = new javax.swing.JButton();
         bMoverIzquierda = new javax.swing.JButton();
+        bGenerarCalendario = new javax.swing.JButton();
         pClasificaciones = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -526,12 +527,22 @@ public class Vprincipal extends javax.swing.JFrame {
             }
         });
 
+        bGenerarCalendario.setBackground(new java.awt.Color(0, 0, 0));
+        bGenerarCalendario.setForeground(new java.awt.Color(255, 255, 255));
+        bGenerarCalendario.setText("Generar Calendario");
+        bGenerarCalendario.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bGenerarCalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGenerarCalendarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pJornadasLayout = new javax.swing.GroupLayout(pJornadas);
         pJornadas.setLayout(pJornadasLayout);
         pJornadasLayout.setHorizontalGroup(
             pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(41, 41, 41)
                 .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pJornadasLayout.createSequentialGroup()
                         .addComponent(bMoverIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -542,9 +553,10 @@ public class Vprincipal extends javax.swing.JFrame {
                         .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2)
                             .addGroup(pJornadasLayout.createSequentialGroup()
-                                .addGap(0, 105, Short.MAX_VALUE)
                                 .addComponent(bModificarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bGenerarCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                                 .addComponent(bConsutarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(bGenerarXMLJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -569,7 +581,8 @@ public class Vprincipal extends javax.swing.JFrame {
                 .addGroup(pJornadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bGenerarXMLJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bConsutarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bModificarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bModificarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bGenerarCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -1265,6 +1278,10 @@ public class Vprincipal extends javax.swing.JFrame {
                         + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).getJornada() + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
     }//GEN-LAST:event_bMoverIzquierdaActionPerformed
 
+    private void bGenerarCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarCalendarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bGenerarCalendarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1537,6 +1554,7 @@ public class Vprincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bConsultar;
     private javax.swing.JButton bConsutarJornada;
+    private javax.swing.JButton bGenerarCalendario;
     private javax.swing.JButton bGenerarXML;
     private javax.swing.JButton bGenerarXMLJornada;
     private javax.swing.JButton bModificarJornada;
