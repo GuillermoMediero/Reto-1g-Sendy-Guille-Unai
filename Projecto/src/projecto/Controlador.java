@@ -141,8 +141,6 @@ public class Controlador {
 
     public static void inicioSesion(String correo, String clave) {
         try {
-            // showMessageDialog(null, correo + "" + clave);
-
             // Llamar el metodo de la tabla adm para comprobar el adm    
             adm = tadm.consultarAdm(correo, clave);
 
