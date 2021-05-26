@@ -43,6 +43,7 @@ public class Vprincipal extends javax.swing.JFrame {
     ArrayList<Partido> aListaJornada;
     int position=0;
     
+    
 
     /**
      * Creates new form Vprincipal
@@ -100,9 +101,8 @@ public class Vprincipal extends javax.swing.JFrame {
     }
     
      private void mostarJornada() {
-        
         taJornada.setText("Hora: \\t\\t Resultado Local: \t Resultado Visitante \t Numero de la jornada \n Equipo Local \t Equipo Visitante \n" 
-                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).setJornada(jornada) + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
+                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).getJornada() + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
      
     }
 
@@ -488,7 +488,7 @@ public class Vprincipal extends javax.swing.JFrame {
 
         bConsutarJornada.setBackground(new java.awt.Color(0, 0, 0));
         bConsutarJornada.setForeground(new java.awt.Color(255, 255, 255));
-        bConsutarJornada.setText("Cancelar");
+        bConsutarJornada.setText("Consultar");
         bConsutarJornada.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         bConsutarJornada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1234,7 +1234,7 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bGenerarXMLActionPerformed
 
     private void bGenerarXMLJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarXMLJornadaActionPerformed
-        Controlador.cerrarVentana(this);
+        
     }//GEN-LAST:event_bGenerarXMLJornadaActionPerformed
 
     private void bConsutarJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsutarJornadaActionPerformed
@@ -1255,14 +1255,14 @@ public class Vprincipal extends javax.swing.JFrame {
     private void bMoverDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMoverDerechaActionPerformed
       position = position + 1;
       taJornada.setText("Hora: \\t\\t Resultado Local: \t Resultado Visitante \t Numero de la jornada \n Equipo Local \t Equipo Visitante \n" 
-                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).setJornada(jornada) + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
+                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).getJornada() + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
                 
     }//GEN-LAST:event_bMoverDerechaActionPerformed
 
     private void bMoverIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMoverIzquierdaActionPerformed
         position = position - 1;
         taJornada.setText("Hora: \\t\\t Resultado Local: \t Resultado Visitante \t Numero de la jornada \n Equipo Local \t Equipo Visitante \n" 
-                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).setJornada(jornada) + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
+                        + aListaJornada.get(position).getHora() + "\t\t\t" + aListaJornada.get(position).getResultado_l()+ "\t" + aListaJornada.get(position).getResultado_v() + "\t" + aListaJornada.get(position).getJornada() + "\t" + aListaJornada.get(position).getEquipol() + "\t"+ aListaJornada.get(position).getEquipov() + "\t");
     }//GEN-LAST:event_bMoverIzquierdaActionPerformed
 
     /**
