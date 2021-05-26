@@ -6,11 +6,14 @@
 package Modelo_UML;
 
 /**
- *
+ *clase administrador del programa
  * @author ketro
  */
 public class Administrador extends Perfil{
 
+    /**
+     * Constructor del usuario administrador sin ningun dato extra
+     */
     public Administrador() {
     }
     

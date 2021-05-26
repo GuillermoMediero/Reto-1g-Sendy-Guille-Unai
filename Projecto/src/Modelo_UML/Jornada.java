@@ -8,35 +8,39 @@ package Modelo_UML;
 import java.time.LocalDate;
 
 /**
- *
+ *clase jornada del proyecto
  * @author ketro
  */
 public class Jornada {
-    private int id_jornada;
     private LocalDate fecha ;
-    
-    
+
+    /**
+     *constructor de jornada sin ningun dato
+     */
     public Jornada() {
     }
 
-    public Jornada(int id_jornada,LocalDate fecha) {
-        this.id_jornada = id_jornada;
+    /**
+     *constriuctor de jornada con el dato de la fechoa
+     * @param fecha dia de la jornada
+     */
+    public Jornada(LocalDate fecha) {
+   
         this.fecha = fecha;
     }
 
-    public int getId_jornada() {
-        return id_jornada;
-    }
-
-    public void setId_jornada(int id_jornada) {
-        this.id_jornada = id_jornada;
-    }
-    
-
+    /**
+     * obtencioncion dela fecha de la jornada
+     * @return dia de la jornada
+     */
     public LocalDate getFecha() {
         return fecha;
     }
 
+    /**
+     * implementacion dela fecha de la jornada
+     * @param fecha dia de la jornada
+     */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
