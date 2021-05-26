@@ -86,6 +86,22 @@ public class TJornada {
             }
         }
     }
-    
-    
+     public Jornada buscarNumJornada(int id_jornada) throws Exception {
+        String sentencia = "SELECT NUM_JORNADA FROM JORNADA"
+                + " WHERE NUM_JORNADA=?";
+        PreparedStatement ps = con.prepareStatement(sentencia);
+        ps.setString(1, String.valueOf(id_jornada));
+
+        ResultSet resultado = ps.executeQuery();
+        if (resultado.next()) {
+            Jornada jor;
+            jor = new Jornada();
+            jor.setId_jornada(id_jornada);
+           
+            return jor;
+        } else {
+            return null;
+        }
+    }
+
 }
