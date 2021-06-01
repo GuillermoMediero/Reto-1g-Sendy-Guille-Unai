@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo_BBDD;
-
 
 import Modelo_UML.Jornada;
 import java.sql.Connection;
@@ -17,7 +11,8 @@ import java.sql.ResultSet;
  * @author ketro
  */
 public class TJornada {
-  private Connection con;
+
+    private Connection con;
 
     public TJornada(Connection con) {
 
@@ -34,7 +29,7 @@ public class TJornada {
             Jornada jor;
             jor = new Jornada();
             jor.setFecha(resultado.getDate("FECHA").toLocalDate());
-           
+
             return jor;
         } else {
             return null;
@@ -46,8 +41,7 @@ public class TJornada {
         String sentencia = "INSERT INTO JORNADA(FECHA)"
                 + "VALUES (?)";
         PreparedStatement ps = con.prepareStatement(sentencia);
-       ps.setString(1, jor.getFecha().toString());
-   
+        ps.setString(1, jor.getFecha().toString());
 
         int resultado = ps.executeUpdate();
         ps.close();
@@ -56,15 +50,15 @@ public class TJornada {
         }
 
     }
+
     // Hay que comprobar
     public void modificarJornada(Jornada jor) throws Exception {
         // No podemos modificar el nombre del equipo
         String sentencia = "UPDATE JORNADA SET FECHA=?"
                 + "WHERE ID_JORNADA = ?";
         PreparedStatement ps = con.prepareStatement(sentencia);
-        ps.setString(1, String.valueOf(Date.valueOf("FECHA")));
-       
-       
+        ps.setString(1, String.valueOf(Date.valueOf("FECHA"))); 
+        
         int n = ps.executeUpdate();
         ps.close();
         if (n != 1) {
@@ -86,7 +80,8 @@ public class TJornada {
             }
         }
     }
-     public Jornada buscarNumJornada(int id_jornada) throws Exception {
+
+    public Jornada buscarNumJornada(int id_jornada) throws Exception {
         String sentencia = "SELECT NUM_JORNADA FROM JORNADA"
                 + " WHERE NUM_JORNADA=?";
         PreparedStatement ps = con.prepareStatement(sentencia);
@@ -96,12 +91,10 @@ public class TJornada {
         if (resultado.next()) {
             Jornada jor;
             jor = new Jornada();
-            jor.setId_jornada(id_jornada);
-           
-            return jor;
-        } else {
-            return null;
-        }
-    }
+            jor.setNum_jornada(id_jornada);
 
+            return jor;
+        }
+        return null;
+    }
 }

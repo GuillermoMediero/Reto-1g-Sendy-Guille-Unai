@@ -1279,7 +1279,11 @@ public class Vprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bMoverIzquierdaActionPerformed
 
     private void bGenerarCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarCalendarioActionPerformed
-        // TODO add your handling code here:
+        try{
+            Controlador.generarCalendarioSQL();
+        }catch(Exception gnr){
+            System.out.println("Error al generar calendario"+ gnr.getMessage());
+        }
     }//GEN-LAST:event_bGenerarCalendarioActionPerformed
 
     /**

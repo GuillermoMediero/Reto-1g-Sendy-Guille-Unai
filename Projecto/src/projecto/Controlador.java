@@ -541,6 +541,7 @@ public class Controlador {
         aListaJornada = tpart.consultarPartidos();
         return aListaJornada;
     }
+    /*
     //Generar el calendario. Un calendario es un conjunto de jornadas
     public static void generarCalendario() throws Exception {
         // Leemos los equipos
@@ -588,5 +589,8 @@ public class Controlador {
         Random random = new Random();
         return random.nextInt(numJornadas - x) + x;
 
+    }*/
+    public static void generarCalendarioSQL()throws Exception{
+    tpart.generarCalendario();
     }
 }
