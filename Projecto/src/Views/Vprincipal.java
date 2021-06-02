@@ -83,6 +83,7 @@ public class Vprincipal extends javax.swing.JFrame {
                 this.bMoverDerecha.setVisible(false);
                 this.bMoverIzquierda.setVisible(false);
                 this.bModificarJornada.setVisible(false);
+                this.bGenerarCalendario.setVisible(false);
                 break;
             default:
                 break;
